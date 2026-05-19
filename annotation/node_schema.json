@@ -1,0 +1,125 @@
+{
+  "version": "1.0",
+  "purpose": "Typed-node annotation schema for BIRD evidence. Each BIRD evidence string is decomposed into the L1 (business-layer) nodes of the joint schema+knowledge graph. Pilot annotation of 30-50 items validates this schema before the L1 builder is automated. See Research_Plan.md step 3.",
+  "record": {
+    "description": "One record per BIRD evidence item.",
+    "fields": {
+      "question_id": "int -- from BIRD",
+      "db_id": "str -- BIRD database id",
+      "difficulty": "str -- BIRD difficulty (informational only)",
+      "question": "str -- BIRD question (informational only)",
+      "raw_evidence": "str -- the original BIRD evidence, verbatim",
+      "nodes": "list[node] -- the typed nodes this evidence decomposes into (may be empty before annotation)",
+      "notes": "str -- annotator notes. IMPORTANT: record here any evidence that does NOT fit the four node types cleanly -- that feedback is the deliverable of the pilot."
+    }
+  },
+  "node_types": {
+    "Concept": {
+      "description": "A named business term (e.g. 'high-value customer'). Usually operationalized by a Formula/Rule/ValueMap node via the 'defined_by' edge.",
+      "required": ["id", "type", "name"],
+      "optional": ["definition", "defined_by"],
+      "fields": {
+        "id": "str -- unique within the record, e.g. 'c1'",
+        "type": "literal 'Concept'",
+        "name": "str -- the business term",
+        "definition": "str -- optional free-text gloss",
+        "defined_by": "str -- optional; id of the Formula/Rule/ValueMap node that operationalizes this concept"
+      }
+    },
+    "Formula": {
+      "description": "A computation or derivation expressed over columns.",
+      "required": ["id", "type", "name", "expression", "grounding"],
+      "fields": {
+        "id": "str",
+        "type": "literal 'Formula'",
+        "name": "str -- name of the computed quantity",
+        "expression": "str -- the formula, verbatim or lightly normalized",
+        "grounding": "list[grounding_item] -- maps each term in the expression to a physical column"
+      }
+    },
+    "ValueMap": {
+      "description": "A natural-language label that corresponds to a specific value of a specific column.",
+      "required": ["id", "type", "name", "table", "column", "value"],
+      "fields": {
+        "id": "str",
+        "type": "literal 'ValueMap'",
+        "name": "str -- the natural-language label",
+        "table": "str -- physical table name",
+        "column": "str -- physical column name",
+        "value": "str -- the column value the label maps to"
+      }
+    },
+    "Rule": {
+      "description": "A filter condition or business convention that is not a single arithmetic formula (e.g. 'churned = no login for 30 days', a fiscal-year convention).",
+      "required": ["id", "type", "condition", "grounding"],
+      "optional": ["name"],
+      "fields": {
+        "id": "str",
+        "type": "literal 'Rule'",
+        "name": "str -- optional short name",
+        "condition": "str -- the predicate / convention, verbatim or lightly normalized",
+        "grounding": "list[grounding_item]"
+      }
+    }
+  },
+  "grounding_item": {
+    "description": "An L1->L2 link: a term used in a Formula/Rule mapped to a physical column. Use the database schema DDL (embedded in to_annotate.json under 'schemas') to find the table/column.",
+    "fields": {
+      "term": "str -- the term as written in the expression/condition",
+      "table": "str -- physical table name",
+      "column": "str -- physical column name"
+    }
+  },
+  "edges": {
+    "defined_by": "Concept -> {Formula | Rule | ValueMap}, referenced by node id within the same record"
+  },
+  "examples": [
+    {
+      "_comment": "Formula: one evidence -> one Formula node, terms grounded to columns.",
+      "raw_evidence": "Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`",
+      "nodes": [
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "Eligible free rate for K-12",
+          "expression": "`Free Meal Count (K-12)` / `Enrollment (K-12)`",
+          "grounding": [
+            {"term": "Free Meal Count (K-12)", "table": "frpm", "column": "Free Meal Count (K-12)"},
+            {"term": "Enrollment (K-12)", "table": "frpm", "column": "Enrollment (K-12)"}
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "_comment": "ValueMap: a label maps to one value of one column.",
+      "raw_evidence": "'POPLATEK MESICNE' stands for monthly issuance",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "monthly issuance",
+          "table": "account",
+          "column": "frequency",
+          "value": "POPLATEK MESICNE"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "_comment": "Concept + Rule: one evidence -> two nodes joined by a defined_by edge.",
+      "raw_evidence": "abnormal white blood cell count refers to WBC < 3.5 or WBC > 9.0",
+      "nodes": [
+        {"id": "c1", "type": "Concept", "name": "abnormal white blood cell count", "defined_by": "r1"},
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "abnormal WBC range",
+          "condition": "WBC < 3.5 OR WBC > 9.0",
+          "grounding": [{"term": "WBC", "table": "Laboratory", "column": "WBC"}]
+        }
+      ],
+      "notes": "One evidence string can decompose into multiple nodes joined by edges."
+    }
+  ]
+}

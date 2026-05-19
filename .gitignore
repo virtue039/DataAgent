@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Secrets
+.env
+
+# BIRD dataset (large — download separately, do not commit)
+data/
+*.sqlite
+
+# Evaluation outputs
+results/
