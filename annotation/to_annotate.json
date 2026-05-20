@@ -236,6 +236,12 @@
               "term": "language",
               "table": "foreign_data",
               "column": "language"
+            },
+            {
+              "term": "Chinese Simplified",
+              "table": "foreign_data",
+              "column": "language",
+              "value": "Chinese Simplified"
             }
           ]
         }
@@ -916,6 +922,12 @@
               "term": "event_name",
               "table": "event",
               "column": "event_name"
+            },
+            {
+              "term": "October Speaker",
+              "table": "event",
+              "column": "event_name",
+              "value": "October Speaker"
             }
           ]
         },

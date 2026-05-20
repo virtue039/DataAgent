@@ -64,6 +64,10 @@ GROUNDING_VALUE_ADDITIONS = {
         {"term": "Santa Clara", "table": "schools",
          "column": "County", "value": "Santa Clara"},
     ],
+    (352, "card_games", "f1"): [
+        {"term": "Chinese Simplified", "table": "foreign_data",
+         "column": "language", "value": "Chinese Simplified"},
+    ],
     (634, "codebase_community", "f1"): [
         {"term": "Harvey Motulsky", "table": "users",
          "column": "DisplayName", "value": "Harvey Motulsky"},
@@ -81,6 +85,10 @@ GROUNDING_VALUE_ADDITIONS = {
     (317, "toxicology", "f1"): [
         {"term": "+", "table": "molecule", "column": "label", "value": "+"},
         {"term": "cl", "table": "atom", "column": "element", "value": "cl"},
+    ],
+    (1337, "student_club", "f1"): [
+        {"term": "October Speaker", "table": "event",
+         "column": "event_name", "value": "October Speaker"},
     ],
 }
 
