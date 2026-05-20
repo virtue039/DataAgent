@@ -9,6 +9,8 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
+from .ddl import parse_ddl
+
 # Path to the schema doc; the system prompt is generated from it at import-time
 # so the prompt automatically reflects any schema change.
 _SCHEMA_PATH = Path(__file__).resolve().parent.parent / "annotation" / "node_schema.json"
@@ -102,3 +104,58 @@ def _parse_json_fence(raw: str) -> list[dict]:
     if m:
         return json.loads(m.group(0))
     raise ValueError("No JSON array found in LLM response")
+
+
+def _sanitize_grounding(nodes: list[dict], ddl: str) -> tuple[list[dict], dict[str, int]]:
+    """Drop (table, column) references that don't appear in the DDL.
+
+    Per-node behavior:
+    - ValueMap: dropped wholesale if (table, column) is invalid.
+    - ColumnAlias: invalid bindings are dropped; node is dropped if no bindings survive.
+    - Formula / Rule: invalid grounding entries are dropped; node is dropped if no grounding survives.
+    - Concept: passthrough (no grounding).
+
+    Returns (cleaned_nodes, {"dropped_groundings": int, "dropped_nodes": int}).
+    """
+    tables = parse_ddl(ddl)
+    stats = {"dropped_groundings": 0, "dropped_nodes": 0}
+    cleaned: list[dict] = []
+    for node in nodes:
+        ntype = node.get("type")
+        if ntype == "ValueMap":
+            t, c = node.get("table"), node.get("column")
+            if t in tables and c in tables[t]:
+                cleaned.append(node)
+            else:
+                stats["dropped_nodes"] += 1
+            continue
+        if ntype == "ColumnAlias":
+            kept = []
+            for b in node.get("bindings", []) or []:
+                if b.get("table") in tables and b.get("column") in tables[b["table"]]:
+                    kept.append(b)
+                else:
+                    stats["dropped_groundings"] += 1
+            if kept:
+                node = {**node, "bindings": kept}
+                cleaned.append(node)
+            else:
+                stats["dropped_nodes"] += 1
+            continue
+        if ntype in ("Formula", "Rule"):
+            kept = []
+            for g in node.get("grounding", []) or []:
+                t, c = g.get("table"), g.get("column")
+                if t in tables and c in tables[t]:
+                    kept.append(g)
+                else:
+                    stats["dropped_groundings"] += 1
+            if kept:
+                node = {**node, "grounding": kept}
+                cleaned.append(node)
+            else:
+                stats["dropped_nodes"] += 1
+            continue
+        # Concept and any unknown types: passthrough.
+        cleaned.append(node)
+    return cleaned, stats

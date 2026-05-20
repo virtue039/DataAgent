@@ -16,6 +16,7 @@ from bird_eval.extraction import (  # noqa: E402
     _build_system_prompt,
     _build_user_message,
     _parse_json_fence,
+    _sanitize_grounding,
 )
 
 
@@ -77,6 +78,94 @@ class JsonFenceParser(unittest.TestCase):
     def test_no_array_raises_value_error(self):
         with self.assertRaises(ValueError):
             _parse_json_fence("just some prose with no JSON")
+
+
+# Minimal DDL fixture for sanitizer tests.
+_DDL = """
+CREATE TABLE good_table (
+    real_col INTEGER,
+    another_real_col TEXT
+);
+CREATE TABLE other (
+    x INTEGER
+);
+"""
+
+
+class GroundingSanitizer(unittest.TestCase):
+    def test_valid_node_kept_untouched(self):
+        nodes = [
+            {"id": "f1", "type": "Formula", "name": "x", "expression": "x",
+             "grounding": [{"term": "real_col", "table": "good_table", "column": "real_col"}]}
+        ]
+        out, stats = _sanitize_grounding(nodes, _DDL)
+        self.assertEqual(nodes, out)
+        self.assertEqual(stats, {"dropped_groundings": 0, "dropped_nodes": 0})
+
+    def test_drops_hallucinated_grounding_entry_only(self):
+        nodes = [
+            {"id": "f1", "type": "Formula", "name": "x", "expression": "x",
+             "grounding": [
+                 {"term": "real_col", "table": "good_table", "column": "real_col"},
+                 {"term": "fake", "table": "good_table", "column": "no_such_col"}]}
+        ]
+        out, stats = _sanitize_grounding(nodes, _DDL)
+        self.assertEqual(1, len(out))
+        self.assertEqual(1, len(out[0]["grounding"]))
+        self.assertEqual("real_col", out[0]["grounding"][0]["column"])
+        self.assertEqual(1, stats["dropped_groundings"])
+        self.assertEqual(0, stats["dropped_nodes"])
+
+    def test_drops_formula_when_all_grounding_invalid(self):
+        nodes = [
+            {"id": "f1", "type": "Formula", "name": "x", "expression": "x",
+             "grounding": [
+                 {"term": "fake1", "table": "good_table", "column": "no_such_col"},
+                 {"term": "fake2", "table": "missing_table", "column": "x"}]}
+        ]
+        out, stats = _sanitize_grounding(nodes, _DDL)
+        self.assertEqual([], out)
+        self.assertEqual(1, stats["dropped_nodes"])
+
+    def test_columnalias_drops_invalid_bindings(self):
+        nodes = [
+            {"id": "a1", "type": "ColumnAlias", "name": "x",
+             "bindings": [
+                 {"table": "good_table", "column": "real_col"},
+                 {"table": "missing_table", "column": "x"}]}
+        ]
+        out, stats = _sanitize_grounding(nodes, _DDL)
+        self.assertEqual(1, len(out))
+        self.assertEqual(
+            [{"table": "good_table", "column": "real_col"}], out[0]["bindings"]
+        )
+        self.assertEqual(1, stats["dropped_groundings"])
+
+    def test_valuemap_drops_when_table_or_column_invalid(self):
+        nodes = [
+            {"id": "v1", "type": "ValueMap", "name": "x",
+             "table": "good_table", "column": "no_such_col", "value": "v"}
+        ]
+        out, stats = _sanitize_grounding(nodes, _DDL)
+        self.assertEqual([], out)
+        self.assertEqual(1, stats["dropped_nodes"])
+
+    def test_gold_standard_roundtrip_keeps_all_nodes(self):
+        """Sanity check: the 40-item gold standard is by construction grounded.
+        Running it through the sanitizer (against the embedded DDL) must drop
+        zero entries -- otherwise the sanitizer is over-zealous."""
+        path = os.path.join(ROOT, "annotation", "to_annotate.json")
+        import json as _json
+        data = _json.load(open(path))
+        total_dropped_g = 0
+        total_dropped_n = 0
+        for it in data["items"]:
+            ddl = data["schemas"][it["db_id"]]
+            _, stats = _sanitize_grounding(it["nodes"], ddl)
+            total_dropped_g += stats["dropped_groundings"]
+            total_dropped_n += stats["dropped_nodes"]
+        self.assertEqual(0, total_dropped_g, "sanitizer dropped a valid grounding")
+        self.assertEqual(0, total_dropped_n, "sanitizer dropped a valid node")
 
 
 if __name__ == "__main__":
