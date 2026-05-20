@@ -15,6 +15,7 @@ sys.path.insert(0, ROOT)
 from bird_eval.extraction import (  # noqa: E402
     _build_system_prompt,
     _build_user_message,
+    _parse_json_fence,
 )
 
 
@@ -56,6 +57,26 @@ class UserMessage(unittest.TestCase):
         self.assertIn("my evidence here", msg)
         self.assertIn("my_db_id", msg)
         self.assertIn("CREATE TABLE my_table", msg)
+
+
+class JsonFenceParser(unittest.TestCase):
+    def test_parses_explicit_json_fence(self):
+        raw = "Some prose ```json\n[{\"id\": \"a1\", \"type\": \"Concept\", \"name\": \"x\"}]\n```\nTail"
+        self.assertEqual(
+            [{"id": "a1", "type": "Concept", "name": "x"}],
+            _parse_json_fence(raw),
+        )
+
+    def test_parses_unfenced_array_as_fallback(self):
+        raw = "Prose [{\"id\": \"a1\", \"type\": \"Concept\", \"name\": \"x\"}] tail"
+        self.assertEqual(
+            [{"id": "a1", "type": "Concept", "name": "x"}],
+            _parse_json_fence(raw),
+        )
+
+    def test_no_array_raises_value_error(self):
+        with self.assertRaises(ValueError):
+            _parse_json_fence("just some prose with no JSON")
 
 
 if __name__ == "__main__":

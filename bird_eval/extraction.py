@@ -5,6 +5,7 @@ Public surface: extract(evidence, db_id, ddl, llm).
 from __future__ import annotations
 
 import json
+import re
 from functools import lru_cache
 from pathlib import Path
 
@@ -82,3 +83,22 @@ def _build_user_message(evidence: str, db_id: str, ddl: str) -> str:
         "Emit a single JSON array of node dicts inside a ```json fence. Nothing else.",
     ]
     return "\n".join(parts)
+
+
+_FENCE_RE = re.compile(r"```(?:json)?\s*(\[.*?\])\s*```", re.DOTALL | re.IGNORECASE)
+_BARE_ARRAY_RE = re.compile(r"\[\s*\{.*?\}\s*(?:,\s*\{.*?\}\s*)*\]", re.DOTALL)
+
+
+def _parse_json_fence(raw: str) -> list[dict]:
+    """Pull a JSON array of node dicts out of the LLM response.
+
+    Tries the ```json fence first; falls back to the first balanced `[...]`
+    substring. Raises ValueError if neither parses.
+    """
+    m = _FENCE_RE.search(raw)
+    if m:
+        return json.loads(m.group(1))
+    m = _BARE_ARRAY_RE.search(raw)
+    if m:
+        return json.loads(m.group(0))
+    raise ValueError("No JSON array found in LLM response")
