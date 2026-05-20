@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "purpose": "Typed-node annotation schema for BIRD evidence. Each BIRD evidence string is decomposed into the L1 (business-layer) nodes of the joint schema+knowledge graph. Pilot annotation of 30-50 items validates this schema before the L1 builder is automated. See Research_Plan.md step 3.",
+  "version": "2.0",
+  "purpose": "Typed-node annotation schema for BIRD evidence. Each BIRD evidence string is decomposed into the L1 (business-layer) nodes of the joint schema+knowledge graph. v2 (2026-05-20) adds: ColumnAlias node type for column-rename / multi-column-projection evidence, optional 'value' field on grounding_item so Formula expressions can self-ground value literals, and Formula.depends_on edge so joint retrieval can co-fetch dependent Rules / Formulas. See docs/superpowers/specs/2026-05-20-schema-v2-typed-node-extension-design.md and annotation/PILOT_FINDINGS.md for rationale.",
   "record": {
     "description": "One record per BIRD evidence item.",
     "fields": {
@@ -10,31 +10,33 @@
       "question": "str -- BIRD question (informational only)",
       "raw_evidence": "str -- the original BIRD evidence, verbatim",
       "nodes": "list[node] -- the typed nodes this evidence decomposes into (may be empty before annotation)",
-      "notes": "str -- annotator notes. IMPORTANT: record here any evidence that does NOT fit the four node types cleanly -- that feedback is the deliverable of the pilot."
+      "notes": "str -- annotator notes. IMPORTANT: record here any evidence that does NOT fit the five node types cleanly -- that feedback is the deliverable of the pilot."
     }
   },
   "node_types": {
     "Concept": {
-      "description": "A named business term (e.g. 'high-value customer'). Usually operationalized by a Formula/Rule/ValueMap node via the 'defined_by' edge.",
+      "description": "A named business term (e.g. 'high-value customer'). Usually operationalized by a Formula/Rule/ValueMap/ColumnAlias node via the 'defined_by' edge.",
       "required": ["id", "type", "name"],
       "optional": ["definition", "defined_by"],
       "fields": {
         "id": "str -- unique within the record, e.g. 'c1'",
         "type": "literal 'Concept'",
         "name": "str -- the business term",
-        "definition": "str -- optional free-text gloss",
-        "defined_by": "str -- optional; id of the Formula/Rule/ValueMap node that operationalizes this concept"
+        "definition": "str -- optional free-text gloss. Prefer a defined_by edge to a structured node over free text where one fits.",
+        "defined_by": "str -- optional; id of the Formula/Rule/ValueMap/ColumnAlias node that operationalizes this concept"
       }
     },
     "Formula": {
-      "description": "A computation or derivation expressed over columns.",
+      "description": "A computation or derivation expressed over columns. May reference value literals via grounding entries that include a 'value' field, and may depend on sibling Rule / Formula / ValueMap / ColumnAlias nodes via 'depends_on'.",
       "required": ["id", "type", "name", "expression", "grounding"],
+      "optional": ["depends_on"],
       "fields": {
         "id": "str",
         "type": "literal 'Formula'",
         "name": "str -- name of the computed quantity",
         "expression": "str -- the formula, verbatim or lightly normalized",
-        "grounding": "list[grounding_item] -- maps each term in the expression to a physical column"
+        "grounding": "list[grounding_item] -- maps each term in the expression to a physical column (and optionally a specific value of that column)",
+        "depends_on": "list[str] -- optional; ids of sibling nodes (Rule / Formula / ValueMap / ColumnAlias) that this Formula's correct interpretation requires. Joint retrieval must co-fetch these."
       }
     },
     "ValueMap": {
@@ -60,18 +62,30 @@
         "condition": "str -- the predicate / convention, verbatim or lightly normalized",
         "grounding": "list[grounding_item]"
       }
+    },
+    "ColumnAlias": {
+      "description": "v2 (2026-05-20). A user-facing term that maps to one or more physical columns. Use for column-rename evidence ('X refers to col_name') and multi-column projections ('hometown refers to city, county, state'). Length-1 bindings cover the single-column case; length>=2 bindings cover column tuples.",
+      "required": ["id", "type", "name", "bindings"],
+      "fields": {
+        "id": "str",
+        "type": "literal 'ColumnAlias'",
+        "name": "str -- the user-facing term",
+        "bindings": "list[{table, column}] -- non-empty. Each entry has 'table' and 'column'."
+      }
     }
   },
   "grounding_item": {
-    "description": "An L1->L2 link: a term used in a Formula/Rule mapped to a physical column. Use the database schema DDL (embedded in to_annotate.json under 'schemas') to find the table/column.",
+    "description": "An L1->L2 link: a term used in a Formula/Rule mapped to a physical column (and optionally to a specific value of that column). Use the database schema DDL (embedded in to_annotate.json under 'schemas') to find the table/column.",
     "fields": {
       "term": "str -- the term as written in the expression/condition",
       "table": "str -- physical table name",
-      "column": "str -- physical column name"
+      "column": "str -- physical column name",
+      "value": "str -- OPTIONAL (v2). When present, the term grounds to this column WITH this specific value (e.g. 'carcinogenic' -> molecule.label = '+'). When absent, semantics is v1: term grounds to the column itself."
     }
   },
   "edges": {
-    "defined_by": "Concept -> {Formula | Rule | ValueMap}, referenced by node id within the same record"
+    "defined_by": "Concept -> {Formula | Rule | ValueMap | ColumnAlias}, referenced by node id within the same record. v2: ColumnAlias added to the legal target set.",
+    "depends_on": "Formula -> list[{Rule | Formula | ValueMap | ColumnAlias}]. v2 addition. Joint-retrieval semantics: retrieving the Formula must also retrieve every node listed here."
   },
   "examples": [
     {
@@ -120,6 +134,62 @@
         }
       ],
       "notes": "One evidence string can decompose into multiple nodes joined by edges."
+    },
+    {
+      "_comment": "v2: ColumnAlias single binding (column rename).",
+      "raw_evidence": "magic card market name refers to mcmName",
+      "nodes": [
+        {
+          "id": "a1",
+          "type": "ColumnAlias",
+          "name": "magic card market name",
+          "bindings": [{"table": "sets", "column": "mcmName"}]
+        }
+      ],
+      "notes": "v2 example: single-column rename."
+    },
+    {
+      "_comment": "v2: ColumnAlias multi-binding (column tuple) + Formula with grounding.value and depends_on.",
+      "raw_evidence": "hometown refers to city, county, state; race completion rate from 2007 to 2009 = COUNT(driverId where time is not null) / COUNT(driverId) where year between 2007 and 2009",
+      "nodes": [
+        {
+          "id": "a1",
+          "type": "ColumnAlias",
+          "name": "hometown",
+          "bindings": [
+            {"table": "zip_code", "column": "city"},
+            {"table": "zip_code", "column": "county"},
+            {"table": "zip_code", "column": "state"}
+          ]
+        },
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "year between 2007 and 2009",
+          "condition": "year BETWEEN 2007 AND 2009",
+          "grounding": [{"term": "year", "table": "races", "column": "year"}]
+        },
+        {
+          "id": "r2",
+          "type": "Rule",
+          "name": "finished the race",
+          "condition": "time IS NOT NULL",
+          "grounding": [{"term": "time", "table": "results", "column": "time"}]
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "race completion percentage",
+          "expression": "COUNT(driverId WHERE time IS NOT NULL AND year BETWEEN 2007 AND 2009) / COUNT(driverId WHERE year BETWEEN 2007 AND 2009) * 100",
+          "grounding": [
+            {"term": "driverId", "table": "results", "column": "driverId"},
+            {"term": "time", "table": "results", "column": "time"},
+            {"term": "year", "table": "races", "column": "year"}
+          ],
+          "depends_on": ["r1", "r2"]
+        }
+      ],
+      "notes": "v2 example: multi-binding ColumnAlias and Formula with depends_on. The depends_on list makes the Rule dependencies retrievable alongside the Formula."
     }
   ]
 }
