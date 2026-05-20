@@ -111,6 +111,48 @@ class GroundingValueAddition(unittest.TestCase):
         self.assertTrue(any(g.get("value") == "cl" and g["column"] == "element" for g in gs),
                         f"missing element='cl' grounding; got {gs}")
 
+    def test_qid_352_card_games_chinese_simplified(self):
+        item = _wrap(352, "card_games", [
+            {"id": "v1", "type": "ValueMap", "name": "Chinese Simplified",
+             "table": "foreign_data", "column": "language", "value": "Chinese Simplified"},
+            {"id": "f1", "type": "Formula",
+             "name": "percentage of cards in Chinese Simplified",
+             "expression": "SUM(id WHERE language = 'Chinese Simplified') / COUNT(id) * 100",
+             "grounding": [
+                 {"term": "id", "table": "foreign_data", "column": "id"},
+                 {"term": "language", "table": "foreign_data", "column": "language"}]},
+        ])
+        out = migrate_item(copy.deepcopy(item))
+        # ValueMap sibling preserved.
+        self.assertTrue(any(n["type"] == "ValueMap" and n["name"] == "Chinese Simplified"
+                            for n in out["nodes"]))
+        f1 = next(n for n in out["nodes"] if n["id"] == "f1")
+        self.assertTrue(
+            any(g.get("value") == "Chinese Simplified" and g["column"] == "language"
+                for g in f1["grounding"]),
+            f"missing language='Chinese Simplified' grounding; got {f1['grounding']}",
+        )
+
+    def test_qid_1337_student_club_october_speaker(self):
+        item = _wrap(1337, "student_club", [
+            {"id": "f1", "type": "Formula", "name": "total budgeted amount for an event",
+             "expression": "SUM(amount) WHERE event_name = 'October Speaker'",
+             "grounding": [
+                 {"term": "amount", "table": "budget", "column": "amount"},
+                 {"term": "event_name", "table": "event", "column": "event_name"}]},
+            {"id": "v1", "type": "ValueMap", "name": "October Speaker event",
+             "table": "event", "column": "event_name", "value": "October Speaker"},
+        ])
+        out = migrate_item(copy.deepcopy(item))
+        self.assertTrue(any(n["type"] == "ValueMap" and n["name"] == "October Speaker event"
+                            for n in out["nodes"]))
+        f1 = next(n for n in out["nodes"] if n["id"] == "f1")
+        self.assertTrue(
+            any(g.get("value") == "October Speaker" and g["column"] == "event_name"
+                for g in f1["grounding"]),
+            f"missing event_name='October Speaker' grounding; got {f1['grounding']}",
+        )
+
 
 class DependsOnAddition(unittest.TestCase):
     """v1 Formula that the notes flagged as depending on a Rule -> v2 Formula.depends_on."""

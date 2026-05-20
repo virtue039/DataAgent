@@ -75,12 +75,12 @@
     }
   },
   "grounding_item": {
-    "description": "An L1->L2 link: a term used in a Formula/Rule mapped to a physical column (and optionally to a specific value of that column). Use the database schema DDL (embedded in to_annotate.json under 'schemas') to find the table/column.",
+    "description": "An L1->L2 link: a term used in a Formula/Rule mapped to a physical column (and optionally to a specific value of that column). Use the database schema DDL (embedded in to_annotate.json under 'schemas') to find the table/column. CONSUMPTION RULE when both bare-column entries {term, table, column} and value-bearing entries {term, table, column, value} exist for the same (table, column) on one node: the value-bearing entries together describe filter predicates (WHERE col = value [OR col = value2 ...]); the bare-column entry describes the column's role outside any filter (SELECT, GROUP BY, projection). SQL generators should treat them accordingly.",
     "fields": {
       "term": "str -- the term as written in the expression/condition",
       "table": "str -- physical table name",
       "column": "str -- physical column name",
-      "value": "str -- OPTIONAL (v2). When present, the term grounds to this column WITH this specific value (e.g. 'carcinogenic' -> molecule.label = '+'). When absent, semantics is v1: term grounds to the column itself."
+      "value": "str -- OPTIONAL (v2). When present, the term grounds to this column WITH this specific value (e.g. 'carcinogenic' -> molecule.label = '+'). When absent, semantics is v1: term grounds to the column itself. CONVENTION FOR 'term' WHEN value IS PRESENT: prefer the human-readable concept/label as it appears in the user-facing question (e.g. term='carcinogenic'); the raw literal (e.g. term='+') is also acceptable when no distinct human label exists. The 'value' field is authoritative for filter semantics; the 'term' field is for surface-form matching during retrieval."
     }
   },
   "edges": {

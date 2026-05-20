@@ -28,6 +28,11 @@ NODE_REQUIRED = {
 # Concept.defined_by may only point at one of these node types.
 DEFINED_BY_TYPES = {"Formula", "Rule", "ValueMap", "ColumnAlias"}
 
+# Formula.depends_on may only point at one of these node types
+# (Concept is intentionally excluded -- depends_on is a co-retrieval signal
+# for the operationalized layer, not for high-level concept names).
+DEPENDS_ON_TYPES = {"Formula", "Rule", "ValueMap", "ColumnAlias"}
+
 
 def validate_item(item: dict, idx: int) -> list[str]:
     errors: list[str] = []
@@ -95,7 +100,7 @@ def validate_item(item: dict, idx: int) -> list[str]:
                     f"{ntag}: defined_by {ref!r} points to {id_to_type.get(ref)!r}; "
                     f"must be one of {sorted(DEFINED_BY_TYPES)}"
                 )
-        # depends_on (v2): only on Formula; list of ids that must exist in the record.
+        # depends_on (v2): only on Formula; list of ids; each must exist and have an allowed type.
         if node.get("type") == "Formula":
             deps = node.get("depends_on")
             if deps is not None:
@@ -106,6 +111,11 @@ def validate_item(item: dict, idx: int) -> list[str]:
                         if did not in idset:
                             errors.append(
                                 f"{ntag}: depends_on[{k}]={did!r} references an unknown node id"
+                            )
+                        elif id_to_type.get(did) not in DEPENDS_ON_TYPES:
+                            errors.append(
+                                f"{ntag}: depends_on[{k}]={did!r} points to {id_to_type.get(did)!r}; "
+                                f"must be one of {sorted(DEPENDS_ON_TYPES)}"
                             )
 
     return errors

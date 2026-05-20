@@ -115,6 +115,14 @@ class FormulaDependsOn(unittest.TestCase):
              "grounding": [{"term": "t", "table": "t", "column": "c"}]}
         self.assertEqual([], validate_item(_item([f]), 0))
 
+    def test_depends_on_pointing_to_concept_fails(self):
+        c = {"id": "c1", "type": "Concept", "name": "x"}
+        f = {"id": "f1", "type": "Formula", "name": "x", "expression": "x",
+             "grounding": [{"term": "t", "table": "t", "column": "c"}],
+             "depends_on": ["c1"]}
+        errs = validate_item(_item([c, f]), 0)
+        self.assertTrue(any("depends_on[0]='c1' points to 'Concept'" in e for e in errs), errs)
+
 
 class DefinedByTypeWhitelist(unittest.TestCase):
     def test_concept_defined_by_columnalias_passes(self):
