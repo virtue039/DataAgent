@@ -2,46 +2,18 @@
 grounding[] and ColumnAlias.bindings must exist in the embedded DDL."""
 from __future__ import annotations
 import json
-import re
 import sys
+import os
 
+# Add parent directory to path so bird_eval module can be imported
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-def parse_schema(ddl: str) -> dict[str, set[str]]:
-    tables: dict[str, set[str]] = {}
-    parts = re.split(r'(?im)^CREATE\s+TABLE\s+', ddl)
-    for p in parts[1:]:
-        m = re.match(r'["`]?(\w+)["`]?\s*\(', p, re.S)
-        if not m:
-            continue
-        tname = m.group(1)
-        depth = 0
-        body = ""
-        start = p.find('(')
-        for i, ch in enumerate(p[start:], start):
-            if ch == '(':
-                depth += 1
-            elif ch == ')':
-                depth -= 1
-                if depth == 0:
-                    body = p[start + 1:i]
-                    break
-        cols: set[str] = set()
-        for line in body.split(','):
-            line = line.strip()
-            mm = re.match(
-                r'(?:["`])?([A-Za-z][\w \(\)/\-\.]*?)(?:["`])?\s+'
-                r'(?:INTEGER|REAL|TEXT|NUMERIC|BLOB|DATE|TIMESTAMP|BOOLEAN|VARCHAR|CHAR|DATETIME)',
-                line, re.I,
-            )
-            if mm:
-                cols.add(mm.group(1).strip())
-        tables[tname] = cols
-    return tables
+from bird_eval.ddl import parse_ddl
 
 
 def main() -> int:
     d = json.load(open('annotation/to_annotate.json'))
-    dbs = {db: parse_schema(ddl) for db, ddl in d['schemas'].items()}
+    dbs = {db: parse_ddl(ddl) for db, ddl in d['schemas'].items()}
     errors: list[str] = []
     checks = 0
     for it in d['items']:
