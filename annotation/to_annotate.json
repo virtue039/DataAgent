@@ -1,0 +1,1423 @@
+{
+  "meta": {
+    "n_items": 40,
+    "n_databases": 11,
+    "bird_dir": "data/bird_dev",
+    "seed": 42,
+    "created": "2026-05-20T11:33:35",
+    "schema_ref": "annotation/node_schema.json"
+  },
+  "schemas": {
+    "california_schools": "CREATE TABLE frpm\n(\n    CDSCode                                       TEXT not null\n        primary key,\n    `Academic Year`                               TEXT  null,\n    `County Code`                                 TEXT  null,\n    `District Code`                               INTEGER         null,\n    `School Code`                                 TEXT  null,\n    `County Name`                                 TEXT null,\n    `District Name`                               TEXT null,\n    `School Name`                                 TEXT null,\n    `District Type`                               TEXT null,\n    `School Type`                                 TEXT null,\n    `Educational Option Type`                     TEXT null,\n    `NSLP Provision Status`                       TEXT null,\n    `Charter School (Y/N)`                        INTEGER    null,\n    `Charter School Number`                       TEXT  null,\n    `Charter Funding Type`                        TEXT null,\n    IRC                                           INTEGER    null,\n    `Low Grade`                                   TEXT  null,\n    `High Grade`                                  TEXT null,\n    `Enrollment (K-12)`                           REAL      null,\n    `Free Meal Count (K-12)`                      REAL       null,\n    `Percent (%) Eligible Free (K-12)`            REAL       null,\n    `FRPM Count (K-12)`                           REAL       null,\n    `Percent (%) Eligible FRPM (K-12)`            REAL       null,\n    `Enrollment (Ages 5-17)`                      REAL       null,\n    `Free Meal Count (Ages 5-17)`                 REAL       null,\n    `Percent (%) Eligible Free (Ages 5-17)`       REAL       null,\n    `FRPM Count (Ages 5-17)`                      REAL       null,\n    `Percent (%) Eligible FRPM (Ages 5-17)`       REAL       null,\n    `2013-14 CALPADS Fall 1 Certification Status` INTEGER    null,\n    foreign key (CDSCode) references schools (CDSCode)\n);\n\nCREATE TABLE satscores\n(\n    cds         TEXT not null\n        primary key,\n    rtype       TEXT  not null,\n    sname       TEXT null,\n    dname       TEXT null,\n    cname       TEXT null,\n    enroll12    INTEGER         not null,\n    NumTstTakr  INTEGER          not null,\n    AvgScrRead  INTEGER          null,\n    AvgScrMath  INTEGER          null,\n    AvgScrWrite INTEGER          null,\n    NumGE1500   INTEGER          null,\n--     PctGE1500   double      null,\n        foreign key (cds) references schools (CDSCode)\n);\n\nCREATE TABLE schools\n(\n    CDSCode     TEXT not null\n        primary key,\n    NCESDist    TEXT  null,\n    NCESSchool  TEXT  null,\n    StatusType  TEXT  not null,\n    County      TEXT not null,\n    District    TEXT not null,\n    School      TEXT null,\n    Street      TEXT null,\n    StreetAbr   TEXT null,\n    City        TEXT null,\n    Zip         TEXT null,\n    State       TEXT  null,\n    MailStreet  TEXT null,\n    MailStrAbr  TEXT null,\n    MailCity    TEXT null,\n    MailZip     TEXT null,\n    MailState   TEXT  null,\n    Phone       TEXT null,\n    Ext         TEXT  null,\n    Website     TEXT null,\n    OpenDate    DATE        null,\n    ClosedDate  DATE        null,\n    Charter     INTEGER    null,\n    CharterNum  TEXT  null,\n    FundingType TEXT null,\n    DOC         TEXT  not null,\n    DOCType     TEXT not null,\n    SOC         TEXT  null,\n    SOCType     TEXT null,\n    EdOpsCode   TEXT  null,\n    EdOpsName   TEXT null,\n    EILCode     TEXT  null,\n    EILName     TEXT null,\n    GSoffered   TEXT null,\n    GSserved    TEXT  null,\n    Virtual     TEXT  null,\n    Magnet      INTEGER   null,\n    Latitude    REAL      null,\n    Longitude   REAL      null,\n    AdmFName1   TEXT null,\n    AdmLName1   TEXT null,\n    AdmEmail1   TEXT null,\n    AdmFName2   TEXT null,\n    AdmLName2   TEXT null,\n    AdmEmail2   TEXT null,\n    AdmFName3   TEXT  null,\n    AdmLName3   TEXT null,\n    AdmEmail3   TEXT null,\n    LastUpdate  DATE        not null\n);",
+    "card_games": "CREATE TABLE \"cards\"\n(\n    id                      INTEGER           not null\n        primary key autoincrement,\n    artist                  TEXT,\n    asciiName               TEXT,\n    availability            TEXT,\n    borderColor             TEXT,\n    cardKingdomFoilId       TEXT,\n    cardKingdomId           TEXT,\n    colorIdentity           TEXT,\n    colorIndicator          TEXT,\n    colors                  TEXT,\n    convertedManaCost       REAL,\n    duelDeck                TEXT,\n    edhrecRank              INTEGER,\n    faceConvertedManaCost   REAL,\n    faceName                TEXT,\n    flavorName              TEXT,\n    flavorText              TEXT,\n    frameEffects            TEXT,\n    frameVersion            TEXT,\n    hand                    TEXT,\n    hasAlternativeDeckLimit INTEGER default 0 not null,\n    hasContentWarning       INTEGER default 0 not null,\n    hasFoil                 INTEGER default 0 not null,\n    hasNonFoil              INTEGER default 0 not null,\n    isAlternative           INTEGER default 0 not null,\n    isFullArt               INTEGER default 0 not null,\n    isOnlineOnly            INTEGER default 0 not null,\n    isOversized             INTEGER default 0 not null,\n    isPromo                 INTEGER default 0 not null,\n    isReprint               INTEGER default 0 not null,\n    isReserved              INTEGER default 0 not null,\n    isStarter               INTEGER default 0 not null,\n    isStorySpotlight        INTEGER default 0 not null,\n    isTextless              INTEGER default 0 not null,\n    isTimeshifted           INTEGER default 0 not null,\n    keywords                TEXT,\n    layout                  TEXT,\n    leadershipSkills        TEXT,\n    life                    TEXT,\n    loyalty                 TEXT,\n    manaCost                TEXT,\n    mcmId                   TEXT,\n    mcmMetaId               TEXT,\n    mtgArenaId              TEXT,\n    mtgjsonV4Id             TEXT,\n    mtgoFoilId              TEXT,\n    mtgoId                  TEXT,\n    multiverseId            TEXT,\n    name                    TEXT,\n    number                  TEXT,\n    originalReleaseDate     TEXT,\n    originalText            TEXT,\n    originalType            TEXT,\n    otherFaceIds            TEXT,\n    power                   TEXT,\n    printings               TEXT,\n    promoTypes              TEXT,\n    purchaseUrls            TEXT,\n    rarity                  TEXT,\n    scryfallId              TEXT,\n    scryfallIllustrationId  TEXT,\n    scryfallOracleId        TEXT,\n    setCode                 TEXT,\n    side                    TEXT,\n    subtypes                TEXT,\n    supertypes              TEXT,\n    tcgplayerProductId      TEXT,\n    text                    TEXT,\n    toughness               TEXT,\n    type                    TEXT,\n    types                   TEXT,\n    uuid                    TEXT              not null\n        unique,\n    variations              TEXT,\n    watermark               TEXT\n);\n\nCREATE TABLE \"foreign_data\"\n(\n    id           INTEGER not null\n        primary key autoincrement,\n    flavorText   TEXT,\n    language     TEXT,\n    multiverseid INTEGER,\n    name         TEXT,\n    text         TEXT,\n    type         TEXT,\n    uuid         TEXT\n        references cards (uuid)\n);\n\nCREATE TABLE \"legalities\"\n(\n    id     INTEGER not null\n        primary key autoincrement,\n    format TEXT,\n    status TEXT,\n    uuid   TEXT\n        references cards (uuid)\n            on update cascade on delete cascade\n);\n\nCREATE TABLE \"sets\"\n(\n    id               INTEGER           not null\n        primary key autoincrement,\n    baseSetSize      INTEGER,\n    block            TEXT,\n    booster          TEXT,\n    code             TEXT              not null\n        unique,\n    isFoilOnly       INTEGER default 0 not null,\n    isForeignOnly    INTEGER default 0 not null,\n    isNonFoilOnly    INTEGER default 0 not null,\n    isOnlineOnly     INTEGER default 0 not null,\n    isPartialPreview INTEGER default 0 not null,\n    keyruneCode      TEXT,\n    mcmId            INTEGER,\n    mcmIdExtras      INTEGER,\n    mcmName          TEXT,\n    mtgoCode         TEXT,\n    name             TEXT,\n    parentCode       TEXT,\n    releaseDate      DATE,\n    tcgplayerGroupId INTEGER,\n    totalSetSize     INTEGER,\n    type             TEXT\n);\n\nCREATE TABLE \"set_translations\"\n(\n    id          INTEGER not null\n        primary key autoincrement,\n    language    TEXT,\n    setCode     TEXT\n        references sets (code)\n            on update cascade on delete cascade,\n    translation TEXT\n);\n\nCREATE TABLE \"rulings\"\n(\n    id   INTEGER not null\n        primary key autoincrement,\n    date DATE,\n    text TEXT,\n    uuid TEXT\n        references cards (uuid)\n            on update cascade on delete cascade\n);",
+    "codebase_community": "CREATE TABLE badges\n(\n    Id     INTEGER          not null\n        primary key,\n    UserId INTEGER          null,\n    Name   TEXT null,\n    Date   DATETIME     null,\n        foreign key (UserId) references users (Id)\n            on update cascade on delete cascade\n);\n\nCREATE TABLE comments\n(\n    Id              INTEGER          not null\n        primary key,\n    PostId          INTEGER          null,\n    Score           INTEGER          null,\n    Text            TEXT     null,\n    CreationDate    DATETIME     null,\n    UserId          INTEGER          null,\n    UserDisplayName TEXT null,\n        foreign key (PostId) references posts (Id)\n            on update cascade on delete cascade,\n        foreign key (UserId) references users (Id)\n            on update cascade on delete cascade\n);\n\nCREATE TABLE postHistory\n(\n    Id                INTEGER          not null UNIQUE\n        primary key,\n    PostHistoryTypeId INTEGER          null,\n    PostId            INTEGER          null,\n    RevisionGUID      TEXT null,\n    CreationDate      DATETIME     null,\n    UserId            INTEGER          null,\n    Text              TEXT     null,\n    Comment           TEXT         null,\n    UserDisplayName   TEXT null,\n        foreign key (PostId) references posts (Id)\n            on update cascade on delete cascade,\n        foreign key (UserId) references users (Id)\n            on update cascade on delete cascade\n);\n\nCREATE TABLE postLinks\n(\n    Id            INTEGER      not null\n        primary key,\n    CreationDate  DATETIME null,\n    PostId        INTEGER      null,\n    RelatedPostId INTEGER      null,\n    LinkTypeId    INTEGER      null,\n        foreign key (PostId) references posts (Id)\n            on update cascade on delete cascade,\n        foreign key (RelatedPostId) references posts (Id)\n            on update cascade on delete cascade\n);\n\nCREATE TABLE posts\n(\n    Id                    INTEGER          not null UNIQUE\n        primary key,\n    PostTypeId            INTEGER          null,\n    AcceptedAnswerId      INTEGER          null,\n    CreaionDate           DATETIME     null,\n    Score                 INTEGER          null,\n    ViewCount             INTEGER          null,\n    Body                  TEXT     null,\n    OwnerUserId           INTEGER          null,\n    LasActivityDate       DATETIME     null,\n    Title                 TEXT null,\n    Tags                  TEXT null,\n    AnswerCount           INTEGER          null,\n    CommentCount          INTEGER          null,\n    FavoriteCount         INTEGER          null,\n    LastEditorUserId      INTEGER          null,\n    LastEditDate          DATETIME     null,\n    CommunityOwnedDate    DATETIME    null,\n    ParentId              INTEGER          null,\n    ClosedDate            DATETIME     null,\n    OwnerDisplayName      TEXT null,\n    LastEditorDisplayName TEXT null,\n        foreign key (LastEditorUserId) references users (Id)\n            on update cascade on delete cascade,\n        foreign key (OwnerUserId) references users (Id)\n            on update cascade on delete cascade,\n        foreign key (ParentId) references posts (Id)\n            on update cascade on delete cascade\n);\n\nCREATE TABLE tags\n(\n    Id            INTEGER          not null\n        primary key,\n    TagName       TEXT null,\n    Count         INTEGER          null,\n    ExcerptPostId INTEGER          null,\n    WikiPostId    INTEGER          null,\n    foreign key (ExcerptPostId) references posts (Id)\n        on update cascade on delete cascade\n);\n\nCREATE TABLE users\n(\n    Id              INTEGER          not null UNIQUE\n        primary key,\n    Reputation      INTEGER          null,\n    CreationDate    DATETIME     null,\n    DisplayName     TEXT null,\n    LastAccessDate  DATETIME     null,\n    WebsiteUrl      TEXT null,\n    Location        TEXT null,\n    AboutMe         TEXT     null,\n    Views           INTEGER          null,\n    UpVotes         INTEGER          null,\n    DownVotes       INTEGER          null,\n    AccountId       INTEGER          null,\n    Age             INTEGER          null,\n    ProfileImageUrl TEXT null\n);\n\nCREATE TABLE votes\n(\n    Id           INTEGER  not null\n        primary key,\n    PostId       INTEGER  null,\n    VoteTypeId   INTEGER  null,\n    CreationDate DATE null,\n    UserId       INTEGER  null,\n    BountyAmount INTEGER  null,\n        foreign key (PostId) references posts (Id)\n            on update cascade on delete cascade,\n        foreign key (UserId) references users (Id)\n            on update cascade on delete cascade\n);",
+    "debit_card_specializing": "CREATE TABLE customers\n(\n    CustomerID INTEGER UNIQUE     not null\n        primary key,\n    Segment    TEXT null,\n    Currency   TEXT null\n);\n\nCREATE TABLE gasstations\n(\n    GasStationID INTEGER    UNIQUE   not null\n        primary key,\n    ChainID      INTEGER          null,\n    Country      TEXT null,\n    Segment      TEXT null\n);\n\nCREATE TABLE products\n(\n    ProductID   INTEGER   UNIQUE      not null\n        primary key,\n    Description TEXT null\n);\n\nCREATE TABLE \"transactions_1k\"\n(\n    TransactionID INTEGER\n        primary key autoincrement,\n    Date          DATE,\n    Time          TEXT,\n    CustomerID    INTEGER,\n    CardID        INTEGER,\n    GasStationID  INTEGER,\n    ProductID     INTEGER,\n    Amount        INTEGER,\n    Price         REAL\n);\n\nCREATE TABLE \"yearmonth\"\n(\n    CustomerID  INTEGER not null\n        references customers\n            on update cascade on delete cascade\n        references customers,\n    Date        TEXT    not null,\n    Consumption REAL,\n    primary key (Date, CustomerID)\n);",
+    "european_football_2": "CREATE TABLE \"Player_Attributes\" (\n\t`id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n\t`player_fifa_api_id`\tINTEGER,\n\t`player_api_id`\tINTEGER,\n\t`date`\tTEXT,\n\t`overall_rating`\tINTEGER,\n\t`potential`\tINTEGER,\n\t`preferred_foot`\tTEXT,\n\t`attacking_work_rate`\tTEXT,\n\t`defensive_work_rate`\tTEXT,\n\t`crossing`\tINTEGER,\n\t`finishing`\tINTEGER,\n\t`heading_accuracy`\tINTEGER,\n\t`short_passing`\tINTEGER,\n\t`volleys`\tINTEGER,\n\t`dribbling`\tINTEGER,\n\t`curve`\tINTEGER,\n\t`free_kick_accuracy`\tINTEGER,\n\t`long_passing`\tINTEGER,\n\t`ball_control`\tINTEGER,\n\t`acceleration`\tINTEGER,\n\t`sprint_speed`\tINTEGER,\n\t`agility`\tINTEGER,\n\t`reactions`\tINTEGER,\n\t`balance`\tINTEGER,\n\t`shot_power`\tINTEGER,\n\t`jumping`\tINTEGER,\n\t`stamina`\tINTEGER,\n\t`strength`\tINTEGER,\n\t`long_shots`\tINTEGER,\n\t`aggression`\tINTEGER,\n\t`interceptions`\tINTEGER,\n\t`positioning`\tINTEGER,\n\t`vision`\tINTEGER,\n\t`penalties`\tINTEGER,\n\t`marking`\tINTEGER,\n\t`standing_tackle`\tINTEGER,\n\t`sliding_tackle`\tINTEGER,\n\t`gk_diving`\tINTEGER,\n\t`gk_handling`\tINTEGER,\n\t`gk_kicking`\tINTEGER,\n\t`gk_positioning`\tINTEGER,\n\t`gk_reflexes`\tINTEGER,\n\tFOREIGN KEY(`player_fifa_api_id`) REFERENCES `Player`(`player_fifa_api_id`),\n\tFOREIGN KEY(`player_api_id`) REFERENCES `Player`(`player_api_id`)\n);\n\nCREATE TABLE `Player` (\n\t`id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n\t`player_api_id`\tINTEGER UNIQUE,\n\t`player_name`\tTEXT,\n\t`player_fifa_api_id`\tINTEGER UNIQUE,\n\t`birthday`\tTEXT,\n\t`height`\tINTEGER,\n\t`weight`\tINTEGER\n);\n\nCREATE TABLE `League` (\n\t`id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n\t`country_id`\tINTEGER,\n\t`name`\tTEXT UNIQUE,\n\tFOREIGN KEY(`country_id`) REFERENCES `country`(`id`)\n);\n\nCREATE TABLE `Country` (\n\t`id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n\t`name`\tTEXT UNIQUE\n);\n\nCREATE TABLE \"Team\" (\n\t`id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n\t`team_api_id`\tINTEGER UNIQUE,\n\t`team_fifa_api_id`\tINTEGER,\n\t`team_long_name`\tTEXT,\n\t`team_short_name`\tTEXT\n);\n\nCREATE TABLE `Team_Attributes` (\n\t`id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n\t`team_fifa_api_id`\tINTEGER,\n\t`team_api_id`\tINTEGER,\n\t`date`\tTEXT,\n\t`buildUpPlaySpeed`\tINTEGER,\n\t`buildUpPlaySpeedClass`\tTEXT,\n\t`buildUpPlayDribbling`\tINTEGER,\n\t`buildUpPlayDribblingClass`\tTEXT,\n\t`buildUpPlayPassing`\tINTEGER,\n\t`buildUpPlayPassingClass`\tTEXT,\n\t`buildUpPlayPositioningClass`\tTEXT,\n\t`chanceCreationPassing`\tINTEGER,\n\t`chanceCreationPassingClass`\tTEXT,\n\t`chanceCreationCrossing`\tINTEGER,\n\t`chanceCreationCrossingClass`\tTEXT,\n\t`chanceCreationShooting`\tINTEGER,\n\t`chanceCreationShootingClass`\tTEXT,\n\t`chanceCreationPositioningClass`\tTEXT,\n\t`defencePressure`\tINTEGER,\n\t`defencePressureClass`\tTEXT,\n\t`defenceAggression`\tINTEGER,\n\t`defenceAggressionClass`\tTEXT,\n\t`defenceTeamWidth`\tINTEGER,\n\t`defenceTeamWidthClass`\tTEXT,\n\t`defenceDefenderLineClass`\tTEXT,\n\tFOREIGN KEY(`team_fifa_api_id`) REFERENCES `Team`(`team_fifa_api_id`),\n\tFOREIGN KEY(`team_api_id`) REFERENCES `Team`(`team_api_id`)\n);\n\nCREATE TABLE \"Match\"\n(\n    id               INTEGER\n        primary key autoincrement,\n    country_id       INTEGER\n        references Country,\n    league_id        INTEGER\n        references League,\n    season           TEXT,\n    stage            INTEGER,\n    date             TEXT,\n    match_api_id     INTEGER\n        unique,\n    home_team_api_id INTEGER\n        references Team (team_api_id),\n    away_team_api_id INTEGER\n        references Team (team_api_id),\n    home_team_goal   INTEGER,\n    away_team_goal   INTEGER,\n    home_player_X1   INTEGER,\n    home_player_X2   INTEGER,\n    home_player_X3   INTEGER,\n    home_player_X4   INTEGER,\n    home_player_X5   INTEGER,\n    home_player_X6   INTEGER,\n    home_player_X7   INTEGER,\n    home_player_X8   INTEGER,\n    home_player_X9   INTEGER,\n    home_player_X10  INTEGER,\n    home_player_X11  INTEGER,\n    away_player_X1   INTEGER,\n    away_player_X2   INTEGER,\n    away_player_X3   INTEGER,\n    away_player_X4   INTEGER,\n    away_player_X5   INTEGER,\n    away_player_X6   INTEGER,\n    away_player_X7   INTEGER,\n    away_player_X8   INTEGER,\n    away_player_X9   INTEGER,\n    away_player_X10  INTEGER,\n    away_player_X11  INTEGER,\n    home_player_Y1   INTEGER,\n    home_player_Y2   INTEGER,\n    home_player_Y3   INTEGER,\n    home_player_Y4   INTEGER,\n    home_player_Y5   INTEGER,\n    home_player_Y6   INTEGER,\n    home_player_Y7   INTEGER,\n    home_player_Y8   INTEGER,\n    home_player_Y9   INTEGER,\n    home_player_Y10  INTEGER,\n    home_player_Y11  INTEGER,\n    away_player_Y1   INTEGER,\n    away_player_Y2   INTEGER,\n    away_player_Y3   INTEGER,\n    away_player_Y4   INTEGER,\n    away_player_Y5   INTEGER,\n    away_player_Y6   INTEGER,\n    away_player_Y7   INTEGER,\n    away_player_Y8   INTEGER,\n    away_player_Y9   INTEGER,\n    away_player_Y10  INTEGER,\n    away_player_Y11  INTEGER,\n    home_player_1    INTEGER\n        references Player (player_api_id),\n    home_player_2    INTEGER\n        references Player (player_api_id),\n    home_player_3    INTEGER\n        references Player (player_api_id),\n    home_player_4    INTEGER\n        references Player (player_api_id),\n    home_player_5    INTEGER\n        references Player (player_api_id),\n    home_player_6    INTEGER\n        references Player (player_api_id),\n    home_player_7    INTEGER\n        references Player (player_api_id),\n    home_player_8    INTEGER\n        references Player (player_api_id),\n    home_player_9    INTEGER\n        references Player (player_api_id),\n    home_player_10   INTEGER\n        references Player (player_api_id),\n    home_player_11   INTEGER\n        references Player (player_api_id),\n    away_player_1    INTEGER\n        references Player (player_api_id),\n    away_player_2    INTEGER\n        references Player (player_api_id),\n    away_player_3    INTEGER\n        references Player (player_api_id),\n    away_player_4    INTEGER\n        references Player (player_api_id),\n    away_player_5    INTEGER\n        references Player (player_api_id),\n    away_player_6    INTEGER\n        references Player (player_api_id),\n    away_player_7    INTEGER\n        references Player (player_api_id),\n    away_player_8    INTEGER\n        references Player (player_api_id),\n    away_player_9    INTEGER\n        references Player (player_api_id),\n    away_player_10   INTEGER\n        references Player (player_api_id),\n    away_player_11   INTEGER\n        references Player (player_api_id),\n    goal             TEXT,\n    shoton           TEXT,\n    shotoff          TEXT,\n    foulcommit       TEXT,\n    card             TEXT,\n    \"cross\"          TEXT,\n    corner           TEXT,\n    possession       TEXT,\n    B365H            REAL,\n    B365D            REAL,\n    B365A            REAL,\n    BWH              REAL,\n    BWD              REAL,\n    BWA              REAL,\n    IWH              REAL,\n    IWD              REAL,\n    IWA              REAL,\n    LBH              REAL,\n    LBD              REAL,\n    LBA              REAL,\n    PSH              REAL,\n    PSD              REAL,\n    PSA              REAL,\n    WHH              REAL,\n    WHD              REAL,\n    WHA              REAL,\n    SJH              REAL,\n    SJD              REAL,\n    SJA              REAL,\n    VCH              REAL,\n    VCD              REAL,\n    VCA              REAL,\n    GBH              REAL,\n    GBD              REAL,\n    GBA              REAL,\n    BSH              REAL,\n    BSD              REAL,\n    BSA              REAL\n);",
+    "financial": "CREATE TABLE account\n(\n    account_id  INTEGER default 0 not null\n        primary key,\n    district_id INTEGER default 0 not null,\n    frequency   TEXT   not null,\n    date        DATE          not null,\n    foreign key (district_id) references district (district_id)\n);\n\nCREATE TABLE card\n(\n    card_id INTEGER default 0 not null\n        primary key,\n    disp_id INTEGER           not null,\n    type    TEXT    not null,\n    issued  DATE          not null,\n    foreign key (disp_id) references disp (disp_id)\n);\n\nCREATE TABLE client\n(\n    client_id   INTEGER        not null\n        primary key,\n    gender      TEXT not null,\n    birth_date  DATE       not null,\n    district_id INTEGER        not null,\n    foreign key (district_id) references district (district_id)\n);\n\nCREATE TABLE disp\n(\n    disp_id    INTEGER        not null\n        primary key,\n    client_id  INTEGER        not null,\n    account_id INTEGER        not null,\n    type      TEXT not null,\n    foreign key (account_id) references account (account_id),\n    foreign key (client_id) references client (client_id)\n);\n\nCREATE TABLE district\n(\n    district_id INTEGER default 0 not null\n        primary key,\n    A2          TEXT   not null,\n    A3          TEXT   not null,\n    A4          TEXT       not null,\n    A5          TEXT           not null,\n    A6          TEXT           not null,\n    A7          TEXT           not null,\n    A8          INTEGER        not null,\n    A9          INTEGER           not null,\n    A10         REAL not null,\n    A11         INTEGER           not null,\n    A12         REAL null,\n    A13         REAL not null,\n    A14         INTEGER           not null,\n    A15         INTEGER        null,\n    A16         INTEGER          not null\n);\n\nCREATE TABLE loan\n(\n    loan_id    INTEGER default 0 not null\n        primary key,\n    account_id INTEGER           not null,\n    date       DATE          not null,\n    amount     INTEGER           not null,\n    duration   INTEGER           not null,\n    payments   REAL not null,\n    status     TEXT    not null,\n    foreign key (account_id) references account (account_id)\n);\n\nCREATE TABLE `order`\n(\n    order_id   INTEGER default 0 not null\n        primary key,\n    account_id INTEGER           not null,\n    bank_to    TEXT    not null,\n    account_to INTEGER           not null,\n    amount     REAL not null,\n    k_symbol   TEXT    not null,\n    foreign key (account_id) references account (account_id)\n);\n\nCREATE TABLE trans\n(\n    trans_id   INTEGER default 0    not null\n        primary key,\n    account_id INTEGER default 0    not null,\n    date       DATE             not null,\n    type       TEXT       not null,\n    operation  TEXT      null,\n    amount     INTEGER              not null,\n    balance    INTEGER             not null,\n    k_symbol   TEXT      null,\n    bank       TEXT       null,\n    account    INTEGER          null,\n    foreign key (account_id) references account (account_id)\n);",
+    "formula_1": "CREATE TABLE circuits\n(\n    circuitId  INTEGER\n        primary key autoincrement,\n    circuitRef TEXT default '' not null,\n    name       TEXT default '' not null,\n    location   TEXT,\n    country    TEXT,\n    lat        REAL,\n    lng        REAL,\n    alt        INTEGER,\n    url        TEXT default '' not null\n        unique\n);\n\nCREATE TABLE constructors\n(\n    constructorId  INTEGER\n        primary key autoincrement,\n    constructorRef TEXT default '' not null,\n    name           TEXT default '' not null\n        unique,\n    nationality    TEXT,\n    url            TEXT default '' not null\n);\n\nCREATE TABLE drivers\n(\n    driverId    INTEGER\n        primary key autoincrement,\n    driverRef   TEXT default '' not null,\n    number      INTEGER,\n    code        TEXT,\n    forename    TEXT default '' not null,\n    surname     TEXT default '' not null,\n    dob         DATE,\n    nationality TEXT,\n    url         TEXT default '' not null\n        unique\n);\n\nCREATE TABLE seasons\n(\n    year INTEGER default 0  not null\n        primary key,\n    url  TEXT    default '' not null\n        unique\n);\n\nCREATE TABLE races\n(\n    raceId    INTEGER\n        primary key autoincrement,\n    year      INTEGER default 0            not null,\n    round     INTEGER default 0            not null,\n    circuitId INTEGER default 0            not null,\n    name      TEXT    default ''           not null,\n    date      DATE    default '0000-00-00' not null,\n    time      TEXT,\n    url       TEXT unique,\n    foreign key (year) references seasons(year),\n    foreign key (circuitId) references circuits(circuitId)\n);\n\nCREATE TABLE constructorResults\n(\n    constructorResultsId INTEGER\n        primary key autoincrement,\n    raceId               INTEGER default 0 not null,\n    constructorId        INTEGER default 0 not null,\n    points               REAL,\n    status               TEXT,\n    foreign key (raceId) references races(raceId),\n    foreign key (constructorId) references constructors(constructorId)\n\n);\n\nCREATE TABLE constructorStandings\n(\n    constructorStandingsId INTEGER\n        primary key autoincrement,\n    raceId                 INTEGER default 0 not null,\n    constructorId          INTEGER default 0 not null,\n    points                 REAL   default 0 not null,\n    position               INTEGER,\n    positionText           TEXT,\n    wins                   INTEGER default 0 not null,\n    foreign key (raceId) references races(raceId),\n    foreign key (constructorId) references constructors(constructorId)\n);\n\nCREATE TABLE driverStandings\n(\n    driverStandingsId INTEGER\n        primary key autoincrement,\n    raceId            INTEGER default 0 not null,\n    driverId          INTEGER default 0 not null,\n    points            REAL   default 0 not null,\n    position          INTEGER,\n    positionText      TEXT,\n    wins              INTEGER default 0 not null,\n    foreign key (raceId) references races(raceId),\n    foreign key (driverId) references drivers(driverId)\n);\n\nCREATE TABLE lapTimes\n(\n    raceId       INTEGER not null,\n    driverId     INTEGER not null,\n    lap          INTEGER not null,\n    position     INTEGER,\n    time         TEXT,\n    milliseconds INTEGER,\n    primary key (raceId, driverId, lap),\n    foreign key (raceId) references races(raceId),\n    foreign key (driverId) references drivers(driverId)\n);\n\nCREATE TABLE pitStops\n(\n    raceId       INTEGER not null,\n    driverId     INTEGER not null,\n    stop         INTEGER not null,\n    lap          INTEGER not null,\n    time         TEXT    not null,\n    duration     TEXT,\n    milliseconds INTEGER,\n    primary key (raceId, driverId, stop),\n    foreign key (raceId) references races(raceId),\n    foreign key (driverId) references drivers(driverId)\n);\n\nCREATE TABLE qualifying\n(\n    qualifyId     INTEGER\n        primary key autoincrement,\n    raceId        INTEGER default 0 not null,\n    driverId      INTEGER default 0 not null,\n    constructorId INTEGER default 0 not null,\n    number        INTEGER default 0 not null,\n    position      INTEGER,\n    q1            TEXT,\n    q2            TEXT,\n    q3            TEXT,\n    foreign key (raceId) references races(raceId),\n    foreign key (driverId) references drivers(driverId),\n    foreign key (constructorId) references constructors(constructorId)\n);\n\nCREATE TABLE status\n(\n    statusId INTEGER\n        primary key autoincrement,\n    status   TEXT default '' not null\n);\n\nCREATE TABLE results\n(\n    resultId        INTEGER\n        primary key autoincrement,\n    raceId          INTEGER default 0  not null,\n    driverId        INTEGER default 0  not null,\n    constructorId   INTEGER default 0  not null,\n    number          INTEGER,\n    grid            INTEGER default 0  not null,\n    position        INTEGER,\n    positionText    TEXT    default '' not null,\n    positionOrder   INTEGER default 0  not null,\n    points          REAL   default 0  not null,\n    laps            INTEGER default 0  not null,\n    time            TEXT,\n    milliseconds    INTEGER,\n    fastestLap      INTEGER,\n    rank            INTEGER default 0,\n    fastestLapTime  TEXT,\n    fastestLapSpeed TEXT,\n    statusId        INTEGER default 0  not null,\n    foreign key (raceId) references races(raceId),\n    foreign key (driverId) references drivers(driverId),\n    foreign key (constructorId) references constructors(constructorId),\n    foreign key (statusId) references status(statusId)\n);",
+    "student_club": "CREATE TABLE event\n(\n    event_id   TEXT\n        constraint event_pk\n            primary key,\n    event_name TEXT,\n    event_date TEXT,\n    type       TEXT,\n    notes      TEXT,\n    location   TEXT,\n    status     TEXT\n);\n\nCREATE TABLE major\n(\n    major_id   TEXT\n        constraint major_pk\n            primary key,\n    major_name TEXT,\n    department TEXT,\n    college    TEXT\n);\n\nCREATE TABLE zip_code\n(\n    zip_code    INTEGER\n        constraint zip_code_pk\n            primary key,\n    type        TEXT,\n    city        TEXT,\n    county      TEXT,\n    state       TEXT,\n    short_state TEXT\n);\n\nCREATE TABLE \"attendance\"\n(\n    link_to_event  TEXT,\n    link_to_member TEXT,\n    primary key (link_to_event, link_to_member),\n    foreign key (link_to_event) references event(event_id),\n    foreign key (link_to_member) references member(member_id)\n);\n\nCREATE TABLE \"budget\"\n(\n    budget_id     TEXT\n            primary key,\n    category      TEXT,\n    spent         REAL,\n    remaining     REAL,\n    amount        INTEGER,\n    event_status  TEXT,\n    link_to_event TEXT,\n    foreign key (link_to_event) references event(event_id)\n);\n\nCREATE TABLE \"expense\"\n(\n    expense_id          TEXT\n            primary key,\n    expense_description TEXT,\n    expense_date        TEXT,\n    cost                REAL,\n    approved            TEXT,\n    link_to_member      TEXT,\n    link_to_budget      TEXT,\n    foreign key (link_to_budget) references budget(budget_id),\n    foreign key (link_to_member) references member(member_id)\n);\n\nCREATE TABLE \"income\"\n(\n    income_id      TEXT\n        constraint income_pk\n            primary key,\n    date_received  TEXT,\n    amount         INTEGER,\n    source         TEXT,\n    notes          TEXT,\n    link_to_member TEXT,\n    foreign key (link_to_member) references member(member_id)\n);\n\nCREATE TABLE \"member\"\n(\n    member_id     TEXT\n        constraint member_pk\n            primary key,\n    first_name    TEXT,\n    last_name     TEXT,\n    email         TEXT,\n    position      TEXT,\n    t_shirt_size  TEXT,\n    phone         TEXT,\n    zip           INTEGER,\n    link_to_major TEXT,\n    foreign key (link_to_major) references major(major_id),\n    foreign key (zip) references zip_code(zip_code)\n);",
+    "superhero": "CREATE TABLE alignment\n(\n    id        INTEGER not null\n            primary key,\n    alignment TEXT default NULL\n);\n\nCREATE TABLE attribute\n(\n    id             INTEGER not null\n            primary key,\n    attribute_name TEXT default NULL\n);\n\nCREATE TABLE colour\n(\n    id     INTEGER not null\n            primary key,\n    colour TEXT default NULL\n);\n\nCREATE TABLE gender\n(\n    id     INTEGER not null\n            primary key,\n    gender TEXT default NULL\n);\n\nCREATE TABLE publisher\n(\n    id             INTEGER not null\n            primary key,\n    publisher_name TEXT default NULL\n);\n\nCREATE TABLE race\n(\n    id   INTEGER not null\n            primary key,\n    race TEXT default NULL\n);\n\nCREATE TABLE superhero\n(\n    id             INTEGER not null\n            primary key,\n    superhero_name TEXT default NULL,\n    full_name      TEXT default NULL,\n    gender_id      INTEGER          default NULL,\n    eye_colour_id  INTEGER          default NULL,\n    hair_colour_id INTEGER          default NULL,\n    skin_colour_id INTEGER          default NULL,\n    race_id        INTEGER          default NULL,\n    publisher_id   INTEGER          default NULL,\n    alignment_id   INTEGER          default NULL,\n    height_cm      INTEGER          default NULL,\n    weight_kg      INTEGER          default NULL,\n    foreign key (alignment_id) references alignment(id),\n    foreign key (eye_colour_id) references colour(id),\n    foreign key (gender_id) references gender(id),\n    foreign key (hair_colour_id) references colour(id),\n    foreign key (publisher_id) references publisher(id),\n    foreign key (race_id) references race(id),\n    foreign key (skin_colour_id) references colour(id)\n);\n\nCREATE TABLE hero_attribute\n(\n    hero_id         INTEGER default NULL,\n    attribute_id    INTEGER default NULL,\n    attribute_value INTEGER default NULL,\n    foreign key (attribute_id) references attribute(id),\n    foreign key (hero_id) references superhero(id)\n);\n\nCREATE TABLE superpower\n(\n    id         INTEGER not null\n            primary key,\n    power_name TEXT default NULL\n);\n\nCREATE TABLE hero_power\n(\n    hero_id  INTEGER default NULL,\n    power_id INTEGER default NULL,\n    foreign key (hero_id) references superhero(id),\n    foreign key (power_id) references superpower(id)\n);",
+    "thrombosis_prediction": "CREATE TABLE Examination\n(\n    ID                 INTEGER          null,\n    `Examination Date` DATE         null,\n    `aCL IgG`          REAL        null,\n    `aCL IgM`          REAL        null,\n    ANA                INTEGER          null,\n    `ANA Pattern`      TEXT null,\n    `aCL IgA`          INTEGER          null,\n    Diagnosis          TEXT null,\n    KCT                TEXT null,\n    RVVT              TEXT null,\n    LAC                TEXT null,\n    Symptoms           TEXT null,\n    Thrombosis         INTEGER          null,\n    foreign key (ID) references Patient (ID)\n            on update cascade on delete cascade\n);\n\nCREATE TABLE Patient\n(\n    ID           INTEGER default 0 not null\n        primary key,\n    SEX          TEXT  null,\n    Birthday     DATE          null,\n    Description  DATE          null,\n    `First Date` DATE          null,\n    Admission    TEXT  null,\n    Diagnosis    TEXT  null\n);\n\nCREATE TABLE Laboratory\n(\n    ID        INTEGER  default 0            not null,\n    Date      DATE default '0000-00-00' not null,\n    GOT       INTEGER                       null,\n    GPT       INTEGER                        null,\n    LDH       INTEGER                        null,\n    ALP       INTEGER                        null,\n    TP        REAL             null,\n    ALB       REAL             null,\n    UA        REAL             null,\n    UN        INTEGER                       null,\n    CRE       REAL             null,\n    `T-BIL`   REAL             null,\n    `T-CHO`   INTEGER                       null,\n    TG        INTEGER                       null,\n    CPK       INTEGER                       null,\n    GLU       INTEGER                       null,\n    WBC       REAL             null,\n    RBC       REAL             null,\n    HGB       REAL             null,\n    HCT       REAL             null,\n    PLT       INTEGER                       null,\n    PT        REAL             null,\n    APTT      INTEGER                       null,\n    FG        REAL             null,\n    PIC       INTEGER                       null,\n    TAT       INTEGER                       null,\n    TAT2      INTEGER                       null,\n    `U-PRO`   TEXT              null,\n    IGG       INTEGER                       null,\n    IGA       INTEGER                       null,\n    IGM       INTEGER                       null,\n    CRP       TEXT              null,\n    RA        TEXT              null,\n    RF        TEXT              null,\n    C3        INTEGER                       null,\n    C4        INTEGER                       null,\n    RNP       TEXT              null,\n    SM        TEXT              null,\n    SC170     TEXT              null,\n    SSA       TEXT              null,\n    SSB       TEXT              null,\n    CENTROMEA TEXT              null,\n    DNA       TEXT              null,\n    `DNA-II`  INTEGER                       null,\n    primary key (ID, Date),\n        foreign key (ID) references Patient (ID)\n            on update cascade on delete cascade\n);",
+    "toxicology": "CREATE TABLE `atom` (\n  `atom_id` TEXT NOT NULL,\n  `molecule_id` TEXT DEFAULT NULL,\n  `element` TEXT DEFAULT NULL,\n  PRIMARY KEY (`atom_id`),\n  FOREIGN KEY (`molecule_id`) REFERENCES `molecule` (`molecule_id`)\n);\n\nCREATE TABLE `bond` (\n  `bond_id` TEXT NOT NULL,\n  `molecule_id` TEXT DEFAULT NULL,\n  `bond_type` TEXT DEFAULT NULL,\n  PRIMARY KEY (`bond_id`),\n  FOREIGN KEY (`molecule_id`) REFERENCES `molecule` (`molecule_id`)\n);\n\nCREATE TABLE `connected` (\n  `atom_id` TEXT NOT NULL,\n  `atom_id2` TEXT NOT NULL,\n  `bond_id` TEXT DEFAULT NULL,\n  PRIMARY KEY (`atom_id`,`atom_id2`),\n  FOREIGN KEY (`atom_id`) REFERENCES `atom` (`atom_id`) ON DELETE CASCADE ON UPDATE CASCADE,\n  FOREIGN KEY (`atom_id2`) REFERENCES `atom` (`atom_id`) ON DELETE CASCADE ON UPDATE CASCADE,\n  FOREIGN KEY (`bond_id`) REFERENCES `bond` (`bond_id`) ON DELETE CASCADE ON UPDATE CASCADE\n);\n\nCREATE TABLE `molecule` (\n  `molecule_id` TEXT NOT NULL,\n  `label` TEXT DEFAULT NULL,\n  PRIMARY KEY (`molecule_id`)\n);"
+  },
+  "items": [
+    {
+      "question_id": 1,
+      "db_id": "california_schools",
+      "difficulty": "moderate",
+      "question": "Please list the lowest three eligible free rates for students aged 5-17 in continuation schools.",
+      "raw_evidence": "Eligible free rates for students aged 5-17 = `Free Meal Count (Ages 5-17)` / `Enrollment (Ages 5-17)`",
+      "nodes": [
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "Eligible free rate for students aged 5-17",
+          "expression": "`Free Meal Count (Ages 5-17)` / `Enrollment (Ages 5-17)`",
+          "grounding": [
+            {
+              "term": "Free Meal Count (Ages 5-17)",
+              "table": "frpm",
+              "column": "Free Meal Count (Ages 5-17)"
+            },
+            {
+              "term": "Enrollment (Ages 5-17)",
+              "table": "frpm",
+              "column": "Enrollment (Ages 5-17)"
+            }
+          ]
+        }
+      ],
+      "notes": "Anchor example: pure Formula. Both terms ground 1:1 to frpm columns. Useful as the 'happy path' template for Formula nodes."
+    },
+    {
+      "question_id": 12,
+      "db_id": "california_schools",
+      "difficulty": "moderate",
+      "question": "Among the schools with an SAT excellence rate of over 0.3, what is the highest eligible free rate for students aged 5-17?",
+      "raw_evidence": "Excellence rate = NumGE1500 / NumTstTakr; Eligible free rates for students aged 5-17 = `Free Meal Count (Ages 5-17)` / `Enrollment (Ages 5-17)`",
+      "nodes": [
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "SAT excellence rate",
+          "expression": "NumGE1500 / NumTstTakr",
+          "grounding": [
+            {
+              "term": "NumGE1500",
+              "table": "satscores",
+              "column": "NumGE1500"
+            },
+            {
+              "term": "NumTstTakr",
+              "table": "satscores",
+              "column": "NumTstTakr"
+            }
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "Formula",
+          "name": "Eligible free rate for students aged 5-17",
+          "expression": "`Free Meal Count (Ages 5-17)` / `Enrollment (Ages 5-17)`",
+          "grounding": [
+            {
+              "term": "Free Meal Count (Ages 5-17)",
+              "table": "frpm",
+              "column": "Free Meal Count (Ages 5-17)"
+            },
+            {
+              "term": "Enrollment (Ages 5-17)",
+              "table": "frpm",
+              "column": "Enrollment (Ages 5-17)"
+            }
+          ]
+        }
+      ],
+      "notes": "f2 'Eligible free rate' is identical to qid=1's Formula -- argues for a dedup pass when building the L1 graph so one Formula node is shared across all questions that reference it."
+    },
+    {
+      "question_id": 65,
+      "db_id": "california_schools",
+      "difficulty": "moderate",
+      "question": "What is the ratio in percentage of Santa Clara County schools that are locally funded compared to all other types of charter school funding?",
+      "raw_evidence": "Ratio in percentage = (count(locally funded schools in Santa Clara) / count(all funding type schools in Santa Clara) * 100%",
+      "nodes": [
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "Locally-funded share of Santa Clara County charter schools",
+          "expression": "count(locally funded schools in Santa Clara) / count(all funding-type schools in Santa Clara) * 100",
+          "grounding": [
+            {
+              "term": "FundingType",
+              "table": "schools",
+              "column": "FundingType"
+            },
+            {
+              "term": "County",
+              "table": "schools",
+              "column": "County"
+            },
+            {
+              "term": "locally funded",
+              "table": "schools",
+              "column": "FundingType",
+              "value": "Locally funded"
+            },
+            {
+              "term": "Santa Clara",
+              "table": "schools",
+              "column": "County",
+              "value": "Santa Clara"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "locally funded",
+          "table": "schools",
+          "column": "FundingType",
+          "value": "Locally funded"
+        },
+        {
+          "id": "v2",
+          "type": "ValueMap",
+          "name": "Santa Clara County",
+          "table": "schools",
+          "column": "County",
+          "value": "Santa Clara"
+        }
+      ],
+      "notes": "SCHEMA GAP: the Formula's expression contains value LITERALS ('locally funded', 'Santa Clara') that need to ground to (column, value) pairs, not bare columns. Worked around by emitting separate ValueMap nodes alongside the Formula. A grounding entry with an optional 'value' field would let one Formula self-contain its filters."
+    },
+    {
+      "question_id": 76,
+      "db_id": "california_schools",
+      "difficulty": "moderate",
+      "question": "What is the city location of the high school level school with Lunch Provision 2 whose lowest grade is 9 and the highest grade is 12 in the county of Merced?",
+      "raw_evidence": "High school can be represented as EILCode = 'HS'",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "high school",
+          "defined_by": "v1"
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "high school",
+          "table": "schools",
+          "column": "EILCode",
+          "value": "HS"
+        }
+      ],
+      "notes": "Anchor example: a single-value mapping is cleanest as Concept -> ValueMap (not Rule). Use Rule when the predicate is a range/composition, not equality to a single value."
+    },
+    {
+      "question_id": 343,
+      "db_id": "card_games",
+      "difficulty": "simple",
+      "question": "Name all cards with 2015 frame style ranking below 100 on EDHRec.",
+      "raw_evidence": "below 100 on EDHRec refers to EDHRec <100; with 2015 frame style refers to frameVersion = 2015;",
+      "nodes": [
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "EDHRec rank below 100",
+          "condition": "edhrecRank < 100",
+          "grounding": [
+            {
+              "term": "EDHRec",
+              "table": "cards",
+              "column": "edhrecRank"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "2015 frame style",
+          "table": "cards",
+          "column": "frameVersion",
+          "value": "2015"
+        }
+      ],
+      "notes": "Anchor example: one BIRD evidence string -> two atoms. Range/inequality => Rule; single-value label => ValueMap."
+    },
+    {
+      "question_id": 352,
+      "db_id": "card_games",
+      "difficulty": "moderate",
+      "question": "Calculate the percentage of the cards availabe in Chinese Simplified.",
+      "raw_evidence": "Chinese Simplified' is the language; percentage = Divide(Sum(id where language = 'Chinese Simplified'), Count(id)) *100",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "Chinese Simplified",
+          "table": "foreign_data",
+          "column": "language",
+          "value": "Chinese Simplified"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "percentage of cards in Chinese Simplified",
+          "expression": "SUM(id WHERE language = 'Chinese Simplified') / COUNT(id) * 100",
+          "grounding": [
+            {
+              "term": "id",
+              "table": "foreign_data",
+              "column": "id"
+            },
+            {
+              "term": "language",
+              "table": "foreign_data",
+              "column": "language"
+            }
+          ]
+        }
+      ],
+      "notes": "Ambiguous DB target for 'language' -- both foreign_data and set_translations expose it. Chose foreign_data because the question is about cards (per-card translations) rather than set names. Grounding ambiguity is itself a finding for the L1->L2 builder."
+    },
+    {
+      "question_id": 491,
+      "db_id": "card_games",
+      "difficulty": "simple",
+      "question": "What's the magic card market name for the set which was released on 2017/6/9?",
+      "raw_evidence": "magic card market name refers to mcmName",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "ColumnAlias",
+          "name": "magic card market name",
+          "bindings": [
+            {
+              "table": "sets",
+              "column": "mcmName"
+            }
+          ]
+        }
+      ],
+      "notes": "BORDERLINE: pure column-rename evidence. None of Formula/Rule/ValueMap fits cleanly; used Concept with a free-text definition. Strong argument for a 5th node type ('ColumnAlias' / 'Projection') with formal grounding to (table, column)."
+    },
+    {
+      "question_id": 519,
+      "db_id": "card_games",
+      "difficulty": "simple",
+      "question": "What is the language of the \"Battlebond\" set?",
+      "raw_evidence": "\"Battlebond\" set refers to name = 'Battlebond'",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "Battlebond set",
+          "table": "sets",
+          "column": "name",
+          "value": "Battlebond"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 540,
+      "db_id": "codebase_community",
+      "difficulty": "simple",
+      "question": "What is the title of the post that is owned by csgillespie and has the highest popularity?",
+      "raw_evidence": "\"csgillespie\" is the DisplayName of user; highest popularity refers to Max(ViewCount)",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "csgillespie",
+          "table": "users",
+          "column": "DisplayName",
+          "value": "csgillespie"
+        },
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "highest popularity (post)",
+          "defined_by": "f1"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "highest popularity by view count",
+          "expression": "MAX(ViewCount)",
+          "grounding": [
+            {
+              "term": "ViewCount",
+              "table": "posts",
+              "column": "ViewCount"
+            }
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 634,
+      "db_id": "codebase_community",
+      "difficulty": "challenging",
+      "question": "Among posts by Harvey Motulsky and Noah Snyder, which one has higher popularity?",
+      "raw_evidence": "Has higher popularity means the post has higher view count ; calculation = MAX(SUM(ViewCount)) where DisplayName = 'Harvey Motulsky' OR DisplayName = 'Noah Snyder';",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "higher popularity (post)",
+          "defined_by": "f1"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "higher popularity = MAX(SUM(ViewCount)) per user",
+          "expression": "MAX(SUM(ViewCount)) WHERE DisplayName = 'Harvey Motulsky' OR DisplayName = 'Noah Snyder'",
+          "grounding": [
+            {
+              "term": "ViewCount",
+              "table": "posts",
+              "column": "ViewCount"
+            },
+            {
+              "term": "DisplayName",
+              "table": "users",
+              "column": "DisplayName"
+            },
+            {
+              "term": "Harvey Motulsky",
+              "table": "users",
+              "column": "DisplayName",
+              "value": "Harvey Motulsky"
+            },
+            {
+              "term": "Noah Snyder",
+              "table": "users",
+              "column": "DisplayName",
+              "value": "Noah Snyder"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "Harvey Motulsky",
+          "table": "users",
+          "column": "DisplayName",
+          "value": "Harvey Motulsky"
+        },
+        {
+          "id": "v2",
+          "type": "ValueMap",
+          "name": "Noah Snyder",
+          "table": "users",
+          "column": "DisplayName",
+          "value": "Noah Snyder"
+        }
+      ],
+      "notes": "Same SCHEMA GAP as qid=65: Formula expression embeds value literals; ValueMaps emitted alongside."
+    },
+    {
+      "question_id": 659,
+      "db_id": "codebase_community",
+      "difficulty": "simple",
+      "question": "How many tags have post count between 5,000 to 7,000?",
+      "raw_evidence": "post count between 5,000 to 7,000 refers to Count BETWEEN 5000 and 7000;",
+      "nodes": [
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "post count between 5,000 and 7,000",
+          "condition": "Count BETWEEN 5000 AND 7000",
+          "grounding": [
+            {
+              "term": "Count",
+              "table": "tags",
+              "column": "Count"
+            }
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 1482,
+      "db_id": "debit_card_specializing",
+      "difficulty": "challenging",
+      "question": "Which of the three segments—SME, LAM and KAM—has the biggest and lowest percentage increases in consumption paid in EUR between 2012 and 2013?",
+      "raw_evidence": "Increase or Decrease = consumption for 2013 - consumption for 2012; Percentage of Increase = (Increase or Decrease / consumption for 2013) * 100%; The first 4 strings of the Date values in the yearmonth table can represent year",
+      "nodes": [
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "Increase or Decrease in consumption (2013 vs 2012)",
+          "expression": "consumption_2013 - consumption_2012",
+          "grounding": [
+            {
+              "term": "consumption",
+              "table": "yearmonth",
+              "column": "Consumption"
+            }
+          ],
+          "depends_on": [
+            "r1"
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "Formula",
+          "name": "Percentage of Increase",
+          "expression": "(Increase_or_Decrease / consumption_2013) * 100",
+          "grounding": [
+            {
+              "term": "consumption",
+              "table": "yearmonth",
+              "column": "Consumption"
+            }
+          ],
+          "depends_on": [
+            "r1"
+          ]
+        },
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "year from yearmonth.Date prefix",
+          "condition": "year = SUBSTR(Date, 1, 4)",
+          "grounding": [
+            {
+              "term": "Date",
+              "table": "yearmonth",
+              "column": "Date"
+            }
+          ]
+        }
+      ],
+      "notes": "SCHEMA GAP: f1/f2 implicitly depend on r1's date-parsing convention (the 2012/2013 split is realized via SUBSTR over yearmonth.Date). The current schema has no formal Formula->Rule 'depends_on' edge -- the dependency lives only in the annotator's head."
+    },
+    {
+      "question_id": 1516,
+      "db_id": "debit_card_specializing",
+      "difficulty": "moderate",
+      "question": "How many transactions were paid in CZK in the morning of 2012/8/26?",
+      "raw_evidence": "'2012/8/26' can be represented by '2012-08-26'; The morning refers to the time before '13:00:00'",
+      "nodes": [
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "normalize date 2012/8/26",
+          "condition": "Date = '2012-08-26'",
+          "grounding": [
+            {
+              "term": "Date",
+              "table": "transactions_1k",
+              "column": "Date"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "type": "Rule",
+          "name": "morning",
+          "condition": "Time < '13:00:00'",
+          "grounding": [
+            {
+              "term": "Time",
+              "table": "transactions_1k",
+              "column": "Time"
+            }
+          ]
+        }
+      ],
+      "notes": "r1 is really an INPUT-NORMALIZATION hint ('2012/8/26' from the user maps to '2012-08-26' in the DB), not a business Rule. SCHEMA GAP: a 'FormatHint' / 'InputNormalization' node would be a cleaner home for this."
+    },
+    {
+      "question_id": 1529,
+      "db_id": "debit_card_specializing",
+      "difficulty": "moderate",
+      "question": "What is the amount spent by customer \"38508\" at the gas stations? How much had the customer spent in January 2012?",
+      "raw_evidence": "January 2012 refers to the Date value = '201201'",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "January 2012",
+          "table": "yearmonth",
+          "column": "Date",
+          "value": "201201"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 1530,
+      "db_id": "debit_card_specializing",
+      "difficulty": "simple",
+      "question": "Which are the top five best selling products? Please state the full name of them.",
+      "raw_evidence": "Description of products contains full name",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "ColumnAlias",
+          "name": "full product name",
+          "bindings": [
+            {
+              "table": "products",
+              "column": "Description"
+            }
+          ]
+        }
+      ],
+      "notes": "BORDERLINE: column-rename, same gap as qid=491."
+    },
+    {
+      "question_id": 1030,
+      "db_id": "european_football_2",
+      "difficulty": "moderate",
+      "question": "Give the name of the league had the most matches end as draw in the 2016 season?",
+      "raw_evidence": "most matches end as draw refers to MAX(SUM(home_team_goal = away_team_goal)); 2016 season refers to season = '2015/2016';",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "most matches ending as a draw",
+          "defined_by": "f1"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "count of drawn matches",
+          "expression": "MAX(SUM(home_team_goal = away_team_goal))",
+          "grounding": [
+            {
+              "term": "home_team_goal",
+              "table": "Match",
+              "column": "home_team_goal"
+            },
+            {
+              "term": "away_team_goal",
+              "table": "Match",
+              "column": "away_team_goal"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "2016 season",
+          "table": "Match",
+          "column": "season",
+          "value": "2015/2016"
+        }
+      ],
+      "notes": "v1 is a non-obvious user-input->DB-value mapping ('2016 season' -> '2015/2016'). Pure ValueMap fits."
+    },
+    {
+      "question_id": 1035,
+      "db_id": "european_football_2",
+      "difficulty": "simple",
+      "question": "Give the team_fifa_api_id of teams with more than 50 but less than 60 build-up play speed.",
+      "raw_evidence": "teams with more than 50 but less than 60 build-up play speed refers to buildUpPlaySpeed >50 AND buildUpPlaySpeed <60;",
+      "nodes": [
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "build-up play speed strictly between 50 and 60",
+          "condition": "buildUpPlaySpeed > 50 AND buildUpPlaySpeed < 60",
+          "grounding": [
+            {
+              "term": "buildUpPlaySpeed",
+              "table": "Team_Attributes",
+              "column": "buildUpPlaySpeed"
+            }
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 1052,
+      "db_id": "european_football_2",
+      "difficulty": "moderate",
+      "question": "Among all the players whose weight is under 130, how many of them preferred foot in attacking is left?",
+      "raw_evidence": "weight < 130; preferred foot in attacking refers to preferred_foot; preferred_foot = 'left';",
+      "nodes": [
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "weight under 130",
+          "condition": "weight < 130",
+          "grounding": [
+            {
+              "term": "weight",
+              "table": "Player",
+              "column": "weight"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "type": "ColumnAlias",
+          "name": "preferred foot in attacking",
+          "bindings": [
+            {
+              "table": "Player_Attributes",
+              "column": "preferred_foot"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "left-footed",
+          "table": "Player_Attributes",
+          "column": "preferred_foot",
+          "value": "left"
+        }
+      ],
+      "notes": "c1 is a column-rename (BORDERLINE, same gap as qid=491). 'attacking' in the user phrase is decorative here -- preferred_foot has nothing to do with attacking specifically."
+    },
+    {
+      "question_id": 122,
+      "db_id": "financial",
+      "difficulty": "simple",
+      "question": "State the district and region for loan ID '4990'.",
+      "raw_evidence": "A2, A3 contains the information about district and region respectively.",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "ColumnAlias",
+          "name": "district name",
+          "bindings": [
+            {
+              "table": "district",
+              "column": "A2"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "type": "ColumnAlias",
+          "name": "region name",
+          "bindings": [
+            {
+              "table": "district",
+              "column": "A3"
+            }
+          ]
+        }
+      ],
+      "notes": "BORDERLINE: pure column-rename for opaque column names. The financial DB's A2..A16 are cryptic -- this kind of evidence is the strongest argument that knowledge-augmented T2SQL is necessary (no LLM can guess that A3 = region from the schema alone)."
+    },
+    {
+      "question_id": 146,
+      "db_id": "financial",
+      "difficulty": "simple",
+      "question": "Who are the female account holders who own credit cards and also have loans?",
+      "raw_evidence": "Female refers to gender = 'F'",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "Female",
+          "table": "client",
+          "column": "gender",
+          "value": "F"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 187,
+      "db_id": "financial",
+      "difficulty": "simple",
+      "question": "How many clients who choose statement of weekly issuance are Owner?",
+      "raw_evidence": "Frequency = 'POPLATEK TYDNE' refers to weekly issuance",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "weekly issuance",
+          "table": "account",
+          "column": "frequency",
+          "value": "POPLATEK TYDNE"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 194,
+      "db_id": "financial",
+      "difficulty": "moderate",
+      "question": "Provide the IDs and age of the client with high level credit card, which is eligible for loans.",
+      "raw_evidence": "the credit card is high-level refers to card.type = 'gold'; eligible for loans refers to disp.type = 'OWNER'",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "high-level credit card",
+          "table": "card",
+          "column": "type",
+          "value": "gold"
+        },
+        {
+          "id": "v2",
+          "type": "ValueMap",
+          "name": "eligible-for-loans (account holder)",
+          "table": "disp",
+          "column": "type",
+          "value": "OWNER"
+        }
+      ],
+      "notes": "Note: 'eligible for loans' is annotated as ValueMap on disp.type='OWNER', but the SEMANTIC link (only OWNERs can apply for loans) is a business RULE that happens to project to a single column value. ValueMap captures the surface mapping but not the underlying rule -- the L1 graph may want both nodes joined by a 'realized_as' edge."
+    },
+    {
+      "question_id": 954,
+      "db_id": "formula_1",
+      "difficulty": "challenging",
+      "question": "Please calculate the race completion percentage of Japanese drivers from 2007 to 2009.",
+      "raw_evidence": "from 2007 to 2009 refers to year between 2007 and 2009; race completion refers to time is not null; percentage = Divide(COUNT(DriverID where time is not null and year between 2007 and 2009),Count (DriverID where year between 2007 and 2009))*100;",
+      "nodes": [
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "year between 2007 and 2009",
+          "condition": "year BETWEEN 2007 AND 2009",
+          "grounding": [
+            {
+              "term": "year",
+              "table": "races",
+              "column": "year"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "race completion",
+          "defined_by": "r2"
+        },
+        {
+          "id": "r2",
+          "type": "Rule",
+          "name": "finished the race (time not null)",
+          "condition": "time IS NOT NULL",
+          "grounding": [
+            {
+              "term": "time",
+              "table": "results",
+              "column": "time"
+            }
+          ]
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "race completion percentage",
+          "expression": "COUNT(DriverID WHERE time IS NOT NULL AND year BETWEEN 2007 AND 2009) / COUNT(DriverID WHERE year BETWEEN 2007 AND 2009) * 100",
+          "grounding": [
+            {
+              "term": "DriverID",
+              "table": "results",
+              "column": "driverId"
+            },
+            {
+              "term": "time",
+              "table": "results",
+              "column": "time"
+            },
+            {
+              "term": "year",
+              "table": "races",
+              "column": "year"
+            }
+          ],
+          "depends_on": [
+            "r1",
+            "r2"
+          ]
+        }
+      ],
+      "notes": "Formula f1 reuses both rules r1 (year filter) and r2 (completion definition). No 'depends_on' edge in current schema -- same gap as qid=1482."
+    },
+    {
+      "question_id": 961,
+      "db_id": "formula_1",
+      "difficulty": "simple",
+      "question": "Which race has the shortest actual finishing time? Please give the name and year.",
+      "raw_evidence": "shortest actual finishing time refers to Min(milliseconds) except milliseconds = null;",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "shortest actual finishing time",
+          "defined_by": "f1"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "min milliseconds excluding null",
+          "expression": "MIN(milliseconds) WHERE milliseconds IS NOT NULL",
+          "grounding": [
+            {
+              "term": "milliseconds",
+              "table": "results",
+              "column": "milliseconds"
+            }
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 978,
+      "db_id": "formula_1",
+      "difficulty": "simple",
+      "question": "How many times the circuits were held in Austria? Please give their location and coordinates.",
+      "raw_evidence": "location coordinates refers to (lat,lng); Austria refers to country = 'Austria';",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "ColumnAlias",
+          "name": "location coordinates",
+          "bindings": [
+            {
+              "table": "circuits",
+              "column": "lat"
+            },
+            {
+              "table": "circuits",
+              "column": "lng"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "Austria",
+          "table": "circuits",
+          "column": "country",
+          "value": "Austria"
+        }
+      ],
+      "notes": "SCHEMA GAP: c1 maps a concept to a column TUPLE, not a single column. Concept has no formal multi-column grounding; used 'definition' free-text. Same pattern at qid=1364."
+    },
+    {
+      "question_id": 1005,
+      "db_id": "formula_1",
+      "difficulty": "simple",
+      "question": "What was the longest time a driver had ever spent at a pit stop?",
+      "raw_evidence": "longest time spent at pitstop refers to MAX(duration)",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "longest time spent at pit stop",
+          "defined_by": "f1"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "max pit-stop duration",
+          "expression": "MAX(duration)",
+          "grounding": [
+            {
+              "term": "duration",
+              "table": "pitStops",
+              "column": "duration"
+            }
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 1337,
+      "db_id": "student_club",
+      "difficulty": "simple",
+      "question": "What is the total budgeted amount for all category in \"October Speaker\" event?",
+      "raw_evidence": "total budgeted amount refers to SUM(amount) where event_name = 'October Speaker'",
+      "nodes": [
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "total budgeted amount for an event",
+          "expression": "SUM(amount) WHERE event_name = 'October Speaker'",
+          "grounding": [
+            {
+              "term": "amount",
+              "table": "budget",
+              "column": "amount"
+            },
+            {
+              "term": "event_name",
+              "table": "event",
+              "column": "event_name"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "October Speaker event",
+          "table": "event",
+          "column": "event_name",
+          "value": "October Speaker"
+        }
+      ],
+      "notes": "Cross-table predicate (budget.amount filtered by event.event_name via budget.link_to_event = event.event_id) -- join path is implicit in the Formula. The L1 builder will need to surface JOIN paths from foreign keys."
+    },
+    {
+      "question_id": 1362,
+      "db_id": "student_club",
+      "difficulty": "simple",
+      "question": "How many cities are there in Orange County, Virginia?",
+      "raw_evidence": "Orange County is the county name, Virginia is the state name",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "Orange County (as county)",
+          "table": "zip_code",
+          "column": "county",
+          "value": "Orange County"
+        },
+        {
+          "id": "v2",
+          "type": "ValueMap",
+          "name": "Virginia (as state)",
+          "table": "zip_code",
+          "column": "state",
+          "value": "Virginia"
+        }
+      ],
+      "notes": "BORDERLINE: parses an ambiguous user-input string ('Orange County, Virginia') into two (column, value) bindings. ValueMap captures the surface mapping, but the act of *parsing* the input string isn't itself a node type -- arguably a 'ParseHint' role."
+    },
+    {
+      "question_id": 1364,
+      "db_id": "student_club",
+      "difficulty": "simple",
+      "question": "Where is Amy Firth's hometown?",
+      "raw_evidence": "hometown refers to city, county, state",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "ColumnAlias",
+          "name": "hometown",
+          "bindings": [
+            {
+              "table": "zip_code",
+              "column": "city"
+            },
+            {
+              "table": "zip_code",
+              "column": "county"
+            },
+            {
+              "table": "zip_code",
+              "column": "state"
+            }
+          ]
+        }
+      ],
+      "notes": "SCHEMA GAP: multi-column projection again (same as qid=978)."
+    },
+    {
+      "question_id": 1419,
+      "db_id": "student_club",
+      "difficulty": "simple",
+      "question": "What is the category of event which was taken place in 2020-03-24T12:00:00?",
+      "raw_evidence": "taken place in 2020-03-24T12:00:00 refers to event_date = '2020-03-24T12:00:00'",
+      "nodes": [
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "event date equals 2020-03-24T12:00:00",
+          "condition": "event_date = '2020-03-24T12:00:00'",
+          "grounding": [
+            {
+              "term": "event_date",
+              "table": "event",
+              "column": "event_date"
+            }
+          ]
+        }
+      ],
+      "notes": "Could be ValueMap (single value of a single column), but used as a filter; Rule fits more idiomatically. Either is defensible -- annotator-judgment edge case worth documenting."
+    },
+    {
+      "question_id": 759,
+      "db_id": "superhero",
+      "difficulty": "simple",
+      "question": "What is the eye clolour of the heaviest superhero?",
+      "raw_evidence": "the heaviest superhero refers to MAX(weight_kg); eye colour refers to colour where eye_colour_id = colour.id;",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "the heaviest superhero",
+          "defined_by": "f1"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "max superhero weight",
+          "expression": "MAX(weight_kg)",
+          "grounding": [
+            {
+              "term": "weight_kg",
+              "table": "superhero",
+              "column": "weight_kg"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "type": "Concept",
+          "name": "eye colour",
+          "definition": "JOIN superhero.eye_colour_id = colour.id, then project colour.colour"
+        }
+      ],
+      "notes": "SCHEMA GAP: c2 encodes a JOIN-PATH ('to read eye colour you must traverse FK eye_colour_id -> colour.id'), not a column rename or value. Yet another argument for a 'PathConcept' node type that exposes (start_table, fk, end_table.column)."
+    },
+    {
+      "question_id": 769,
+      "db_id": "superhero",
+      "difficulty": "challenging",
+      "question": "Which superhero has the most durability published by Dark Horse Comics?",
+      "raw_evidence": "which superhero refers to superhero_name; most durability refers to MAX(attribute_value) WHERE attribute_name = 'durability'; published by Dark Horse Comics refers to publisher_name = 'Dark Horse Comics';",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "ColumnAlias",
+          "name": "which superhero (identity column)",
+          "bindings": [
+            {
+              "table": "superhero",
+              "column": "superhero_name"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "type": "Concept",
+          "name": "most durability",
+          "defined_by": "f1"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "max durability attribute value",
+          "expression": "MAX(attribute_value) WHERE attribute_name = 'durability'",
+          "grounding": [
+            {
+              "term": "attribute_value",
+              "table": "hero_attribute",
+              "column": "attribute_value"
+            },
+            {
+              "term": "attribute_name",
+              "table": "attribute",
+              "column": "attribute_name"
+            },
+            {
+              "term": "durability",
+              "table": "attribute",
+              "column": "attribute_name",
+              "value": "durability"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "durability attribute",
+          "table": "attribute",
+          "column": "attribute_name",
+          "value": "durability"
+        },
+        {
+          "id": "v2",
+          "type": "ValueMap",
+          "name": "Dark Horse Comics",
+          "table": "publisher",
+          "column": "publisher_name",
+          "value": "Dark Horse Comics"
+        }
+      ],
+      "notes": "BIRD evidence uses 'durability' (lowercase) here but 'Strength' (initcap) at qid=786 -- KB needs explicit case-folding / canonicalization policy. f1 carries value literal in expression (same gap as qid=65)."
+    },
+    {
+      "question_id": 776,
+      "db_id": "superhero",
+      "difficulty": "simple",
+      "question": "Provide the hero name and race of Charles Chandler.",
+      "raw_evidence": "hero name refers to superhero_name; Charles Chandler is the full name of superhero;",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "ColumnAlias",
+          "name": "hero name",
+          "bindings": [
+            {
+              "table": "superhero",
+              "column": "superhero_name"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "Charles Chandler (full name)",
+          "table": "superhero",
+          "column": "full_name",
+          "value": "Charles Chandler"
+        }
+      ],
+      "notes": "Mix of one column-alias Concept (c1) and one ValueMap (v1) -- shows the two patterns naturally coexist in a single evidence."
+    },
+    {
+      "question_id": 786,
+      "db_id": "superhero",
+      "difficulty": "moderate",
+      "question": "How many heroes have the highest attribute value in strength?",
+      "raw_evidence": "highest attribute value in strength refers to MAX(attribute_value) WHERE attribute_name = 'Strength';",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "highest attribute value in strength",
+          "defined_by": "f1"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "max strength attribute value",
+          "expression": "MAX(attribute_value) WHERE attribute_name = 'Strength'",
+          "grounding": [
+            {
+              "term": "attribute_value",
+              "table": "hero_attribute",
+              "column": "attribute_value"
+            },
+            {
+              "term": "attribute_name",
+              "table": "attribute",
+              "column": "attribute_name"
+            },
+            {
+              "term": "Strength",
+              "table": "attribute",
+              "column": "attribute_name",
+              "value": "Strength"
+            }
+          ]
+        },
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "Strength attribute",
+          "table": "attribute",
+          "column": "attribute_name",
+          "value": "Strength"
+        }
+      ],
+      "notes": "Case mismatch vs qid=769 (see notes there)."
+    },
+    {
+      "question_id": 1214,
+      "db_id": "thrombosis_prediction",
+      "difficulty": "simple",
+      "question": "List ID, sex and date of birth of patient whose total protein (TP) below the lower range of the normal index.",
+      "raw_evidence": "total protein (TP) below the lower range of the normal index refers to TP < 6.0",
+      "nodes": [
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "TP below lower normal range",
+          "defined_by": "r1"
+        },
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "TP below 6.0",
+          "condition": "TP < 6.0",
+          "grounding": [
+            {
+              "term": "TP",
+              "table": "Laboratory",
+              "column": "TP"
+            }
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 1230,
+      "db_id": "thrombosis_prediction",
+      "difficulty": "simple",
+      "question": "List all outpatient within normal range of creatinine phosphokinase. Give me the distinct ids.",
+      "raw_evidence": "outpatient refers to Admission = '-'; normal range of creatinine phosphokinase refers to CPK < 250;",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "outpatient",
+          "table": "Patient",
+          "column": "Admission",
+          "value": "-"
+        },
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "normal CPK range",
+          "defined_by": "r1"
+        },
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "CPK below 250",
+          "condition": "CPK < 250",
+          "grounding": [
+            {
+              "term": "CPK",
+              "table": "Laboratory",
+              "column": "CPK"
+            }
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 1232,
+      "db_id": "thrombosis_prediction",
+      "difficulty": "challenging",
+      "question": "Provide ID, sex and age of patient who has blood glucose (GLU) not within normal range but with total cholesterol(T-CHO) within normal range.",
+      "raw_evidence": "age = SUBTRACT(year(current_timestamp), year(Birthday)); blood glucose (GLU) not within normal range refers to GLU > = 180; total cholesterol(T-CHO) within normal range refers to `T-CHO` < 250;",
+      "nodes": [
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "age from birthday",
+          "expression": "YEAR(CURRENT_TIMESTAMP) - YEAR(Birthday)",
+          "grounding": [
+            {
+              "term": "Birthday",
+              "table": "Patient",
+              "column": "Birthday"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "type": "Concept",
+          "name": "GLU outside normal range",
+          "defined_by": "r1"
+        },
+        {
+          "id": "r1",
+          "type": "Rule",
+          "name": "GLU at or above 180",
+          "condition": "GLU >= 180",
+          "grounding": [
+            {
+              "term": "GLU",
+              "table": "Laboratory",
+              "column": "GLU"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "type": "Concept",
+          "name": "T-CHO within normal range",
+          "defined_by": "r2"
+        },
+        {
+          "id": "r2",
+          "type": "Rule",
+          "name": "T-CHO below 250",
+          "condition": "`T-CHO` < 250",
+          "grounding": [
+            {
+              "term": "T-CHO",
+              "table": "Laboratory",
+              "column": "T-CHO"
+            }
+          ]
+        }
+      ],
+      "notes": "BIRD evidence couples 'GLU not within normal range' to 'GLU >= 180' -- the rule encodes an ABOVE-normal condition; the Concept name has to preserve polarity. A literal paraphrase like 'GLU normal range' would flip the SQL."
+    },
+    {
+      "question_id": 259,
+      "db_id": "toxicology",
+      "difficulty": "simple",
+      "question": "How many elements are there for single bond molecules?",
+      "raw_evidence": "single bond refers to bond_type = '-';",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "single bond",
+          "table": "bond",
+          "column": "bond_type",
+          "value": "-"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "question_id": 317,
+      "db_id": "toxicology",
+      "difficulty": "moderate",
+      "question": "Calculate the percentage of carcinogenic molecules which contain the Chlorine element.",
+      "raw_evidence": "label = '+' mean molecules are carcinogenic; percentage = DIVIDE(SUM(label = '+' and element = 'cl'), COUNT(molecule_id)) as percentage",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "carcinogenic molecule",
+          "table": "molecule",
+          "column": "label",
+          "value": "+"
+        },
+        {
+          "id": "v2",
+          "type": "ValueMap",
+          "name": "Chlorine element",
+          "table": "atom",
+          "column": "element",
+          "value": "cl"
+        },
+        {
+          "id": "f1",
+          "type": "Formula",
+          "name": "percentage of carcinogenic molecules containing Chlorine",
+          "expression": "SUM(label = '+' AND element = 'cl') / COUNT(molecule_id) * 100",
+          "grounding": [
+            {
+              "term": "label",
+              "table": "molecule",
+              "column": "label"
+            },
+            {
+              "term": "element",
+              "table": "atom",
+              "column": "element"
+            },
+            {
+              "term": "molecule_id",
+              "table": "molecule",
+              "column": "molecule_id"
+            },
+            {
+              "term": "+",
+              "table": "molecule",
+              "column": "label",
+              "value": "+"
+            },
+            {
+              "term": "cl",
+              "table": "atom",
+              "column": "element",
+              "value": "cl"
+            }
+          ]
+        }
+      ],
+      "notes": "Two value-literal patterns inside one Formula expression -- same column-value-in-expression gap as qid=65."
+    },
+    {
+      "question_id": 335,
+      "db_id": "toxicology",
+      "difficulty": "simple",
+      "question": "What is the total number of molecules with double bonded oxygen?",
+      "raw_evidence": "oxygen refers to element = 'o'; double bond refers to bond_type = ' = ';",
+      "nodes": [
+        {
+          "id": "v1",
+          "type": "ValueMap",
+          "name": "oxygen",
+          "table": "atom",
+          "column": "element",
+          "value": "o"
+        },
+        {
+          "id": "v2",
+          "type": "ValueMap",
+          "name": "double bond",
+          "table": "bond",
+          "column": "bond_type",
+          "value": "="
+        }
+      ],
+      "notes": "BIRD evidence shows the value as ' = ' with surrounding whitespace; the actual DB value is '='. Notes the need for a whitespace-normalization step in the KB ingestor."
+    }
+  ]
+}
