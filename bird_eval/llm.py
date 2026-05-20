@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import time
 
+import httpx
 from openai import OpenAI
 
 from .config import Config
@@ -14,10 +15,13 @@ class LLMClient:
             raise RuntimeError(
                 "DEEPSEEK_API_KEY is not set. Copy .env.example to .env and fill it in."
             )
+        # trust_env=False so httpx ignores HTTP_PROXY/HTTPS_PROXY; the LLM
+        # endpoint is internal and any system proxy (e.g. Squid) would block it.
         self._client = OpenAI(
             api_key=config.api_key,
             base_url=config.base_url,
             timeout=config.request_timeout,
+            http_client=httpx.Client(trust_env=False, timeout=config.request_timeout),
         )
         self._model = config.model
         self._temperature = config.temperature

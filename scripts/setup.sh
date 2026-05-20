@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # One-time environment setup. Run once on the Linux server.
+# Override the interpreter if `python3` is older than 3.10:  PYTHON=python3.10 bash scripts/setup.sh
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-python3 -m venv .venv
+PY="${PYTHON:-python3}"
+"$PY" -m venv .venv
 .venv/bin/pip install --upgrade pip
 .venv/bin/pip install -r requirements.txt
 
