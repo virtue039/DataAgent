@@ -17,6 +17,7 @@ from bird_eval.extraction import (  # noqa: E402
     _build_user_message,
     _parse_json_fence,
     _sanitize_grounding,
+    extract,
 )
 
 
@@ -166,6 +167,67 @@ class GroundingSanitizer(unittest.TestCase):
             total_dropped_n += stats["dropped_nodes"]
         self.assertEqual(0, total_dropped_g, "sanitizer dropped a valid grounding")
         self.assertEqual(0, total_dropped_n, "sanitizer dropped a valid node")
+
+
+class _MockLLMClient:
+    """In-memory stand-in for bird_eval.llm.LLMClient.
+
+    Returns canned responses in order. Tests use this to drive the repair
+    branch deterministically without hitting a real endpoint.
+    """
+
+    def __init__(self, responses):
+        self._responses = list(responses)
+        self.calls = []
+
+    def complete(self, system, user, retries=3):
+        self.calls.append({"system": system, "user": user})
+        if not self._responses:
+            raise AssertionError("MockLLMClient exhausted; no canned response left")
+        return self._responses.pop(0)
+
+
+_VALID_RESPONSE = """```json
+[
+  {"id": "a1", "type": "ColumnAlias", "name": "x",
+   "bindings": [{"table": "good_table", "column": "real_col"}]}
+]
+```"""
+
+_MALFORMED_JSON_RESPONSE = "Here is the answer: not_valid_json_at_all"
+
+_VALIDATION_FAIL_RESPONSE = """```json
+[
+  {"id": "a1", "type": "ColumnAlias", "name": "x"}
+]
+```"""  # missing required 'bindings' field
+
+
+class ExtractOrchestrator(unittest.TestCase):
+    def test_happy_path_returns_nodes_single_call(self):
+        llm = _MockLLMClient([_VALID_RESPONSE])
+        nodes = extract("ev", "db_x", _DDL, llm)
+        self.assertEqual(1, len(llm.calls), "should not have invoked repair")
+        self.assertEqual(1, len(nodes))
+        self.assertEqual("ColumnAlias", nodes[0]["type"])
+
+    def test_repair_invoked_on_parse_failure(self):
+        llm = _MockLLMClient([_MALFORMED_JSON_RESPONSE, _VALID_RESPONSE])
+        nodes = extract("ev", "db_x", _DDL, llm)
+        self.assertEqual(2, len(llm.calls), "expected exactly one repair shot")
+        self.assertEqual(1, len(nodes))
+
+    def test_repair_invoked_on_validation_failure(self):
+        llm = _MockLLMClient([_VALIDATION_FAIL_RESPONSE, _VALID_RESPONSE])
+        nodes = extract("ev", "db_x", _DDL, llm)
+        self.assertEqual(2, len(llm.calls))
+        self.assertEqual(1, len(nodes))
+
+    def test_both_calls_fail_returns_empty_list(self):
+        llm = _MockLLMClient([_MALFORMED_JSON_RESPONSE, _MALFORMED_JSON_RESPONSE])
+        nodes = extract("ev", "db_x", _DDL, llm)
+        self.assertEqual(2, len(llm.calls), "must cap at 2 LLM calls")
+        self.assertEqual([], nodes)
 
 
 if __name__ == "__main__":

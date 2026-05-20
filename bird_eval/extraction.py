@@ -6,10 +6,16 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from functools import lru_cache
 from pathlib import Path
 
 from .ddl import parse_ddl
+
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from validate_annotations import validate_item  # noqa: E402
 
 # Path to the schema doc; the system prompt is generated from it at import-time
 # so the prompt automatically reflects any schema change.
@@ -159,3 +165,61 @@ def _sanitize_grounding(nodes: list[dict], ddl: str) -> tuple[list[dict], dict[s
         # Concept and any unknown types: passthrough.
         cleaned.append(node)
     return cleaned, stats
+
+
+def _try_parse_and_validate(raw: str) -> tuple[list[dict], list[str]]:
+    """Parse raw LLM output and structurally validate the node list.
+
+    Returns (nodes, error_list). If error_list is non-empty, the nodes are
+    suspect and a repair shot is warranted.
+    """
+    try:
+        nodes = _parse_json_fence(raw)
+    except (ValueError, json.JSONDecodeError) as e:
+        return [], [f"could not parse JSON array: {e}"]
+    if not isinstance(nodes, list):
+        return [], ["top-level JSON value must be an array"]
+    # Validate via the existing v2 validator. We wrap nodes in a synthetic
+    # record so validate_item gets all the fields it expects.
+    record = {
+        "question_id": -1, "db_id": "", "raw_evidence": "",
+        "nodes": nodes, "notes": "",
+    }
+    errors = validate_item(record, 0)
+    return nodes, errors
+
+
+def _build_repair_message(original_user: str, bad_output: str, errors: list[str]) -> str:
+    """User message for the single repair shot."""
+    return (
+        original_user
+        + "\n\n## Repair instructions\n"
+        + "Your previous response had the following problems:\n"
+        + "\n".join(f"- {e}" for e in errors[:20])
+        + "\n\nYour previous response was:\n"
+        + "```\n" + bad_output + "\n```\n\n"
+        + "Emit a corrected JSON array of nodes inside a ```json fence. "
+          "Output only the fenced JSON, nothing else."
+    )
+
+
+def extract(evidence: str, db_id: str, ddl: str, llm) -> list[dict]:
+    """Run the extractor on one evidence string. See spec §3 for semantics.
+
+    Returns a list of v2 typed-node dicts (possibly empty). At most 2 LLM
+    calls are made per invocation (initial + one repair).
+    """
+    system = _build_system_prompt()
+    user = _build_user_message(evidence, db_id, ddl)
+
+    raw = llm.complete(system, user)
+    nodes, errors = _try_parse_and_validate(raw)
+    if errors:
+        repair_user = _build_repair_message(user, raw, errors)
+        raw = llm.complete(system, repair_user)
+        nodes, errors = _try_parse_and_validate(raw)
+        if errors:
+            return []
+
+    cleaned, _ = _sanitize_grounding(nodes, ddl)
+    return cleaned
