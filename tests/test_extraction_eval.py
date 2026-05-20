@@ -12,7 +12,7 @@ import unittest
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from bird_eval.extraction_eval import match  # noqa: E402
+from bird_eval.extraction_eval import match, match_pairs, compare_items, aggregate  # noqa: E402
 
 
 class NodeMatch(unittest.TestCase):
@@ -65,6 +65,81 @@ class NodeMatch(unittest.TestCase):
         a = {"type": "Rule", "condition": "TP < 6.0"}
         b = {"type": "Rule", "condition": "tp < 6.0  "}
         self.assertTrue(match(a, b))
+
+
+class MatchPairs(unittest.TestCase):
+    def test_one_to_one_assignment(self):
+        # Two gold Concepts named A and B; predicted has two A's and one B.
+        # Expected: gold[0] (A) matches predicted[0]; gold[1] (B) matches predicted[2].
+        gold = [
+            {"type": "Concept", "name": "A"},
+            {"type": "Concept", "name": "B"},
+        ]
+        predicted = [
+            {"type": "Concept", "name": "a"},
+            {"type": "Concept", "name": "a"},
+            {"type": "Concept", "name": "B"},
+        ]
+        pairs = match_pairs(predicted, gold)
+        self.assertIn((0, 0), pairs)
+        self.assertIn((2, 1), pairs)
+        # No gold node is double-matched
+        gold_indices = [g for _, g in pairs]
+        self.assertEqual(len(gold_indices), len(set(gold_indices)))
+
+
+class CompareItem(unittest.TestCase):
+    def test_perfect_match_zero_extras(self):
+        gold = [
+            {"type": "Concept", "name": "X"},
+            {"type": "ValueMap", "name": "y", "table": "t", "column": "c", "value": "v"},
+        ]
+        predicted = [dict(g) for g in gold]
+        out = compare_items(predicted, gold)
+        self.assertEqual(2, out["matched"])
+        self.assertEqual(0, out["fp"])
+        self.assertEqual(0, out["fn"])
+        # tp counted per type
+        self.assertEqual(1, out["per_type"]["Concept"]["tp"])
+        self.assertEqual(1, out["per_type"]["ValueMap"]["tp"])
+
+    def test_partial_match_counts_fp_and_fn(self):
+        gold = [{"type": "Concept", "name": "A"}, {"type": "Concept", "name": "B"}]
+        predicted = [{"type": "Concept", "name": "A"}, {"type": "Concept", "name": "C"}]
+        out = compare_items(predicted, gold)
+        self.assertEqual(1, out["matched"])
+        self.assertEqual(1, out["fp"], "C is a false positive")
+        self.assertEqual(1, out["fn"], "B is a false negative")
+
+
+class Aggregate(unittest.TestCase):
+    def test_aggregate_computes_p_r_f1(self):
+        # Two items: item-0 has 2 matched, 0 fp, 0 fn; item-1 has 1 matched, 1 fp, 1 fn.
+        per_item = [
+            {"matched": 2, "fp": 0, "fn": 0,
+             "per_type": {"Concept": {"tp": 2, "fp": 0, "fn": 0}}, "grounding_jaccards": []},
+            {"matched": 1, "fp": 1, "fn": 1,
+             "per_type": {"Concept": {"tp": 1, "fp": 1, "fn": 1}}, "grounding_jaccards": []},
+        ]
+        s = aggregate(per_item)
+        # Overall: tp=3, fp=1, fn=1 -> P = 3/4 = 0.75, R = 3/4 = 0.75, F1 = 0.75
+        self.assertAlmostEqual(0.75, s["overall"]["precision"], places=4)
+        self.assertAlmostEqual(0.75, s["overall"]["recall"], places=4)
+        self.assertAlmostEqual(0.75, s["overall"]["f1"], places=4)
+        # Per-type same numbers (only Concept appears).
+        self.assertAlmostEqual(0.75, s["by_type"]["Concept"]["f1"], places=4)
+
+    def test_aggregate_empty_predicted_recall_zero(self):
+        per_item = [{
+            "matched": 0, "fp": 0, "fn": 3,
+            "per_type": {"Concept": {"tp": 0, "fp": 0, "fn": 3}},
+            "grounding_jaccards": [],
+        }]
+        s = aggregate(per_item)
+        self.assertEqual(0.0, s["overall"]["recall"])
+        # Precision is 0/0 -> we choose to return 0.0 in that case.
+        self.assertEqual(0.0, s["overall"]["precision"])
+        self.assertEqual(0.0, s["overall"]["f1"])
 
 
 if __name__ == "__main__":
