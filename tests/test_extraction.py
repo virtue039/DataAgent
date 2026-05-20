@@ -157,7 +157,8 @@ class GroundingSanitizer(unittest.TestCase):
         zero entries -- otherwise the sanitizer is over-zealous."""
         path = os.path.join(ROOT, "annotation", "to_annotate.json")
         import json as _json
-        data = _json.load(open(path))
+        with open(path) as f:
+            data = _json.load(f)
         total_dropped_g = 0
         total_dropped_n = 0
         for it in data["items"]:

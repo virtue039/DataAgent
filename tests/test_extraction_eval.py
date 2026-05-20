@@ -66,6 +66,21 @@ class NodeMatch(unittest.TestCase):
         b = {"type": "Rule", "condition": "tp < 6.0  "}
         self.assertTrue(match(a, b))
 
+    def test_rule_matches_by_condition_when_name_paraphrases(self):
+        # Both Rules have different paraphrased names but identical conditions;
+        # the deterministic condition wins.
+        a = {"type": "Rule", "name": "EDHRec rank below 100",
+             "condition": "edhrecRank < 100"}
+        b = {"type": "Rule", "name": "below 100 on EDHRec",
+             "condition": "edhrecRank < 100"}
+        self.assertTrue(match(a, b))
+
+    def test_rule_no_match_when_condition_differs(self):
+        # Same name, different conditions => no match.
+        a = {"type": "Rule", "name": "low rank", "condition": "rank < 100"}
+        b = {"type": "Rule", "name": "low rank", "condition": "rank < 200"}
+        self.assertFalse(match(a, b))
+
 
 class MatchPairs(unittest.TestCase):
     def test_one_to_one_assignment(self):

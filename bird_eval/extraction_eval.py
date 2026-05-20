@@ -43,8 +43,15 @@ def match(a: dict, b: dict) -> bool:
     if t == "Formula":
         return _norm(a.get("name")) == _norm(b.get("name"))
     if t == "Rule":
-        ka = _norm(a.get("name")) or _norm(a.get("condition"))
-        kb = _norm(b.get("name")) or _norm(b.get("condition"))
+        # 'condition' is a deterministic SQL expression; prefer it as primary
+        # match key. 'name' is a paraphrase-prone label and is used only when
+        # 'condition' is missing on either side.
+        ca = _norm(a.get("condition"))
+        cb = _norm(b.get("condition"))
+        if ca and cb:
+            return ca == cb
+        ka = _norm(a.get("name"))
+        kb = _norm(b.get("name"))
         return bool(ka) and ka == kb
     return False
 
