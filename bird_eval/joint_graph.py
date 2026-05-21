@@ -13,6 +13,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from .extraction import _sanitize_grounding
 from .extraction_eval import match as _node_match
 
 
@@ -171,3 +172,82 @@ def _dedup_l1(
                 id_remap[(qid, n["id"])] = canonical_id
 
     return canonical_nodes, provenance, id_remap
+
+
+def _rewrite_refs(
+    canonical_nodes: dict[str, dict],
+    provenance: dict[str, tuple[tuple[int, str], ...]],
+    id_remap: dict[tuple[int, str], str],
+) -> dict[str, dict]:
+    """Rewrite each node's defined_by and depends_on entries to canonical ids.
+
+    For a canonical node that absorbed (qid, original_id) entries, each local
+    ref like defined_by='r1' is resolved against (qid, 'r1') in id_remap.
+    Unresolvable refs are dropped from that node's record.
+    """
+    out: dict[str, dict] = {}
+    for canonical_id, node in canonical_nodes.items():
+        nc = dict(node)
+        prov = provenance[canonical_id]
+
+        if "defined_by" in nc:
+            old = nc["defined_by"]
+            new = None
+            for qid, _orig in prov:
+                if (qid, old) in id_remap:
+                    new = id_remap[(qid, old)]
+                    break
+            if new is not None:
+                nc["defined_by"] = new
+            else:
+                del nc["defined_by"]
+
+        if "depends_on" in nc:
+            new_deps: list[str] = []
+            for old in nc["depends_on"]:
+                resolved = None
+                for qid, _orig in prov:
+                    if (qid, old) in id_remap:
+                        resolved = id_remap[(qid, old)]
+                        break
+                if resolved is not None and resolved not in new_deps:
+                    new_deps.append(resolved)
+            if new_deps:
+                nc["depends_on"] = new_deps
+            else:
+                del nc["depends_on"]
+
+        out[canonical_id] = nc
+    return out
+
+
+def _drop_hallucinated(nodes: dict[str, dict], ddl: str) -> dict[str, dict]:
+    """Drop hallucinated (table, column) refs from L1 nodes using P1a's sanitizer.
+
+    Nodes that lose all grounding/bindings are removed entirely. Any incoming
+    `defined_by`/`depends_on` refs to removed nodes are then cleaned up so the
+    remaining nodes are referentially closed.
+    """
+    # P1a's sanitizer takes a list and returns (list, stats); we route via list.
+    as_list = list(nodes.values())
+    cleaned_list, _stats = _sanitize_grounding(as_list, ddl)
+    surviving_ids = {n["id"] for n in cleaned_list}
+    cleaned: dict[str, dict] = {n["id"]: n for n in cleaned_list}
+
+    # Clean up incoming refs that now point at removed nodes.
+    for nid, n in list(cleaned.items()):
+        if "defined_by" in n and n["defined_by"] not in surviving_ids:
+            n = dict(n)
+            del n["defined_by"]
+            cleaned[nid] = n
+        if "depends_on" in n:
+            kept = [d for d in n["depends_on"] if d in surviving_ids]
+            if kept != n.get("depends_on"):
+                n = dict(n)
+                if kept:
+                    n["depends_on"] = kept
+                else:
+                    del n["depends_on"]
+                cleaned[nid] = n
+
+    return cleaned

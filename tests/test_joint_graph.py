@@ -13,7 +13,12 @@ import unittest
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from bird_eval.joint_graph import JointGraph, _dedup_l1  # noqa: E402
+from bird_eval.joint_graph import (  # noqa: E402
+    JointGraph,
+    _dedup_l1,
+    _rewrite_refs,
+    _drop_hallucinated,
+)
 
 
 def _empty_graph() -> JointGraph:
@@ -137,6 +142,79 @@ class L1Dedup(unittest.TestCase):
         # canonical ids are deterministic: r1, r2
         rule_ids = sorted(n["id"] for n in rules)
         self.assertEqual(["r1", "r2"], rule_ids)
+
+
+_TEST_DDL = """
+CREATE TABLE products (
+    product_id INTEGER PRIMARY KEY,
+    name TEXT,
+    price REAL
+);
+CREATE TABLE orders (
+    order_id INTEGER PRIMARY KEY,
+    product_id INTEGER REFERENCES products (product_id),
+    quantity INTEGER
+);
+"""
+
+
+class RewriteRefs(unittest.TestCase):
+    def test_concept_defined_by_rewritten_to_canonical_id(self):
+        items = [{
+            "question_id": 1, "db_id": "shop", "difficulty": "simple",
+            "question": "", "raw_evidence": "", "notes": "",
+            "nodes": [
+                {"id": "c1", "type": "Concept", "name": "cheap product",
+                 "defined_by": "r1"},
+                {"id": "r1", "type": "Rule", "name": "cheap",
+                 "condition": "price < 10",
+                 "grounding": [{"term": "price", "table": "products", "column": "price"}]},
+            ],
+        }]
+        canon, prov, remap = _dedup_l1(items)
+        rewritten = _rewrite_refs(canon, prov, remap)
+        c = next(n for n in rewritten.values() if n["type"] == "Concept")
+        self.assertIn(c["defined_by"], rewritten)  # resolved to a present canonical id
+        self.assertEqual("Rule", rewritten[c["defined_by"]]["type"])
+
+    def test_formula_depends_on_rewritten(self):
+        items = [{
+            "question_id": 5, "db_id": "shop", "difficulty": "simple",
+            "question": "", "raw_evidence": "", "notes": "",
+            "nodes": [
+                {"id": "r1", "type": "Rule", "name": "y", "condition": "year > 2020",
+                 "grounding": [{"term": "year", "table": "orders", "column": "quantity"}]},
+                {"id": "f1", "type": "Formula", "name": "x", "expression": "x",
+                 "grounding": [{"term": "x", "table": "products", "column": "price"}],
+                 "depends_on": ["r1"]},
+            ],
+        }]
+        canon, prov, remap = _dedup_l1(items)
+        rewritten = _rewrite_refs(canon, prov, remap)
+        f = next(n for n in rewritten.values() if n["type"] == "Formula")
+        self.assertEqual(1, len(f["depends_on"]))
+        target = rewritten[f["depends_on"][0]]
+        self.assertEqual("Rule", target["type"])
+
+
+class SanityDrop(unittest.TestCase):
+    def test_node_with_hallucinated_column_loses_that_grounding(self):
+        items = [{
+            "question_id": 1, "db_id": "shop", "difficulty": "simple",
+            "question": "", "raw_evidence": "", "notes": "",
+            "nodes": [
+                {"id": "f1", "type": "Formula", "name": "x", "expression": "x",
+                 "grounding": [
+                     {"term": "price", "table": "products", "column": "price"},
+                     {"term": "bogus", "table": "products", "column": "no_such_col"},
+                 ]},
+            ],
+        }]
+        canon, _, _ = _dedup_l1(items)
+        cleaned = _drop_hallucinated(canon, _TEST_DDL)
+        f = next(n for n in cleaned.values() if n["type"] == "Formula")
+        self.assertEqual(1, len(f["grounding"]))
+        self.assertEqual("price", f["grounding"][0]["column"])
 
 
 if __name__ == "__main__":
