@@ -1,0 +1,100 @@
+"""Unit tests for bird_eval/joint_retrieval.py (P1d).
+
+Run with:
+  .venv/bin/python -m unittest tests.test_joint_retrieval -v
+"""
+from __future__ import annotations
+
+import os
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, ROOT)
+
+from bird_eval.joint_graph import JointGraph  # noqa: E402
+from bird_eval.joint_retrieval import (  # noqa: E402
+    JointRetriever,
+    _search_text_for,
+)
+
+
+def _make_simple_graph(db_id: str = "shop") -> JointGraph:
+    """A tiny JointGraph fixture with one of each useful node type."""
+    nodes = {
+        "f1": {"id": "f1", "type": "Formula",
+               "name": "average product price",
+               "expression": "AVG(price)",
+               "grounding": [{"term": "price", "table": "products", "column": "price"}]},
+        "c1": {"id": "c1", "type": "Concept",
+               "name": "cheap product", "defined_by": "r1"},
+        "r1": {"id": "r1", "type": "Rule",
+               "name": "low-price predicate", "condition": "price < 10",
+               "grounding": [{"term": "price", "table": "products", "column": "price"}]},
+        "v1": {"id": "v1", "type": "ValueMap",
+               "name": "in-stock products",
+               "table": "products", "column": "status", "value": "in_stock"},
+        "a1": {"id": "a1", "type": "ColumnAlias",
+               "name": "product identifier",
+               "bindings": [{"table": "products", "column": "product_id"}]},
+    }
+    columns = {
+        ("products", "price"): {"type": "REAL"},
+        ("products", "status"): {"type": "TEXT"},
+        ("products", "product_id"): {"type": "INTEGER"},
+    }
+    return JointGraph(
+        db_id=db_id,
+        nodes=nodes,
+        columns=columns,
+        fk_edges=(),
+        by_type={"Formula": ("f1",), "Concept": ("c1",), "Rule": ("r1",),
+                 "ValueMap": ("v1",), "ColumnAlias": ("a1",)},
+        by_column={("products", "price"): ("f1", "r1"),
+                   ("products", "status"): ("v1",),
+                   ("products", "product_id"): ("a1",)},
+        by_name_token={"product": ("f1", "c1", "v1", "a1"),
+                       "price": ("f1",),
+                       "cheap": ("c1",),
+                       "stock": ("v1",)},
+        provenance={"f1": ((1, "f1"),), "c1": ((1, "c1"),),
+                    "r1": ((1, "r1"),), "v1": ((1, "v1"),), "a1": ((1, "a1"),)},
+        match_signature_hash="",
+    )
+
+
+class SearchTextHelper(unittest.TestCase):
+    def test_formula_uses_name_plus_expression(self):
+        g = _make_simple_graph()
+        text = _search_text_for(g.nodes["f1"], g)
+        self.assertIn("average product price", text)
+        self.assertIn("AVG(price)", text)
+
+    def test_concept_walks_defined_by(self):
+        g = _make_simple_graph()
+        text = _search_text_for(g.nodes["c1"], g)
+        # Concept's own name + the Rule's search text (name + condition)
+        self.assertIn("cheap product", text)
+        self.assertIn("low-price predicate", text)
+        self.assertIn("price < 10", text)
+
+
+class RetrieverConstruction(unittest.TestCase):
+    def test_constructor_embeds_all_l1_nodes(self):
+        # We expect the retriever to hold a per-graph embedding matrix
+        # with one row per L1 node. We don't make a real LLM/embedding call
+        # here -- the JointRetriever uses sentence-transformers eagerly.
+        # If the import or embedding pipeline is broken, this test surfaces it.
+        g = _make_simple_graph()
+        with tempfile.TemporaryDirectory() as cache:
+            r = JointRetriever(
+                {g.db_id: g},
+                embedding_model_name="all-mpnet-base-v2",
+                cache_dir=Path(cache),
+            )
+            self.assertIn("shop", r._embeddings)
+            arr = r._embeddings["shop"]
+            self.assertEqual(arr.shape[0], 5)  # 5 L1 nodes
+            self.assertEqual(arr.shape[1], 768)  # MPNet dim
