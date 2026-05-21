@@ -170,3 +170,35 @@ class RenderEvidence(unittest.TestCase):
         self.assertIn("POPLATEK MESICNE", text)        # ValueMap.value
         self.assertIn("zip_code.city", text)           # ColumnAlias.bindings
         self.assertIn("results.time", text)            # grounding
+
+
+class ProviderIntegration(unittest.TestCase):
+    def test_provider_returns_rendered_evidence(self):
+        # Mock retriever returns a known node list; provider should call
+        # the renderer and surface its output.
+        from bird_eval.data import BirdExample
+        from bird_eval.evidence import JointRetrievalEvidence
+
+        class _MockRetriever:
+            def __init__(self): self.calls = []
+            def retrieve(self, query, db_id, top_k):
+                self.calls.append({"query": query, "db_id": db_id, "top_k": top_k})
+                return [{"id": "v1", "type": "ValueMap", "name": "monthly",
+                         "table": "account", "column": "frequency",
+                         "value": "POPLATEK MESICNE"}]
+
+        retriever = _MockRetriever()
+        provider = JointRetrievalEvidence(retriever, top_k=3)
+        ex = BirdExample(
+            question_id=1, db_id="financial",
+            question="How many accounts have monthly issuance?",
+            evidence="", gold_sql="SELECT ...", difficulty="simple",
+        )
+        out = provider.get(ex)
+        # Provider should have called the retriever with the question + db_id.
+        self.assertEqual(retriever.calls[0]["query"], ex.question)
+        self.assertEqual(retriever.calls[0]["db_id"], ex.db_id)
+        self.assertEqual(retriever.calls[0]["top_k"], 3)
+        # Output should include the rendered evidence header + the ValueMap.
+        self.assertIn("Relevant knowledge for this question:", out)
+        self.assertIn("POPLATEK MESICNE", out)
