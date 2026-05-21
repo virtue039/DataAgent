@@ -14,6 +14,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from .ddl import parse_ddl_typed, parse_fks
 from .extraction import _sanitize_grounding
 from .extraction_eval import match as _node_match
 
@@ -316,3 +317,54 @@ def _build_indexes(
         "by_column": {k: tuple(ids) for k, ids in by_column_lst.items()},
         "by_name_token": {k: tuple(ids) for k, ids in by_name_token_lst.items()},
     }
+
+
+def build_graph(
+    items: list[dict],
+    schemas: dict[str, str],
+) -> dict[str, JointGraph]:
+    """Build per-DB JointGraphs from v2 records + DDL.
+
+    items: each dict has keys 'question_id', 'db_id', 'nodes' (v2 typed-node dicts).
+    schemas: {db_id: ddl_string}.
+
+    Returns {db_id: JointGraph}.
+
+    Raises KeyError when items reference a db_id that's not in schemas.
+    """
+    # group items by db_id
+    per_db: dict[str, list[dict]] = {}
+    for it in items:
+        per_db.setdefault(it["db_id"], []).append(it)
+
+    out: dict[str, JointGraph] = {}
+    for db_id, db_items in per_db.items():
+        if db_id not in schemas:
+            raise KeyError(f"missing schema for db_id={db_id!r}")
+        ddl = schemas[db_id]
+
+        # L1
+        canonical, prov, remap = _dedup_l1(db_items)
+        rewritten = _rewrite_refs(canonical, prov, remap)
+        cleaned = _drop_hallucinated(rewritten, ddl)
+        # Restrict provenance to nodes that survived the sanity drop.
+        prov_clean = {nid: prov[nid] for nid in cleaned if nid in prov}
+
+        # L2
+        columns = parse_ddl_typed(ddl)
+        fk_edges = parse_fks(ddl)
+
+        # Indexes
+        idx = _build_indexes(cleaned)
+
+        out[db_id] = JointGraph(
+            db_id=db_id,
+            nodes=cleaned,
+            columns=columns,
+            fk_edges=fk_edges,
+            by_type=idx["by_type"],
+            by_column=idx["by_column"],
+            by_name_token=idx["by_name_token"],
+            provenance=prov_clean,
+        )
+    return out

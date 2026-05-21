@@ -19,6 +19,7 @@ from bird_eval.joint_graph import (  # noqa: E402
     _rewrite_refs,
     _drop_hallucinated,
     _build_indexes,
+    build_graph,
 )
 
 
@@ -260,6 +261,52 @@ class Indexes(unittest.TestCase):
         # 'in_stock' from the ValueMap value -- NO, values are not tokenized; only names
         # are. So 'stock' should NOT be in the index because it lives in the 'value' field.
         self.assertNotIn("stock", idx["by_name_token"])
+
+
+_SHOP_DDL = _TEST_DDL  # alias for clarity in build tests
+_OTHER_DDL = """
+CREATE TABLE x (
+    id INTEGER PRIMARY KEY,
+    label TEXT
+);
+"""
+
+
+class BuildGraph(unittest.TestCase):
+    def test_empty_inputs_empty_output(self):
+        out = build_graph([], {})
+        self.assertEqual({}, out)
+
+    def test_single_record_produces_single_db_graph(self):
+        out = build_graph([_ITEM_RULE_A], {"shop": _SHOP_DDL})
+        self.assertEqual({"shop"}, set(out.keys()))
+        g = out["shop"]
+        self.assertEqual("shop", g.db_id)
+        self.assertEqual(1, len(g.nodes))
+        rule = next(iter(g.nodes.values()))
+        self.assertEqual("Rule", rule["type"])
+        # L2 layer populated from the DDL
+        self.assertIn(("products", "price"), g.columns)
+        self.assertGreaterEqual(len(g.fk_edges), 1)  # orders.product_id -> products.product_id
+
+    def test_multi_db_returns_per_db_graphs(self):
+        item_x = {
+            "question_id": 1, "db_id": "other", "difficulty": "simple",
+            "question": "", "raw_evidence": "", "notes": "",
+            "nodes": [
+                {"id": "v1", "type": "ValueMap", "name": "active",
+                 "table": "x", "column": "label", "value": "active"},
+            ],
+        }
+        out = build_graph(
+            [_ITEM_RULE_A, item_x],
+            {"shop": _SHOP_DDL, "other": _OTHER_DDL},
+        )
+        self.assertEqual({"shop", "other"}, set(out.keys()))
+
+    def test_missing_schema_raises_key_error(self):
+        with self.assertRaises(KeyError):
+            build_graph([_ITEM_RULE_A], {})
 
 
 if __name__ == "__main__":
