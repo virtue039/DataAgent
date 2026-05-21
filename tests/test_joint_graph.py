@@ -18,6 +18,7 @@ from bird_eval.joint_graph import (  # noqa: E402
     _dedup_l1,
     _rewrite_refs,
     _drop_hallucinated,
+    _build_indexes,
 )
 
 
@@ -215,6 +216,50 @@ class SanityDrop(unittest.TestCase):
         f = next(n for n in cleaned.values() if n["type"] == "Formula")
         self.assertEqual(1, len(f["grounding"]))
         self.assertEqual("price", f["grounding"][0]["column"])
+
+
+class Indexes(unittest.TestCase):
+    def _sample_nodes(self):
+        return {
+            "f1": {"id": "f1", "type": "Formula",
+                   "name": "average product price",
+                   "expression": "AVG(price)",
+                   "grounding": [{"term": "price", "table": "products", "column": "price"}]},
+            "v1": {"id": "v1", "type": "ValueMap",
+                   "name": "available",
+                   "table": "products", "column": "name", "value": "in_stock"},
+            "a1": {"id": "a1", "type": "ColumnAlias",
+                   "name": "the product table",
+                   "bindings": [{"table": "products", "column": "product_id"}]},
+        }
+
+    def test_by_type_lists_all_node_ids_per_type(self):
+        idx = _build_indexes(self._sample_nodes())
+        self.assertEqual(("f1",), idx["by_type"]["Formula"])
+        self.assertEqual(("v1",), idx["by_type"]["ValueMap"])
+        self.assertEqual(("a1",), idx["by_type"]["ColumnAlias"])
+
+    def test_by_column_includes_grounding_binding_and_valuemap(self):
+        idx = _build_indexes(self._sample_nodes())
+        # ValueMap on products.name
+        self.assertIn("v1", idx["by_column"][("products", "name")])
+        # Formula grounding on products.price
+        self.assertIn("f1", idx["by_column"][("products", "price")])
+        # ColumnAlias binding on products.product_id
+        self.assertIn("a1", idx["by_column"][("products", "product_id")])
+
+    def test_by_name_token_tokenizes_and_drops_stopwords(self):
+        idx = _build_indexes(self._sample_nodes())
+        # 'the' is a stopword and should not appear as an index key
+        self.assertNotIn("the", idx["by_name_token"])
+        # 'product' and 'table' from "the product table" should appear (>=2 chars, non-stop)
+        self.assertIn("product", idx["by_name_token"])
+        self.assertIn("table", idx["by_name_token"])
+        # 'average', 'product', 'price' from the Formula name
+        self.assertIn("average", idx["by_name_token"])
+        # 'in_stock' from the ValueMap value -- NO, values are not tokenized; only names
+        # are. So 'stock' should NOT be in the index because it lives in the 'value' field.
+        self.assertNotIn("stock", idx["by_name_token"])
 
 
 if __name__ == "__main__":

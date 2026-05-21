@@ -11,6 +11,7 @@ contract and the rationale behind each component (dedup, sanitize, indexes).
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 from .extraction import _sanitize_grounding
@@ -251,3 +252,67 @@ def _drop_hallucinated(nodes: dict[str, dict], ddl: str) -> dict[str, dict]:
                 cleaned[nid] = n
 
     return cleaned
+
+
+_TOKEN_SPLIT_RE = re.compile(r"[^\w]+", re.UNICODE)
+
+
+def _tokenize(text: str | None) -> list[str]:
+    """Lowercase, split on non-word characters, drop tokens < 2 chars and stopwords."""
+    if not text:
+        return []
+    tokens: list[str] = []
+    for t in _TOKEN_SPLIT_RE.split(text.casefold()):
+        if len(t) >= 2 and t not in _STOPWORDS:
+            tokens.append(t)
+    return tokens
+
+
+def _build_indexes(
+    nodes: dict[str, dict],
+) -> dict[str, dict]:
+    """Build by_type, by_column, by_name_token indexes from canonical nodes.
+
+    Returns a dict with three sub-dicts (each value tuple-of-ids for immutability):
+      - by_type[<type>]              -> (id, ...)
+      - by_column[(table, column)]   -> (id, ...)
+      - by_name_token[<token>]       -> (id, ...)
+    """
+    by_type_lst: dict[str, list[str]] = {t: [] for t in _TYPE_LETTER}
+    by_column_lst: dict[tuple[str, str], list[str]] = {}
+    by_name_token_lst: dict[str, list[str]] = {}
+
+    for nid, n in nodes.items():
+        ntype = n.get("type")
+        if ntype in by_type_lst:
+            by_type_lst[ntype].append(nid)
+
+        # by_column: ValueMap (table, column); ColumnAlias bindings; grounding entries
+        column_refs: list[tuple[str, str]] = []
+        if ntype == "ValueMap":
+            t, c = n.get("table"), n.get("column")
+            if t and c:
+                column_refs.append((t, c))
+        for b in n.get("bindings", []) or []:
+            t, c = b.get("table"), b.get("column")
+            if t and c:
+                column_refs.append((t, c))
+        for g in n.get("grounding", []) or []:
+            t, c = g.get("table"), g.get("column")
+            if t and c:
+                column_refs.append((t, c))
+        for ref in column_refs:
+            by_column_lst.setdefault(ref, []).append(nid)
+
+        # by_name_token: tokenize name + condition (Rule) + expression (Formula).
+        tokens: set[str] = set()
+        for field in ("name", "condition", "expression"):
+            tokens.update(_tokenize(n.get(field)))
+        for t in tokens:
+            by_name_token_lst.setdefault(t, []).append(nid)
+
+    return {
+        "by_type": {t: tuple(ids) for t, ids in by_type_lst.items()},
+        "by_column": {k: tuple(ids) for k, ids in by_column_lst.items()},
+        "by_name_token": {k: tuple(ids) for k, ids in by_name_token_lst.items()},
+    }
