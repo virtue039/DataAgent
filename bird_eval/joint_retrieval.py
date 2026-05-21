@@ -191,3 +191,75 @@ class JointRetriever:
         safe_model = self._model_name.replace("/", "_")
         sig = (sig_hash or "nosig")[:12]
         return Path(cache_dir) / f"{db_id}.{safe_model}.{sig}.{n}.npy"
+
+
+def _render_subgraph_as_evidence(nodes: list[dict]) -> str:
+    """Render a list of v2 typed-node dicts as a bullet text block for the
+    LLM evidence prompt slot.
+
+    Empty input returns the empty string. Otherwise the output begins with
+    a header line that the eval prompt instruction can reference.
+    """
+    if not nodes:
+        return ""
+    # Build an id->node lookup so we can render cross-refs (defined_by /
+    # depends_on) by name when the target is also in the subgraph.
+    by_id = {n.get("id"): n for n in nodes if n.get("id") is not None}
+
+    lines: list[str] = ["Relevant knowledge for this question:"]
+    for n in nodes:
+        ntype = n.get("type")
+        name = n.get("name") or n.get("id") or "?"
+        if ntype == "ColumnAlias":
+            bindings = n.get("bindings", []) or []
+            if bindings:
+                cols = ", ".join(f"{b.get('table') or '?'}.{b.get('column') or '?'}" for b in bindings)
+                lines.append(f"- ColumnAlias: {name} -> ({cols})")
+            else:
+                lines.append(f"- ColumnAlias: {name}")
+        elif ntype == "ValueMap":
+            t = n.get("table") or "?"
+            c = n.get("column") or "?"
+            v = n.get("value") or "?"
+            lines.append(f"- ValueMap: {name} -> {t}.{c} = '{v}'")
+        elif ntype == "Concept":
+            targ = n.get("defined_by")
+            if targ and targ in by_id:
+                tname = by_id[targ].get("name") or targ
+                lines.append(f"- Concept: {name} (defined by {by_id[targ].get('type')} \"{tname}\")")
+            else:
+                lines.append(f"- Concept: {name}")
+        elif ntype == "Rule":
+            cond = n.get("condition") or ""
+            grounding = ", ".join(
+                f"{g.get('table') or '?'}.{g.get('column') or '?'}"
+                for g in (n.get("grounding") or [])
+            )
+            tail = f" [grounded: {grounding}]" if grounding else ""
+            if cond:
+                lines.append(f"- Rule: {name} -> {cond}{tail}")
+            else:
+                lines.append(f"- Rule: {name}{tail}")
+        elif ntype == "Formula":
+            expr = n.get("expression") or ""
+            grounding = ", ".join(
+                f"{g.get('table') or '?'}.{g.get('column') or '?'}"
+                for g in (n.get("grounding") or [])
+            )
+            tail = f" [grounded: {grounding}]" if grounding else ""
+            deps = n.get("depends_on") or []
+            dep_tail = ""
+            if deps:
+                dep_names = []
+                for d in deps:
+                    if d in by_id:
+                        dn = by_id[d].get("name") or d
+                        dep_names.append(f"{by_id[d].get('type')} \"{dn}\"")
+                    else:
+                        dep_names.append(d)
+                dep_tail = f" [depends on: {', '.join(dep_names)}]"
+            lines.append(f"- Formula: {name} = {expr}{tail}{dep_tail}")
+        else:
+            lines.append(f"- {ntype or '?'}: {name}")
+
+    return "\n".join(lines)
