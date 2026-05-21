@@ -12,9 +12,7 @@ See docs/superpowers/specs/2026-05-21-p3-scale-eval-design.md.
 from __future__ import annotations
 
 import argparse
-import glob
 import json
-import os
 import sys
 from pathlib import Path
 

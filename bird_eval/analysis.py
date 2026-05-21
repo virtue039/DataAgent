@@ -178,7 +178,7 @@ def format_overall(rows: list[dict]) -> str:
 def format_per_difficulty(rows: list[dict]) -> str:
     lines = ["==== SECTION 2: Per-difficulty × setting EX% ====",
              "",
-             f"{'Difficulty':<11} | "
+             f"{'Difficulty':<22} | "
              + " | ".join(f"{s:>10}" for s in _SETTINGS_ORDER)]
     lines.append("-" * 80)
     for r in rows:
@@ -188,7 +188,7 @@ def format_per_difficulty(rows: list[dict]) -> str:
         diff_label = f"{r['difficulty']} (n={n})"
         cells = [f"{r[s]*100:>9.2f}%" if s in r else f"{'  --':>10}"
                  for s in _SETTINGS_ORDER]
-        lines.append(f"{diff_label:<11} | " + " | ".join(cells))
+        lines.append(f"{diff_label:<22} | " + " | ".join(cells))
     return "\n".join(lines)
 
 
@@ -215,10 +215,9 @@ def format_per_db_delta(rows: list[dict]) -> str:
     j_deltas: list[float] = []
     r_deltas: list[float] = []
     for r in rows:
-        sign = "+" if r["delta"] > 0 else ""
         lines.append(f"{r['db_id']:<26} | {r['n']:>4} | "
                      f"{r['joint_ex']*100:>6.2f}% | {r['retr_ex']*100:>6.2f}% | "
-                     f"{sign}{r['delta']*100:>6.2f} | {r['direction']}")
+                     f"{r['delta']*100:+7.2f} | {r['direction']}")
         if r["direction"] == "joint wins":
             j_wins += 1; j_deltas.append(r["delta"])
         elif r["direction"] == "retr wins":
