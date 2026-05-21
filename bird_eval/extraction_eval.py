@@ -87,6 +87,28 @@ def _jaccard(a: set, b: set) -> float:
     return len(a & b) / len(u)
 
 
+def _resolve_through_pairs(
+    source_list: list[dict],
+    target_list: list[dict],
+    ref_id: str,
+    pairs: list[tuple[int, int]],
+    source_is_predicted: bool,
+) -> int | None:
+    """Look up a local node id in source_list, then find the matched
+    counterpart's index in target_list via pairs.
+
+    Returns the target-side index, or None if the ref doesn't resolve.
+    """
+    for src_idx, n in enumerate(source_list):
+        if n.get("id") == ref_id:
+            for p_idx, g_idx in pairs:
+                src_match, tgt_match = (p_idx, g_idx) if source_is_predicted else (g_idx, p_idx)
+                if src_match == src_idx:
+                    return tgt_match
+            return None
+    return None
+
+
 def match_pairs(predicted: list[dict], gold: list[dict]) -> list[tuple[int, int]]:
     """One-to-one assignment: for each predicted node in order, take the first
     not-yet-matched gold node it matches. Returns list of (pred_idx, gold_idx)."""
@@ -118,6 +140,9 @@ def compare_items(predicted: list[dict], gold: list[dict]) -> dict:
         "per_type": {<type>: {"tp": int, "fp": int, "fn": int}},
         "grounding_jaccards": list[float]   # one entry per matched
                                             # Formula/Rule pair
+        "matched_pairs": list[list[int]]    # per-pair [pred_idx, gold_idx]
+        "edge_pair_correct": dict          # {"defined_by": list[bool]}
+        "edge_pair_jaccard": dict          # {"depends_on": list[float]}
       }
     """
     pairs = match_pairs(predicted, gold)
@@ -148,12 +173,52 @@ def compare_items(predicted: list[dict], gold: list[dict]) -> dict:
         if ntype in per_type:
             per_type[ntype]["fn"] += 1
 
+    # F3b: per-pair edge accuracy data
+    defined_by_correct: list[bool] = []
+    depends_on_jaccards: list[float] = []
+
+    for i, j in pairs:
+        ntype = predicted[i].get("type")
+        if ntype == "Concept":
+            pred_def = predicted[i].get("defined_by")
+            gold_def = gold[j].get("defined_by")
+            if pred_def is None and gold_def is None:
+                defined_by_correct.append(True)
+            elif pred_def is None or gold_def is None:
+                defined_by_correct.append(False)
+            else:
+                pred_target_in_gold = _resolve_through_pairs(
+                    predicted, gold, pred_def, pairs, source_is_predicted=True,
+                )
+                gold_target_idx = next(
+                    (gi for gi, n in enumerate(gold) if n.get("id") == gold_def),
+                    None,
+                )
+                defined_by_correct.append(pred_target_in_gold == gold_target_idx
+                                          and pred_target_in_gold is not None)
+        if ntype == "Formula":
+            pred_deps = predicted[i].get("depends_on", []) or []
+            gold_deps = set(gold[j].get("depends_on", []) or [])
+            pred_deps_remapped: set = set()
+            for d in pred_deps:
+                t_idx = _resolve_through_pairs(
+                    predicted, gold, d, pairs, source_is_predicted=True,
+                )
+                if t_idx is not None:
+                    gid = gold[t_idx].get("id")
+                    if gid is not None:
+                        pred_deps_remapped.add(gid)
+            depends_on_jaccards.append(_jaccard(pred_deps_remapped, gold_deps))
+
     return {
         "matched": len(pairs),
         "fp": len(predicted) - len(pairs),
         "fn": len(gold) - len(pairs),
         "per_type": per_type,
         "grounding_jaccards": g_jaccards,
+        "matched_pairs": [[i, j] for i, j in pairs],
+        "edge_pair_correct": {"defined_by": defined_by_correct},
+        "edge_pair_jaccard": {"depends_on": depends_on_jaccards},
     }
 
 

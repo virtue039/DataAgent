@@ -177,5 +177,32 @@ class Aggregate(unittest.TestCase):
         self.assertEqual(0.0, s["overall"]["f1"])
 
 
+class EdgePairInfo(unittest.TestCase):
+    """F3b: compare_items surfaces matched_pairs + per-pair edge correctness."""
+
+    def test_matched_pairs_surfaced_in_result(self):
+        gold = [{"type": "Concept", "name": "x"}]
+        predicted = [{"type": "Concept", "name": "X"}]
+        out = compare_items(predicted, gold)
+        # matched_pairs is a list of [pred_idx, gold_idx]
+        self.assertEqual([[0, 0]], out["matched_pairs"])
+
+    def test_defined_by_edge_correct_when_targets_align(self):
+        # gold:      c1 (Concept) defined_by r1; r1 (Rule, condition 'x < 5')
+        # predicted: c1 (Concept) defined_by r1; r1 (Rule, condition 'x < 5')
+        # match() makes the pairs (Concept-Concept) and (Rule-Rule); the
+        # defined_by edge target (r1) resolves to the matched Rule on both sides.
+        gold = [
+            {"id": "c1", "type": "Concept", "name": "low", "defined_by": "r1"},
+            {"id": "r1", "type": "Rule", "name": "low rule", "condition": "x < 5",
+             "grounding": [{"term": "x", "table": "t", "column": "x"}]},
+        ]
+        predicted = [dict(g) for g in gold]
+        out = compare_items(predicted, gold)
+        # edge_pair_correct.defined_by is a list of bools, one per matched
+        # Concept pair. Both have matching defined_by targets => [True].
+        self.assertEqual([True], out["edge_pair_correct"]["defined_by"])
+
+
 if __name__ == "__main__":
     unittest.main()
