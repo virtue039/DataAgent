@@ -354,6 +354,9 @@ def run_batch(
         _checkpoint()
         output_path.parent.mkdir(parents=True, exist_ok=True)
         _atomic_write_partial(output_path, payload)
+        # Clean exit: the partial is byte-identical to the final, remove it.
+        # (It stays in place on CatastrophicFailure since we raised earlier.)
+        partial_path.unlink(missing_ok=True)
     finally:
         sidecar_fh.close()
 

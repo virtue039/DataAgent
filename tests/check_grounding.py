@@ -12,7 +12,9 @@ from bird_eval.ddl import parse_ddl
 
 
 def main() -> int:
-    d = json.load(open('annotation/to_annotate.json'))
+    # Default to the dev gold; allow an alternative annotation file via argv.
+    path = sys.argv[1] if len(sys.argv) > 1 else 'annotation/to_annotate.json'
+    d = json.load(open(path))
     dbs = {db: parse_ddl(ddl) for db, ddl in d['schemas'].items()}
     errors: list[str] = []
     checks = 0
@@ -41,7 +43,7 @@ def main() -> int:
                     errors.append(f"qid={it['question_id']} {node['id']} grounding term={g.get('term')!r}: table {t!r} unknown")
                 elif c not in tabs[t]:
                     errors.append(f"qid={it['question_id']} {node['id']} grounding term={g.get('term')!r}: {t}.{c!r} unknown")
-    print(f"Checked {checks} (table, column) bindings across 40 items")
+    print(f"Checked {checks} (table, column) bindings across {len(d['items'])} items")
     if errors:
         print(f"\n{len(errors)} mismatch(es):")
         for e in errors:
