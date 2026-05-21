@@ -31,10 +31,11 @@ from bird_eval.llm import LLMClient
 
 def _process(item: dict, ddl: str, llm: LLMClient) -> dict:
     try:
-        predicted = extract(item["raw_evidence"], item["db_id"], ddl, llm)
+        predicted, sanitize_stats = extract(item["raw_evidence"], item["db_id"], ddl, llm)
         err = None
     except Exception as e:  # noqa: BLE001 - surface any extraction error per-item
         predicted = []
+        sanitize_stats = {"dropped_groundings": 0, "dropped_nodes": 0}
         err = f"extract failed: {e}"
     cmp = compare_items(predicted, item["nodes"])
     return {
@@ -43,6 +44,7 @@ def _process(item: dict, ddl: str, llm: LLMClient) -> dict:
         "predicted": predicted,
         "gold": item["nodes"],
         "compare": cmp,
+        "sanitize_stats": sanitize_stats,
         "error": err,
     }
 

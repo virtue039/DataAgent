@@ -215,26 +215,26 @@ _VALIDATION_FAIL_RESPONSE = """```json
 class ExtractOrchestrator(unittest.TestCase):
     def test_happy_path_returns_nodes_single_call(self):
         llm = _MockLLMClient([_VALID_RESPONSE])
-        nodes = extract("ev", "db_x", _DDL, llm)
+        nodes, _stats = extract("ev", "db_x", _DDL, llm)
         self.assertEqual(1, len(llm.calls), "should not have invoked repair")
         self.assertEqual(1, len(nodes))
         self.assertEqual("ColumnAlias", nodes[0]["type"])
 
     def test_repair_invoked_on_parse_failure(self):
         llm = _MockLLMClient([_MALFORMED_JSON_RESPONSE, _VALID_RESPONSE])
-        nodes = extract("ev", "db_x", _DDL, llm)
+        nodes, _stats = extract("ev", "db_x", _DDL, llm)
         self.assertEqual(2, len(llm.calls), "expected exactly one repair shot")
         self.assertEqual(1, len(nodes))
 
     def test_repair_invoked_on_validation_failure(self):
         llm = _MockLLMClient([_VALIDATION_FAIL_RESPONSE, _VALID_RESPONSE])
-        nodes = extract("ev", "db_x", _DDL, llm)
+        nodes, _stats = extract("ev", "db_x", _DDL, llm)
         self.assertEqual(2, len(llm.calls))
         self.assertEqual(1, len(nodes))
 
     def test_both_calls_fail_returns_empty_list(self):
         llm = _MockLLMClient([_MALFORMED_JSON_RESPONSE, _MALFORMED_JSON_RESPONSE])
-        nodes = extract("ev", "db_x", _DDL, llm)
+        nodes, _stats = extract("ev", "db_x", _DDL, llm)
         self.assertEqual(2, len(llm.calls), "must cap at 2 LLM calls")
         self.assertEqual([], nodes)
 

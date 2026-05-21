@@ -215,11 +215,16 @@ def _build_repair_message(original_user: str, bad_output: str, errors: list[str]
     )
 
 
-def extract(evidence: str, db_id: str, ddl: str, llm) -> list[dict]:
+def extract(evidence: str, db_id: str, ddl: str, llm) -> tuple[list[dict], dict]:
     """Run the extractor on one evidence string. See spec §3 for semantics.
 
-    Returns a list of v2 typed-node dicts (possibly empty). At most 2 LLM
-    calls are made per invocation (initial + one repair).
+    Returns (nodes, sanitize_stats):
+    - nodes: list of v2 typed-node dicts (possibly empty).
+    - sanitize_stats: {"dropped_groundings": int, "dropped_nodes": int} from
+      _sanitize_grounding; both zero when no LLM call was made or when
+      everything was already valid.
+
+    At most 2 LLM calls are made per invocation (initial + one repair).
     """
     system = _build_system_prompt()
     user = _build_user_message(evidence, db_id, ddl)
@@ -231,7 +236,7 @@ def extract(evidence: str, db_id: str, ddl: str, llm) -> list[dict]:
         raw = llm.complete(system, repair_user)
         nodes, errors = _try_parse_and_validate(raw)
         if errors:
-            return []
+            return [], {"dropped_groundings": 0, "dropped_nodes": 0}
 
-    cleaned, _ = _sanitize_grounding(nodes, ddl)
-    return cleaned
+    cleaned, stats = _sanitize_grounding(nodes, ddl)
+    return cleaned, stats
