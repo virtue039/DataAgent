@@ -38,6 +38,14 @@ class SystemPrompt(unittest.TestCase):
         self.assertIn("value", p)
         self.assertIn("grounding", p)
 
+    def test_includes_when_to_emit_concept_section(self):
+        p = _build_system_prompt()
+        # F2 fix: the prompt must explicitly tell the LLM to emit a Concept
+        # node alongside the Formula/Rule that operationalizes it.
+        self.assertIn("When to emit a Concept", p)
+        self.assertIn("operationalized", p.lower())
+        self.assertIn("defined_by", p)
+
 
 class UserMessage(unittest.TestCase):
     def test_includes_all_five_schema_examples(self):
