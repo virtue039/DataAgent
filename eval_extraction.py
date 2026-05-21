@@ -90,19 +90,31 @@ def main() -> None:
         for rec in tqdm(pool.map(worker, items), total=len(items), desc="extract"):
             results.append(rec)
 
+    # Pipe per-item sanitize_stats into each compare dict so aggregate() can count them.
+    for r in results:
+        r["compare"]["sanitize_stats"] = r.get("sanitize_stats", {
+            "dropped_groundings": 0, "dropped_nodes": 0,
+        })
     summary = aggregate([r["compare"] for r in results])
-    summary["n_items_returning_empty"] = sum(1 for r in results if not r["predicted"])
+    summary["n_dropped_items"] = sum(1 for r in results if not r["predicted"])
     summary["n_errors"] = sum(1 for r in results if r["error"])
     summary["model"] = cfg.model
 
     print("\n" + "=" * 50)
     print(f"  Model           : {summary['model']}")
     print(f"  Items           : {summary['n_items']}")
-    print(f"  Empty predicted : {summary['n_items_returning_empty']}")
+    print(f"  Dropped items   : {summary['n_dropped_items']}")
     print(f"  Errors          : {summary['n_errors']}")
     o = summary["overall"]
     print(f"  Overall  P/R/F1 : {o['precision']:.3f} / {o['recall']:.3f} / {o['f1']:.3f}")
     print(f"  Grounding acc.  : {summary['grounding_acc_on_matched']:.3f}")
+    e = summary["edge_acc"]
+    print(f"  Edge accuracy   : defined_by={e['defined_by']:.3f}  depends_on={e['depends_on']:.3f}")
+    s = summary["sanitization"]
+    print(
+        f"  Sanitization    : items w/ dropped groundings={s['items_with_dropped_groundings']}  "
+        f"items w/ fully-dropped nodes={s['items_with_fully_dropped_nodes']}"
+    )
     for t, m in summary["by_type"].items():
         print(
             f"    - {t:<12}: F1 {m['f1']:.3f}  "
