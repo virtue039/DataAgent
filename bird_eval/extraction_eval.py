@@ -41,7 +41,17 @@ def match(a: dict, b: dict) -> bool:
             and _norm(a.get("value")) == _norm(b.get("value"))
         )
     if t == "Formula":
-        return _norm(a.get("name")) == _norm(b.get("name"))
+        # 'expression' is the deterministic SQL/math expression; prefer it
+        # as primary match key. 'name' is a paraphrase-prone label and is
+        # used only when 'expression' is missing on either side.
+        # Same pattern as Rule (commit 79c7e3d, condition-primary).
+        ea = _norm(a.get("expression"))
+        eb = _norm(b.get("expression"))
+        if ea and eb:
+            return ea == eb
+        ka = _norm(a.get("name"))
+        kb = _norm(b.get("name"))
+        return bool(ka) and ka == kb
     if t == "Rule":
         # 'condition' is a deterministic SQL expression; prefer it as primary
         # match key. 'name' is a paraphrase-prone label and is used only when

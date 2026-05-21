@@ -52,12 +52,12 @@ class NodeMatch(unittest.TestCase):
         b = {"type": "ValueMap", "name": "y", "table": "t", "column": "c", "value": "v"}
         self.assertTrue(match(a, b))
 
-    def test_formula_matches_by_name_only(self):
-        # Two formulas with same name but different expressions and grounding
-        # still match (grounding fidelity is scored separately).
-        a = {"type": "Formula", "name": "X rate", "expression": "a/b",
+    def test_formula_matches_by_name_when_no_expression(self):
+        # Two formulas with same name but no expressions still match
+        # (name is used as fallback when expression is missing).
+        a = {"type": "Formula", "name": "X rate",
              "grounding": [{"term": "a", "table": "t", "column": "ca"}]}
-        b = {"type": "Formula", "name": "x rate", "expression": "c/d",
+        b = {"type": "Formula", "name": "x rate",
              "grounding": [{"term": "c", "table": "u", "column": "cc"}]}
         self.assertTrue(match(a, b))
 
@@ -79,6 +79,26 @@ class NodeMatch(unittest.TestCase):
         # Same name, different conditions => no match.
         a = {"type": "Rule", "name": "low rank", "condition": "rank < 100"}
         b = {"type": "Rule", "name": "low rank", "condition": "rank < 200"}
+        self.assertFalse(match(a, b))
+
+    def test_formula_matches_by_expression_when_name_paraphrases(self):
+        # Both Formulas have different paraphrased names but identical expressions;
+        # the deterministic expression wins (mirrors the Rule fix in commit 79c7e3d).
+        a = {"type": "Formula", "name": "Eligible free rate for K-12",
+             "expression": "`Free Meal Count (K-12)` / `Enrollment (K-12)`",
+             "grounding": [{"term": "Free Meal Count (K-12)",
+                            "table": "frpm", "column": "Free Meal Count (K-12)"}]}
+        b = {"type": "Formula", "name": "K-12 free meal eligibility ratio",
+             "expression": "`Free Meal Count (K-12)` / `Enrollment (K-12)`",
+             "grounding": [{"term": "Free Meal Count (K-12)",
+                            "table": "frpm", "column": "Free Meal Count (K-12)"}]}
+        self.assertTrue(match(a, b))
+
+    def test_formula_no_match_when_expression_differs(self):
+        a = {"type": "Formula", "name": "same name", "expression": "a / b",
+             "grounding": [{"term": "a", "table": "t", "column": "a"}]}
+        b = {"type": "Formula", "name": "same name", "expression": "c / d",
+             "grounding": [{"term": "c", "table": "t", "column": "c"}]}
         self.assertFalse(match(a, b))
 
 
