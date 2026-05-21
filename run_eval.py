@@ -42,6 +42,12 @@ def main() -> None:
     parser.add_argument("--embedding-model", default=None,
                         help="sentence-transformers model for retrieval (default: $EMBEDDING_MODEL).")
     parser.add_argument("--output-dir", default="results")
+    parser.add_argument(
+        "--question-ids-from", default=None,
+        help="JSON file with an 'items' list of {question_id: int, ...} "
+             "objects (e.g. annotation/to_annotate.json). Filter dev set to "
+             "those qids only. Applied BEFORE --limit.",
+    )
     parser.add_argument("--dry-run", action="store_true",
                         help="Build prompts (and run retrieval) but make no LLM API calls.")
     args = parser.parse_args()
@@ -56,6 +62,7 @@ def main() -> None:
         kb_path=args.kb_path,
         retrieval_top_k=args.retrieval_top_k,
         output_dir=args.output_dir,
+        question_ids_from=args.question_ids_from,
         dry_run=args.dry_run,
     )
     if args.model:

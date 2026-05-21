@@ -31,6 +31,7 @@ class Config:
     schema_sample_rows: int = 0
     sql_timeout: float = 30.0
     output_dir: Path = Path("results")
+    question_ids_from: Path | None = None
     dry_run: bool = False
 
     # Flat-RAG retrieval setting
@@ -57,5 +58,7 @@ class Config:
         self.output_dir = Path(self.output_dir).expanduser()
         self.kb_path = Path(self.kb_path).expanduser()
         self.joint_graphs_dir = Path(self.joint_graphs_dir).expanduser()
+        if self.question_ids_from is not None:
+            self.question_ids_from = Path(self.question_ids_from).expanduser()
         if self.setting not in SETTINGS:
             raise ValueError(f"setting must be one of {SETTINGS}, got {self.setting!r}")

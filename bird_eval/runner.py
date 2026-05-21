@@ -60,7 +60,23 @@ def _process(example: BirdExample, *, config: Config, db_root: Path, provider, l
 
 def run(config: Config) -> dict:
     dev_json, db_root = locate_bird_files(config.bird_dir)
-    examples = load_examples(dev_json, config.limit)
+    # Load all examples; apply qid filter (if any), then the --limit slice.
+    examples = load_examples(dev_json, limit=None)
+    if config.question_ids_from is not None:
+        target = json.loads(Path(config.question_ids_from).read_text(encoding="utf-8"))
+        if isinstance(target, dict):
+            items = target.get("items")
+            if items is None:
+                raise ValueError(
+                    f"--question-ids-from JSON dict must contain an 'items' list; "
+                    f"got keys: {sorted(target.keys())}"
+                )
+        else:
+            items = target  # assume bare list of {question_id: ...} dicts
+        qid_set = {int(it["question_id"]) for it in items}
+        examples = [e for e in examples if e.question_id in qid_set]
+    if config.limit is not None:
+        examples = examples[: config.limit]
     provider = make_evidence_provider(config)
     llm = None if config.dry_run else LLMClient(config)
 
@@ -136,6 +152,7 @@ def _save(results: list[dict], summary: dict, config: Config) -> Path:
             "temperature": config.temperature,
             "retrieval_top_k": config.retrieval_top_k,
             "embedding_model": config.embedding_model,
+            "question_ids_from": str(config.question_ids_from) if config.question_ids_from else None,
             "dry_run": config.dry_run,
         },
         "results": results,
