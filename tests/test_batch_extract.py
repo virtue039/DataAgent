@@ -140,3 +140,115 @@ class AtomicWritePartial(unittest.TestCase):
             # Content round-trips.
             loaded = json.loads(target.read_text(encoding="utf-8"))
             self.assertEqual(loaded, payload)
+
+
+class _MockLLM:
+    """Replays a queue of (string or Exception) responses for llm.complete()."""
+
+    def __init__(self, responses: list):
+        self._responses = list(responses)
+        self.calls = 0
+
+    def complete(self, system: str, user: str) -> str:
+        idx = self.calls
+        self.calls += 1
+        if idx >= len(self._responses):
+            raise IndexError(f"_MockLLM out of responses at call {idx}")
+        r = self._responses[idx]
+        if isinstance(r, Exception):
+            raise r
+        return r
+
+
+_DDL_SHOP = (
+    "CREATE TABLE products (\n"
+    "  product_id INTEGER PRIMARY KEY,\n"
+    "  price REAL,\n"
+    "  status TEXT\n"
+    ");"
+)
+
+
+class ExtractOne(unittest.TestCase):
+    def test_happy_path_returns_item_dict_and_no_sidecar(self):
+        from bird_eval.batch_extract import _extract_one
+
+        # LLM returns a valid v2 node referencing a real column.
+        llm_response = """```json
+[{"id": "f1", "type": "Formula", "name": "avg price",
+  "expression": "AVG(price)",
+  "grounding": [{"term": "price", "table": "products", "column": "price"}]}]
+```"""
+        llm = _MockLLM([llm_response])
+
+        item = {
+            "question_id": 42, "db_id": "shop", "difficulty": "simple",
+            "question": "What is the average price?",
+            "raw_evidence": "average price refers to AVG(price)",
+        }
+        schemas = {"shop": _DDL_SHOP}
+
+        result_item, sidecar = _extract_one(item, schemas, llm)
+
+        self.assertIsNotNone(result_item)
+        self.assertIsNone(sidecar)
+        self.assertEqual(result_item["question_id"], 42)
+        self.assertEqual(result_item["db_id"], "shop")
+        self.assertEqual(result_item["raw_evidence"],
+                         "average price refers to AVG(price)")
+        self.assertEqual(len(result_item["nodes"]), 1)
+        self.assertEqual(result_item["nodes"][0]["type"], "Formula")
+
+    def test_grounding_hallucination_returns_sidecar_entry(self):
+        from bird_eval.batch_extract import _extract_one
+
+        # LLM returns a Formula whose grounding column doesn't exist in the
+        # schema; sanitize_grounding will drop the Formula entirely.
+        llm_response = """```json
+[{"id": "f1", "type": "Formula", "name": "bad",
+  "expression": "AVG(nope)",
+  "grounding": [{"term": "nope", "table": "products", "column": "nope"}]}]
+```"""
+        llm = _MockLLM([llm_response])
+
+        item = {
+            "question_id": 99, "db_id": "shop", "difficulty": "simple",
+            "question": "...",
+            "raw_evidence": "bad refers to AVG(nope)",
+        }
+        schemas = {"shop": _DDL_SHOP}
+
+        result_item, sidecar = _extract_one(item, schemas, llm)
+
+        self.assertIsNone(result_item)
+        self.assertIsNotNone(sidecar)
+        self.assertEqual(sidecar["question_id"], 99)
+        self.assertEqual(sidecar["db_id"], "shop")
+        self.assertEqual(sidecar["stage"], "grounding_hallucinated")
+        self.assertIn("error", sidecar)
+
+    def test_missing_db_id_returns_schema_missing_sidecar(self):
+        from bird_eval.batch_extract import (
+            STAGE_SCHEMA_MISSING,
+            _extract_one,
+        )
+
+        # The item references a db_id that is NOT in the schemas dict;
+        # extract_one should bail before calling the LLM.
+        llm = _MockLLM([])  # would IndexError if called
+        item = {
+            "question_id": 7, "db_id": "absent_db", "difficulty": "simple",
+            "question": "?", "raw_evidence": "some evidence",
+        }
+        schemas = {"shop": _DDL_SHOP}
+
+        result_item, sidecar = _extract_one(item, schemas, llm)
+
+        self.assertIsNone(result_item)
+        self.assertIsNotNone(sidecar)
+        self.assertEqual(sidecar["question_id"], 7)
+        self.assertEqual(sidecar["db_id"], "absent_db")
+        self.assertEqual(sidecar["stage"], STAGE_SCHEMA_MISSING)
+        self.assertIn("absent_db", sidecar["error"])
+        # Confirm the LLM was never called.
+        self.assertEqual(llm.calls, 0)

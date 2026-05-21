@@ -10,6 +10,9 @@ Stage labels for the sidecar JSONL:
                            (Combines parse_error + validator_error; see
                            the plan's "Implementation note on stage labels".)
 - grounding_hallucinated : sanitize_grounding dropped at least one node.
+- schema_missing         : the item's db_id had no entry in the schemas dict
+                           (typically a misconfigured --train-dbs-root or a
+                           stale --schemas-cache).
 
 See docs/superpowers/specs/2026-05-21-p2-bird-train-extraction-design.md.
 """
@@ -19,12 +22,15 @@ import json
 import logging
 from pathlib import Path
 
+from .extraction import extract
+
 _LOG = logging.getLogger(__name__)
 
 # Stage labels (sidecar JSONL "stage" field).
 STAGE_LLM_ERROR = "llm_error"
 STAGE_EXTRACT_FAILED = "extract_failed"
 STAGE_GROUNDING_HALLUCINATED = "grounding_hallucinated"
+STAGE_SCHEMA_MISSING = "schema_missing"
 
 
 class CatastrophicFailure(RuntimeError):
@@ -42,16 +48,16 @@ def _classify_failure(
 
     Priority order:
     1. If exc is not None  -> STAGE_LLM_ERROR.
-    2. Else nodes is empty -> STAGE_EXTRACT_FAILED.
-    3. Else dropped_nodes>0 -> STAGE_GROUNDING_HALLUCINATED.
+    2. Else dropped_nodes>0 -> STAGE_GROUNDING_HALLUCINATED (even if nodes=[]).
+    3. Else nodes is empty -> STAGE_EXTRACT_FAILED.
     4. Else                -> None (success).
     """
     if exc is not None:
         return STAGE_LLM_ERROR
-    if not nodes:
-        return STAGE_EXTRACT_FAILED
     if (stats or {}).get("dropped_nodes", 0) > 0:
         return STAGE_GROUNDING_HALLUCINATED
+    if not nodes:
+        return STAGE_EXTRACT_FAILED
     return None
 
 
@@ -128,3 +134,75 @@ def _atomic_write_partial(target_path: Path, payload: dict) -> None:
         json.dumps(payload, ensure_ascii=False), encoding="utf-8"
     )
     tmp_path.replace(target_path)  # rename is atomic on POSIX
+
+
+def _extract_one(
+    item: dict,
+    schemas: dict[str, str],
+    llm,
+) -> tuple[dict | None, dict | None]:
+    """Run the full per-item P2 pipeline.
+
+    Returns exactly one of:
+    - (extracted_item, None): pipeline kept the item.
+    - (None, sidecar_entry): pipeline dropped the item, sidecar has reason.
+
+    Pipeline:
+    1. Call extract(evidence, db_id, ddl, llm). Catches any exception as
+       STAGE_LLM_ERROR.
+    2. Classify via _classify_failure(exc, nodes, stats).
+    3. On success, assemble the v2 item record (preserving the source
+       question_id / db_id / difficulty / question / raw_evidence / notes
+       fields, replacing 'nodes' with the cleaned list).
+    """
+    qid = item.get("question_id")
+    db_id = item.get("db_id")
+    evidence = item.get("raw_evidence") or item.get("evidence") or ""
+
+    if db_id not in schemas:
+        return None, {
+            "question_id": qid, "db_id": db_id,
+            "stage": STAGE_SCHEMA_MISSING,
+            "error": f"db_id {db_id!r} not in schemas",
+            "raw_response_chars": 0,
+        }
+    ddl = schemas[db_id]
+
+    exc: Exception | None = None
+    nodes: list[dict] = []
+    stats: dict[str, int] = {"dropped_groundings": 0, "dropped_nodes": 0}
+    try:
+        nodes, stats = extract(evidence, db_id, ddl, llm)
+    except Exception as e:  # noqa: BLE001 - we classify, not re-raise
+        exc = e
+
+    stage = _classify_failure(exc, nodes, stats)
+    if stage is None:
+        # Success: assemble the kept v2 record.
+        return {
+            "question_id": qid,
+            "db_id": db_id,
+            "difficulty": item.get("difficulty"),
+            "question": item.get("question"),
+            "raw_evidence": evidence,
+            "nodes": nodes,
+            "notes": item.get("notes", ""),
+        }, None
+
+    # Drop: build a sidecar entry.
+    if stage == STAGE_LLM_ERROR:
+        err_msg = f"{type(exc).__name__}: {exc}"
+    elif stage == STAGE_EXTRACT_FAILED:
+        err_msg = "extract() returned [] after repair shot (parse or v2 validation failed)"
+    else:  # STAGE_GROUNDING_HALLUCINATED
+        err_msg = (
+            f"sanitize_grounding dropped {stats.get('dropped_nodes', 0)} node(s) and "
+            f"{stats.get('dropped_groundings', 0)} grounding entries"
+        )
+    return None, {
+        "question_id": qid,
+        "db_id": db_id,
+        "stage": stage,
+        "error": err_msg,
+        "raw_response_chars": 0,
+    }
