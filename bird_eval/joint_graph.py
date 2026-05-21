@@ -11,8 +11,10 @@ contract and the rationale behind each component (dedup, sanitize, indexes).
 """
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass
+from pathlib import Path
 
 from .ddl import parse_ddl_typed, parse_fks
 from .extraction import _sanitize_grounding
@@ -368,3 +370,87 @@ def build_graph(
             provenance=prov_clean,
         )
     return out
+
+
+_SERIALIZATION_VERSION = "p1b.1"
+
+
+def _col_key(table: str, column: str) -> str:
+    """JSON-safe key for (table, column) used in by_column.
+
+    Uses '.' as the separator -- adequate for SQLite identifiers that don't
+    contain '.'. See spec §6 R4. If a table name DOES contain a '.', we raise
+    a clear error rather than silently corrupt the index.
+    """
+    if "." in table:
+        raise ValueError(f"table name contains a dot, not supported: {table!r}")
+    return f"{table}.{column}"
+
+
+def _col_key_inv(key: str) -> tuple[str, str]:
+    table, _, column = key.partition(".")
+    return (table, column)
+
+
+def dump_graph(graph: JointGraph, path) -> None:
+    """Serialize a JointGraph to a JSON file. Idempotent / overwrites the file."""
+    payload = {
+        "version": _SERIALIZATION_VERSION,
+        "db_id": graph.db_id,
+        "nodes": graph.nodes,
+        "columns": [
+            {"table": t, "column": c, "type": v.get("type")}
+            for (t, c), v in graph.columns.items()
+        ],
+        "fk_edges": [
+            {"from": {"table": e[0][0], "column": e[0][1]},
+             "to":   {"table": e[1][0], "column": e[1][1]}}
+            for e in graph.fk_edges
+        ],
+        "indexes": {
+            "by_type": {t: list(ids) for t, ids in graph.by_type.items()},
+            "by_column": {_col_key(t, c): list(ids) for (t, c), ids in graph.by_column.items()},
+            "by_name_token": {k: list(ids) for k, ids in graph.by_name_token.items()},
+        },
+        "provenance": {
+            nid: [list(p) for p in entries]
+            for nid, entries in graph.provenance.items()
+        },
+    }
+    Path(path).write_text(json.dumps(payload, ensure_ascii=False, indent=2),
+                          encoding="utf-8")
+
+
+def load_graph(path) -> JointGraph:
+    """Inverse of dump_graph: reconstruct a JointGraph from a JSON file."""
+    d = json.loads(Path(path).read_text(encoding="utf-8"))
+    if d.get("version") != _SERIALIZATION_VERSION:
+        raise ValueError(
+            f"unsupported joint-graph serialization version {d.get('version')!r}; "
+            f"expected {_SERIALIZATION_VERSION!r}"
+        )
+    columns: dict[tuple[str, str], dict] = {
+        (c["table"], c["column"]): {"type": c.get("type")} for c in d["columns"]
+    }
+    fk_edges = tuple(
+        ((e["from"]["table"], e["from"]["column"]),
+         (e["to"]["table"], e["to"]["column"]))
+        for e in d["fk_edges"]
+    )
+    by_type = {t: tuple(ids) for t, ids in d["indexes"]["by_type"].items()}
+    by_column = {_col_key_inv(k): tuple(ids) for k, ids in d["indexes"]["by_column"].items()}
+    by_name_token = {k: tuple(ids) for k, ids in d["indexes"]["by_name_token"].items()}
+    provenance = {
+        nid: tuple(tuple(p) for p in entries)
+        for nid, entries in d["provenance"].items()
+    }
+    return JointGraph(
+        db_id=d["db_id"],
+        nodes=d["nodes"],
+        columns=columns,
+        fk_edges=fk_edges,
+        by_type=by_type,
+        by_column=by_column,
+        by_name_token=by_name_token,
+        provenance=provenance,
+    )

@@ -20,6 +20,8 @@ from bird_eval.joint_graph import (  # noqa: E402
     _drop_hallucinated,
     _build_indexes,
     build_graph,
+    dump_graph,
+    load_graph,
 )
 
 
@@ -307,6 +309,61 @@ class BuildGraph(unittest.TestCase):
     def test_missing_schema_raises_key_error(self):
         with self.assertRaises(KeyError):
             build_graph([_ITEM_RULE_A], {})
+
+
+import json as _json
+import tempfile as _tempfile
+
+
+class Serialization(unittest.TestCase):
+    def _build(self):
+        return build_graph([_ITEM_RULE_A], {"shop": _SHOP_DDL})["shop"]
+
+    def test_round_trip_identity(self):
+        g = self._build()
+        with _tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            path = f.name
+        try:
+            dump_graph(g, path)
+            loaded = load_graph(path)
+            self.assertEqual(g, loaded)
+        finally:
+            os.unlink(path)
+
+    def test_dump_writes_expected_top_level_keys(self):
+        g = self._build()
+        with _tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            path = f.name
+        try:
+            dump_graph(g, path)
+            with open(path) as fh:
+                d = _json.load(fh)
+            for k in ("version", "db_id", "nodes", "columns", "fk_edges", "indexes", "provenance"):
+                self.assertIn(k, d, f"missing top-level key {k!r}")
+            self.assertEqual("p1b.1", d["version"])
+            for sub in ("by_type", "by_column", "by_name_token"):
+                self.assertIn(sub, d["indexes"])
+        finally:
+            os.unlink(path)
+
+    def test_load_restores_tuple_types(self):
+        g = self._build()
+        with _tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            path = f.name
+        try:
+            dump_graph(g, path)
+            loaded = load_graph(path)
+            # fk_edges is declared tuple[tuple[(str,str),(str,str)],...]
+            self.assertIsInstance(loaded.fk_edges, tuple)
+            for edge in loaded.fk_edges:
+                self.assertIsInstance(edge, tuple)
+                self.assertIsInstance(edge[0], tuple)
+                self.assertIsInstance(edge[1], tuple)
+            # by_type values are tuples
+            for v in loaded.by_type.values():
+                self.assertIsInstance(v, tuple)
+        finally:
+            os.unlink(path)
 
 
 if __name__ == "__main__":
