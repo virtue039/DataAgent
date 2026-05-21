@@ -304,7 +304,10 @@ def _build_indexes(
             t, c = g.get("table"), g.get("column")
             if t and c:
                 column_refs.append((t, c))
-        for ref in column_refs:
+        # deduplicate column_refs first so the same nid doesn't appear
+        # multiple times for one (table, column) when a node has multiple
+        # grounding entries for the same column (e.g. bare + value-bearing).
+        for ref in dict.fromkeys(column_refs):
             by_column_lst.setdefault(ref, []).append(nid)
 
         # by_name_token: tokenize name + condition (Rule) + expression (Formula).

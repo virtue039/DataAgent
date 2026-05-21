@@ -264,6 +264,23 @@ class Indexes(unittest.TestCase):
         # are. So 'stock' should NOT be in the index because it lives in the 'value' field.
         self.assertNotIn("stock", idx["by_name_token"])
 
+    def test_by_column_no_duplicate_ids_when_grounding_has_multiple_entries_per_column(self):
+        # A Formula with two grounding entries pointing at the same column
+        # (one bare, one value-bearing) must produce ONE entry in by_column,
+        # not two -- otherwise downstream consumers double-count.
+        nodes = {
+            "f1": {"id": "f1", "type": "Formula", "name": "x", "expression": "x",
+                   "grounding": [
+                       {"term": "label", "table": "t", "column": "c"},
+                       {"term": "+", "table": "t", "column": "c", "value": "+"},
+                   ]},
+        }
+        idx = _build_indexes(nodes)
+        ids = idx["by_column"][("t", "c")]
+        self.assertEqual(len(ids), len(set(ids)),
+                         f"duplicate ids in by_column: {ids}")
+        self.assertEqual(("f1",), ids)
+
 
 _SHOP_DDL = _TEST_DDL  # alias for clarity in build tests
 _OTHER_DDL = """
