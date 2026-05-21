@@ -16,3 +16,4 @@ data/
 
 # Evaluation outputs
 results/
+annotation/train_extracted.partial.json
