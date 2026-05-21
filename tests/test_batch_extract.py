@@ -119,3 +119,24 @@ class LoadCheckpoint(unittest.TestCase):
 
             self.assertEqual(payload, {"meta": {}, "schemas": {}, "items": []})
             self.assertEqual(skip, set())
+
+
+class AtomicWritePartial(unittest.TestCase):
+    def test_writes_json_via_tmp_then_renames(self):
+        from bird_eval.batch_extract import _atomic_write_partial
+
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "x.partial.json"
+            payload = {"meta": {"k": "v"}, "schemas": {"s": "ddl"}, "items": [
+                {"question_id": 1, "db_id": "s", "nodes": []},
+            ]}
+
+            _atomic_write_partial(target, payload)
+
+            # Target exists; tmp sibling does NOT (must have been renamed away).
+            self.assertTrue(target.exists())
+            self.assertFalse((Path(tmp) / "x.partial.json.tmp").exists())
+
+            # Content round-trips.
+            loaded = json.loads(target.read_text(encoding="utf-8"))
+            self.assertEqual(loaded, payload)

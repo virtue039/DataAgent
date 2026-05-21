@@ -112,3 +112,19 @@ def _load_checkpoint(
                          sidecar_path, e)
 
     return payload, skip
+
+
+def _atomic_write_partial(target_path: Path, payload: dict) -> None:
+    """Write payload to `<target>.tmp` then atomically rename to `target`.
+
+    Atomicity matters because we re-write on every checkpoint; a crash
+    mid-write must NEVER leave a corrupted partial.json that breaks
+    resume logic on the next run.
+    """
+    target_path = Path(target_path)
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = target_path.with_suffix(target_path.suffix + ".tmp")
+    tmp_path.write_text(
+        json.dumps(payload, ensure_ascii=False), encoding="utf-8"
+    )
+    tmp_path.replace(target_path)  # rename is atomic on POSIX
