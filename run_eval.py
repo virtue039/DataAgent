@@ -9,6 +9,7 @@ Setup & run on the Linux server -- see the scripts/ directory:
 Direct usage:
   python run_eval.py --bird-dir data/bird_dev --setting oracle    --limit 50
   python run_eval.py --bird-dir data/bird_dev --setting retrieval --limit 50
+  python run_eval.py --bird-dir data/bird_dev --setting joint     --question-ids-from annotation/to_annotate.json
 """
 from __future__ import annotations
 
@@ -20,12 +21,13 @@ from bird_eval.runner import run
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Run BIRD dev evaluation across the no-knowledge / retrieval / oracle settings."
+        description="Run BIRD dev evaluation across the none / retrieval / oracle / joint settings."
     )
     parser.add_argument("--bird-dir", required=True,
                         help="Path to the extracted BIRD dev folder.")
     parser.add_argument("--setting", choices=SETTINGS, default="oracle",
-                        help="none = no knowledge, oracle = gold evidence, retrieval = flat-RAG.")
+                        help="none = no knowledge, oracle = gold evidence, "
+                             "retrieval = flat-RAG, joint = P1d joint subgraph retrieval.")
     parser.add_argument("--limit", type=int, default=None,
                         help="Evaluate only the first N questions (omit = full dev set).")
     parser.add_argument("--concurrency", type=int, default=4,

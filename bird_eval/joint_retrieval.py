@@ -258,7 +258,8 @@ def _render_subgraph_as_evidence(nodes: list[dict]) -> str:
                     else:
                         dep_names.append(d)
                 dep_tail = f" [depends on: {', '.join(dep_names)}]"
-            lines.append(f"- Formula: {name} = {expr}{tail}{dep_tail}")
+            expr_part = f" = {expr}" if expr else ""
+            lines.append(f"- Formula: {name}{expr_part}{tail}{dep_tail}")
         else:
             lines.append(f"- {ntype or '?'}: {name}")
 

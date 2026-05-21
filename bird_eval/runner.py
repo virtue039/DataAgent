@@ -152,6 +152,7 @@ def _save(results: list[dict], summary: dict, config: Config) -> Path:
             "temperature": config.temperature,
             "retrieval_top_k": config.retrieval_top_k,
             "embedding_model": config.embedding_model,
+            "joint_graphs_dir": str(config.joint_graphs_dir),
             "question_ids_from": str(config.question_ids_from) if config.question_ids_from else None,
             "dry_run": config.dry_run,
         },
