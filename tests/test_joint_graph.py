@@ -355,9 +355,9 @@ class Serialization(unittest.TestCase):
             dump_graph(g, path)
             with open(path) as fh:
                 d = _json.load(fh)
-            for k in ("version", "db_id", "nodes", "columns", "fk_edges", "indexes", "provenance"):
+            for k in ("version", "db_id", "match_signature_hash", "nodes", "columns", "fk_edges", "indexes", "provenance"):
                 self.assertIn(k, d, f"missing top-level key {k!r}")
-            self.assertEqual("p1b.1", d["version"])
+            self.assertEqual("p1b.2", d["version"])
             for sub in ("by_type", "by_column", "by_name_token"):
                 self.assertIn(sub, d["indexes"])
         finally:
@@ -379,6 +379,42 @@ class Serialization(unittest.TestCase):
             # by_type values are tuples
             for v in loaded.by_type.values():
                 self.assertIsInstance(v, tuple)
+        finally:
+            os.unlink(path)
+
+    def test_round_trip_preserves_match_signature_hash(self):
+        g = self._build()
+        self.assertNotEqual("", g.match_signature_hash,
+                            "build_graph should set the hash")
+        with _tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            path = f.name
+        try:
+            dump_graph(g, path)
+            loaded = load_graph(path)
+            self.assertEqual(g.match_signature_hash, loaded.match_signature_hash)
+        finally:
+            os.unlink(path)
+
+    def test_load_warns_on_match_signature_hash_mismatch(self):
+        import warnings as _warnings
+        g = self._build()
+        with _tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            path = f.name
+        try:
+            dump_graph(g, path)
+            # Patch the file to have a different hash to simulate staleness.
+            with open(path) as fh:
+                d = _json.load(fh)
+            d["match_signature_hash"] = "deadbeef" * 8  # 64-char fake
+            with open(path, "w") as fh:
+                _json.dump(d, fh)
+            with _warnings.catch_warnings(record=True) as w:
+                _warnings.simplefilter("always")
+                load_graph(path)
+                self.assertTrue(
+                    any("Stale joint graph" in str(warn.message) for warn in w),
+                    f"expected staleness warning, got {[str(x.message) for x in w]}",
+                )
         finally:
             os.unlink(path)
 

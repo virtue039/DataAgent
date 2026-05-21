@@ -11,8 +11,11 @@ contract and the rationale behind each component (dedup, sanitize, indexes).
 """
 from __future__ import annotations
 
+import hashlib
+import inspect
 import json
 import re
+import warnings
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -55,6 +58,11 @@ class JointGraph:
 
     # Provenance: each canonical id -> the (question_id, original_id) it absorbed.
     provenance: dict[str, tuple[tuple[int, str], ...]]
+
+    # F2 (P1b polish, 2026-05-21): sha256 of extraction_eval.match()'s source.
+    # Default "" lets in-memory test construction continue without a hash;
+    # build_graph() populates it; load_graph() warns on mismatch.
+    match_signature_hash: str = ""
 
 
 def _collect_nodes(items: list[dict]) -> list[tuple[int, dict]]:
@@ -336,11 +344,18 @@ def build_graph(
     Returns {db_id: JointGraph}.
 
     Raises KeyError when items reference a db_id that's not in schemas.
+
+    Staleness note: each produced graph records a `match_signature_hash`
+    (SHA-256 of bird_eval.extraction_eval.match()'s source). `load_graph`
+    warns on mismatch. If you change `match()`, regenerate all graphs via
+    `build_joint_graph.py`.
     """
     # group items by db_id
     per_db: dict[str, list[dict]] = {}
     for it in items:
         per_db.setdefault(it["db_id"], []).append(it)
+
+    match_hash = _match_signature_hash()
 
     out: dict[str, JointGraph] = {}
     for db_id, db_items in per_db.items():
@@ -371,11 +386,22 @@ def build_graph(
             by_column=idx["by_column"],
             by_name_token=idx["by_name_token"],
             provenance=prov_clean,
+            match_signature_hash=match_hash,
         )
     return out
 
 
-_SERIALIZATION_VERSION = "p1b.1"
+_SERIALIZATION_VERSION = "p1b.2"
+
+
+def _match_signature_hash() -> str:
+    """SHA-256 of the current `match()` source. Used to detect stale
+    JointGraph files built against an older match() semantics.
+
+    See docs/superpowers/specs/2026-05-21-p1b-polish-design.md §3.2.
+    """
+    source = inspect.getsource(_node_match)
+    return hashlib.sha256(source.encode("utf-8")).hexdigest()
 
 
 def _col_key(table: str, column: str) -> str:
@@ -400,6 +426,7 @@ def dump_graph(graph: JointGraph, path) -> None:
     payload = {
         "version": _SERIALIZATION_VERSION,
         "db_id": graph.db_id,
+        "match_signature_hash": graph.match_signature_hash,
         "nodes": graph.nodes,
         "columns": [
             {"table": t, "column": c, "type": v.get("type")}
@@ -427,11 +454,34 @@ def dump_graph(graph: JointGraph, path) -> None:
 def load_graph(path) -> JointGraph:
     """Inverse of dump_graph: reconstruct a JointGraph from a JSON file."""
     d = json.loads(Path(path).read_text(encoding="utf-8"))
-    if d.get("version") != _SERIALIZATION_VERSION:
+
+    file_version = d.get("version")
+    if file_version not in (_SERIALIZATION_VERSION, "p1b.1"):
         raise ValueError(
-            f"unsupported joint-graph serialization version {d.get('version')!r}; "
-            f"expected {_SERIALIZATION_VERSION!r}"
+            f"unsupported joint-graph serialization version {file_version!r}; "
+            f"expected {_SERIALIZATION_VERSION!r} or 'p1b.1'"
         )
+
+    # Hash check: only present in p1b.2+ files.
+    saved_hash = d.get("match_signature_hash", "")
+    current_hash = _match_signature_hash()
+    if file_version == "p1b.1":
+        warnings.warn(
+            f"Loading legacy p1b.1 graph from {path}; no match_signature_hash "
+            f"recorded. Rebuild recommended if extraction_eval.match() has changed.",
+            UserWarning,
+            stacklevel=2,
+        )
+    elif saved_hash and saved_hash != current_hash:
+        warnings.warn(
+            f"Stale joint graph at {path}: match_signature_hash mismatch "
+            f"(file={saved_hash[:12]}..., current={current_hash[:12]}...). "
+            f"Dedup equivalence classes may reflect outdated semantics. "
+            f"Rebuild recommended via build_joint_graph.py.",
+            UserWarning,
+            stacklevel=2,
+        )
+
     columns: dict[tuple[str, str], dict] = {
         (c["table"], c["column"]): {"type": c.get("type")} for c in d["columns"]
     }
@@ -456,4 +506,5 @@ def load_graph(path) -> JointGraph:
         by_column=by_column,
         by_name_token=by_name_token,
         provenance=provenance,
+        match_signature_hash=saved_hash,
     )
