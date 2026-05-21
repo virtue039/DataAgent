@@ -176,6 +176,36 @@ class Aggregate(unittest.TestCase):
         self.assertEqual(0.0, s["overall"]["precision"])
         self.assertEqual(0.0, s["overall"]["f1"])
 
+    def test_aggregate_emits_edge_acc_and_sanitization_blocks(self):
+        per_item = [{
+            "matched": 1, "fp": 0, "fn": 0,
+            "per_type": {"Concept": {"tp": 1, "fp": 0, "fn": 0}},
+            "grounding_jaccards": [],
+            "matched_pairs": [[0, 0]],
+            "edge_pair_correct": {"defined_by": [True]},
+            "edge_pair_jaccard": {"depends_on": [0.5, 1.0]},
+            "sanitize_stats": {"dropped_groundings": 2, "dropped_nodes": 1},
+        }, {
+            "matched": 0, "fp": 1, "fn": 1,
+            "per_type": {"Concept": {"tp": 0, "fp": 1, "fn": 1}},
+            "grounding_jaccards": [],
+            "matched_pairs": [],
+            "edge_pair_correct": {"defined_by": []},
+            "edge_pair_jaccard": {"depends_on": []},
+            "sanitize_stats": {"dropped_groundings": 0, "dropped_nodes": 0},
+        }]
+        s = aggregate(per_item)
+        # edge_acc block
+        self.assertIn("edge_acc", s)
+        # defined_by accuracy = mean of all bools across per_item (only 1 entry: True)
+        self.assertAlmostEqual(1.0, s["edge_acc"]["defined_by"], places=4)
+        # depends_on accuracy = mean of jaccards = (0.5 + 1.0) / 2 = 0.75
+        self.assertAlmostEqual(0.75, s["edge_acc"]["depends_on"], places=4)
+        # sanitization block
+        self.assertIn("sanitization", s)
+        self.assertEqual(1, s["sanitization"]["items_with_dropped_groundings"])
+        self.assertEqual(1, s["sanitization"]["items_with_fully_dropped_nodes"])
+
 
 class EdgePairInfo(unittest.TestCase):
     """F3b: compare_items surfaces matched_pairs + per-pair edge correctness."""

@@ -241,6 +241,14 @@ def aggregate(per_item: list[dict]) -> dict:
     by_type_acc = _empty_type_counts()
     all_jaccards: list[float] = []
 
+    # F3c: edge accuracy across all items
+    all_defined_by_correct: list[bool] = []
+    all_depends_on_jaccards: list[float] = []
+
+    # F3c: sanitization counters
+    items_with_dropped_g = 0
+    items_with_fully_dropped_n = 0
+
     for row in per_item:
         total_tp += row["matched"]
         total_fp += row["fp"]
@@ -251,9 +259,28 @@ def aggregate(per_item: list[dict]) -> dict:
             by_type_acc[t]["fn"] += counts["fn"]
         all_jaccards.extend(row.get("grounding_jaccards", []))
 
+        # F3c: collect edge info
+        edge_correct = row.get("edge_pair_correct", {})
+        all_defined_by_correct.extend(edge_correct.get("defined_by", []))
+        edge_jaccard = row.get("edge_pair_jaccard", {})
+        all_depends_on_jaccards.extend(edge_jaccard.get("depends_on", []))
+
+        # F3c: count items with sanitization side-effects
+        s_stats = row.get("sanitize_stats", {})
+        if s_stats.get("dropped_groundings", 0) > 0:
+            items_with_dropped_g += 1
+        if s_stats.get("dropped_nodes", 0) > 0:
+            items_with_fully_dropped_n += 1
+
     overall = _f1(total_tp, total_fp, total_fn)
     by_type = {t: _f1(c["tp"], c["fp"], c["fn"]) for t, c in by_type_acc.items()}
     grounding_acc = (sum(all_jaccards) / len(all_jaccards)) if all_jaccards else 0.0
+
+    # F3c: edge accuracy aggregates
+    defined_by_acc = (sum(all_defined_by_correct) / len(all_defined_by_correct)
+                     if all_defined_by_correct else 0.0)
+    depends_on_acc = (sum(all_depends_on_jaccards) / len(all_depends_on_jaccards)
+                     if all_depends_on_jaccards else 0.0)
 
     return {
         "n_items": len(per_item),
@@ -262,4 +289,12 @@ def aggregate(per_item: list[dict]) -> dict:
                     "f1": overall["f1"]},
         "by_type": by_type,
         "grounding_acc_on_matched": grounding_acc,
+        "edge_acc": {
+            "defined_by": defined_by_acc,
+            "depends_on": depends_on_acc,
+        },
+        "sanitization": {
+            "items_with_dropped_groundings": items_with_dropped_g,
+            "items_with_fully_dropped_nodes": items_with_fully_dropped_n,
+        },
     }
