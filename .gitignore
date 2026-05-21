@@ -11,6 +11,8 @@ venv/
 # BIRD dataset (large — download separately, do not commit)
 data/
 *.sqlite
+# ...but commit small deterministic build artifacts
+!data/train_schemas.json
 
 # Evaluation outputs
 results/
