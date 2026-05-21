@@ -14,8 +14,13 @@ from __future__ import annotations
 _TYPES = ("Concept", "Formula", "ValueMap", "Rule", "ColumnAlias")
 
 
-def _norm(s: str | None) -> str:
-    return (s or "").strip().casefold()
+def _norm(s) -> str:
+    """Normalize a comparison key. Tolerates None and non-string values
+    (e.g. an int ValueMap.value emitted by the LLM); coerces to str first.
+    """
+    if s is None:
+        return ""
+    return str(s).strip().casefold()
 
 
 def _bindings_signature(node: dict) -> frozenset:
