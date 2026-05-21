@@ -130,6 +130,61 @@ class JointRetriever:
             np.save(cache_path, arr)
         return arr
 
+    def retrieve(self, query: str, db_id: str, top_k: int = 5) -> list[dict]:
+        """Return the joint-retrieval subgraph for one (query, db_id) pair.
+
+        Pipeline:
+        - Encode the query.
+        - Cosine top-k against this db's pre-encoded L1 nodes.
+        - BFS expand each seed via defined_by + depends_on edges. The walk
+          is unbounded but cycle-safe (seen-set blocks revisits), and the
+          joint graph's edge structure naturally bounds subgraph size to a
+          handful of nodes per query in practice.
+        - Return v2 node dicts in deterministic order (seeds first by
+          similarity, expansion targets next in BFS order).
+
+        Returns [] if top_k <= 0 or db_id is not in the KB.
+        """
+        if db_id not in self._graphs:
+            return []
+        ids = self._node_ids.get(db_id, [])
+        if not ids:
+            return []
+        if top_k <= 0:
+            return []
+
+        with self._encode_lock:
+            q = self._model.encode([query], normalize_embeddings=True)[0]
+        q = np.asarray(q, dtype=np.float32)
+
+        scores = self._embeddings[db_id] @ q  # cosine since normalized
+        k = min(top_k, len(ids))
+        top_idx = np.argpartition(-scores, k - 1)[:k]
+        top_idx = top_idx[np.argsort(-scores[top_idx])]
+
+        seed_ids = [ids[i] for i in top_idx]
+
+        graph = self._graphs[db_id]
+        # BFS expansion via defined_by + depends_on.
+        ordered: list[str] = []
+        seen: set[str] = set()
+        work = list(seed_ids)
+        while work:
+            nid = work.pop(0)
+            if nid in seen or nid not in graph.nodes:
+                continue
+            seen.add(nid)
+            ordered.append(nid)
+            node = graph.nodes[nid]
+            targ = node.get("defined_by")
+            if targ and targ not in seen:
+                work.append(targ)
+            for dep in node.get("depends_on", []) or []:
+                if dep not in seen:
+                    work.append(dep)
+
+        return [graph.nodes[nid] for nid in ordered]
+
     def _cache_path(self, db_id: str, n: int, sig_hash: str, cache_dir: Path | None) -> Path | None:
         if cache_dir is None:
             return None

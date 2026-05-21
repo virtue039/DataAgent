@@ -98,3 +98,33 @@ class RetrieverConstruction(unittest.TestCase):
             arr = r._embeddings["shop"]
             self.assertEqual(arr.shape[0], 5)  # 5 L1 nodes
             self.assertEqual(arr.shape[1], 768)  # MPNet dim
+
+
+class RetrieveQuery(unittest.TestCase):
+    def _retriever(self, cache: Path) -> JointRetriever:
+        g = _make_simple_graph()
+        return JointRetriever(
+            {g.db_id: g},
+            embedding_model_name="all-mpnet-base-v2",
+            cache_dir=cache,
+        )
+
+    def test_retrieve_returns_seed_nodes_for_matching_query(self):
+        with tempfile.TemporaryDirectory() as cache:
+            r = self._retriever(Path(cache))
+            # The query "cheap product" should match the Concept "cheap product"
+            # at the top, and expansion should pull in the Rule "r1" via defined_by.
+            nodes = r.retrieve("cheap product", "shop", top_k=1)
+            types = {n.get("type") for n in nodes}
+            self.assertIn("Concept", types,
+                          f"Concept c1 should be a seed; got {types}")
+            self.assertIn("Rule", types,
+                          f"Rule r1 should be pulled in via defined_by; got {types}")
+            ids = [n.get("id") for n in nodes]
+            self.assertEqual(ids[0], "c1",
+                             f"Concept c1 should be first (seed); got {ids}")
+
+    def test_retrieve_returns_empty_for_unknown_db(self):
+        with tempfile.TemporaryDirectory() as cache:
+            r = self._retriever(Path(cache))
+            self.assertEqual([], r.retrieve("anything", "no_such_db", top_k=3))
