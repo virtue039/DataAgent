@@ -252,3 +252,44 @@ class ExtractOne(unittest.TestCase):
         self.assertIn("absent_db", sidecar["error"])
         # Confirm the LLM was never called.
         self.assertEqual(llm.calls, 0)
+
+
+class RunBatch(unittest.TestCase):
+    def test_consecutive_llm_errors_raises_catastrophic(self):
+        from bird_eval.batch_extract import (
+            CatastrophicFailure, run_batch,
+        )
+
+        # 5 items, the LLM raises every single time. With threshold=3 we
+        # expect CatastrophicFailure to surface before all 5 are tried.
+        items = [
+            {"question_id": i, "db_id": "shop", "difficulty": "simple",
+             "question": f"q{i}", "raw_evidence": f"e{i}"}
+            for i in range(5)
+        ]
+        schemas = {"shop": _DDL_SHOP}
+        llm = _MockLLM([RuntimeError("endpoint down")] * 10)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "out.json"
+            sidecar = Path(tmp) / "out.dropped.jsonl"
+
+            with self.assertRaises(CatastrophicFailure):
+                run_batch(
+                    items=items, schemas=schemas, llm=llm,
+                    output_path=output, sidecar_path=sidecar,
+                    concurrency=1, checkpoint_every=2,
+                    consecutive_llm_error_threshold=3,
+                )
+
+            # Checkpoint exists with the partial state up to the breakpoint.
+            self.assertTrue(output.with_suffix(".partial.json").exists())
+            # Sidecar contains the items that errored before the abort.
+            self.assertTrue(sidecar.exists())
+            lines = [
+                json.loads(line)
+                for line in sidecar.read_text().splitlines()
+                if line.strip()
+            ]
+            self.assertGreaterEqual(len(lines), 3)
+            self.assertTrue(all(line["stage"] == "llm_error" for line in lines))

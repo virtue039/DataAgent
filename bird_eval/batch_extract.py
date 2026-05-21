@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import logging
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from .extraction import extract
@@ -120,6 +121,30 @@ def _load_checkpoint(
     return payload, skip
 
 
+def _count_dropped_by_stage(sidecar_path: Path) -> dict[str, int]:
+    """Tally existing sidecar entries by stage label. Returns empty dict if
+    the file doesn't exist or is unreadable.
+    """
+    counts: dict[str, int] = {}
+    if not Path(sidecar_path).exists():
+        return counts
+    try:
+        for line in Path(sidecar_path).read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                entry = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            stage = entry.get("stage")
+            if isinstance(stage, str):
+                counts[stage] = counts.get(stage, 0) + 1
+    except OSError:
+        pass
+    return counts
+
+
 def _atomic_write_partial(target_path: Path, payload: dict) -> None:
     """Write payload to `<target>.tmp` then atomically rename to `target`.
 
@@ -206,3 +231,130 @@ def _extract_one(
         "error": err_msg,
         "raw_response_chars": 0,
     }
+
+
+def run_batch(
+    items: list[dict],
+    schemas: dict[str, str],
+    llm,
+    output_path: Path,
+    sidecar_path: Path,
+    *,
+    meta: dict | None = None,
+    concurrency: int = 8,
+    checkpoint_every: int = 200,
+    consecutive_llm_error_threshold: int = 100,
+    progress_cb=None,
+) -> dict:
+    """Top-level batch driver.
+
+    Loads any existing partial+sidecar and skips already-processed qids.
+    Then dispatches the remaining items across a ThreadPool, classifies
+    each outcome via _extract_one, and writes an atomic partial checkpoint
+    every `checkpoint_every` items.
+
+    Aborts (raises CatastrophicFailure) if `consecutive_llm_error_threshold`
+    items in a row hit STAGE_LLM_ERROR, in arrival order from
+    `as_completed`. With `concurrency > 1` futures complete in non-
+    deterministic order, so a sporadic success in the middle of a wave of
+    LLM errors resets the counter. The guard is designed to catch a fully-
+    dead endpoint (where ALL inflight items error); intermittent failures
+    are NOT meant to abort the batch -- they pile up in the sidecar.
+    The checkpoint and sidecar are intact on abort, so a follow-up run
+    resumes from where the abort happened.
+
+    On clean completion, writes the final output to `output_path` (the
+    `.partial.json` sibling stays in place and the user can delete it).
+
+    Returns a stats dict:
+      {"kept": int, "dropped_llm_error": int, "dropped_extract_failed": int,
+       "dropped_grounding_hallucinated": int, "dropped_schema_missing": int,
+       "total": int}
+    """
+    output_path = Path(output_path)
+    sidecar_path = Path(sidecar_path)
+    partial_path = output_path.with_suffix(".partial.json")
+
+    payload, skip = _load_checkpoint(partial_path, sidecar_path)
+    if meta is not None:
+        payload["meta"] = {**payload.get("meta", {}), **meta}
+    payload["schemas"] = schemas  # always write current schemas dict
+
+    accumulated_items: list[dict] = list(payload.get("items", []))
+    todo = [it for it in items if it.get("question_id") not in skip]
+
+    # Initialize drop counters from prior sidecar entries so the final
+    # stats reflect all-time totals (consistent with how `kept` is
+    # initialized from the prior partial's items[]).
+    prior_dropped = _count_dropped_by_stage(sidecar_path)
+    stats = {
+        "kept": len(accumulated_items),
+        "dropped_llm_error": prior_dropped.get(STAGE_LLM_ERROR, 0),
+        "dropped_extract_failed": prior_dropped.get(STAGE_EXTRACT_FAILED, 0),
+        "dropped_grounding_hallucinated": prior_dropped.get(STAGE_GROUNDING_HALLUCINATED, 0),
+        "dropped_schema_missing": prior_dropped.get(STAGE_SCHEMA_MISSING, 0),
+        "total": len(items),
+    }
+    consecutive_llm_errors = 0
+    completed_since_checkpoint = 0
+
+    # Open sidecar in append mode so we don't clobber prior drops.
+    sidecar_path.parent.mkdir(parents=True, exist_ok=True)
+    sidecar_fh = sidecar_path.open("a", encoding="utf-8")
+
+    def _checkpoint() -> None:
+        payload["items"] = accumulated_items
+        _atomic_write_partial(partial_path, payload)
+
+    try:
+        with ThreadPoolExecutor(max_workers=concurrency) as pool:
+            futs = {
+                pool.submit(_extract_one, it, schemas, llm): it
+                for it in todo
+            }
+            for fut in as_completed(futs):
+                kept_item, sidecar_entry = fut.result()
+                if kept_item is not None:
+                    accumulated_items.append(kept_item)
+                    stats["kept"] += 1
+                    consecutive_llm_errors = 0
+                else:
+                    stage = sidecar_entry["stage"]
+                    sidecar_fh.write(json.dumps(sidecar_entry, ensure_ascii=False))
+                    sidecar_fh.write("\n")
+                    sidecar_fh.flush()
+                    if stage == STAGE_LLM_ERROR:
+                        stats["dropped_llm_error"] += 1
+                        consecutive_llm_errors += 1
+                    elif stage == STAGE_EXTRACT_FAILED:
+                        stats["dropped_extract_failed"] += 1
+                        consecutive_llm_errors = 0
+                    elif stage == STAGE_GROUNDING_HALLUCINATED:
+                        stats["dropped_grounding_hallucinated"] += 1
+                        consecutive_llm_errors = 0
+                    elif stage == STAGE_SCHEMA_MISSING:
+                        stats["dropped_schema_missing"] += 1
+                        consecutive_llm_errors = 0
+
+                completed_since_checkpoint += 1
+                if completed_since_checkpoint >= checkpoint_every:
+                    _checkpoint()
+                    completed_since_checkpoint = 0
+
+                if progress_cb is not None:
+                    progress_cb()
+
+                if consecutive_llm_errors >= consecutive_llm_error_threshold:
+                    _checkpoint()
+                    raise CatastrophicFailure(
+                        f"{consecutive_llm_errors} consecutive LLM errors; aborting batch."
+                    )
+
+        # Final checkpoint, then promote to the final output path atomically.
+        _checkpoint()
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        _atomic_write_partial(output_path, payload)
+    finally:
+        sidecar_fh.close()
+
+    return stats
