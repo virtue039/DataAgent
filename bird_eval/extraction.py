@@ -126,7 +126,7 @@ def _parse_json_fence(raw: str) -> list[dict]:
     raise ValueError("No JSON array found in LLM response")
 
 
-def _sanitize_grounding(nodes: list[dict], ddl: str) -> tuple[list[dict], dict[str, int]]:
+def sanitize_grounding(nodes: list[dict], ddl: str) -> tuple[list[dict], dict[str, int]]:
     """Drop (table, column) references that don't appear in the DDL.
 
     Per-node behavior:
@@ -240,5 +240,10 @@ def extract(evidence: str, db_id: str, ddl: str, llm) -> tuple[list[dict], dict]
         if errors:
             return [], {"dropped_groundings": 0, "dropped_nodes": 0}
 
-    cleaned, stats = _sanitize_grounding(nodes, ddl)
+    cleaned, stats = sanitize_grounding(nodes, ddl)
     return cleaned, stats
+
+
+# Back-compat alias retained for one cycle. Migrate to `sanitize_grounding`;
+# this private-named binding will be removed in a future polish pass.
+_sanitize_grounding = sanitize_grounding

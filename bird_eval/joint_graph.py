@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .ddl import parse_ddl_typed, parse_fks
-from .extraction import _sanitize_grounding
+from .extraction import sanitize_grounding
 from .extraction_eval import match as _node_match
 
 
@@ -234,7 +234,7 @@ def _drop_hallucinated(nodes: dict[str, dict], ddl: str) -> dict[str, dict]:
     """
     # P1a's sanitizer takes a list and returns (list, stats); we route via list.
     as_list = list(nodes.values())
-    cleaned_list, _stats = _sanitize_grounding(as_list, ddl)
+    cleaned_list, _stats = sanitize_grounding(as_list, ddl)
     surviving_ids = {n["id"] for n in cleaned_list}
     cleaned: dict[str, dict] = {n["id"]: n for n in cleaned_list}
 

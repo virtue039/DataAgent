@@ -16,7 +16,7 @@ from bird_eval.extraction import (  # noqa: E402
     _build_system_prompt,
     _build_user_message,
     _parse_json_fence,
-    _sanitize_grounding,
+    sanitize_grounding,
     extract,
 )
 
@@ -107,7 +107,7 @@ class GroundingSanitizer(unittest.TestCase):
             {"id": "f1", "type": "Formula", "name": "x", "expression": "x",
              "grounding": [{"term": "real_col", "table": "good_table", "column": "real_col"}]}
         ]
-        out, stats = _sanitize_grounding(nodes, _DDL)
+        out, stats = sanitize_grounding(nodes, _DDL)
         self.assertEqual(nodes, out)
         self.assertEqual(stats, {"dropped_groundings": 0, "dropped_nodes": 0})
 
@@ -118,7 +118,7 @@ class GroundingSanitizer(unittest.TestCase):
                  {"term": "real_col", "table": "good_table", "column": "real_col"},
                  {"term": "fake", "table": "good_table", "column": "no_such_col"}]}
         ]
-        out, stats = _sanitize_grounding(nodes, _DDL)
+        out, stats = sanitize_grounding(nodes, _DDL)
         self.assertEqual(1, len(out))
         self.assertEqual(1, len(out[0]["grounding"]))
         self.assertEqual("real_col", out[0]["grounding"][0]["column"])
@@ -132,7 +132,7 @@ class GroundingSanitizer(unittest.TestCase):
                  {"term": "fake1", "table": "good_table", "column": "no_such_col"},
                  {"term": "fake2", "table": "missing_table", "column": "x"}]}
         ]
-        out, stats = _sanitize_grounding(nodes, _DDL)
+        out, stats = sanitize_grounding(nodes, _DDL)
         self.assertEqual([], out)
         self.assertEqual(1, stats["dropped_nodes"])
 
@@ -143,7 +143,7 @@ class GroundingSanitizer(unittest.TestCase):
                  {"table": "good_table", "column": "real_col"},
                  {"table": "missing_table", "column": "x"}]}
         ]
-        out, stats = _sanitize_grounding(nodes, _DDL)
+        out, stats = sanitize_grounding(nodes, _DDL)
         self.assertEqual(1, len(out))
         self.assertEqual(
             [{"table": "good_table", "column": "real_col"}], out[0]["bindings"]
@@ -155,7 +155,7 @@ class GroundingSanitizer(unittest.TestCase):
             {"id": "v1", "type": "ValueMap", "name": "x",
              "table": "good_table", "column": "no_such_col", "value": "v"}
         ]
-        out, stats = _sanitize_grounding(nodes, _DDL)
+        out, stats = sanitize_grounding(nodes, _DDL)
         self.assertEqual([], out)
         self.assertEqual(1, stats["dropped_nodes"])
 
@@ -171,7 +171,7 @@ class GroundingSanitizer(unittest.TestCase):
         total_dropped_n = 0
         for it in data["items"]:
             ddl = data["schemas"][it["db_id"]]
-            _, stats = _sanitize_grounding(it["nodes"], ddl)
+            _, stats = sanitize_grounding(it["nodes"], ddl)
             total_dropped_g += stats["dropped_groundings"]
             total_dropped_n += stats["dropped_nodes"]
         self.assertEqual(0, total_dropped_g, "sanitizer dropped a valid grounding")
