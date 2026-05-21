@@ -50,6 +50,11 @@ def main() -> None:
              "objects (e.g. annotation/to_annotate.json). Filter dev set to "
              "those qids only. Applied BEFORE --limit.",
     )
+    parser.add_argument(
+        "--joint-graphs-dir", default=None,
+        help="Directory of per-db joint graphs (*.json). "
+             "Default: Config.joint_graphs_dir (data/joint_graphs).",
+    )
     parser.add_argument("--dry-run", action="store_true",
                         help="Build prompts (and run retrieval) but make no LLM API calls.")
     args = parser.parse_args()
@@ -71,6 +76,8 @@ def main() -> None:
         kwargs["model"] = args.model
     if args.embedding_model:
         kwargs["embedding_model"] = args.embedding_model
+    if args.joint_graphs_dir:
+        kwargs["joint_graphs_dir"] = args.joint_graphs_dir
     run(Config(**kwargs))
 
 
