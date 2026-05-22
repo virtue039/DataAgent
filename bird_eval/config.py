@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SETTINGS = ("none", "oracle", "retrieval", "joint")
+SETTINGS = ("none", "oracle", "retrieval", "joint", "joint_no_bfs")
 
 
 @dataclass
@@ -21,6 +21,10 @@ class Config:
       oracle    -> BIRD's per-question gold evidence (upper bound)
       retrieval -> flat-RAG over a KB built from BIRD train evidence (KAT-SQL-style baseline)
       joint     -> P1d joint subgraph retrieval over per-DB JointGraphs
+      joint_no_bfs -> P5-D2 ablation: same as `joint` but skips the BFS
+                      expansion, returning only top-k seed nodes (isolates
+                      D1 typed-node representation from D2 edge expansion;
+                      see docs/superpowers/specs/2026-05-22-p5-d2-no-bfs-ablation-design.md)
     """
 
     bird_dir: Path

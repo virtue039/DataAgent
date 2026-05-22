@@ -62,13 +62,18 @@ class JointRetrievalEvidence:
 
     name = "joint"
 
-    def __init__(self, retriever, top_k: int) -> None:
+    def __init__(self, retriever, top_k: int, expand: bool = True) -> None:
         self._retriever = retriever
         self._top_k = top_k
+        # P5-D2: when False, the retriever skips BFS and returns seeds only.
+        # See docs/superpowers/specs/2026-05-22-p5-d2-no-bfs-ablation-design.md.
+        self._expand = expand
 
     def get(self, example: BirdExample) -> str:
         from .joint_retrieval import _render_subgraph_as_evidence
-        nodes = self._retriever.retrieve(example.question, example.db_id, self._top_k)
+        nodes = self._retriever.retrieve(
+            example.question, example.db_id, self._top_k, expand=self._expand
+        )
         return _render_subgraph_as_evidence(nodes)
 
 
@@ -86,7 +91,7 @@ def make_evidence_provider(config: "Config"):
         entries = load_kb(config.kb_path)
         retriever = EmbeddingRetriever(entries, config.embedding_model, kb_path=config.kb_path)
         return RetrievalEvidence(retriever, config.retrieval_top_k)
-    if config.setting == "joint":
+    if config.setting in ("joint", "joint_no_bfs"):
         # imported lazily so the none/oracle/retrieval paths need no ML/graph deps
         from .joint_graph import JointGraph, load_graph
         from .joint_retrieval import JointRetriever
@@ -110,5 +115,11 @@ def make_evidence_provider(config: "Config"):
         retriever = JointRetriever(
             graphs, config.embedding_model, cache_dir=config.joint_graphs_dir
         )
-        return JointRetrievalEvidence(retriever, config.retrieval_top_k)
+        # P5-D2 ablation: joint_no_bfs reuses the same retriever but skips
+        # the BFS expansion to isolate the D1 (typed-node representation)
+        # contribution from D2 (BFS edge expansion).
+        expand = config.setting == "joint"
+        return JointRetrievalEvidence(
+            retriever, config.retrieval_top_k, expand=expand
+        )
     raise ValueError(f"Unknown setting: {config.setting}")

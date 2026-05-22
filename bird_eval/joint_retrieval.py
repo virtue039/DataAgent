@@ -130,18 +130,24 @@ class JointRetriever:
             np.save(cache_path, arr)
         return arr
 
-    def retrieve(self, query: str, db_id: str, top_k: int = 5) -> list[dict]:
+    def retrieve(self, query: str, db_id: str, top_k: int = 5,
+                 expand: bool = True) -> list[dict]:
         """Return the joint-retrieval subgraph for one (query, db_id) pair.
 
         Pipeline:
         - Encode the query.
         - Cosine top-k against this db's pre-encoded L1 nodes.
-        - BFS expand each seed via defined_by + depends_on edges. The walk
-          is unbounded but cycle-safe (seen-set blocks revisits), and the
-          joint graph's edge structure naturally bounds subgraph size to a
-          handful of nodes per query in practice.
+        - If `expand=True` (default): BFS expand each seed via defined_by +
+          depends_on edges. The walk is unbounded but cycle-safe (seen-set
+          blocks revisits), and the joint graph's edge structure naturally
+          bounds subgraph size to a handful of nodes per query in practice.
+        - If `expand=False` (P5-D2 ablation, see
+          docs/superpowers/specs/2026-05-22-p5-d2-no-bfs-ablation-design.md):
+          skip the BFS entirely and return only the top-k seed nodes by
+          similarity. Used to isolate D1 (typed-node representation) from
+          D2 (BFS edge expansion) contribution to the +5.93pp joint gain.
         - Return v2 node dicts in deterministic order (seeds first by
-          similarity, expansion targets next in BFS order).
+          similarity, expansion targets next in BFS order when expand=True).
 
         Returns [] if top_k <= 0 or db_id is not in the KB.
         """
@@ -163,8 +169,12 @@ class JointRetriever:
         top_idx = top_idx[np.argsort(-scores[top_idx])]
 
         seed_ids = [ids[i] for i in top_idx]
-
         graph = self._graphs[db_id]
+
+        if not expand:
+            # No-BFS ablation: seeds only, no defined_by / depends_on closure.
+            return [graph.nodes[nid] for nid in seed_ids if nid in graph.nodes]
+
         # BFS expansion via defined_by + depends_on.
         ordered: list[str] = []
         seen: set[str] = set()

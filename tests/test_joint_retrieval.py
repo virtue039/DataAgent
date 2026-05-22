@@ -130,6 +130,101 @@ class RetrieveQuery(unittest.TestCase):
             self.assertEqual([], r.retrieve("anything", "no_such_db", top_k=3))
 
 
+class RetrieveExpandFlag(unittest.TestCase):
+    """P5-D2 ablation: `expand=False` must skip BFS and return seeds only.
+
+    See docs/superpowers/specs/2026-05-22-p5-d2-no-bfs-ablation-design.md.
+    """
+
+    def _retriever(self, cache: Path) -> JointRetriever:
+        g = _make_simple_graph()
+        return JointRetriever(
+            {g.db_id: g},
+            embedding_model_name="all-mpnet-base-v2",
+            cache_dir=cache,
+        )
+
+    def test_retrieve_expand_true_matches_existing_behaviour(self):
+        # Default behaviour: BFS expansion pulls Rule r1 in via Concept c1's
+        # defined_by edge. Same assertions as the original
+        # test_retrieve_returns_seed_nodes_for_matching_query but with the
+        # explicit `expand=True` kwarg.
+        with tempfile.TemporaryDirectory() as cache:
+            r = self._retriever(Path(cache))
+            nodes = r.retrieve("cheap product", "shop", top_k=1, expand=True)
+            types = {n.get("type") for n in nodes}
+            self.assertIn("Concept", types,
+                          f"Concept c1 should be a seed; got {types}")
+            self.assertIn("Rule", types,
+                          f"Rule r1 should be pulled in via defined_by; got {types}")
+            ids = [n.get("id") for n in nodes]
+            self.assertEqual(ids[0], "c1",
+                             f"Concept c1 should be first (seed); got {ids}")
+
+    def test_retrieve_expand_false_returns_seeds_only(self):
+        # With expand=False, BFS is skipped. top_k=1 -> exactly one seed
+        # node (the Concept "cheap product"), and r1 must NOT be included
+        # even though c1.defined_by points at it.
+        with tempfile.TemporaryDirectory() as cache:
+            r = self._retriever(Path(cache))
+            nodes = r.retrieve("cheap product", "shop", top_k=1, expand=False)
+            ids = [n.get("id") for n in nodes]
+            self.assertEqual(ids, ["c1"],
+                             f"expand=False should return only the seed; got {ids}")
+            self.assertNotIn("r1", ids,
+                             "expand=False must skip defined_by expansion")
+
+    def test_retrieve_expand_false_top_k_2(self):
+        # top_k=2, expand=False: exactly two seeds by similarity, no edge
+        # targets. Concretely, the seeds must not include r1 (the defined_by
+        # target of c1) unless r1 itself is one of the top-2 by similarity
+        # to the query. We pick a query that puts c1 + v1 (in-stock products)
+        # on top; r1's score for this query is lower, so r1 should NOT
+        # appear in the result.
+        with tempfile.TemporaryDirectory() as cache:
+            r = self._retriever(Path(cache))
+            nodes = r.retrieve("cheap product", "shop", top_k=2, expand=False)
+            ids = [n.get("id") for n in nodes]
+            self.assertEqual(len(ids), 2,
+                             f"top_k=2 + expand=False should return 2 nodes; got {ids}")
+            # All returned nodes must be among the graph's L1 nodes; none
+            # should be pure BFS-expansion artifacts.
+            self.assertEqual(len(set(ids)), 2, f"duplicate ids: {ids}")
+            self.assertIn("c1", ids,
+                          f"Concept c1 should be a top-2 seed for 'cheap product'; got {ids}")
+
+
+class MakeEvidenceProviderJointNoBFS(unittest.TestCase):
+    """P5-D2: make_evidence_provider must wire `joint_no_bfs` to
+    JointRetrievalEvidence with expand=False."""
+
+    def test_make_provider_joint_no_bfs(self):
+        from bird_eval.config import Config
+        from bird_eval.evidence import JointRetrievalEvidence, make_evidence_provider
+        from bird_eval.joint_graph import dump_graph
+
+        # Build a tiny joint-graph file on disk so make_evidence_provider's
+        # graph-loading path is exercised.
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            graphs_dir = tmp_path / "joint_graphs"
+            graphs_dir.mkdir()
+            dump_graph(_make_simple_graph("shop"), graphs_dir / "shop.json")
+
+            bird_dir = tmp_path / "bird"
+            bird_dir.mkdir()
+
+            config = Config(
+                bird_dir=bird_dir,
+                setting="joint_no_bfs",
+                joint_graphs_dir=graphs_dir,
+            )
+            provider = make_evidence_provider(config)
+            self.assertIsInstance(provider, JointRetrievalEvidence)
+            self.assertFalse(provider._expand,
+                             "joint_no_bfs provider must have expand=False")
+
+
 class RenderEvidence(unittest.TestCase):
     def test_render_produces_bullets_per_node(self):
         from bird_eval.joint_retrieval import _render_subgraph_as_evidence
@@ -181,8 +276,9 @@ class ProviderIntegration(unittest.TestCase):
 
         class _MockRetriever:
             def __init__(self): self.calls = []
-            def retrieve(self, query, db_id, top_k):
-                self.calls.append({"query": query, "db_id": db_id, "top_k": top_k})
+            def retrieve(self, query, db_id, top_k, expand=True):
+                self.calls.append({"query": query, "db_id": db_id,
+                                   "top_k": top_k, "expand": expand})
                 return [{"id": "v1", "type": "ValueMap", "name": "monthly",
                          "table": "account", "column": "frequency",
                          "value": "POPLATEK MESICNE"}]
@@ -199,6 +295,8 @@ class ProviderIntegration(unittest.TestCase):
         self.assertEqual(retriever.calls[0]["query"], ex.question)
         self.assertEqual(retriever.calls[0]["db_id"], ex.db_id)
         self.assertEqual(retriever.calls[0]["top_k"], 3)
+        # Default expand=True is preserved when constructor doesn't override.
+        self.assertTrue(retriever.calls[0]["expand"])
         # Output should include the rendered evidence header + the ValueMap.
         self.assertIn("Relevant knowledge for this question:", out)
         self.assertIn("POPLATEK MESICNE", out)
