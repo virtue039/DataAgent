@@ -32,6 +32,7 @@ from demo.subgraph_render import render_subgraph  # noqa: E402
 
 
 CURATED_PATH = Path(__file__).parent / "curated_cases.json"
+QID_INDEX_PATH = Path(__file__).parent / "qid_index.json"
 
 
 def _load_curated() -> list[dict]:
@@ -42,6 +43,16 @@ def _load_curated() -> list[dict]:
         return data.get("cases", []) or []
     except Exception:
         return []
+
+
+def _load_qid_index() -> dict:
+    """Helper lists of (joint wins | joint correct | both correct) qids."""
+    if not QID_INDEX_PATH.exists():
+        return {}
+    try:
+        return json.loads(QID_INDEX_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
 
 
 def _truncate(s: str, n: int = 400) -> str:
@@ -88,6 +99,7 @@ def _render_setting_panel(name: str, entry: dict) -> None:
 
 def main() -> None:
     curated = _load_curated()
+    qid_index = _load_qid_index()
 
     with st.sidebar:
         st.header("Case Browser")
@@ -109,8 +121,46 @@ def main() -> None:
             st.caption("(No curated cases yet — use the free-form qid below.)")
 
         st.markdown("---")
+
+        # Show stats so the user understands what to expect from random qids.
+        if qid_index:
+            meta = qid_index.get("meta", {})
+            st.markdown("**About qid coverage**")
+            st.caption(
+                f"BIRD dev range: 0–1533 (1534 total).  \n"
+                f"Eval-half (joint result exists): "
+                f"**{meta.get('eval_set_size', '?')}** qids.  \n"
+                f"KB-half (joint missing here): 670 qids.  \n"
+                f"Joint EX% on eval-half: **40.15%** — so ~60% of random "
+                f"qids will show joint=WRONG.  \n"
+                f"**Joint correct on {meta.get('n_joint_correct', '?')} qids.** "
+                f"**Joint beats retrieval (joint right, retrieval wrong) on "
+                f"{meta.get('n_joint_wins_over_retrieval', '?')} qids** — "
+                f"the cleanest demo cases."
+            )
+
+        # Quick picker — random qid from the "joint wins over retrieval" set.
+        if qid_index.get("joint_wins_over_retrieval"):
+            joint_wins = qid_index["joint_wins_over_retrieval"]
+            with st.expander(
+                f"📈 Joint beats retrieval ({len(joint_wins)} qids)",
+                expanded=False,
+            ):
+                st.caption(
+                    "Pick any of these to see a clean win: joint = CORRECT, "
+                    "retrieval = WRONG."
+                )
+                sel_win = st.selectbox(
+                    "Joint-wins-over-retrieval qids",
+                    options=[""] + [str(q) for q in joint_wins],
+                    key="joint_wins_picker",
+                )
+                if sel_win:
+                    chosen_qid = int(sel_win)
+
+        st.markdown("---")
         free_qid = st.number_input(
-            "Free-form qid", min_value=0, max_value=100000,
+            "Free-form qid (0–1533)", min_value=0, max_value=1533,
             value=0, step=1,
         )
         if st.button("Load qid", use_container_width=True):
