@@ -29,6 +29,51 @@ def _wilson_ci(correct: int, n: int) -> tuple[float, float]:
     return max(0.0, center - margin), min(1.0, center + margin)
 
 
+def build_audit_targets(
+    oracle_results: list[dict],
+    joint_results: list[dict],
+    *,
+    filter_nonempty_evidence: bool = True,
+) -> list[dict]:
+    """Build the (oracle-correct, joint-wrong) audit target list.
+
+    Both inputs are lists of per-qid result dicts as produced by the
+    settings runner (with keys: question_id, db_id, difficulty, question,
+    gold_sql, evidence, predicted_sql, correct, ...).
+
+    When `filter_nonempty_evidence` is True (the P5 default), targets whose
+    joint `evidence` field is empty/missing are dropped — those cases
+    cannot be classified by the LLM judge because there is no joint
+    rendering to compare against the oracle. Set False to preserve the
+    original P4 behavior.
+    """
+    o_by_qid = {r["question_id"]: r for r in oracle_results}
+    j_by_qid = {r["question_id"]: r for r in joint_results}
+    targets: list[dict] = []
+    for qid in sorted(j_by_qid):
+        j = j_by_qid[qid]
+        o = o_by_qid.get(qid)
+        if o is None:
+            continue
+        if not o.get("correct") or j.get("correct"):
+            continue
+        joint_evidence = j.get("evidence", "") or ""
+        if filter_nonempty_evidence and not joint_evidence.strip():
+            continue
+        targets.append({
+            "question_id": qid,
+            "db_id": j["db_id"],
+            "difficulty": j["difficulty"],
+            "question": j["question"],
+            "gold_sql": j["gold_sql"],
+            "oracle_evidence": o.get("evidence", ""),
+            "oracle_predicted_sql": o.get("predicted_sql", ""),
+            "joint_evidence": joint_evidence,
+            "joint_predicted_sql": j.get("predicted_sql", ""),
+        })
+    return targets
+
+
 def category_histogram(judgments: list[dict]) -> list[dict]:
     """Return one row per category with count, proportion, Wilson CI."""
     n = len(judgments)

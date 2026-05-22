@@ -9,6 +9,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from bird_eval.audit_analysis import (  # noqa: E402
+    build_audit_targets,
     category_histogram,
     per_db_breakdown,
     per_difficulty_breakdown,
@@ -64,6 +65,42 @@ class PerDbAndDifficulty(unittest.TestCase):
         self.assertEqual(d["alpha"]["specificity_loss"], 1)
         self.assertEqual(d["beta"]["n"], 1)
         self.assertEqual(d["beta"]["retrieval_irrelevance"], 0)
+
+    def test_build_audit_targets_filters_empty_evidence(self):
+        # Synthetic oracle/joint records: 3 qids, all oracle-correct + joint-wrong.
+        # qid=1 has non-empty joint evidence; qid=2 has empty; qid=3 has non-empty.
+        oracle = [
+            {"question_id": 1, "db_id": "x", "difficulty": "simple",
+             "question": "q1", "gold_sql": "g1", "evidence": "oe1",
+             "predicted_sql": "op1", "correct": True},
+            {"question_id": 2, "db_id": "x", "difficulty": "simple",
+             "question": "q2", "gold_sql": "g2", "evidence": "oe2",
+             "predicted_sql": "op2", "correct": True},
+            {"question_id": 3, "db_id": "y", "difficulty": "moderate",
+             "question": "q3", "gold_sql": "g3", "evidence": "oe3",
+             "predicted_sql": "op3", "correct": True},
+        ]
+        joint = [
+            {"question_id": 1, "db_id": "x", "difficulty": "simple",
+             "question": "q1", "gold_sql": "g1", "evidence": "je1",
+             "predicted_sql": "jp1", "correct": False},
+            {"question_id": 2, "db_id": "x", "difficulty": "simple",
+             "question": "q2", "gold_sql": "g2", "evidence": "",
+             "predicted_sql": "jp2", "correct": False},
+            {"question_id": 3, "db_id": "y", "difficulty": "moderate",
+             "question": "q3", "gold_sql": "g3", "evidence": "je3",
+             "predicted_sql": "jp3", "correct": False},
+        ]
+        # Without the filter, all 3 should pass (oracle-correct + joint-wrong).
+        all_targets = build_audit_targets(oracle, joint,
+                                          filter_nonempty_evidence=False)
+        self.assertEqual({t["question_id"] for t in all_targets}, {1, 2, 3})
+        # With the filter, qid=2 (empty joint evidence) is dropped.
+        kept = build_audit_targets(oracle, joint,
+                                   filter_nonempty_evidence=True)
+        self.assertEqual({t["question_id"] for t in kept}, {1, 3})
+        for t in kept:
+            self.assertTrue(t["joint_evidence"])
 
     def test_pick_case_studies_two_per_category(self):
         # 4 specificity_loss judgments, 2 retrieval_irrelevance, 0 others.

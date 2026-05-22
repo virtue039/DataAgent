@@ -1,76 +1,125 @@
-"""Extract the P4 audit target set from the P3 matrix.
+"""Extract the audit target set for oracle-correct / joint-wrong qids.
 
 For each qid where oracle.correct=True AND joint.correct=False, assembles
 a comparison record containing the question, gold SQL, both evidence
-strings, and both predicted SQLs. Writes results/p4_audit/audit_targets.json.
+strings, and both predicted SQLs.
 
-Usage:
+Defaults preserve the original P4 behavior (both result dirs = P3 matrix).
+P5 retargets joint to results/p4_cv via --joint-results and adds
+non-empty evidence filtering plus reproducible sampling.
+
+Usage (P4 legacy):
   .venv/bin/python scripts/audit_oracle_vs_joint.py \
     --matrix-dir results/p3_matrix \
     --output results/p4_audit/audit_targets.json
+
+Usage (P5 retargeted):
+  .venv/bin/python scripts/audit_oracle_vs_joint.py \
+    --oracle-results results/p3_matrix \
+    --joint-results results/p4_cv \
+    --out results/p5_audit/audit_targets.json \
+    --sample-size 40 --seed 42
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
+import random
 import sys
 from pathlib import Path
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, ROOT)
 
-def _latest_result(matrix_dir: Path, setting: str) -> dict:
-    paths = sorted(matrix_dir.glob(f"{setting}_*.json"))
+from bird_eval.audit_analysis import build_audit_targets  # noqa: E402
+
+
+def _latest_result(results_dir: Path, setting: str) -> tuple[Path, dict]:
+    paths = sorted(results_dir.glob(f"{setting}_*.json"))
     if not paths:
-        print(f"ERROR: no {setting}_*.json in {matrix_dir}", file=sys.stderr)
+        print(f"ERROR: no {setting}_*.json in {results_dir}", file=sys.stderr)
         sys.exit(1)
-    return json.loads(paths[-1].read_text(encoding="utf-8"))
+    return paths[-1], json.loads(paths[-1].read_text(encoding="utf-8"))
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Extract oracle-correct/joint-wrong qids for P4 audit."
+        description="Extract oracle-correct/joint-wrong qids for audit."
     )
-    parser.add_argument("--matrix-dir", default="results/p3_matrix",
-                        help="Directory with the P3 4-setting result JSONs.")
-    parser.add_argument("--output", default="results/p4_audit/audit_targets.json",
-                        help="Output path for the target set.")
+    # Legacy single-dir flag (P4 default).
+    parser.add_argument("--matrix-dir", default=None,
+                        help=("[legacy] Directory with both oracle_*.json and "
+                              "joint_*.json. When given, used for both unless "
+                              "--oracle-results / --joint-results override."))
+    # P5 split flags.
+    parser.add_argument("--oracle-results", default="results/p3_matrix",
+                        help="Directory containing oracle_*.json.")
+    parser.add_argument("--joint-results", default="results/p3_matrix",
+                        help=("Directory containing joint_*.json. "
+                              "P5 passes results/p4_cv here."))
+    # Output: both --output (legacy) and --out (P5 spec) accepted.
+    parser.add_argument("--output", default=None,
+                        help="[legacy] Output path for the target set.")
+    parser.add_argument("--out", default=None,
+                        help="Output path for the target set (P5 alias).")
+    parser.add_argument("--sample-size", type=int, default=40,
+                        help="Random subsample size (0 = keep all).")
+    parser.add_argument("--seed", type=int, default=42,
+                        help="RNG seed for reproducible sampling.")
+    parser.add_argument("--filter-nonempty-evidence",
+                        dest="filter_nonempty_evidence",
+                        action="store_true", default=True,
+                        help="Drop targets where joint_evidence is empty.")
+    parser.add_argument("--no-filter-nonempty-evidence",
+                        dest="filter_nonempty_evidence",
+                        action="store_false",
+                        help="Keep targets with empty joint evidence "
+                             "(restores original P4 behavior).")
     args = parser.parse_args()
 
-    matrix = Path(args.matrix_dir)
-    output = Path(args.output)
+    # Resolve oracle/joint dirs: --matrix-dir overrides both when given.
+    oracle_dir = Path(args.matrix_dir or args.oracle_results)
+    joint_dir = Path(args.matrix_dir or args.joint_results)
+
+    # Resolve output path: --out wins, else --output, else default.
+    out_str = args.out or args.output or "results/p4_audit/audit_targets.json"
+    output = Path(out_str)
     output.parent.mkdir(parents=True, exist_ok=True)
 
-    oracle = _latest_result(matrix, "oracle")
-    joint = _latest_result(matrix, "joint")
+    oracle_path, oracle = _latest_result(oracle_dir, "oracle")
+    joint_path, joint = _latest_result(joint_dir, "joint")
 
-    o_by_qid = {r["question_id"]: r for r in oracle["results"]}
-    j_by_qid = {r["question_id"]: r for r in joint["results"]}
+    targets = build_audit_targets(
+        oracle["results"], joint["results"],
+        filter_nonempty_evidence=args.filter_nonempty_evidence,
+    )
+    n_before_sample = len(targets)
 
-    targets = []
-    for qid in sorted(j_by_qid):
-        j = j_by_qid[qid]
-        o = o_by_qid.get(qid)
-        if o is None:
-            continue
-        if not o.get("correct") or j.get("correct"):
-            continue
-        targets.append({
-            "question_id": qid,
-            "db_id": j["db_id"],
-            "difficulty": j["difficulty"],
-            "question": j["question"],
-            "gold_sql": j["gold_sql"],
-            "oracle_evidence": o.get("evidence", ""),
-            "oracle_predicted_sql": o.get("predicted_sql", ""),
-            "joint_evidence": j.get("evidence", ""),
-            "joint_predicted_sql": j.get("predicted_sql", ""),
-        })
+    sampled = False
+    if args.sample_size and args.sample_size > 0 and len(targets) > args.sample_size:
+        rng = random.Random(args.seed)
+        targets = rng.sample(targets, args.sample_size)
+        targets.sort(key=lambda t: t["question_id"])
+        sampled = True
+
+    meta = {
+        "source_oracle": oracle_path.name,
+        "source_joint": joint_path.name,
+        "oracle_dir": str(oracle_dir),
+        "joint_dir": str(joint_dir),
+        "filter_nonempty_evidence": args.filter_nonempty_evidence,
+        "n_eligible": n_before_sample,
+        "n_targets": len(targets),
+        "sampled": sampled,
+        "sample_size": args.sample_size,
+        "seed": args.seed,
+    }
 
     output.write_text(json.dumps(
-        {"meta": {"source_oracle": str(sorted(matrix.glob('oracle_*.json'))[-1].name),
-                  "source_joint": str(sorted(matrix.glob('joint_*.json'))[-1].name),
-                  "n_targets": len(targets)},
-         "targets": targets}, indent=2), encoding="utf-8")
-    print(f"Wrote {len(targets)} target qids to {output}")
+        {"meta": meta, "targets": targets}, indent=2), encoding="utf-8")
+    print(f"Wrote {len(targets)} target qids "
+          f"(eligible={n_before_sample}, sampled={sampled}) to {output}")
     return 0
 
 
