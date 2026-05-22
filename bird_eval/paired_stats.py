@@ -120,13 +120,16 @@ def newcombe_mover_diff_ci(
     return lo, hi
 
 
-def format_paired_table(rows: list[dict]) -> str:
+def format_paired_table(rows: list[dict], n: int | None = None) -> str:
     """Render a list of paired-comparison rows as a stdout table.
 
     Each row: {pair_name, a_pct, b_pct, diff_pct, chi2, p_value, lo, hi}
+    `n` is the per-pair sample size (printed in the header). If None,
+    the header omits the count.
     """
+    n_str = f"n={n}" if n is not None else "paired"
     lines = [
-        "==== P4 SECTION 6: Paired comparisons (n=1534) ====",
+        f"==== P4 SECTION 6: Paired comparisons ({n_str}) ====",
         "",
         f"{'A vs B':<22} | {'A%':>6} | {'B%':>6} | {'diff':>7} | "
         f"{'χ²':>8} | {'p-value':>10}",
