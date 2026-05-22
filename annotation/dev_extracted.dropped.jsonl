@@ -1,0 +1,41 @@
+{"question_id": 30, "db_id": "california_schools", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 39, "db_id": "california_schools", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 45, "db_id": "california_schools", "stage": "extract_failed", "error": "extract() returned [] after repair shot (parse or v2 validation failed)", "raw_response_chars": 0}
+{"question_id": 31, "db_id": "california_schools", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 68, "db_id": "california_schools", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 62, "db_id": "california_schools", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 87, "db_id": "california_schools", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 83, "db_id": "california_schools", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 285, "db_id": "toxicology", "stage": "extract_failed", "error": "extract() returned [] after repair shot (parse or v2 validation failed)", "raw_response_chars": 0}
+{"question_id": 400, "db_id": "card_games", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 404, "db_id": "card_games", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 427, "db_id": "card_games", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 447, "db_id": "card_games", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 565, "db_id": "codebase_community", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 610, "db_id": "codebase_community", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 667, "db_id": "codebase_community", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 685, "db_id": "codebase_community", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 705, "db_id": "codebase_community", "stage": "extract_failed", "error": "extract() returned [] after repair shot (parse or v2 validation failed)", "raw_response_chars": 0}
+{"question_id": 712, "db_id": "codebase_community", "stage": "extract_failed", "error": "extract() returned [] after repair shot (parse or v2 validation failed)", "raw_response_chars": 0}
+{"question_id": 1116, "db_id": "european_football_2", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 1154, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1170, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 2 grounding entries", "raw_response_chars": 0}
+{"question_id": 1171, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1176, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 1172, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 1173, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1179, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 1183, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 2 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1182, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 1189, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 0 grounding entries", "raw_response_chars": 0}
+{"question_id": 1191, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 2 grounding entries", "raw_response_chars": 0}
+{"question_id": 1204, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 2 grounding entries", "raw_response_chars": 0}
+{"question_id": 1202, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1207, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1244, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1245, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1254, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1269, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1271, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1284, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
+{"question_id": 1290, "db_id": "thrombosis_prediction", "stage": "grounding_hallucinated", "error": "sanitize_grounding dropped 1 node(s) and 1 grounding entries", "raw_response_chars": 0}
