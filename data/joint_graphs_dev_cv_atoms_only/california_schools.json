@@ -1,0 +1,1305 @@
+{
+  "version": "p1b.2",
+  "db_id": "california_schools",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "Charter schools",
+      "defined_by": "r1"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "Magnet schools or offer a magnet program",
+      "defined_by": "r2"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "valid charter number",
+      "defined_by": "r3"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "Average of average math",
+      "defined_by": "f6"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "Eligible free or reduced price meal rate for K-12",
+      "defined_by": "f7"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "Charted school",
+      "defined_by": "v3"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "SAT Scores are greater or equal to 1500",
+      "defined_by": "r4"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Free Meal Count (K-12)",
+          "table": "frpm",
+          "column": "Free Meal Count (K-12)"
+        },
+        {
+          "term": "Enrollment (K-12)",
+          "table": "frpm",
+          "column": "Enrollment (K-12)"
+        }
+      ],
+      "name": "Eligible free rate for K-12",
+      "expression": "`Free Meal Count (K-12)` / `Enrollment (K-12)`"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Free Meal Count (Ages 5-17)",
+          "table": "frpm",
+          "column": "Free Meal Count (Ages 5-17)"
+        },
+        {
+          "term": "Enrollment (Ages 5-17)",
+          "table": "frpm",
+          "column": "Enrollment (Ages 5-17)"
+        }
+      ],
+      "name": "Eligible free rates for students aged 5-17",
+      "expression": "`Free Meal Count (Ages 5-17)` / `Enrollment (Ages 5-17)`"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Enrollment (K-12)",
+          "table": "frpm",
+          "column": "Enrollment (K-12)"
+        },
+        {
+          "term": "Enrollment (Ages 5-17)",
+          "table": "frpm",
+          "column": "Enrollment (Ages 5-17)"
+        }
+      ],
+      "name": "Total enrollment",
+      "expression": "`Enrollment (K-12)` + `Enrollment (Ages 5-17)`"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "NumGE1500",
+          "table": "satscores",
+          "column": "NumGE1500"
+        },
+        {
+          "term": "NumTstTakr",
+          "table": "satscores",
+          "column": "NumTstTakr"
+        }
+      ],
+      "name": "Excellence rate",
+      "expression": "NumGE1500 / NumTstTakr"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Enrollment (K-12)",
+          "table": "frpm",
+          "column": "Enrollment (K-12)"
+        },
+        {
+          "term": "Enrollment (Ages 5-17)",
+          "table": "frpm",
+          "column": "Enrollment (Ages 5-17)"
+        }
+      ],
+      "name": "Diffrence in enrollement",
+      "expression": "`Enrollment (K-12)` - `Enrollment (Ages 5-17)`"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "average math scores",
+          "table": "satscores",
+          "column": "AvgScrMath"
+        },
+        {
+          "term": "schools",
+          "table": "schools",
+          "column": "CDSCode"
+        }
+      ],
+      "name": "Average of average math",
+      "expression": "sum(average math scores) / count(schools)"
+    },
+    "f7": {
+      "id": "f7",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "FRPM Count (K-12)",
+          "table": "frpm",
+          "column": "FRPM Count (K-12)"
+        },
+        {
+          "term": "Enrollment (K-12)",
+          "table": "frpm",
+          "column": "Enrollment (K-12)"
+        }
+      ],
+      "name": "Eligible free or reduced price meal rate for K-12",
+      "expression": "`FRPM Count (K-12)` / `Enrollment (K-12)`"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "Exclusively virtual",
+      "table": "schools",
+      "column": "Virtual",
+      "value": "F"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "K-12",
+      "table": "schools",
+      "column": "GSoffered",
+      "value": "K-12"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "Charter School",
+      "table": "frpm",
+      "column": "Charter School (Y/N)",
+      "value": "1"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "Fresno Unified",
+      "table": "schools",
+      "column": "District",
+      "value": "Fresno Unified"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Charter School (Y/N)",
+          "table": "frpm",
+          "column": "Charter School (Y/N)",
+          "value": 1
+        }
+      ],
+      "name": "Charter School indicator",
+      "condition": "`Charter School (Y/N)` = 1"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Magnet",
+          "table": "schools",
+          "column": "Magnet",
+          "value": 1
+        }
+      ],
+      "name": "Magnet = 1",
+      "condition": "Magnet = 1"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CharterNum",
+          "table": "schools",
+          "column": "CharterNum"
+        }
+      ],
+      "name": "charter number is not null",
+      "condition": "CharterNum IS NOT NULL"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "NumGE1500",
+          "table": "satscores",
+          "column": "NumGE1500"
+        }
+      ],
+      "name": "SAT Scores >= 1500",
+      "condition": "NumGE1500 >= 1500"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "schools",
+          "column": "Street"
+        },
+        {
+          "table": "schools",
+          "column": "City"
+        },
+        {
+          "table": "schools",
+          "column": "State"
+        },
+        {
+          "table": "schools",
+          "column": "Zip"
+        }
+      ],
+      "name": "Full communication address"
+    },
+    "a2": {
+      "id": "a2",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "schools",
+          "column": "Phone"
+        }
+      ],
+      "name": "Communication number"
+    },
+    "a3": {
+      "id": "a3",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "frpm",
+          "column": "Enrollment (K-12)"
+        }
+      ],
+      "name": "grades 1-12"
+    },
+    "a4": {
+      "id": "a4",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "schools",
+          "column": "AdmFName1"
+        },
+        {
+          "table": "schools",
+          "column": "AdmLName1"
+        }
+      ],
+      "name": "full name"
+    }
+  },
+  "columns": [
+    {
+      "table": "frpm",
+      "column": "CDSCode",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "Academic Year",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "County Code",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "District Code",
+      "type": "INTEGER"
+    },
+    {
+      "table": "frpm",
+      "column": "School Code",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "County Name",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "District Name",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "School Name",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "District Type",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "School Type",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "Educational Option Type",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "NSLP Provision Status",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "Charter School (Y/N)",
+      "type": "INTEGER"
+    },
+    {
+      "table": "frpm",
+      "column": "Charter School Number",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "Charter Funding Type",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "IRC",
+      "type": "INTEGER"
+    },
+    {
+      "table": "frpm",
+      "column": "Low Grade",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "High Grade",
+      "type": "TEXT"
+    },
+    {
+      "table": "frpm",
+      "column": "Enrollment (K-12)",
+      "type": "REAL"
+    },
+    {
+      "table": "frpm",
+      "column": "Free Meal Count (K-12)",
+      "type": "REAL"
+    },
+    {
+      "table": "frpm",
+      "column": "Percent (%) Eligible Free (K-12)",
+      "type": "REAL"
+    },
+    {
+      "table": "frpm",
+      "column": "FRPM Count (K-12)",
+      "type": "REAL"
+    },
+    {
+      "table": "frpm",
+      "column": "Percent (%) Eligible FRPM (K-12)",
+      "type": "REAL"
+    },
+    {
+      "table": "frpm",
+      "column": "Enrollment (Ages 5-17)",
+      "type": "REAL"
+    },
+    {
+      "table": "frpm",
+      "column": "Free Meal Count (Ages 5-17)",
+      "type": "REAL"
+    },
+    {
+      "table": "frpm",
+      "column": "Percent (%) Eligible Free (Ages 5-17)",
+      "type": "REAL"
+    },
+    {
+      "table": "frpm",
+      "column": "FRPM Count (Ages 5-17)",
+      "type": "REAL"
+    },
+    {
+      "table": "frpm",
+      "column": "Percent (%) Eligible FRPM (Ages 5-17)",
+      "type": "REAL"
+    },
+    {
+      "table": "satscores",
+      "column": "cds",
+      "type": "TEXT"
+    },
+    {
+      "table": "satscores",
+      "column": "rtype",
+      "type": "TEXT"
+    },
+    {
+      "table": "satscores",
+      "column": "sname",
+      "type": "TEXT"
+    },
+    {
+      "table": "satscores",
+      "column": "dname",
+      "type": "TEXT"
+    },
+    {
+      "table": "satscores",
+      "column": "cname",
+      "type": "TEXT"
+    },
+    {
+      "table": "satscores",
+      "column": "enroll12",
+      "type": "INTEGER"
+    },
+    {
+      "table": "satscores",
+      "column": "NumTstTakr",
+      "type": "INTEGER"
+    },
+    {
+      "table": "satscores",
+      "column": "AvgScrRead",
+      "type": "INTEGER"
+    },
+    {
+      "table": "satscores",
+      "column": "AvgScrMath",
+      "type": "INTEGER"
+    },
+    {
+      "table": "satscores",
+      "column": "AvgScrWrite",
+      "type": "INTEGER"
+    },
+    {
+      "table": "satscores",
+      "column": "NumGE1500",
+      "type": "INTEGER"
+    },
+    {
+      "table": "schools",
+      "column": "CDSCode",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "NCESDist",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "NCESSchool",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "StatusType",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "County",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "District",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "School",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "Street",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "StreetAbr",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "City",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "Zip",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "State",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "MailStreet",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "MailStrAbr",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "MailCity",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "MailZip",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "MailState",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "Phone",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "Ext",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "Website",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "OpenDate",
+      "type": "DATE"
+    },
+    {
+      "table": "schools",
+      "column": "ClosedDate",
+      "type": "DATE"
+    },
+    {
+      "table": "schools",
+      "column": "Charter",
+      "type": "INTEGER"
+    },
+    {
+      "table": "schools",
+      "column": "CharterNum",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "FundingType",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "DOC",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "DOCType",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "SOC",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "SOCType",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "EdOpsCode",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "EdOpsName",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "EILCode",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "EILName",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "GSoffered",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "GSserved",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "Virtual",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "Magnet",
+      "type": "INTEGER"
+    },
+    {
+      "table": "schools",
+      "column": "Latitude",
+      "type": "REAL"
+    },
+    {
+      "table": "schools",
+      "column": "Longitude",
+      "type": "REAL"
+    },
+    {
+      "table": "schools",
+      "column": "AdmFName1",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "AdmLName1",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "AdmEmail1",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "AdmFName2",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "AdmLName2",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "AdmEmail2",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "AdmFName3",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "AdmLName3",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "AdmEmail3",
+      "type": "TEXT"
+    },
+    {
+      "table": "schools",
+      "column": "LastUpdate",
+      "type": "DATE"
+    }
+  ],
+  "fk_edges": [
+    {
+      "from": {
+        "table": "frpm",
+        "column": "CDSCode"
+      },
+      "to": {
+        "table": "schools",
+        "column": "CDSCode"
+      }
+    },
+    {
+      "from": {
+        "table": "satscores",
+        "column": "cds"
+      },
+      "to": {
+        "table": "schools",
+        "column": "CDSCode"
+      }
+    }
+  ],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "ColumnAlias": [
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ]
+    },
+    "by_column": {
+      "frpm.Free Meal Count (K-12)": [
+        "f1"
+      ],
+      "frpm.Enrollment (K-12)": [
+        "f1",
+        "f3",
+        "f5",
+        "f7",
+        "a3"
+      ],
+      "frpm.Free Meal Count (Ages 5-17)": [
+        "f2"
+      ],
+      "frpm.Enrollment (Ages 5-17)": [
+        "f2",
+        "f3",
+        "f5"
+      ],
+      "satscores.NumGE1500": [
+        "f4",
+        "r4"
+      ],
+      "satscores.NumTstTakr": [
+        "f4"
+      ],
+      "satscores.AvgScrMath": [
+        "f6"
+      ],
+      "schools.CDSCode": [
+        "f6"
+      ],
+      "frpm.FRPM Count (K-12)": [
+        "f7"
+      ],
+      "schools.Virtual": [
+        "v1"
+      ],
+      "schools.GSoffered": [
+        "v2"
+      ],
+      "frpm.Charter School (Y/N)": [
+        "v3",
+        "r1"
+      ],
+      "schools.District": [
+        "v4"
+      ],
+      "schools.Magnet": [
+        "r2"
+      ],
+      "schools.CharterNum": [
+        "r3"
+      ],
+      "schools.Street": [
+        "a1"
+      ],
+      "schools.City": [
+        "a1"
+      ],
+      "schools.State": [
+        "a1"
+      ],
+      "schools.Zip": [
+        "a1"
+      ],
+      "schools.Phone": [
+        "a2"
+      ],
+      "schools.AdmFName1": [
+        "a4"
+      ],
+      "schools.AdmLName1": [
+        "a4"
+      ]
+    },
+    "by_name_token": {
+      "charter": [
+        "c1",
+        "c3",
+        "v3",
+        "r1",
+        "r3"
+      ],
+      "schools": [
+        "c1",
+        "c2",
+        "f6"
+      ],
+      "magnet": [
+        "c2",
+        "r2"
+      ],
+      "program": [
+        "c2"
+      ],
+      "offer": [
+        "c2"
+      ],
+      "number": [
+        "c3",
+        "r3",
+        "a2"
+      ],
+      "valid": [
+        "c3"
+      ],
+      "average": [
+        "c4",
+        "f6"
+      ],
+      "math": [
+        "c4",
+        "f6"
+      ],
+      "meal": [
+        "c5",
+        "f1",
+        "f2",
+        "f7"
+      ],
+      "price": [
+        "c5",
+        "f7"
+      ],
+      "eligible": [
+        "c5",
+        "f1",
+        "f2",
+        "f7"
+      ],
+      "free": [
+        "c5",
+        "f1",
+        "f2",
+        "f7"
+      ],
+      "12": [
+        "c5",
+        "f1",
+        "f3",
+        "f5",
+        "f7",
+        "v2",
+        "a3"
+      ],
+      "rate": [
+        "c5",
+        "f1",
+        "f4",
+        "f7"
+      ],
+      "reduced": [
+        "c5",
+        "f7"
+      ],
+      "charted": [
+        "c6"
+      ],
+      "school": [
+        "c6",
+        "v3",
+        "r1"
+      ],
+      "equal": [
+        "c7"
+      ],
+      "greater": [
+        "c7"
+      ],
+      "1500": [
+        "c7",
+        "r4"
+      ],
+      "sat": [
+        "c7",
+        "r4"
+      ],
+      "scores": [
+        "c7",
+        "f6",
+        "r4"
+      ],
+      "count": [
+        "f1",
+        "f2",
+        "f6",
+        "f7"
+      ],
+      "enrollment": [
+        "f1",
+        "f2",
+        "f3",
+        "f5",
+        "f7"
+      ],
+      "17": [
+        "f2",
+        "f3",
+        "f5"
+      ],
+      "rates": [
+        "f2"
+      ],
+      "aged": [
+        "f2"
+      ],
+      "students": [
+        "f2"
+      ],
+      "ages": [
+        "f2",
+        "f3",
+        "f5"
+      ],
+      "total": [
+        "f3"
+      ],
+      "excellence": [
+        "f4"
+      ],
+      "numtsttakr": [
+        "f4"
+      ],
+      "numge1500": [
+        "f4",
+        "r4"
+      ],
+      "diffrence": [
+        "f5"
+      ],
+      "enrollement": [
+        "f5"
+      ],
+      "sum": [
+        "f6"
+      ],
+      "frpm": [
+        "f7"
+      ],
+      "virtual": [
+        "v1"
+      ],
+      "exclusively": [
+        "v1"
+      ],
+      "unified": [
+        "v4"
+      ],
+      "fresno": [
+        "v4"
+      ],
+      "indicator": [
+        "r1"
+      ],
+      "charternum": [
+        "r3"
+      ],
+      "null": [
+        "r3"
+      ],
+      "not": [
+        "r3"
+      ],
+      "address": [
+        "a1"
+      ],
+      "full": [
+        "a1",
+        "a4"
+      ],
+      "communication": [
+        "a1",
+        "a2"
+      ],
+      "grades": [
+        "a3"
+      ],
+      "name": [
+        "a4"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        2,
+        "c1"
+      ],
+      [
+        4,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        6,
+        "c1"
+      ]
+    ],
+    "c3": [
+      [
+        17,
+        "c1"
+      ]
+    ],
+    "c4": [
+      [
+        25,
+        "c1"
+      ]
+    ],
+    "c5": [
+      [
+        32,
+        "c1"
+      ]
+    ],
+    "c6": [
+      [
+        35,
+        "c1"
+      ]
+    ],
+    "c7": [
+      [
+        36,
+        "c1"
+      ]
+    ],
+    "f1": [
+      [
+        0,
+        "f1"
+      ],
+      [
+        24,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        1,
+        "f1"
+      ],
+      [
+        12,
+        "f2"
+      ],
+      [
+        34,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        11,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        12,
+        "f1"
+      ],
+      [
+        13,
+        "f1"
+      ],
+      [
+        37,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        23,
+        "f1"
+      ],
+      [
+        28,
+        "f1"
+      ]
+    ],
+    "f6": [
+      [
+        25,
+        "f1"
+      ]
+    ],
+    "f7": [
+      [
+        32,
+        "f1"
+      ]
+    ],
+    "v1": [
+      [
+        5,
+        "v1"
+      ]
+    ],
+    "v2": [
+      [
+        29,
+        "v1"
+      ]
+    ],
+    "v3": [
+      [
+        35,
+        "v1"
+      ]
+    ],
+    "v4": [
+      [
+        40,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        2,
+        "r1"
+      ],
+      [
+        4,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        6,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        17,
+        "r1"
+      ]
+    ],
+    "r4": [
+      [
+        36,
+        "r1"
+      ]
+    ],
+    "a1": [
+      [
+        26,
+        "a1"
+      ],
+      [
+        37,
+        "a1"
+      ]
+    ],
+    "a2": [
+      [
+        27,
+        "a1"
+      ]
+    ],
+    "a3": [
+      [
+        32,
+        "a1"
+      ],
+      [
+        35,
+        "a1"
+      ]
+    ],
+    "a4": [
+      [
+        36,
+        "a1"
+      ]
+    ]
+  }
+}

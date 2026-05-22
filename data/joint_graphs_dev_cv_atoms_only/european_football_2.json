@@ -1,0 +1,5093 @@
+{
+  "version": "p1b.2",
+  "db_id": "european_football_2",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "tallest player",
+      "defined_by": "f2"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "lowest potential",
+      "defined_by": "f3"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "players whose going to be in all of your attack moves instead of defensing",
+      "defined_by": "v1"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "perform better in crossing actions",
+      "defined_by": "f4"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "league that had the most goals",
+      "defined_by": "f5"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "home team lost the matches",
+      "defined_by": "r3"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "players with highest number of penalties",
+      "defined_by": "f6"
+    },
+    "c8": {
+      "id": "c8",
+      "type": "Concept",
+      "name": "away team that won the most",
+      "defined_by": "r4"
+    },
+    "c9": {
+      "id": "c9",
+      "type": "Concept",
+      "name": "highest build up play speed",
+      "defined_by": "f7"
+    },
+    "c10": {
+      "id": "c10",
+      "type": "Concept",
+      "name": "most matches end as draw",
+      "defined_by": "f8"
+    },
+    "c11": {
+      "id": "c11",
+      "type": "Concept",
+      "name": "league with highest matches of all time",
+      "defined_by": "f10"
+    },
+    "c12": {
+      "id": "c12",
+      "type": "Concept",
+      "name": "average height",
+      "defined_by": "f11"
+    },
+    "c13": {
+      "id": "c13",
+      "type": "Concept",
+      "name": "players born between 1990 and 1995",
+      "defined_by": "r7"
+    },
+    "c14": {
+      "id": "c14",
+      "type": "Concept",
+      "name": "highest above average overall ratings",
+      "defined_by": "f1"
+    },
+    "c15": {
+      "id": "c15",
+      "type": "Concept",
+      "name": "teams with more than 50 but less than 60 build-up play speed",
+      "defined_by": "r9"
+    },
+    "c16": {
+      "id": "c16",
+      "type": "Concept",
+      "name": "above-average build-up play passing",
+      "defined_by": "r11"
+    },
+    "c17": {
+      "id": "c17",
+      "type": "Concept",
+      "name": "players who prefer left foot",
+      "defined_by": "r12"
+    },
+    "c18": {
+      "id": "c18",
+      "type": "Concept",
+      "name": "percentage of players who prefer left foot",
+      "defined_by": "f12"
+    },
+    "c19": {
+      "id": "c19",
+      "type": "Concept",
+      "name": "born between 1987 and 1992",
+      "defined_by": "r13"
+    },
+    "c20": {
+      "id": "c20",
+      "type": "Concept",
+      "name": "heights are above 180",
+      "defined_by": "r14"
+    },
+    "c21": {
+      "id": "c21",
+      "type": "Concept",
+      "name": "average heading accuracy",
+      "defined_by": "f15"
+    },
+    "c22": {
+      "id": "c22",
+      "type": "Concept",
+      "name": "less than average chance creation passing",
+      "defined_by": "r16"
+    },
+    "c23": {
+      "id": "c23",
+      "type": "Concept",
+      "name": "average goals by the home team is higher than the away team",
+      "defined_by": "r17"
+    },
+    "c24": {
+      "id": "c24",
+      "type": "Concept",
+      "name": "AVG(xx_goal)",
+      "defined_by": "f16"
+    },
+    "c25": {
+      "id": "c25",
+      "type": "Concept",
+      "name": "players with a birthyear of 1970 and a birthmonth of October",
+      "defined_by": "r18"
+    },
+    "c26": {
+      "id": "c26",
+      "type": "Concept",
+      "name": "youngest football player",
+      "defined_by": "r21"
+    },
+    "c27": {
+      "id": "c27",
+      "type": "Concept",
+      "name": "highest potential score",
+      "defined_by": "f17"
+    },
+    "c28": {
+      "id": "c28",
+      "type": "Concept",
+      "name": "football player who has the highest overall rating",
+      "defined_by": "f1"
+    },
+    "c29": {
+      "id": "c29",
+      "type": "Concept",
+      "name": "average home team goal"
+    },
+    "c30": {
+      "id": "c30",
+      "type": "Concept",
+      "name": "highest football player",
+      "defined_by": "f2"
+    },
+    "c31": {
+      "id": "c31",
+      "type": "Concept",
+      "name": "shortest football player",
+      "defined_by": "f20"
+    },
+    "c32": {
+      "id": "c32",
+      "type": "Concept",
+      "name": "highest balance score",
+      "defined_by": "f23"
+    },
+    "c33": {
+      "id": "c33",
+      "type": "Concept",
+      "name": "player age",
+      "defined_by": "r36"
+    },
+    "c34": {
+      "id": "c34",
+      "type": "Concept",
+      "name": "strongest overall strength",
+      "defined_by": "f1"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "overall_rating",
+          "table": "Player_Attributes",
+          "column": "overall_rating"
+        }
+      ],
+      "name": "highest overall rating",
+      "expression": "MAX(overall_rating)"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "height",
+          "table": "Player",
+          "column": "height"
+        }
+      ],
+      "name": "tallest player height",
+      "expression": "MAX(height)"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "potential",
+          "table": "Player_Attributes",
+          "column": "potential"
+        }
+      ],
+      "name": "lowest potential",
+      "expression": "MIN(potential)"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "crossing",
+          "table": "Player_Attributes",
+          "column": "crossing"
+        }
+      ],
+      "name": "max crossing",
+      "expression": "MAX(crossing)"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "home_team_goal",
+          "table": "Match",
+          "column": "home_team_goal"
+        },
+        {
+          "term": "away_team_goal",
+          "table": "Match",
+          "column": "away_team_goal"
+        }
+      ],
+      "name": "total goals per league",
+      "expression": "MAX(SUM(home_team_goal, away_team_goal))"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "penalties",
+          "table": "Player_Attributes",
+          "column": "penalties"
+        }
+      ],
+      "name": "highest number of penalties",
+      "expression": "MAX(penalties)"
+    },
+    "f7": {
+      "id": "f7",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "buildUpPlaySpeed",
+          "table": "Team_Attributes",
+          "column": "buildUpPlaySpeed"
+        }
+      ],
+      "name": "highest build up play speed",
+      "expression": "MAX(buildUpPlaySpeed)"
+    },
+    "f8": {
+      "id": "f8",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "home_team_goal",
+          "table": "Match",
+          "column": "home_team_goal"
+        },
+        {
+          "term": "away_team_goal",
+          "table": "Match",
+          "column": "away_team_goal"
+        }
+      ],
+      "name": "most matches end as draw",
+      "expression": "MAX(SUM(home_team_goal = away_team_goal))"
+    },
+    "f9": {
+      "id": "f9",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Player",
+          "column": "birthday"
+        }
+      ],
+      "name": "players age at present",
+      "expression": "SUBTRACT((DATETIME(), birthday))"
+    },
+    "f10": {
+      "id": "f10",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "league_id",
+          "table": "Match",
+          "column": "league_id"
+        }
+      ],
+      "name": "league with highest matches of all time",
+      "expression": "MAX(COUNT(league_id))"
+    },
+    "f11": {
+      "id": "f11",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "height",
+          "table": "Player",
+          "column": "height"
+        },
+        {
+          "term": "id",
+          "table": "Player",
+          "column": "id"
+        }
+      ],
+      "name": "average height",
+      "expression": "SUM(height) / COUNT(id)"
+    },
+    "f12": {
+      "id": "f12",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "preferred_foot",
+          "table": "Player_Attributes",
+          "column": "preferred_foot"
+        },
+        {
+          "term": "player_fifa_api_id",
+          "table": "Player_Attributes",
+          "column": "player_fifa_api_id"
+        }
+      ],
+      "depends_on": [
+        "r12"
+      ],
+      "name": "percentage of players who prefer left foot",
+      "expression": "DIVIDE(MULTIPLY(SUM(preferred_foot = 'left'), 100), COUNT(player_fifa_api_id))"
+    },
+    "f13": {
+      "id": "f13",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "home_team_goal",
+          "table": "Match",
+          "column": "home_team_goal"
+        },
+        {
+          "term": "away_team_goal",
+          "table": "Match",
+          "column": "away_team_goal"
+        }
+      ],
+      "name": "number of goals made in all seasons combine",
+      "expression": "SUM(home_team_goal, away_team_goal)"
+    },
+    "f14": {
+      "id": "f14",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "long_shots",
+          "table": "Player_Attributes",
+          "column": "long_shots"
+        },
+        {
+          "term": "player_fifa_api_id",
+          "table": "Player_Attributes",
+          "column": "player_fifa_api_id"
+        }
+      ],
+      "name": "average number of long shot",
+      "expression": "SUM(long_shots) / COUNT(player_fifa_api_id)"
+    },
+    "f15": {
+      "id": "f15",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "heading_accuracy",
+          "table": "Player_Attributes",
+          "column": "heading_accuracy"
+        },
+        {
+          "term": "player_fifa_api_id",
+          "table": "Player_Attributes",
+          "column": "player_fifa_api_id"
+        }
+      ],
+      "name": "average heading accuracy",
+      "expression": "SUM(heading_accuracy) / COUNT(player_fifa_api_id)"
+    },
+    "f16": {
+      "id": "f16",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "xx_goal",
+          "table": "Match",
+          "column": "home_team_goal"
+        },
+        {
+          "term": "xx_goal",
+          "table": "Match",
+          "column": "away_team_goal"
+        },
+        {
+          "term": "Match.id",
+          "table": "Match",
+          "column": "id"
+        }
+      ],
+      "name": "AVG(xx_goal) definition",
+      "expression": "SUM(xx_goal) / COUNT(DISTINCT Match.id)"
+    },
+    "f17": {
+      "id": "f17",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "potential",
+          "table": "Player_Attributes",
+          "column": "potential"
+        }
+      ],
+      "name": "highest potential score",
+      "expression": "MAX(potential)"
+    },
+    "f19": {
+      "id": "f19",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "finishing",
+          "table": "Player_Attributes",
+          "column": "finishing"
+        }
+      ],
+      "name": "highest average finishing rate",
+      "expression": "MAX(AVG(finishing))"
+    },
+    "f20": {
+      "id": "f20",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "height",
+          "table": "Player",
+          "column": "height"
+        }
+      ],
+      "name": "min height",
+      "expression": "MIN(height)"
+    },
+    "f21": {
+      "id": "f21",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "t2.overall_rating",
+          "table": "Player_Attributes",
+          "column": "overall_rating"
+        },
+        {
+          "term": "t2.id",
+          "table": "Player_Attributes",
+          "column": "id"
+        }
+      ],
+      "name": "average overall rating",
+      "expression": "SUM(t2.overall_rating) / COUNT(t2.id)"
+    },
+    "f22": {
+      "id": "f22",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "overall_rating",
+          "table": "Player_Attributes",
+          "column": "overall_rating"
+        }
+      ],
+      "name": "average overall rating",
+      "expression": "AVG(overall_rating)"
+    },
+    "f23": {
+      "id": "f23",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "balance",
+          "table": "Player_Attributes",
+          "column": "balance"
+        }
+      ],
+      "name": "highest balance score",
+      "expression": "MAX(balance)"
+    },
+    "f24": {
+      "id": "f24",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ball_control",
+          "table": "Player_Attributes",
+          "column": "ball_control"
+        },
+        {
+          "term": "player_name",
+          "table": "Player",
+          "column": "player_name"
+        }
+      ],
+      "name": "difference of the average ball control",
+      "expression": "SUBTRACT(AVG(ball_control WHERE player_name = 'Abdou Diallo'), AVG(ball_control WHERE player_name = 'Aaron Appindangoye'))"
+    },
+    "f25": {
+      "id": "f25",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ball_control",
+          "table": "Player_Attributes",
+          "column": "ball_control"
+        },
+        {
+          "term": "player_name",
+          "table": "Player",
+          "column": "player_name"
+        },
+        {
+          "term": "id",
+          "table": "Player_Attributes",
+          "column": "id"
+        }
+      ],
+      "name": "AVG(ball_control WHERE player_name = 'XX XX')",
+      "expression": "SUM(CASE WHEN player_name = 'XX XX' THEN ball_control ELSE 0 END) / COUNT(CASE WHEN player_name = 'XX XX' THEN id ELSE NULL END)"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "low defensive work rate",
+      "table": "Player_Attributes",
+      "column": "defensive_work_rate",
+      "value": "low"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "2016 season",
+      "table": "Match",
+      "column": "season",
+      "value": "2015/2016"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "Scotland Premier League",
+      "table": "League",
+      "column": "name",
+      "value": "Scotland Premier League"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "2010 season",
+      "table": "Match",
+      "column": "season",
+      "value": "2009/2010"
+    },
+    "v5": {
+      "id": "v5",
+      "type": "ValueMap",
+      "name": "normal build-up play dribbling class",
+      "table": "Team_Attributes",
+      "column": "buildUpPlayDribblingClass",
+      "value": "Normal"
+    },
+    "v6": {
+      "id": "v6",
+      "type": "ValueMap",
+      "name": "Queens Park Rangers",
+      "table": "Team",
+      "column": "team_long_name",
+      "value": "Queens Park Rangers"
+    },
+    "v7": {
+      "id": "v7",
+      "type": "ValueMap",
+      "name": "ADO Den Haag",
+      "table": "Team",
+      "column": "team_long_name",
+      "value": "ADO Den Haag"
+    },
+    "v8": {
+      "id": "v8",
+      "type": "ValueMap",
+      "name": "freedom of movement in the 1st two thirds of the pitch",
+      "table": "Team_Attributes",
+      "column": "buildUpPlayPositioningClass",
+      "value": "Organised"
+    },
+    "v9": {
+      "id": "v9",
+      "type": "ValueMap",
+      "name": "left footed",
+      "table": "Player_Attributes",
+      "column": "preferred_foot",
+      "value": "left"
+    },
+    "v10": {
+      "id": "v10",
+      "type": "ValueMap",
+      "name": "Risky chance creation passing class",
+      "table": "Team_Attributes",
+      "column": "chanceCreationPassingClass",
+      "value": "Risky"
+    },
+    "v11": {
+      "id": "v11",
+      "type": "ValueMap",
+      "name": "Fast speed class",
+      "table": "Team_Attributes",
+      "column": "buildUpPlaySpeedClass",
+      "value": "Fast"
+    },
+    "v12": {
+      "id": "v12",
+      "type": "ValueMap",
+      "name": "CLB",
+      "table": "Team",
+      "column": "team_short_name",
+      "value": "CLB"
+    },
+    "v13": {
+      "id": "v13",
+      "type": "ValueMap",
+      "name": "Italy Serie A",
+      "table": "League",
+      "column": "name",
+      "value": "Italy Serie A"
+    },
+    "v14": {
+      "id": "v14",
+      "type": "ValueMap",
+      "name": "buildUpPlaySpeed = 31",
+      "table": "Team_Attributes",
+      "column": "buildUpPlaySpeed",
+      "value": "31"
+    },
+    "v15": {
+      "id": "v15",
+      "type": "ValueMap",
+      "name": "buildUpPlayDribbling = 53",
+      "table": "Team_Attributes",
+      "column": "buildUpPlayDribbling",
+      "value": "53"
+    },
+    "v16": {
+      "id": "v16",
+      "type": "ValueMap",
+      "name": "buildUpPlayPassing = 32",
+      "table": "Team_Attributes",
+      "column": "buildUpPlayPassing",
+      "value": "32"
+    },
+    "v17": {
+      "id": "v17",
+      "type": "ValueMap",
+      "name": "Germany 1. Bundesliga",
+      "table": "League",
+      "column": "name",
+      "value": "Germany 1. Bundesliga"
+    },
+    "v18": {
+      "id": "v18",
+      "type": "ValueMap",
+      "name": "players who would remain in his position when the team attacked",
+      "table": "Player_Attributes",
+      "column": "attacking_work_rate",
+      "value": "low"
+    },
+    "v19": {
+      "id": "v19",
+      "type": "ValueMap",
+      "name": "Belgium Jupiler League",
+      "table": "League",
+      "column": "name",
+      "value": "Belgium Jupiler League"
+    },
+    "v20": {
+      "id": "v20",
+      "type": "ValueMap",
+      "name": "Germany",
+      "table": "Country",
+      "column": "name",
+      "value": "Germany"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "overall_rating",
+          "table": "Player_Attributes",
+          "column": "overall_rating"
+        }
+      ],
+      "name": "overall rating between 60 and 64",
+      "condition": "overall_rating >= 60 AND overall_rating < 65"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "season",
+          "table": "Match",
+          "column": "season"
+        }
+      ],
+      "name": "2016 season",
+      "condition": "season = '2015/2016'"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "home_team_goal",
+          "table": "Match",
+          "column": "home_team_goal"
+        },
+        {
+          "term": "away_team_goal",
+          "table": "Match",
+          "column": "away_team_goal"
+        }
+      ],
+      "name": "home team lost",
+      "condition": "SUBTRACT(home_team_goal, away_team_goal) < 0"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "away_team_goal",
+          "table": "Match",
+          "column": "away_team_goal"
+        },
+        {
+          "term": "home_team_goal",
+          "table": "Match",
+          "column": "home_team_goal"
+        }
+      ],
+      "name": "away team won",
+      "condition": "away_team_goal - home_team_goal > 0"
+    },
+    "r5": {
+      "id": "r5",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "sprint_speed",
+          "table": "Player_Attributes",
+          "column": "sprint_speed"
+        }
+      ],
+      "name": "sprint speed of no less than 97",
+      "condition": "sprint_speed >= 97"
+    },
+    "r6": {
+      "id": "r6",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "Player_Attributes",
+          "column": "date"
+        }
+      ],
+      "name": "between 2013 to 2015",
+      "condition": "YEAR(date) >= '2013' AND YEAR(date) <= '2015'"
+    },
+    "r7": {
+      "id": "r7",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Player",
+          "column": "birthday"
+        }
+      ],
+      "name": "birthday between 1990 and 1995",
+      "condition": "birthday >= '1990-01-01 00:00:00' AND birthday < '1996-01-01 00:00:00'"
+    },
+    "r8": {
+      "id": "r8",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "Player_Attributes",
+          "column": "date"
+        }
+      ],
+      "name": "in 2010",
+      "condition": "substr(date,1,4) = '2010'"
+    },
+    "r9": {
+      "id": "r9",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "buildUpPlaySpeed",
+          "table": "Team_Attributes",
+          "column": "buildUpPlaySpeed"
+        }
+      ],
+      "name": "build-up play speed between 50 and 60",
+      "condition": "buildUpPlaySpeed > 50 AND buildUpPlaySpeed < 60"
+    },
+    "r10": {
+      "id": "r10",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "Team_Attributes",
+          "column": "date"
+        }
+      ],
+      "name": "in 2012",
+      "condition": "strftime('%Y', date) = '2012'"
+    },
+    "r11": {
+      "id": "r11",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "buildUpPlayPassing",
+          "table": "Team_Attributes",
+          "column": "buildUpPlayPassing"
+        },
+        {
+          "term": "team_long_name",
+          "table": "Team",
+          "column": "team_long_name"
+        }
+      ],
+      "name": "above-average build-up play passing",
+      "condition": "buildUpPlayPassing > DIVIDE(SUM(buildUpPlayPassing), COUNT(team_long_name) WHERE buildUpPlayPassing IS NOT NULL)"
+    },
+    "r12": {
+      "id": "r12",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "preferred_foot",
+          "table": "Player_Attributes",
+          "column": "preferred_foot",
+          "value": "left"
+        }
+      ],
+      "name": "prefers left foot",
+      "condition": "preferred_foot = 'left'"
+    },
+    "r13": {
+      "id": "r13",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Player",
+          "column": "birthday"
+        }
+      ],
+      "name": "born between 1987 and 1992",
+      "condition": "YEAR(birthday) BETWEEN '1987' AND '1992'"
+    },
+    "r14": {
+      "id": "r14",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "height",
+          "table": "Player",
+          "column": "height"
+        }
+      ],
+      "name": "height above 180",
+      "condition": "height > 180"
+    },
+    "r15": {
+      "id": "r15",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "Team_Attributes",
+          "column": "date"
+        }
+      ],
+      "name": "in 2014",
+      "condition": "date >= '2014-01-01 00:00:00' AND date <= '2014-01-31 00:00:00'"
+    },
+    "r16": {
+      "id": "r16",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "chanceCreationPassing",
+          "table": "Team_Attributes",
+          "column": "chanceCreationPassing"
+        },
+        {
+          "term": "id",
+          "table": "Team_Attributes",
+          "column": "id"
+        }
+      ],
+      "name": "less than average chance creation passing",
+      "condition": "chanceCreationPassing < (SUM(chanceCreationPassing) / COUNT(id))"
+    },
+    "r17": {
+      "id": "r17",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "home_team_goal",
+          "table": "Match",
+          "column": "home_team_goal"
+        },
+        {
+          "term": "away_team_goal",
+          "table": "Match",
+          "column": "away_team_goal"
+        }
+      ],
+      "name": "home avg goals > away avg goals",
+      "condition": "AVG(home_team_goal) > AVG(away_team_goal)"
+    },
+    "r18": {
+      "id": "r18",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Player",
+          "column": "birthday"
+        }
+      ],
+      "name": "birthyear 1970 and birthmonth October",
+      "condition": "substr(birthday, 1, 4) = '1970' AND substr(birthday, 6, 2) = '10'"
+    },
+    "r19": {
+      "id": "r19",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "Player_Attributes",
+          "column": "date",
+          "value": "2014-09-18 00:00:00"
+        }
+      ],
+      "name": "on 18/09/2014",
+      "condition": "date = '2014-09-18 00:00:00'"
+    },
+    "r20": {
+      "id": "r20",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "Match",
+          "column": "date"
+        }
+      ],
+      "name": "in year 2011",
+      "condition": "strftime('%Y', date) = '2011'"
+    },
+    "r21": {
+      "id": "r21",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Player",
+          "column": "birthday"
+        }
+      ],
+      "name": "latest birthday",
+      "condition": "birthday = MAX(birthday)"
+    },
+    "r22": {
+      "id": "r22",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "weight",
+          "table": "Player",
+          "column": "weight"
+        }
+      ],
+      "name": "weight < 130",
+      "condition": "weight < 130"
+    },
+    "r23": {
+      "id": "r23",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "name",
+          "table": "Country",
+          "column": "name",
+          "value": "Poland"
+        }
+      ],
+      "name": "country is Poland",
+      "condition": "name = 'Poland'"
+    },
+    "r24": {
+      "id": "r24",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "season",
+          "table": "Match",
+          "column": "season",
+          "value": "2010/2011"
+        }
+      ],
+      "name": "season is 2010/2011",
+      "condition": "season = '2010/2011'"
+    },
+    "r25": {
+      "id": "r25",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Player",
+          "column": "birthday"
+        }
+      ],
+      "name": "born after 1990",
+      "condition": "strftime('%Y', birthday) = '1990'"
+    },
+    "r26": {
+      "id": "r26",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "overall_rating",
+          "table": "Player_Attributes",
+          "column": "overall_rating"
+        }
+      ],
+      "name": "overall_rating > 80",
+      "condition": "overall_rating > 80"
+    },
+    "r27": {
+      "id": "r27",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "Player_Attributes",
+          "column": "date"
+        }
+      ],
+      "name": "from 2008 to 2010",
+      "condition": "strftime('%Y', date) BETWEEN '2008' AND '2010'"
+    },
+    "r28": {
+      "id": "r28",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "buildUpPlaySpeedClass",
+          "table": "Team_Attributes",
+          "column": "buildUpPlaySpeedClass",
+          "value": "Fast"
+        }
+      ],
+      "name": "Fast speed class",
+      "condition": "buildUpPlaySpeedClass = 'Fast'"
+    },
+    "r29": {
+      "id": "r29",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "buildUpPlayPassing",
+          "table": "Team_Attributes",
+          "column": "buildUpPlayPassing"
+        }
+      ],
+      "name": "buildUpPlayPassing > 70",
+      "condition": "buildUpPlayPassing > 70"
+    },
+    "r30": {
+      "id": "r30",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "Player_Attributes",
+          "column": "date"
+        }
+      ],
+      "name": "from 2010 to 2015",
+      "condition": "strftime('%Y', date) >= '2010' AND strftime('%Y', date) <= '2015'"
+    },
+    "r31": {
+      "id": "r31",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Player.height",
+          "table": "Player",
+          "column": "height"
+        }
+      ],
+      "name": "higher than 170",
+      "condition": "Player.height > 170"
+    },
+    "r32": {
+      "id": "r32",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "Match",
+          "column": "date"
+        }
+      ],
+      "name": "from August to October 2008",
+      "condition": "strftime('%Y-%m', date) BETWEEN '2008-08' AND '2008-10'"
+    },
+    "r33": {
+      "id": "r33",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "home_team_goal",
+          "table": "Match",
+          "column": "home_team_goal",
+          "value": 10
+        }
+      ],
+      "name": "home_team_goal = 10",
+      "condition": "home_team_goal = 10"
+    },
+    "r34": {
+      "id": "r34",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "potential",
+          "table": "Player_Attributes",
+          "column": "potential",
+          "value": 61
+        }
+      ],
+      "name": "potential = 61",
+      "condition": "potential = 61"
+    },
+    "r35": {
+      "id": "r35",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "team_short_name",
+          "table": "Team",
+          "column": "team_short_name",
+          "value": "GEN"
+        }
+      ],
+      "name": "team_short_name is GEN",
+      "condition": "team_short_name = 'GEN'"
+    },
+    "r36": {
+      "id": "r36",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Player",
+          "column": "birthday"
+        }
+      ],
+      "name": "birthday determines age",
+      "condition": "larger birthday value means younger player"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Player_Attributes",
+          "column": "preferred_foot"
+        }
+      ],
+      "name": "preferred foot when attacking"
+    },
+    "a2": {
+      "id": "a2",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Player",
+          "column": "player_name"
+        }
+      ],
+      "name": "full name"
+    },
+    "a3": {
+      "id": "a3",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Match",
+          "column": "away_team_api_id"
+        }
+      ],
+      "name": "away team"
+    },
+    "a4": {
+      "id": "a4",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Team_Attributes",
+          "column": "buildUpPlaySpeed"
+        }
+      ],
+      "name": "speed in which attacks are put together"
+    },
+    "a5": {
+      "id": "a5",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Team",
+          "column": "team_long_name"
+        }
+      ],
+      "name": "long name of teams"
+    },
+    "a6": {
+      "id": "a6",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Team_Attributes",
+          "column": "buildUpPlayPassing"
+        }
+      ],
+      "name": "build-up play passing"
+    },
+    "a7": {
+      "id": "a7",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "League",
+          "column": "name"
+        }
+      ],
+      "name": "name of league"
+    },
+    "a8": {
+      "id": "a8",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Team",
+          "column": "team_short_name"
+        }
+      ],
+      "name": "short name of the football team"
+    },
+    "a9": {
+      "id": "a9",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Player_Attributes",
+          "column": "heading_accuracy"
+        }
+      ],
+      "name": "header's finishing rate"
+    },
+    "a10": {
+      "id": "a10",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Player_Attributes",
+          "column": "potential"
+        }
+      ],
+      "name": "potential score"
+    },
+    "a11": {
+      "id": "a11",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Team_Attributes",
+          "column": "chanceCreationPassingClass"
+        }
+      ],
+      "name": "chance creation passing class"
+    },
+    "a12": {
+      "id": "a12",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Player_Attributes",
+          "column": "finishing"
+        }
+      ],
+      "name": "finishing rate"
+    },
+    "a13": {
+      "id": "a13",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Team_Attributes",
+          "column": "buildUpPlaySpeedClass"
+        }
+      ],
+      "name": "speed class"
+    },
+    "a14": {
+      "id": "a14",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Team_Attributes",
+          "column": "buildUpPlayPassingClass"
+        }
+      ],
+      "name": "passing class"
+    },
+    "a15": {
+      "id": "a15",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Team_Attributes",
+          "column": "buildUpPlayDribbling"
+        }
+      ],
+      "name": "build up play dribbling"
+    },
+    "a16": {
+      "id": "a16",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Match",
+          "column": "home_team_goal"
+        }
+      ],
+      "name": "home team goal"
+    },
+    "a17": {
+      "id": "a17",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Player_Attributes",
+          "column": "balance"
+        }
+      ],
+      "name": "balance score"
+    },
+    "a18": {
+      "id": "a18",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Player_Attributes",
+          "column": "overall_rating"
+        }
+      ],
+      "name": "overall strength"
+    }
+  },
+  "columns": [
+    {
+      "table": "Player_Attributes",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "player_fifa_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "player_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "date",
+      "type": "TEXT"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "overall_rating",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "potential",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "preferred_foot",
+      "type": "TEXT"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "attacking_work_rate",
+      "type": "TEXT"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "defensive_work_rate",
+      "type": "TEXT"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "crossing",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "finishing",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "heading_accuracy",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "short_passing",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "volleys",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "dribbling",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "curve",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "free_kick_accuracy",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "long_passing",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "ball_control",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "acceleration",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "sprint_speed",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "agility",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "reactions",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "balance",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "shot_power",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "jumping",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "stamina",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "strength",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "long_shots",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "aggression",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "interceptions",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "positioning",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "vision",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "penalties",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "marking",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "standing_tackle",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "sliding_tackle",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "gk_diving",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "gk_handling",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "gk_kicking",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "gk_positioning",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player_Attributes",
+      "column": "gk_reflexes",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player",
+      "column": "player_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player",
+      "column": "player_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "Player",
+      "column": "player_fifa_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player",
+      "column": "birthday",
+      "type": "TEXT"
+    },
+    {
+      "table": "Player",
+      "column": "height",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Player",
+      "column": "weight",
+      "type": "INTEGER"
+    },
+    {
+      "table": "League",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "League",
+      "column": "country_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "League",
+      "column": "name",
+      "type": "TEXT"
+    },
+    {
+      "table": "Country",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Country",
+      "column": "name",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team",
+      "column": "team_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team",
+      "column": "team_fifa_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team",
+      "column": "team_long_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team",
+      "column": "team_short_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "team_fifa_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "team_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "date",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "buildUpPlaySpeed",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "buildUpPlaySpeedClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "buildUpPlayDribbling",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "buildUpPlayDribblingClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "buildUpPlayPassing",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "buildUpPlayPassingClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "buildUpPlayPositioningClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "chanceCreationPassing",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "chanceCreationPassingClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "chanceCreationCrossing",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "chanceCreationCrossingClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "chanceCreationShooting",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "chanceCreationShootingClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "chanceCreationPositioningClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "defencePressure",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "defencePressureClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "defenceAggression",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "defenceAggressionClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "defenceTeamWidth",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "defenceTeamWidthClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Team_Attributes",
+      "column": "defenceDefenderLineClass",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "country_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "league_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "season",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "stage",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "date",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "match_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_team_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_team_api_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_team_goal",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_team_goal",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X1",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X2",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X3",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X4",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X5",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X6",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X7",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X8",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X9",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X10",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_X11",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X1",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X2",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X3",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X4",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X5",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X6",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X7",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X8",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X9",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X10",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_X11",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y1",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y2",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y3",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y4",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y5",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y6",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y7",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y8",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y9",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y10",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_Y11",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y1",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y2",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y3",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y4",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y5",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y6",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y7",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y8",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y9",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y10",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_Y11",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_1",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_2",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_3",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_4",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_5",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_6",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_7",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_8",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_9",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_10",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "home_player_11",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_1",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_2",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_3",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_4",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_5",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_6",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_7",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_8",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_9",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_10",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "away_player_11",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Match",
+      "column": "goal",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "shoton",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "shotoff",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "foulcommit",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "card",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "cross",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "corner",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "possession",
+      "type": "TEXT"
+    },
+    {
+      "table": "Match",
+      "column": "B365H",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "B365D",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "B365A",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "BWH",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "BWD",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "BWA",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "IWH",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "IWD",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "IWA",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "LBH",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "LBD",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "LBA",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "PSH",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "PSD",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "PSA",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "WHH",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "WHD",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "WHA",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "SJH",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "SJD",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "SJA",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "VCH",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "VCD",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "VCA",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "GBH",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "GBD",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "GBA",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "BSH",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "BSD",
+      "type": "REAL"
+    },
+    {
+      "table": "Match",
+      "column": "BSA",
+      "type": "REAL"
+    }
+  ],
+  "fk_edges": [
+    {
+      "from": {
+        "table": "Player_Attributes",
+        "column": "player_fifa_api_id"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_fifa_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Player_Attributes",
+        "column": "player_api_id"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "League",
+        "column": "country_id"
+      },
+      "to": {
+        "table": "country",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "Team_Attributes",
+        "column": "team_fifa_api_id"
+      },
+      "to": {
+        "table": "Team",
+        "column": "team_fifa_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Team_Attributes",
+        "column": "team_api_id"
+      },
+      "to": {
+        "table": "Team",
+        "column": "team_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_team_api_id"
+      },
+      "to": {
+        "table": "Team",
+        "column": "team_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_team_api_id"
+      },
+      "to": {
+        "table": "Team",
+        "column": "team_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_1"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_2"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_3"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_4"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_5"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_6"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_7"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_8"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_9"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_10"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "home_player_11"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_1"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_2"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_3"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_4"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_5"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_6"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_7"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_8"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_9"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_10"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    },
+    {
+      "from": {
+        "table": "Match",
+        "column": "away_player_11"
+      },
+      "to": {
+        "table": "Player",
+        "column": "player_api_id"
+      }
+    }
+  ],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c27",
+        "c28",
+        "c29",
+        "c30",
+        "c31",
+        "c32",
+        "c33",
+        "c34"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16",
+        "f17",
+        "f19",
+        "f20",
+        "f21",
+        "f22",
+        "f23",
+        "f24",
+        "f25"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v14",
+        "v15",
+        "v16",
+        "v17",
+        "v18",
+        "v19",
+        "v20"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15",
+        "r16",
+        "r17",
+        "r18",
+        "r19",
+        "r20",
+        "r21",
+        "r22",
+        "r23",
+        "r24",
+        "r25",
+        "r26",
+        "r27",
+        "r28",
+        "r29",
+        "r30",
+        "r31",
+        "r32",
+        "r33",
+        "r34",
+        "r35",
+        "r36"
+      ],
+      "ColumnAlias": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10",
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15",
+        "a16",
+        "a17",
+        "a18"
+      ]
+    },
+    "by_column": {
+      "Player_Attributes.overall_rating": [
+        "f1",
+        "f21",
+        "f22",
+        "r1",
+        "r26",
+        "a18"
+      ],
+      "Player.height": [
+        "f2",
+        "f11",
+        "f20",
+        "r14",
+        "r31"
+      ],
+      "Player_Attributes.potential": [
+        "f3",
+        "f17",
+        "r34",
+        "a10"
+      ],
+      "Player_Attributes.crossing": [
+        "f4"
+      ],
+      "Match.home_team_goal": [
+        "f5",
+        "f8",
+        "f13",
+        "f16",
+        "r3",
+        "r4",
+        "r17",
+        "r33",
+        "a16"
+      ],
+      "Match.away_team_goal": [
+        "f5",
+        "f8",
+        "f13",
+        "f16",
+        "r3",
+        "r4",
+        "r17"
+      ],
+      "Player_Attributes.penalties": [
+        "f6"
+      ],
+      "Team_Attributes.buildUpPlaySpeed": [
+        "f7",
+        "v14",
+        "r9",
+        "a4"
+      ],
+      "Player.birthday": [
+        "f9",
+        "r7",
+        "r13",
+        "r18",
+        "r21",
+        "r25",
+        "r36"
+      ],
+      "Match.league_id": [
+        "f10"
+      ],
+      "Player.id": [
+        "f11"
+      ],
+      "Player_Attributes.preferred_foot": [
+        "f12",
+        "v9",
+        "r12",
+        "a1"
+      ],
+      "Player_Attributes.player_fifa_api_id": [
+        "f12",
+        "f14",
+        "f15"
+      ],
+      "Player_Attributes.long_shots": [
+        "f14"
+      ],
+      "Player_Attributes.heading_accuracy": [
+        "f15",
+        "a9"
+      ],
+      "Match.id": [
+        "f16"
+      ],
+      "Player_Attributes.finishing": [
+        "f19",
+        "a12"
+      ],
+      "Player_Attributes.id": [
+        "f21",
+        "f25"
+      ],
+      "Player_Attributes.balance": [
+        "f23",
+        "a17"
+      ],
+      "Player_Attributes.ball_control": [
+        "f24",
+        "f25"
+      ],
+      "Player.player_name": [
+        "f24",
+        "f25",
+        "a2"
+      ],
+      "Player_Attributes.defensive_work_rate": [
+        "v1"
+      ],
+      "Match.season": [
+        "v2",
+        "v4",
+        "r2",
+        "r24"
+      ],
+      "League.name": [
+        "v3",
+        "v13",
+        "v17",
+        "v19",
+        "a7"
+      ],
+      "Team_Attributes.buildUpPlayDribblingClass": [
+        "v5"
+      ],
+      "Team.team_long_name": [
+        "v6",
+        "v7",
+        "r11",
+        "a5"
+      ],
+      "Team_Attributes.buildUpPlayPositioningClass": [
+        "v8"
+      ],
+      "Team_Attributes.chanceCreationPassingClass": [
+        "v10",
+        "a11"
+      ],
+      "Team_Attributes.buildUpPlaySpeedClass": [
+        "v11",
+        "r28",
+        "a13"
+      ],
+      "Team.team_short_name": [
+        "v12",
+        "r35",
+        "a8"
+      ],
+      "Team_Attributes.buildUpPlayDribbling": [
+        "v15",
+        "a15"
+      ],
+      "Team_Attributes.buildUpPlayPassing": [
+        "v16",
+        "r11",
+        "r29",
+        "a6"
+      ],
+      "Player_Attributes.attacking_work_rate": [
+        "v18"
+      ],
+      "Country.name": [
+        "v20",
+        "r23"
+      ],
+      "Player_Attributes.sprint_speed": [
+        "r5"
+      ],
+      "Player_Attributes.date": [
+        "r6",
+        "r8",
+        "r19",
+        "r27",
+        "r30"
+      ],
+      "Team_Attributes.date": [
+        "r10",
+        "r15"
+      ],
+      "Team_Attributes.chanceCreationPassing": [
+        "r16"
+      ],
+      "Team_Attributes.id": [
+        "r16"
+      ],
+      "Match.date": [
+        "r20",
+        "r32"
+      ],
+      "Player.weight": [
+        "r22"
+      ],
+      "Match.away_team_api_id": [
+        "a3"
+      ],
+      "Team_Attributes.buildUpPlayPassingClass": [
+        "a14"
+      ]
+    },
+    "by_name_token": {
+      "tallest": [
+        "c1",
+        "f2"
+      ],
+      "player": [
+        "c1",
+        "c26",
+        "c28",
+        "c30",
+        "c31",
+        "c33",
+        "f2",
+        "r31",
+        "r36"
+      ],
+      "potential": [
+        "c2",
+        "c27",
+        "f3",
+        "f17",
+        "r34",
+        "a10"
+      ],
+      "lowest": [
+        "c2",
+        "f3"
+      ],
+      "your": [
+        "c3"
+      ],
+      "attack": [
+        "c3"
+      ],
+      "players": [
+        "c3",
+        "c7",
+        "c13",
+        "c17",
+        "c18",
+        "c25",
+        "f9",
+        "f12",
+        "v18"
+      ],
+      "whose": [
+        "c3"
+      ],
+      "all": [
+        "c3",
+        "c11",
+        "f10",
+        "f13"
+      ],
+      "be": [
+        "c3"
+      ],
+      "moves": [
+        "c3"
+      ],
+      "defensing": [
+        "c3"
+      ],
+      "going": [
+        "c3"
+      ],
+      "instead": [
+        "c3"
+      ],
+      "better": [
+        "c4"
+      ],
+      "perform": [
+        "c4"
+      ],
+      "crossing": [
+        "c4",
+        "f4"
+      ],
+      "actions": [
+        "c4"
+      ],
+      "had": [
+        "c5"
+      ],
+      "goals": [
+        "c5",
+        "c23",
+        "f5",
+        "f13",
+        "r17"
+      ],
+      "league": [
+        "c5",
+        "c11",
+        "f5",
+        "f10",
+        "v3",
+        "v19",
+        "a7"
+      ],
+      "most": [
+        "c5",
+        "c8",
+        "c10",
+        "f8"
+      ],
+      "that": [
+        "c5",
+        "c8"
+      ],
+      "team": [
+        "c6",
+        "c8",
+        "c23",
+        "c29",
+        "v18",
+        "r3",
+        "r4",
+        "a3",
+        "a8",
+        "a16"
+      ],
+      "home": [
+        "c6",
+        "c23",
+        "c29",
+        "r3",
+        "r17",
+        "a16"
+      ],
+      "lost": [
+        "c6",
+        "r3"
+      ],
+      "matches": [
+        "c6",
+        "c10",
+        "c11",
+        "f8",
+        "f10"
+      ],
+      "number": [
+        "c7",
+        "f6",
+        "f13",
+        "f14"
+      ],
+      "penalties": [
+        "c7",
+        "f6"
+      ],
+      "highest": [
+        "c7",
+        "c9",
+        "c11",
+        "c14",
+        "c27",
+        "c28",
+        "c30",
+        "c32",
+        "f1",
+        "f6",
+        "f7",
+        "f10",
+        "f17",
+        "f19",
+        "f23"
+      ],
+      "won": [
+        "c8",
+        "r4"
+      ],
+      "away": [
+        "c8",
+        "c23",
+        "r4",
+        "r17",
+        "a3"
+      ],
+      "build": [
+        "c9",
+        "c15",
+        "c16",
+        "f7",
+        "v5",
+        "r9",
+        "r11",
+        "a6",
+        "a15"
+      ],
+      "speed": [
+        "c9",
+        "c15",
+        "f7",
+        "v11",
+        "r5",
+        "r9",
+        "r28",
+        "a4",
+        "a13"
+      ],
+      "up": [
+        "c9",
+        "c15",
+        "c16",
+        "f7",
+        "v5",
+        "r9",
+        "r11",
+        "a6",
+        "a15"
+      ],
+      "play": [
+        "c9",
+        "c15",
+        "c16",
+        "f7",
+        "v5",
+        "r9",
+        "r11",
+        "a6",
+        "a15"
+      ],
+      "as": [
+        "c10",
+        "f8"
+      ],
+      "end": [
+        "c10",
+        "f8",
+        "f25"
+      ],
+      "draw": [
+        "c10",
+        "f8"
+      ],
+      "time": [
+        "c11",
+        "f10"
+      ],
+      "average": [
+        "c12",
+        "c14",
+        "c16",
+        "c21",
+        "c22",
+        "c23",
+        "c29",
+        "f11",
+        "f14",
+        "f15",
+        "f19",
+        "f21",
+        "f22",
+        "f24",
+        "r11",
+        "r16"
+      ],
+      "height": [
+        "c12",
+        "f2",
+        "f11",
+        "f20",
+        "r14",
+        "r31"
+      ],
+      "1995": [
+        "c13",
+        "r7"
+      ],
+      "between": [
+        "c13",
+        "c19",
+        "r1",
+        "r6",
+        "r7",
+        "r9",
+        "r13",
+        "r27",
+        "r32"
+      ],
+      "born": [
+        "c13",
+        "c19",
+        "r13",
+        "r25"
+      ],
+      "1990": [
+        "c13",
+        "r7",
+        "r25"
+      ],
+      "overall": [
+        "c14",
+        "c28",
+        "c34",
+        "f1",
+        "f21",
+        "f22",
+        "r1",
+        "a18"
+      ],
+      "above": [
+        "c14",
+        "c16",
+        "c20",
+        "r11",
+        "r14"
+      ],
+      "ratings": [
+        "c14"
+      ],
+      "less": [
+        "c15",
+        "c22",
+        "r5",
+        "r16"
+      ],
+      "teams": [
+        "c15",
+        "a5"
+      ],
+      "than": [
+        "c15",
+        "c22",
+        "c23",
+        "r5",
+        "r16",
+        "r31"
+      ],
+      "50": [
+        "c15",
+        "r9"
+      ],
+      "more": [
+        "c15"
+      ],
+      "60": [
+        "c15",
+        "r1",
+        "r9"
+      ],
+      "but": [
+        "c15"
+      ],
+      "passing": [
+        "c16",
+        "c22",
+        "v10",
+        "r11",
+        "r16",
+        "a6",
+        "a11",
+        "a14"
+      ],
+      "foot": [
+        "c17",
+        "c18",
+        "f12",
+        "r12",
+        "a1"
+      ],
+      "prefer": [
+        "c17",
+        "c18",
+        "f12"
+      ],
+      "who": [
+        "c17",
+        "c18",
+        "c28",
+        "f12",
+        "v18"
+      ],
+      "left": [
+        "c17",
+        "c18",
+        "f12",
+        "v9",
+        "r12"
+      ],
+      "percentage": [
+        "c18",
+        "f12"
+      ],
+      "1987": [
+        "c19",
+        "r13"
+      ],
+      "1992": [
+        "c19",
+        "r13"
+      ],
+      "180": [
+        "c20",
+        "r14"
+      ],
+      "heights": [
+        "c20"
+      ],
+      "heading": [
+        "c21",
+        "f15"
+      ],
+      "accuracy": [
+        "c21",
+        "f15"
+      ],
+      "chance": [
+        "c22",
+        "v10",
+        "r16",
+        "a11"
+      ],
+      "creation": [
+        "c22",
+        "v10",
+        "r16",
+        "a11"
+      ],
+      "higher": [
+        "c23",
+        "r31"
+      ],
+      "avg": [
+        "c24",
+        "f16",
+        "f19",
+        "f22",
+        "f24",
+        "f25",
+        "r17"
+      ],
+      "xx_goal": [
+        "c24",
+        "f16"
+      ],
+      "birthmonth": [
+        "c25",
+        "r18"
+      ],
+      "october": [
+        "c25",
+        "r18",
+        "r32"
+      ],
+      "1970": [
+        "c25",
+        "r18"
+      ],
+      "birthyear": [
+        "c25",
+        "r18"
+      ],
+      "youngest": [
+        "c26"
+      ],
+      "football": [
+        "c26",
+        "c28",
+        "c30",
+        "c31",
+        "a8"
+      ],
+      "score": [
+        "c27",
+        "c32",
+        "f17",
+        "f23",
+        "a10",
+        "a17"
+      ],
+      "rating": [
+        "c28",
+        "f1",
+        "f21",
+        "f22",
+        "r1"
+      ],
+      "has": [
+        "c28"
+      ],
+      "goal": [
+        "c29",
+        "a16"
+      ],
+      "shortest": [
+        "c31"
+      ],
+      "balance": [
+        "c32",
+        "f23",
+        "a17"
+      ],
+      "age": [
+        "c33",
+        "f9",
+        "r36"
+      ],
+      "strongest": [
+        "c34"
+      ],
+      "strength": [
+        "c34",
+        "a18"
+      ],
+      "overall_rating": [
+        "f1",
+        "f21",
+        "f22",
+        "r1",
+        "r26"
+      ],
+      "max": [
+        "f1",
+        "f2",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f10",
+        "f17",
+        "f19",
+        "f23",
+        "r21"
+      ],
+      "min": [
+        "f3",
+        "f20"
+      ],
+      "total": [
+        "f5"
+      ],
+      "per": [
+        "f5"
+      ],
+      "away_team_goal": [
+        "f5",
+        "f8",
+        "f13",
+        "r3",
+        "r4",
+        "r17"
+      ],
+      "home_team_goal": [
+        "f5",
+        "f8",
+        "f13",
+        "r3",
+        "r4",
+        "r17",
+        "r33"
+      ],
+      "sum": [
+        "f5",
+        "f8",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16",
+        "f21",
+        "f25",
+        "r11",
+        "r16"
+      ],
+      "buildupplayspeed": [
+        "f7",
+        "v14",
+        "r9"
+      ],
+      "datetime": [
+        "f9"
+      ],
+      "birthday": [
+        "f9",
+        "r7",
+        "r13",
+        "r18",
+        "r21",
+        "r25",
+        "r36"
+      ],
+      "present": [
+        "f9"
+      ],
+      "subtract": [
+        "f9",
+        "f24",
+        "r3"
+      ],
+      "count": [
+        "f10",
+        "f11",
+        "f12",
+        "f14",
+        "f15",
+        "f16",
+        "f21",
+        "f25",
+        "r11",
+        "r16"
+      ],
+      "league_id": [
+        "f10"
+      ],
+      "id": [
+        "f11",
+        "f16",
+        "f21",
+        "f25",
+        "r16"
+      ],
+      "preferred_foot": [
+        "f12",
+        "r12"
+      ],
+      "divide": [
+        "f12",
+        "r11"
+      ],
+      "player_fifa_api_id": [
+        "f12",
+        "f14",
+        "f15"
+      ],
+      "multiply": [
+        "f12"
+      ],
+      "100": [
+        "f12"
+      ],
+      "combine": [
+        "f13"
+      ],
+      "made": [
+        "f13"
+      ],
+      "seasons": [
+        "f13"
+      ],
+      "shot": [
+        "f14"
+      ],
+      "long": [
+        "f14",
+        "a5"
+      ],
+      "long_shots": [
+        "f14"
+      ],
+      "heading_accuracy": [
+        "f15"
+      ],
+      "distinct": [
+        "f16"
+      ],
+      "definition": [
+        "f16"
+      ],
+      "match": [
+        "f16"
+      ],
+      "rate": [
+        "f19",
+        "v1",
+        "a9",
+        "a12"
+      ],
+      "finishing": [
+        "f19",
+        "a9",
+        "a12"
+      ],
+      "t2": [
+        "f21"
+      ],
+      "diallo": [
+        "f24"
+      ],
+      "control": [
+        "f24"
+      ],
+      "ball": [
+        "f24"
+      ],
+      "aaron": [
+        "f24"
+      ],
+      "difference": [
+        "f24"
+      ],
+      "appindangoye": [
+        "f24"
+      ],
+      "player_name": [
+        "f24",
+        "f25"
+      ],
+      "ball_control": [
+        "f24",
+        "f25"
+      ],
+      "where": [
+        "f24",
+        "f25",
+        "r11"
+      ],
+      "abdou": [
+        "f24"
+      ],
+      "else": [
+        "f25"
+      ],
+      "xx": [
+        "f25"
+      ],
+      "case": [
+        "f25"
+      ],
+      "then": [
+        "f25"
+      ],
+      "null": [
+        "f25",
+        "r11"
+      ],
+      "when": [
+        "f25",
+        "v18",
+        "a1"
+      ],
+      "defensive": [
+        "v1"
+      ],
+      "work": [
+        "v1"
+      ],
+      "low": [
+        "v1"
+      ],
+      "season": [
+        "v2",
+        "v4",
+        "r2",
+        "r24"
+      ],
+      "2016": [
+        "v2",
+        "r2"
+      ],
+      "scotland": [
+        "v3"
+      ],
+      "premier": [
+        "v3"
+      ],
+      "2010": [
+        "v4",
+        "r8",
+        "r24",
+        "r27",
+        "r30"
+      ],
+      "class": [
+        "v5",
+        "v10",
+        "v11",
+        "r28",
+        "a11",
+        "a13",
+        "a14"
+      ],
+      "dribbling": [
+        "v5",
+        "a15"
+      ],
+      "normal": [
+        "v5"
+      ],
+      "park": [
+        "v6"
+      ],
+      "rangers": [
+        "v6"
+      ],
+      "queens": [
+        "v6"
+      ],
+      "ado": [
+        "v7"
+      ],
+      "den": [
+        "v7"
+      ],
+      "haag": [
+        "v7"
+      ],
+      "two": [
+        "v8"
+      ],
+      "1st": [
+        "v8"
+      ],
+      "movement": [
+        "v8"
+      ],
+      "thirds": [
+        "v8"
+      ],
+      "pitch": [
+        "v8"
+      ],
+      "freedom": [
+        "v8"
+      ],
+      "footed": [
+        "v9"
+      ],
+      "risky": [
+        "v10"
+      ],
+      "fast": [
+        "v11",
+        "r28"
+      ],
+      "clb": [
+        "v12"
+      ],
+      "italy": [
+        "v13"
+      ],
+      "serie": [
+        "v13"
+      ],
+      "31": [
+        "v14",
+        "r15"
+      ],
+      "53": [
+        "v15"
+      ],
+      "buildupplaydribbling": [
+        "v15"
+      ],
+      "32": [
+        "v16"
+      ],
+      "buildupplaypassing": [
+        "v16",
+        "r11",
+        "r29"
+      ],
+      "germany": [
+        "v17",
+        "v20"
+      ],
+      "bundesliga": [
+        "v17"
+      ],
+      "his": [
+        "v18"
+      ],
+      "remain": [
+        "v18"
+      ],
+      "position": [
+        "v18"
+      ],
+      "attacked": [
+        "v18"
+      ],
+      "would": [
+        "v18"
+      ],
+      "belgium": [
+        "v19"
+      ],
+      "jupiler": [
+        "v19"
+      ],
+      "65": [
+        "r1"
+      ],
+      "64": [
+        "r1"
+      ],
+      "2015": [
+        "r2",
+        "r6",
+        "r30"
+      ],
+      "no": [
+        "r5"
+      ],
+      "97": [
+        "r5"
+      ],
+      "sprint": [
+        "r5"
+      ],
+      "sprint_speed": [
+        "r5"
+      ],
+      "date": [
+        "r6",
+        "r8",
+        "r10",
+        "r15",
+        "r19",
+        "r20",
+        "r27",
+        "r30",
+        "r32"
+      ],
+      "year": [
+        "r6",
+        "r13",
+        "r20"
+      ],
+      "2013": [
+        "r6"
+      ],
+      "01": [
+        "r7",
+        "r15"
+      ],
+      "00": [
+        "r7",
+        "r15",
+        "r19"
+      ],
+      "1996": [
+        "r7"
+      ],
+      "substr": [
+        "r8",
+        "r18"
+      ],
+      "strftime": [
+        "r10",
+        "r20",
+        "r25",
+        "r27",
+        "r30",
+        "r32"
+      ],
+      "2012": [
+        "r10"
+      ],
+      "team_long_name": [
+        "r11"
+      ],
+      "not": [
+        "r11"
+      ],
+      "prefers": [
+        "r12"
+      ],
+      "2014": [
+        "r15",
+        "r19"
+      ],
+      "chancecreationpassing": [
+        "r16"
+      ],
+      "10": [
+        "r18",
+        "r32",
+        "r33"
+      ],
+      "18": [
+        "r19"
+      ],
+      "on": [
+        "r19"
+      ],
+      "09": [
+        "r19"
+      ],
+      "2011": [
+        "r20",
+        "r24"
+      ],
+      "latest": [
+        "r21"
+      ],
+      "130": [
+        "r22"
+      ],
+      "weight": [
+        "r22"
+      ],
+      "country": [
+        "r23"
+      ],
+      "name": [
+        "r23",
+        "a2",
+        "a5",
+        "a7",
+        "a8"
+      ],
+      "poland": [
+        "r23"
+      ],
+      "after": [
+        "r25"
+      ],
+      "80": [
+        "r26"
+      ],
+      "2008": [
+        "r27",
+        "r32"
+      ],
+      "from": [
+        "r27",
+        "r30",
+        "r32"
+      ],
+      "buildupplayspeedclass": [
+        "r28"
+      ],
+      "70": [
+        "r29"
+      ],
+      "170": [
+        "r31"
+      ],
+      "august": [
+        "r32"
+      ],
+      "08": [
+        "r32"
+      ],
+      "61": [
+        "r34"
+      ],
+      "gen": [
+        "r35"
+      ],
+      "team_short_name": [
+        "r35"
+      ],
+      "determines": [
+        "r36"
+      ],
+      "larger": [
+        "r36"
+      ],
+      "younger": [
+        "r36"
+      ],
+      "value": [
+        "r36"
+      ],
+      "means": [
+        "r36"
+      ],
+      "preferred": [
+        "a1"
+      ],
+      "attacking": [
+        "a1"
+      ],
+      "full": [
+        "a2"
+      ],
+      "put": [
+        "a4"
+      ],
+      "together": [
+        "a4"
+      ],
+      "attacks": [
+        "a4"
+      ],
+      "which": [
+        "a4"
+      ],
+      "short": [
+        "a8"
+      ],
+      "header": [
+        "a9"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        1021,
+        "c1"
+      ],
+      [
+        1079,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        1022,
+        "c1"
+      ]
+    ],
+    "c3": [
+      [
+        1023,
+        "c1"
+      ]
+    ],
+    "c4": [
+      [
+        1024,
+        "c1"
+      ]
+    ],
+    "c5": [
+      [
+        1025,
+        "c1"
+      ]
+    ],
+    "c6": [
+      [
+        1026,
+        "c1"
+      ]
+    ],
+    "c7": [
+      [
+        1027,
+        "c1"
+      ]
+    ],
+    "c8": [
+      [
+        1028,
+        "c1"
+      ]
+    ],
+    "c9": [
+      [
+        1029,
+        "c1"
+      ]
+    ],
+    "c10": [
+      [
+        1030,
+        "c1"
+      ]
+    ],
+    "c11": [
+      [
+        1032,
+        "c1"
+      ]
+    ],
+    "c12": [
+      [
+        1033,
+        "c1"
+      ]
+    ],
+    "c13": [
+      [
+        1033,
+        "c2"
+      ]
+    ],
+    "c14": [
+      [
+        1034,
+        "c1"
+      ]
+    ],
+    "c15": [
+      [
+        1035,
+        "c1"
+      ]
+    ],
+    "c16": [
+      [
+        1036,
+        "c1"
+      ]
+    ],
+    "c17": [
+      [
+        1037,
+        "c1"
+      ]
+    ],
+    "c18": [
+      [
+        1037,
+        "c2"
+      ]
+    ],
+    "c19": [
+      [
+        1037,
+        "c3"
+      ]
+    ],
+    "c20": [
+      [
+        1040,
+        "c1"
+      ]
+    ],
+    "c21": [
+      [
+        1040,
+        "c2"
+      ]
+    ],
+    "c22": [
+      [
+        1041,
+        "c1"
+      ]
+    ],
+    "c23": [
+      [
+        1042,
+        "c1"
+      ]
+    ],
+    "c24": [
+      [
+        1042,
+        "c2"
+      ]
+    ],
+    "c25": [
+      [
+        1044,
+        "c1"
+      ]
+    ],
+    "c26": [
+      [
+        1050,
+        "c1"
+      ]
+    ],
+    "c27": [
+      [
+        1051,
+        "c1"
+      ]
+    ],
+    "c28": [
+      [
+        1055,
+        "c1"
+      ]
+    ],
+    "c29": [
+      [
+        1057,
+        "c1"
+      ]
+    ],
+    "c30": [
+      [
+        1058,
+        "c1"
+      ]
+    ],
+    "c31": [
+      [
+        1058,
+        "c2"
+      ]
+    ],
+    "c32": [
+      [
+        1075,
+        "c1"
+      ]
+    ],
+    "c33": [
+      [
+        1078,
+        "c1"
+      ]
+    ],
+    "c34": [
+      [
+        1083,
+        "c1"
+      ]
+    ],
+    "f1": [
+      [
+        1020,
+        "f1"
+      ],
+      [
+        1034,
+        "f1"
+      ],
+      [
+        1055,
+        "f1"
+      ],
+      [
+        1083,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        1021,
+        "f1"
+      ],
+      [
+        1058,
+        "f2"
+      ],
+      [
+        1079,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        1022,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        1024,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        1025,
+        "f1"
+      ]
+    ],
+    "f6": [
+      [
+        1027,
+        "f1"
+      ]
+    ],
+    "f7": [
+      [
+        1029,
+        "f1"
+      ]
+    ],
+    "f8": [
+      [
+        1030,
+        "f1"
+      ]
+    ],
+    "f9": [
+      [
+        1031,
+        "f1"
+      ]
+    ],
+    "f10": [
+      [
+        1032,
+        "f1"
+      ]
+    ],
+    "f11": [
+      [
+        1033,
+        "f1"
+      ]
+    ],
+    "f12": [
+      [
+        1037,
+        "f1"
+      ]
+    ],
+    "f13": [
+      [
+        1038,
+        "f1"
+      ]
+    ],
+    "f14": [
+      [
+        1039,
+        "f1"
+      ]
+    ],
+    "f15": [
+      [
+        1040,
+        "f1"
+      ]
+    ],
+    "f16": [
+      [
+        1042,
+        "f1"
+      ]
+    ],
+    "f17": [
+      [
+        1051,
+        "f1"
+      ]
+    ],
+    "f19": [
+      [
+        1058,
+        "f1"
+      ]
+    ],
+    "f20": [
+      [
+        1058,
+        "f3"
+      ],
+      [
+        1069,
+        "f1"
+      ]
+    ],
+    "f21": [
+      [
+        1068,
+        "f1"
+      ]
+    ],
+    "f22": [
+      [
+        1072,
+        "f1"
+      ]
+    ],
+    "f23": [
+      [
+        1075,
+        "f1"
+      ]
+    ],
+    "f24": [
+      [
+        1076,
+        "f1"
+      ]
+    ],
+    "f25": [
+      [
+        1076,
+        "f2"
+      ]
+    ],
+    "v1": [
+      [
+        1023,
+        "v1"
+      ]
+    ],
+    "v2": [
+      [
+        1026,
+        "v1"
+      ]
+    ],
+    "v3": [
+      [
+        1028,
+        "v1"
+      ],
+      [
+        1049,
+        "v1"
+      ]
+    ],
+    "v4": [
+      [
+        1028,
+        "v2"
+      ],
+      [
+        1042,
+        "v1"
+      ]
+    ],
+    "v5": [
+      [
+        1041,
+        "v1"
+      ]
+    ],
+    "v6": [
+      [
+        1043,
+        "v1"
+      ]
+    ],
+    "v7": [
+      [
+        1046,
+        "v1"
+      ]
+    ],
+    "v8": [
+      [
+        1046,
+        "v2"
+      ]
+    ],
+    "v9": [
+      [
+        1052,
+        "v1"
+      ],
+      [
+        1080,
+        "v1"
+      ]
+    ],
+    "v10": [
+      [
+        1053,
+        "v1"
+      ]
+    ],
+    "v11": [
+      [
+        1061,
+        "v1"
+      ]
+    ],
+    "v12": [
+      [
+        1066,
+        "v1"
+      ]
+    ],
+    "v13": [
+      [
+        1070,
+        "v1"
+      ]
+    ],
+    "v14": [
+      [
+        1071,
+        "v1"
+      ]
+    ],
+    "v15": [
+      [
+        1071,
+        "v2"
+      ]
+    ],
+    "v16": [
+      [
+        1071,
+        "v3"
+      ]
+    ],
+    "v17": [
+      [
+        1073,
+        "v1"
+      ]
+    ],
+    "v18": [
+      [
+        1080,
+        "v2"
+      ]
+    ],
+    "v19": [
+      [
+        1081,
+        "v1"
+      ]
+    ],
+    "v20": [
+      [
+        1082,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        1023,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        1025,
+        "r1"
+      ],
+      [
+        1030,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        1026,
+        "r1"
+      ]
+    ],
+    "r4": [
+      [
+        1028,
+        "r1"
+      ]
+    ],
+    "r5": [
+      [
+        1031,
+        "r1"
+      ]
+    ],
+    "r6": [
+      [
+        1031,
+        "r2"
+      ]
+    ],
+    "r7": [
+      [
+        1033,
+        "r1"
+      ]
+    ],
+    "r8": [
+      [
+        1034,
+        "r1"
+      ]
+    ],
+    "r9": [
+      [
+        1035,
+        "r1"
+      ]
+    ],
+    "r10": [
+      [
+        1036,
+        "r1"
+      ]
+    ],
+    "r11": [
+      [
+        1036,
+        "r2"
+      ]
+    ],
+    "r12": [
+      [
+        1037,
+        "r1"
+      ],
+      [
+        1064,
+        "r1"
+      ]
+    ],
+    "r13": [
+      [
+        1037,
+        "r2"
+      ]
+    ],
+    "r14": [
+      [
+        1040,
+        "r1"
+      ],
+      [
+        1059,
+        "r1"
+      ]
+    ],
+    "r15": [
+      [
+        1041,
+        "r1"
+      ]
+    ],
+    "r16": [
+      [
+        1041,
+        "r2"
+      ]
+    ],
+    "r17": [
+      [
+        1042,
+        "r1"
+      ]
+    ],
+    "r18": [
+      [
+        1044,
+        "r1"
+      ]
+    ],
+    "r19": [
+      [
+        1047,
+        "r1"
+      ]
+    ],
+    "r20": [
+      [
+        1048,
+        "r1"
+      ]
+    ],
+    "r21": [
+      [
+        1050,
+        "r1"
+      ]
+    ],
+    "r22": [
+      [
+        1052,
+        "r1"
+      ]
+    ],
+    "r23": [
+      [
+        1057,
+        "r1"
+      ]
+    ],
+    "r24": [
+      [
+        1057,
+        "r2"
+      ]
+    ],
+    "r25": [
+      [
+        1060,
+        "r1"
+      ]
+    ],
+    "r26": [
+      [
+        1062,
+        "r1"
+      ]
+    ],
+    "r27": [
+      [
+        1062,
+        "r2"
+      ]
+    ],
+    "r28": [
+      [
+        1065,
+        "r1"
+      ]
+    ],
+    "r29": [
+      [
+        1067,
+        "r1"
+      ]
+    ],
+    "r30": [
+      [
+        1068,
+        "r1"
+      ]
+    ],
+    "r31": [
+      [
+        1068,
+        "r2"
+      ]
+    ],
+    "r32": [
+      [
+        1073,
+        "r1"
+      ]
+    ],
+    "r33": [
+      [
+        1074,
+        "r1"
+      ]
+    ],
+    "r34": [
+      [
+        1075,
+        "r1"
+      ]
+    ],
+    "r35": [
+      [
+        1077,
+        "r1"
+      ]
+    ],
+    "r36": [
+      [
+        1078,
+        "r1"
+      ]
+    ],
+    "a1": [
+      [
+        1022,
+        "a1"
+      ],
+      [
+        1050,
+        "a1"
+      ],
+      [
+        1052,
+        "a1"
+      ]
+    ],
+    "a2": [
+      [
+        1027,
+        "a1"
+      ]
+    ],
+    "a3": [
+      [
+        1028,
+        "a1"
+      ]
+    ],
+    "a4": [
+      [
+        1029,
+        "a1"
+      ],
+      [
+        1071,
+        "a1"
+      ]
+    ],
+    "a5": [
+      [
+        1036,
+        "a1"
+      ],
+      [
+        1041,
+        "a1"
+      ],
+      [
+        1061,
+        "a1"
+      ],
+      [
+        1065,
+        "a1"
+      ],
+      [
+        1077,
+        "a1"
+      ]
+    ],
+    "a6": [
+      [
+        1036,
+        "a2"
+      ],
+      [
+        1067,
+        "a1"
+      ],
+      [
+        1071,
+        "a3"
+      ]
+    ],
+    "a7": [
+      [
+        1042,
+        "a1"
+      ],
+      [
+        1056,
+        "a1"
+      ]
+    ],
+    "a8": [
+      [
+        1043,
+        "a1"
+      ],
+      [
+        1053,
+        "a2"
+      ],
+      [
+        1067,
+        "a2"
+      ],
+      [
+        1071,
+        "a4"
+      ],
+      [
+        1074,
+        "a1"
+      ]
+    ],
+    "a9": [
+      [
+        1047,
+        "a1"
+      ]
+    ],
+    "a10": [
+      [
+        1051,
+        "a1"
+      ],
+      [
+        1063,
+        "a1"
+      ],
+      [
+        1075,
+        "a2"
+      ]
+    ],
+    "a11": [
+      [
+        1053,
+        "a1"
+      ]
+    ],
+    "a12": [
+      [
+        1058,
+        "a1"
+      ]
+    ],
+    "a13": [
+      [
+        1061,
+        "a2"
+      ],
+      [
+        1065,
+        "a2"
+      ]
+    ],
+    "a14": [
+      [
+        1066,
+        "a1"
+      ]
+    ],
+    "a15": [
+      [
+        1071,
+        "a2"
+      ]
+    ],
+    "a16": [
+      [
+        1074,
+        "a2"
+      ]
+    ],
+    "a17": [
+      [
+        1075,
+        "a1"
+      ]
+    ],
+    "a18": [
+      [
+        1083,
+        "a1"
+      ]
+    ]
+  }
+}

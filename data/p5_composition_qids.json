@@ -1,0 +1,431 @@
+{
+  "meta": {
+    "source": "data/p5_composition_candidates.json",
+    "criterion": "top 30 with score (C1+C2+C3) >= 2",
+    "n": 30
+  },
+  "items": [
+    {
+      "question_id": 515
+    },
+    {
+      "question_id": 529
+    },
+    {
+      "question_id": 652
+    },
+    {
+      "question_id": 707
+    },
+    {
+      "question_id": 962
+    },
+    {
+      "question_id": 970
+    },
+    {
+      "question_id": 981
+    },
+    {
+      "question_id": 988
+    },
+    {
+      "question_id": 1236
+    },
+    {
+      "question_id": 1238
+    },
+    {
+      "question_id": 1239
+    },
+    {
+      "question_id": 1270
+    },
+    {
+      "question_id": 1275
+    },
+    {
+      "question_id": 1309
+    },
+    {
+      "question_id": 47
+    },
+    {
+      "question_id": 76
+    },
+    {
+      "question_id": 149
+    },
+    {
+      "question_id": 171
+    },
+    {
+      "question_id": 182
+    },
+    {
+      "question_id": 193
+    },
+    {
+      "question_id": 450
+    },
+    {
+      "question_id": 472
+    },
+    {
+      "question_id": 474
+    },
+    {
+      "question_id": 477
+    },
+    {
+      "question_id": 494
+    },
+    {
+      "question_id": 507
+    },
+    {
+      "question_id": 516
+    },
+    {
+      "question_id": 527
+    },
+    {
+      "question_id": 528
+    },
+    {
+      "question_id": 634
+    }
+  ],
+  "detail": [
+    {
+      "question_id": 515,
+      "db_id": "card_games",
+      "question": "When was the oldest mythic card released and what are its legal play formats?",
+      "gold_sql": "SELECT T1.originalReleaseDate, T2.format FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T1.rarity = 'mythic' AND T1.originalReleaseDate IS NOT NULL AND T2.status = 'Legal' ORDER BY T1.originalReleaseDate LIMIT 1",
+      "evidence": "the oldest card refers to MIN(originalReleaseDate); mythic card refers to rarity = 'mythic'; legal play refers to status = 'legal'; play format refers to format",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 529,
+      "db_id": "card_games",
+      "question": "Find and list the names of sets which doesn't have Japanese translation but have Korean translation.",
+      "gold_sql": "SELECT name FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE language = 'Korean' AND language NOT LIKE '%Japanese%' )",
+      "evidence": "names of sets refers to name; doesn't have Japanese translation refers to language not like '%Japanese%'; have Korean translation refers to language = 'Korean'",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 652,
+      "db_id": "codebase_community",
+      "question": "List the post IDs and badge names of the user Samuel in 2013.",
+      "gold_sql": "SELECT T1.PostId, T2.Name FROM postHistory AS T1 INNER JOIN badges AS T2 ON T1.UserId = T2.UserId WHERE T1.UserDisplayName = 'Samuel' AND STRFTIME('%Y', T1.CreationDate) = '2013' AND STRFTIME('%Y', T2.Date) = '2013'",
+      "evidence": "Samuel refers to UserDisplayName; YEAR(CreationDate) = 2013 relates to PostId; YEAR(Date) = 2013 relates to the badge;",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 707,
+      "db_id": "codebase_community",
+      "question": "Among the posts with views ranging from 100 to 150, what is the comment with the highest score?",
+      "gold_sql": "SELECT Text FROM comments WHERE PostId IN ( SELECT Id FROM posts WHERE ViewCount BETWEEN 100 AND 150 ) ORDER BY Score DESC LIMIT 1",
+      "evidence": "views ranging from 100 to 150 refers to ViewCount BETWEEN 100 and 150; comment with the highest score refers to Text where MAX(Score);",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 962,
+      "db_id": "formula_1",
+      "question": "From 2000 to 2005, what percentage of drivers who were born before 1985 and the lap numbers were over 50?",
+      "gold_sql": "SELECT CAST(SUM(IIF(STRFTIME('%Y', T3.dob) < '1985' AND T1.laps > 50, 1, 0)) AS REAL) * 100 / COUNT(*) FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN drivers AS T3 on T1.driverId = T3.driverId WHERE T2.year BETWEEN 2000 AND 2005",
+      "evidence": "born before 1985 refers to year(dob)<1985; in 2000 to 2005 refers to year between 2000 and 2005; percentage = Divide(COUNT(driverId where year (dob) <1985 and laps >50),COUNT(DriverID where year between 2000 and 2005) *100;",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 970,
+      "db_id": "formula_1",
+      "question": "List out top 3 German drivers who were born from 1980-1990 and have the earliest lap time.",
+      "gold_sql": "SELECT T2.driverId FROM pitStops AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId WHERE T2.nationality = 'German' AND STRFTIME('%Y', T2.dob) BETWEEN '1980' AND '1990' ORDER BY T1.time LIMIT 3",
+      "evidence": "born from 1980-1990 refers to year(dob) between 1980 and 1990; earliest lap time refers to Min(time);",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 981,
+      "db_id": "formula_1",
+      "question": "On what year did the youngest driver had his first qualifying race? Also state the name, date and time of the race.",
+      "gold_sql": "SELECT T3.year, T3.name, T3.date, T3.time FROM qualifying AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId INNER JOIN races AS T3 on T1.raceId = T3.raceId WHERE T1.driverId = ( SELECT driverId FROM drivers ORDER BY dob DESC LIMIT 1 ) ORDER BY T3.date ASC LIMIT 1",
+      "evidence": "date of birth refers to drivers.dob; The larger the birthday value, the younger the person is, and vice versa; first qualifying race refers to MIN(races.date);",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 988,
+      "db_id": "formula_1",
+      "question": "List down top 3 German drivers who has the shortest average pit stop duration and were born between 1980-1985.",
+      "gold_sql": "SELECT T2.forename, T2.surname FROM pitStops AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId WHERE T2.nationality = 'German' AND STRFTIME('%Y', T2.dob) BETWEEN '1980' AND '1985' GROUP BY T2.forename, T2.surname ORDER BY AVG(T1.duration) LIMIT 3",
+      "evidence": "Full name of the driver refers to drivers.forename and drivers.surname; born between 1980-1985 refers to 1980< year(dob)>1985; Average pitstop duration refers to Divide(SUM(duration),COUNT(duration)); shortest average refers to Min(avg(duration));",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 1236,
+      "db_id": "thrombosis_prediction",
+      "question": "For all the female patient age 50 and above, who has abnormal red blood cell count. State if they were admitted to hospital.",
+      "gold_sql": "SELECT DISTINCT T1.ID, T1.Admission FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.SEX = 'F' AND (T2.RBC <= 3.5 OR T2.RBC >= 6.0) AND STRFTIME('%Y', CURRENT_TIMESTAMP) - STRFTIME('%Y', T1.Birthday) >= 50",
+      "evidence": "female patient refers to Sex = 'F'; age 50 and above = SUBTRACT(year(current_timestamp), year(Birthday)) > = 50; abnormal red blood cell count refers to RBC < = 3.5 or RBC > = 6.0; Admission = '+' means the patient was admitted to the hospital; Admission = '-' means the patient was not admitted to the hospital;",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 1238,
+      "db_id": "thrombosis_prediction",
+      "question": "Among the patients who were diagnosed with SLE, who is the oldest with normal hemoglobin level. Provide the ID and sex.",
+      "gold_sql": "SELECT T1.ID, T1.SEX FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Diagnosis = 'SLE' AND T2.HGB > 10 AND T2.HGB < 17 ORDER BY T1.Birthday ASC LIMIT 1",
+      "evidence": "diagnosed with SLE refers to Diagnosis = 'SLE'; The larger the birthday value, the younger the person is, and vice versa; normal hemoglobin level refers to 10 < HGB < 17;",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 1239,
+      "db_id": "thrombosis_prediction",
+      "question": "Name the ID and age of patient with two or more laboratory examinations which show their hematoclit level exceeded the normal range.",
+      "gold_sql": "SELECT DISTINCT T1.ID, STRFTIME('%Y', CURRENT_TIMESTAMP) - STRFTIME('%Y', T1.Birthday) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.ID IN ( SELECT ID FROM Laboratory WHERE HCT >= 52 GROUP BY ID HAVING COUNT(ID) >= 2 )",
+      "evidence": "age = SUBTRACT(year(current_timestamp), year(Birthday)); patient with two or more laboratory examinations refers to COUNT(ID) > 2; hematoclit level exceeded the normal range refers to HCT > = 52;",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 1270,
+      "db_id": "thrombosis_prediction",
+      "question": "Among the patients who has a normal anti-scl70, how many of them are female and does not have any symptom?",
+      "gold_sql": "SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID INNER JOIN Examination AS T3 ON T3.ID = T2.ID WHERE (T2.SC170 = 'negative' OR T2.SC170 = '0') AND T1.SEX = 'F' AND T3.Symptoms IS NULL",
+      "evidence": "normal anti-scl70 refers to SC170 IN('negative', '0'); female refers to Sex = 'F'; does not have any symptom refers to symptoms IS NULL; Should consider DISTINCT in the final result;",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 1275,
+      "db_id": "thrombosis_prediction",
+      "question": "Among the patients who has a normal level of anti-centromere and a normal level of anti-SSB, how many of them are male?",
+      "gold_sql": "SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.CENTROMEA IN ('negative', '0') AND T2.SSB IN ('negative', '0') AND T1.SEX = 'M'",
+      "evidence": "normal level of anti-centromere refers to CENTROMEA IN('-', '+-'); normal level of anti-SSB refers to SSB IN('-', '+-'); male refers to Sex = 'M'; Should consider DISTINCT in the final result;",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 1309,
+      "db_id": "thrombosis_prediction",
+      "question": "Please list a patient's platelet level if it is within the normal range and if he or she is diagnosed with MCTD.",
+      "gold_sql": "SELECT T2.PLT FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Diagnosis = 'MCTD' AND T2.PLT BETWEEN 100 AND 400",
+      "evidence": "PLT > 100 and PLT < 400 means platelet level is within the normal range; PLT < 100 and PLT > 400 means platelet level is not within the normal range; diagnosed with MCTD refers to Diagnosis = 'MCTD';",
+      "score": 3,
+      "c1": true,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 47,
+      "db_id": "california_schools",
+      "question": "What is the monthly average number of schools that opened in Alameda County under the jurisdiction of the Elementary School District in 1980?",
+      "gold_sql": "SELECT CAST(COUNT(School) AS REAL) / 12 FROM schools WHERE DOC = 52 AND County = 'Alameda' AND strftime('%Y', OpenDate) = '1980'",
+      "evidence": "Elementary School District refers to DOC = 52; Monthly average number of schools that opened in 1980 = count(schools that opened in 1980) / 12",
+      "score": 2,
+      "c1": false,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 76,
+      "db_id": "california_schools",
+      "question": "What is the city location of the high school level school with Lunch Provision 2 whose lowest grade is 9 and the highest grade is 12 in the county of Merced?",
+      "gold_sql": "SELECT T2.City FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T1.`NSLP Provision Status` = 'Lunch Provision 2' AND T2.County = 'Merced' AND T1.`Low Grade` = 9 AND T1.`High Grade` = 12 AND T2.EILCode = 'HS'",
+      "evidence": "High school can be represented as EILCode = 'HS'",
+      "score": 2,
+      "c1": true,
+      "c2": true,
+      "c3": false
+    },
+    {
+      "question_id": 149,
+      "db_id": "financial",
+      "question": "Please list the account types that are not eligible for loans, and the average income of residents in the district where the account is located exceeds $8000 but is no more than $9000.",
+      "gold_sql": "SELECT T3.type FROM district AS T1 INNER JOIN account AS T2 ON T1.district_id = T2.district_id INNER JOIN disp AS T3 ON T2.account_id = T3.account_id WHERE T3.type != 'OWNER' AND T1.A11 BETWEEN 8000 AND 9000",
+      "evidence": "A11 represents the average salary; Salary and income share the similar meanings; when the account type = 'OWNER', it's eligible for loans",
+      "score": 2,
+      "c1": true,
+      "c2": true,
+      "c3": false
+    },
+    {
+      "question_id": 171,
+      "db_id": "financial",
+      "question": "What was the difference in the number of crimes committed in East and North Bohemia in 1996?",
+      "gold_sql": "SELECT SUM(IIF(A3 = 'east Bohemia', A16, 0)) - SUM(IIF(A3 = 'north Bohemia', A16, 0)) FROM district",
+      "evidence": "Difference in no. of committed crimes between 2 regions = Total no. of committed crimes in 1996 in north Bohemia - Total no. of committed crimes in 1996 in e ast Bohemia. A3 refers to region. Data about no. of committed crimes 1996 appears in A16",
+      "score": 2,
+      "c1": true,
+      "c2": false,
+      "c3": true
+    },
+    {
+      "question_id": 182,
+      "db_id": "financial",
+      "question": "How many male customers who were born between 1974 and 1976 have made a payment on their home in excess of $4000?",
+      "gold_sql": "SELECT COUNT(T1.account_id) FROM trans AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id INNER JOIN disp AS T4 ON T2.account_id = T4.account_id INNER JOIN client AS T3 ON T4.client_id = T3.client_id WHERE STRFTIME('%Y', T3.birth_date) BETWEEN '1974' AND '1976' AND T3.gender = 'M' AND T1.amount > 4000 AND T1.k_symbol = 'SIPO'",
+      "evidence": "Man and male refers to gender = 'M'; 'SIPO' stands for household payment",
+      "score": 2,
+      "c1": true,
+      "c2": true,
+      "c3": false
+    },
+    {
+      "question_id": 193,
+      "db_id": "financial",
+      "question": "List all ID and district for clients that can only have the right to issue permanent orders or apply for loans.",
+      "gold_sql": "SELECT T3.client_id, T2.district_id, T2.A2 FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id INNER JOIN disp AS T3 ON T1.account_id = T3.account_id WHERE T3.type = 'OWNER'",
+      "evidence": "Only the owner accounts have the right to issue permanent orders or apply for loans",
+      "score": 2,
+      "c1": true,
+      "c2": false,
+      "c3": true
+    },
+    {
+      "question_id": 450,
+      "db_id": "card_games",
+      "question": "Of all the cards that are designed by Aaron Miller, how many of them are incredibly powerful?",
+      "gold_sql": "SELECT SUM(CASE WHEN artist = 'Aaron Miller' AND cardKingdomFoilId IS NOT NULL AND cardKingdomId IS NOT NULL THEN 1 ELSE 0 END) FROM cards",
+      "evidence": "designed by Aaron Miller refers to artist = 'Aaron Miller'; are icredibily powerful refers to cardKingdomFoilId is not null AND cardKingdomId is not null",
+      "score": 2,
+      "c1": false,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 472,
+      "db_id": "card_games",
+      "question": "Among the sets in the block \"Ice Age\", how many of them have an Italian translation?",
+      "gold_sql": "SELECT COUNT(DISTINCT T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.block = 'Ice Age' AND T2.language = 'Italian' AND T2.translation IS NOT NULL",
+      "evidence": "sets in the block \"Ice Age\" refers to block = 'Ice Age'; Italian translation refers to language = 'Italian' and translation is not null",
+      "score": 2,
+      "c1": false,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 474,
+      "db_id": "card_games",
+      "question": "Among the sets of cards that have an Italian translation, how many of them have a base set number of under 100?",
+      "gold_sql": "SELECT COUNT(T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation IS NOT NULL AND T1.baseSetSize < 100 AND T2.language = 'Italian'",
+      "evidence": "Italian translation refers to language = 'Italian'; have a translation means translation is not null; base set number of under 100 refers to baseSetSize < 10",
+      "score": 2,
+      "c1": false,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 477,
+      "db_id": "card_games",
+      "question": "Which of these artists have designed a card in the set Coldsnap, Jeremy Jarvis, Aaron Miller or Chippy?",
+      "gold_sql": "SELECT T1.artist FROM cards AS T1 INNER JOIN sets AS T2 ON T2.code = T1.setCode WHERE (T2.name = 'Coldsnap' AND T1.artist = 'Chippy') OR (T2.name = 'Coldsnap' AND T1.artist = 'Aaron Miller') OR (T2.name = 'Coldsnap' AND T1.artist = 'Jeremy Jarvis') GROUP BY T1.artist",
+      "evidence": "card set Coldsnap refers to name = 'Coldsnap'; Jeremy Jarvis, Aaron Miller or Chippy are the name of artists which refers to artist IN ('Jeremy Jarvis', 'Aaron Miller','Chippy');",
+      "score": 2,
+      "c1": false,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 494,
+      "db_id": "card_games",
+      "question": "For all cards illustrated by Jim Pavelec. and describe the text of the ruling of these cards. Do these cards have missing or degraded properties and values.",
+      "gold_sql": "SELECT T2.text , CASE WHEN T1.hasContentWarning = 1 THEN 'YES' ELSE 'NO' END FROM cards AS T1 INNER JOIN rulings AS T2 ON T2.uuid = T1.uuid WHERE T1.artist = 'Jim Pavelec'",
+      "evidence": "all cards illustrated by Jim Pavelec refers to artist = 'Jim Pavelec'; the text of the ruling refers to text; cards have missing or degraded properties and values if hasContentWarning = 1 else it doesn't have;",
+      "score": 2,
+      "c1": true,
+      "c2": false,
+      "c3": true
+    },
+    {
+      "question_id": 507,
+      "db_id": "card_games",
+      "question": "For all the set of cards that has Brazil Portuguese translation, what is the percentage of them are only available online?",
+      "gold_sql": "SELECT CAST(SUM(CASE WHEN isOnlineOnly = 1 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(id) FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE language = 'Portuguese (Brazil)' )",
+      "evidence": "Brazil Portuguese translation refers to language = 'Portuguese (Brazil)'; only available online refers to isOnlineOnly = 1; percentage of online only Brazil Portuguese in all Brazil Portuguese cards refers to DIVIDE(SUM(isOnlineOnly = 1), SUM(language = 'Portuguese (Brazil)))*100",
+      "score": 2,
+      "c1": false,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 516,
+      "db_id": "card_games",
+      "question": "How many cards did Volkan Ba\u00c7\u00b5a illustrated whose foreign language is in French?",
+      "gold_sql": "SELECT COUNT(T3.id) FROM ( SELECT T1.id FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.artist = 'Volkan Ba\u01f5a' AND T2.language = 'French' GROUP BY T1.id ) AS T3",
+      "evidence": "Volkan Ba\u00c7\u00b5a refers to artist = 'Volkan Ba\u01f5a'; foreign language is in French refers to language = 'French'",
+      "score": 2,
+      "c1": false,
+      "c2": true,
+      "c3": true
+    },
+    {
+      "question_id": 527,
+      "db_id": "card_games",
+      "question": "What are the rulings for the card named and designed by Kev Walker? List them in descending order of dates.",
+      "gold_sql": "SELECT T2.text FROM cards AS T1 INNER JOIN rulings AS T2 ON T2.uuid = T1.uuid WHERE T1.artist = 'Kev Walker' ORDER BY T2.date DESC",
+      "evidence": "rulings refers to text; card named and designed by Kev Walker refers to artist = 'Kev Walker'; descending order of dates refers to MAX(date);",
+      "score": 2,
+      "c1": true,
+      "c2": false,
+      "c3": true
+    },
+    {
+      "question_id": 528,
+      "db_id": "card_games",
+      "question": "List the names of all the cards in the set Hour of Devastation and find the formats in which these cards are legal.",
+      "gold_sql": "SELECT DISTINCT T2.name , CASE WHEN T1.status = 'Legal' THEN T1.format ELSE NULL END FROM legalities AS T1 INNER JOIN cards AS T2 ON T2.uuid = T1.uuid WHERE T2.setCode IN ( SELECT code FROM sets WHERE name = 'Hour of Devastation' )",
+      "evidence": "the set Hour of Devastation refers to set.name = 'Hour of Devastation'; names of all the cards in the set refers to cards.name; legal cards refers to status = 'Legal'; the formats refers to format",
+      "score": 2,
+      "c1": true,
+      "c2": true,
+      "c3": false
+    },
+    {
+      "question_id": 634,
+      "db_id": "codebase_community",
+      "question": "Among posts by Harvey Motulsky and Noah Snyder, which one has higher popularity?",
+      "gold_sql": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN postHistory AS T2 ON T1.Id = T2.UserId INNER JOIN posts AS T3 ON T2.PostId = T3.Id WHERE T1.DisplayName = 'Harvey Motulsky' OR T1.DisplayName = 'Noah Snyder' GROUP BY T1.DisplayName ORDER BY SUM(T3.ViewCount) DESC LIMIT 1",
+      "evidence": "Has higher popularity means the post has higher view count ; calculation = MAX(SUM(ViewCount)) where DisplayName = 'Harvey Motulsky' OR DisplayName = 'Noah Snyder';",
+      "score": 2,
+      "c1": true,
+      "c2": false,
+      "c3": true
+    }
+  ]
+}
