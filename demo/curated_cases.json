@@ -1,4 +1,40 @@
 {
-  "cases": [],
-  "note": "Will be populated after D2/D3/Audit experiments finish."
+  "meta": {
+    "source": "P5 audit (results/p5_audit/judgments.jsonl) + D3 composition wins",
+    "n_cases": 5,
+    "purpose": "Each case illustrates one differentiation point (D1/D2/D3) or one failure mode (C4 oracle gap)",
+    "generated": "2026-05-22"
+  },
+  "cases": [
+    {
+      "qid": 48,
+      "db_id": "california_schools",
+      "label": "C4 — specificity_loss (DOC code mapping)",
+      "summary": "Oracle wins because the question needs the literal mapping DOC=52,54 for school district types; joint's evidence contains a ColumnAlias but no value mapping, so the LLM cannot construct the WHERE clause. Illustrates the largest audit category (22/40 cases)."
+    },
+    {
+      "qid": 157,
+      "db_id": "financial",
+      "label": "C4 — specificity_loss (year column)",
+      "summary": "Question asks about crimes in 1995; oracle has the exact mapping crimes_1995 → A15; joint retrieves a different ValueMap pointing at A16 (1996), causing a +1-year error in the SQL. The 16pp oracle gap is dominated by such per-question literals."
+    },
+    {
+      "qid": 153,
+      "db_id": "financial",
+      "label": "C4 — retrieval_irrelevance (wrong topic)",
+      "summary": "Question about loan eligibility; joint's top-5 BFS retrieves loan-duration, loan-status, and transaction-type concepts — all loan-related but not the eligibility criterion the question needs. Illustrates the second-largest audit category (17/40 cases)."
+    },
+    {
+      "qid": 450,
+      "db_id": "card_games",
+      "label": "C3 — composition win (atoms-only KB)",
+      "summary": "Question requires composing 'cards by Aaron Miller' AND 'incredibly rare'. Joint atoms-only KB has both concept atoms; BFS along depends_on co-fetches them. Retrieval can only top-k one — misses the composition. This is one of the cases where stripping composite Formulas does NOT degrade joint performance."
+    },
+    {
+      "qid": 1238,
+      "db_id": "thrombosis_prediction",
+      "label": "C3 — composition win (3-way filter)",
+      "summary": "Question composes three filters: SLE diagnosis, normal hematocrit, oldest patient. Joint atoms-only retrieves the three ValueMap atoms; retrieval picks the top-5 most-similar bullets and misses one filter. Demonstrates open-world composition under D3."
+    }
+  ]
 }
