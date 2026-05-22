@@ -1,0 +1,5044 @@
+{
+  "version": "p1b.2",
+  "db_id": "card_games",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "incredibly poweful foils",
+      "defined_by": "r1"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "powerful foils",
+      "defined_by": "r1"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "below 100 on EDHRec",
+      "defined_by": "r2"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "unknown power",
+      "defined_by": "r4"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "legal for commander play format",
+      "defined_by": "r5"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "cards have missing or degraded properties",
+      "defined_by": "r6"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "with the most ruling information",
+      "defined_by": "f2"
+    },
+    "c8": {
+      "id": "c8",
+      "type": "Concept",
+      "name": "the card is the promotional printing",
+      "defined_by": "r7"
+    },
+    "c9": {
+      "id": "c9",
+      "type": "Concept",
+      "name": "infinite power",
+      "defined_by": "r11"
+    },
+    "c10": {
+      "id": "c10",
+      "type": "Concept",
+      "name": "borderless card",
+      "defined_by": "r15"
+    },
+    "c11": {
+      "id": "c11",
+      "type": "Concept",
+      "name": "Story Spotlight card",
+      "defined_by": "r17"
+    },
+    "c12": {
+      "id": "c12",
+      "type": "Concept",
+      "name": "French",
+      "defined_by": "r18"
+    },
+    "c13": {
+      "id": "c13",
+      "type": "Concept",
+      "name": "Percentage",
+      "defined_by": "f5"
+    },
+    "c14": {
+      "id": "c14",
+      "type": "Concept",
+      "name": "Incredibly powerful",
+      "defined_by": "r1"
+    },
+    "c15": {
+      "id": "c15",
+      "type": "Concept",
+      "name": "legacy card",
+      "defined_by": "r23"
+    },
+    "c16": {
+      "id": "c16",
+      "type": "Concept",
+      "name": "Artifact card",
+      "defined_by": "r27"
+    },
+    "c17": {
+      "id": "c17",
+      "type": "Concept",
+      "name": "black color",
+      "defined_by": "r28"
+    },
+    "c18": {
+      "id": "c18",
+      "type": "Concept",
+      "name": "foil powerful foils",
+      "defined_by": "r29"
+    },
+    "c19": {
+      "id": "c19",
+      "type": "Concept",
+      "name": "powerful cards",
+      "defined_by": "r1"
+    },
+    "c20": {
+      "id": "c20",
+      "type": "Concept",
+      "name": "sensitive content warning",
+      "defined_by": "r6"
+    },
+    "c21": {
+      "id": "c21",
+      "type": "Concept",
+      "name": "available on paper",
+      "defined_by": "r30"
+    },
+    "c22": {
+      "id": "c22",
+      "type": "Concept",
+      "name": "Story Spotlight cards that do not have a text box",
+      "defined_by": "r35"
+    },
+    "c23": {
+      "id": "c23",
+      "type": "Concept",
+      "name": "unknown power cards",
+      "defined_by": "r40"
+    },
+    "c24": {
+      "id": "c24",
+      "type": "Concept",
+      "name": "contain info about the triggered ability",
+      "defined_by": "r41"
+    },
+    "c25": {
+      "id": "c25",
+      "type": "Concept",
+      "name": "do not have a content warning",
+      "defined_by": "r45"
+    },
+    "c26": {
+      "id": "c26",
+      "type": "Concept",
+      "name": "are oversized",
+      "defined_by": "r50"
+    },
+    "c27": {
+      "id": "c27",
+      "type": "Concept",
+      "name": "reprinted",
+      "defined_by": "r16"
+    },
+    "c28": {
+      "id": "c28",
+      "type": "Concept",
+      "name": "printed for promotions",
+      "defined_by": "r7"
+    },
+    "c29": {
+      "id": "c29",
+      "type": "Concept",
+      "name": "poweful",
+      "defined_by": "r1"
+    },
+    "c30": {
+      "id": "c30",
+      "type": "Concept",
+      "name": "do not have a text box",
+      "defined_by": "r51"
+    },
+    "c31": {
+      "id": "c31",
+      "type": "Concept",
+      "name": "proportion",
+      "defined_by": "f12"
+    },
+    "c32": {
+      "id": "c32",
+      "type": "Concept",
+      "name": "don't appear in Magic: The Gathering Online",
+      "defined_by": "r53"
+    },
+    "c33": {
+      "id": "c33",
+      "type": "Concept",
+      "name": "available outside of the United States",
+      "defined_by": "r56"
+    },
+    "c34": {
+      "id": "c34",
+      "type": "Concept",
+      "name": "has foil cards",
+      "defined_by": "r57"
+    },
+    "c35": {
+      "id": "c35",
+      "type": "Concept",
+      "name": "with Japanese writing on them",
+      "defined_by": "r46"
+    },
+    "c36": {
+      "id": "c36",
+      "type": "Concept",
+      "name": "contains the most cards overall",
+      "defined_by": "f13"
+    },
+    "c37": {
+      "id": "c37",
+      "type": "Concept",
+      "name": "are only available for online games",
+      "defined_by": "r33"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "faceConvertedManaCost",
+          "table": "cards",
+          "column": "faceConvertedManaCost"
+        }
+      ],
+      "name": "more converted mana for the face",
+      "expression": "MAX(faceConvertedManaCost)"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "rulings.uuid",
+          "table": "rulings",
+          "column": "uuid"
+        }
+      ],
+      "name": "Max ruling count",
+      "expression": "MAX(COUNT(rulings.uuid))"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "id",
+          "table": "foreign_data",
+          "column": "id"
+        },
+        {
+          "term": "language",
+          "table": "foreign_data",
+          "column": "language"
+        }
+      ],
+      "depends_on": [
+        "r10"
+      ],
+      "name": "percentage",
+      "expression": "Divide(Sum(id WHERE language = 'Chinese Simplified'), Count(id)) * 100"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "id",
+          "table": "cards",
+          "column": "id"
+        },
+        {
+          "term": "borderColor",
+          "table": "cards",
+          "column": "borderColor",
+          "value": "borderless"
+        }
+      ],
+      "depends_on": [
+        "r15"
+      ],
+      "name": "percentage",
+      "expression": "Divide(Count(id) where borderColor = 'borderless', Count(id)) * 100"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "id",
+          "table": "cards",
+          "column": "id"
+        },
+        {
+          "term": "language",
+          "table": "foreign_data",
+          "column": "language"
+        },
+        {
+          "term": "isStorySpotlight",
+          "table": "cards",
+          "column": "isStorySpotlight"
+        }
+      ],
+      "depends_on": [
+        "r17",
+        "r18"
+      ],
+      "name": "Percentage",
+      "expression": "Divide(Count(id) where language = 'French' and isStorySpotlight = 1, Count(id) where isStorySpotlight = 1) * 100"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "isOnlineOnly",
+          "table": "cards",
+          "column": "isOnlineOnly"
+        },
+        {
+          "term": "id",
+          "table": "cards",
+          "column": "id"
+        },
+        {
+          "term": "frameEffects",
+          "table": "cards",
+          "column": "frameEffects"
+        }
+      ],
+      "depends_on": [
+        "r33",
+        "r34"
+      ],
+      "name": "percentage of online-only cards with legendary frame effect",
+      "expression": "DIVIDE(COUNT(isOnlineOnly=1), COUNT(id))"
+    },
+    "f7": {
+      "id": "f7",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "id",
+          "table": "cards",
+          "column": "id"
+        },
+        {
+          "term": "isStorySpotlight",
+          "table": "cards",
+          "column": "isStorySpotlight"
+        },
+        {
+          "term": "isTextless",
+          "table": "cards",
+          "column": "isTextless"
+        }
+      ],
+      "depends_on": [
+        "r35"
+      ],
+      "name": "Percentage",
+      "expression": "DIVIDE(SUM(count(id) WHERE isStorySpotlight = 1 AND isTextless = 0), SUM(count(id))) * 100"
+    },
+    "f8": {
+      "id": "f8",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ID",
+          "table": "foreign_data",
+          "column": "id"
+        },
+        {
+          "term": "language",
+          "table": "foreign_data",
+          "column": "language",
+          "value": "Spanish"
+        },
+        {
+          "term": "id",
+          "table": "foreign_data",
+          "column": "id"
+        }
+      ],
+      "depends_on": [
+        "v32"
+      ],
+      "name": "Percentage",
+      "expression": "DIVIDE(SUM(ID where language = 'Spanish'), COUNT(id))*100"
+    },
+    "f9": {
+      "id": "f9",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "hasContentWarning",
+          "table": "cards",
+          "column": "hasContentWarning"
+        },
+        {
+          "term": "ID",
+          "table": "cards",
+          "column": "id"
+        },
+        {
+          "term": "format",
+          "table": "legalities",
+          "column": "format",
+          "value": "commander"
+        },
+        {
+          "term": "status",
+          "table": "legalities",
+          "column": "status",
+          "value": "legal"
+        }
+      ],
+      "depends_on": [
+        "r45",
+        "r5"
+      ],
+      "name": "percentage",
+      "expression": "DIVIDE(COUNT(hasContentWarning = 0), COUNT(ID)) * 100"
+    },
+    "f10": {
+      "id": "f10",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "language",
+          "table": "foreign_data",
+          "column": "language"
+        },
+        {
+          "term": "power",
+          "table": "cards",
+          "column": "power"
+        }
+      ],
+      "depends_on": [
+        "r18",
+        "r40"
+      ],
+      "name": "percentage",
+      "expression": "DIVIDE(COUNT(language = 'French' AND (power IS NULL OR power = '*')), COUNT(power IS NULL OR power = '*')) * 100"
+    },
+    "f11": {
+      "id": "f11",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "language",
+          "table": "foreign_data",
+          "column": "language"
+        }
+      ],
+      "depends_on": [
+        "r46"
+      ],
+      "name": "percentage",
+      "expression": "DIVIDE(COUNT(language = 'Japanese'), COUNT(language)) * 100"
+    },
+    "f12": {
+      "id": "f12",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "isTextless",
+          "table": "cards",
+          "column": "isTextless"
+        },
+        {
+          "term": "layout",
+          "table": "cards",
+          "column": "layout"
+        }
+      ],
+      "depends_on": [
+        "r51",
+        "r52"
+      ],
+      "name": "proportion",
+      "expression": "DIVIDE(COUNT(isTextless = 1 AND layout = 'normal'), COUNT(isTextless)) * 100"
+    },
+    "f13": {
+      "id": "f13",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "baseSetSize",
+          "table": "sets",
+          "column": "baseSetSize"
+        }
+      ],
+      "name": "set with the most cards overall",
+      "expression": "MAX(baseSetSize)"
+    },
+    "f14": {
+      "id": "f14",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "isOnlineOnly",
+          "table": "cards",
+          "column": "isOnlineOnly"
+        }
+      ],
+      "depends_on": [
+        "r33"
+      ],
+      "name": "percentage",
+      "expression": "DIVIDE(COUNT(isOnlineOnly = 1), COUNT(isOnlineOnly)) * 100"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "2015 frame style",
+      "table": "cards",
+      "column": "frameVersion",
+      "value": "2015"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "mythic rarity printing",
+      "table": "cards",
+      "column": "rarity",
+      "value": "mythic"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "card banned",
+      "table": "legalities",
+      "column": "status",
+      "value": "Banned"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "in gladiator format",
+      "table": "legalities",
+      "column": "format",
+      "value": "gladiator"
+    },
+    "v5": {
+      "id": "v5",
+      "type": "ValueMap",
+      "name": "Artifact type of cards",
+      "table": "cards",
+      "column": "types",
+      "value": "Artifact"
+    },
+    "v6": {
+      "id": "v6",
+      "type": "ValueMap",
+      "name": "vintage play format",
+      "table": "legalities",
+      "column": "format",
+      "value": "vintage"
+    },
+    "v7": {
+      "id": "v7",
+      "type": "ValueMap",
+      "name": "commander play format",
+      "table": "legalities",
+      "column": "format",
+      "value": "commander"
+    },
+    "v8": {
+      "id": "v8",
+      "type": "ValueMap",
+      "name": "Stephen Daniele",
+      "table": "cards",
+      "column": "artist",
+      "value": "Stephen Daniele"
+    },
+    "v9": {
+      "id": "v9",
+      "type": "ValueMap",
+      "name": "number 74s",
+      "table": "cards",
+      "column": "number",
+      "value": "74s"
+    },
+    "v10": {
+      "id": "v10",
+      "type": "ValueMap",
+      "name": "Japanese",
+      "table": "foreign_data",
+      "column": "language",
+      "value": "Japanese"
+    },
+    "v11": {
+      "id": "v11",
+      "type": "ValueMap",
+      "name": "Italian translation",
+      "table": "foreign_data",
+      "column": "language",
+      "value": "Italian"
+    },
+    "v12": {
+      "id": "v12",
+      "type": "ValueMap",
+      "name": "artist is Aaron Boyd",
+      "table": "cards",
+      "column": "artist",
+      "value": "Aaron Boyd"
+    },
+    "v13": {
+      "id": "v13",
+      "type": "ValueMap",
+      "name": "restricted",
+      "table": "legalities",
+      "column": "status",
+      "value": "restricted"
+    },
+    "v14": {
+      "id": "v14",
+      "type": "ValueMap",
+      "name": "found in the starter deck",
+      "table": "cards",
+      "column": "isStarter",
+      "value": "1"
+    },
+    "v15": {
+      "id": "v15",
+      "type": "ValueMap",
+      "name": "Benalish Knight",
+      "table": "cards",
+      "column": "name",
+      "value": "Benalish Knight"
+    },
+    "v16": {
+      "id": "v16",
+      "type": "ValueMap",
+      "name": "Phyrexian language",
+      "table": "foreign_data",
+      "column": "language",
+      "value": "Phyrexian"
+    },
+    "v17": {
+      "id": "v17",
+      "type": "ValueMap",
+      "name": "German language",
+      "table": "foreign_data",
+      "column": "language",
+      "value": "German"
+    },
+    "v18": {
+      "id": "v18",
+      "type": "ValueMap",
+      "name": "Russian",
+      "table": "foreign_data",
+      "column": "language",
+      "value": "Russian"
+    },
+    "v19": {
+      "id": "v19",
+      "type": "ValueMap",
+      "name": "duel deck a",
+      "table": "cards",
+      "column": "duelDeck",
+      "value": "a"
+    },
+    "v20": {
+      "id": "v20",
+      "type": "ValueMap",
+      "name": "Chinese Simplified language",
+      "table": "foreign_data",
+      "column": "language",
+      "value": "Chinese Simplified"
+    },
+    "v21": {
+      "id": "v21",
+      "type": "ValueMap",
+      "name": "available in paper",
+      "table": "cards",
+      "column": "availability",
+      "value": "paper"
+    },
+    "v22": {
+      "id": "v22",
+      "type": "ValueMap",
+      "name": "white border",
+      "table": "cards",
+      "column": "borderColor",
+      "value": "white"
+    },
+    "v23": {
+      "id": "v23",
+      "type": "ValueMap",
+      "name": "future frame version",
+      "table": "cards",
+      "column": "frameVersion",
+      "value": "future"
+    },
+    "v24": {
+      "id": "v24",
+      "type": "ValueMap",
+      "name": "legality status",
+      "table": "legalities",
+      "column": "status",
+      "value": "legal"
+    },
+    "v25": {
+      "id": "v25",
+      "type": "ValueMap",
+      "name": "set OGW",
+      "table": "sets",
+      "column": "code",
+      "value": "OGW"
+    },
+    "v26": {
+      "id": "v26",
+      "type": "ValueMap",
+      "name": "Creature - Elf",
+      "table": "cards",
+      "column": "originalType",
+      "value": "Creature - Elf"
+    },
+    "v27": {
+      "id": "v27",
+      "type": "ValueMap",
+      "name": "uncommon",
+      "table": "cards",
+      "column": "rarity",
+      "value": "uncommon"
+    },
+    "v28": {
+      "id": "v28",
+      "type": "ValueMap",
+      "name": "available in mtgo",
+      "table": "cards",
+      "column": "availability",
+      "value": "mtgo"
+    },
+    "v29": {
+      "id": "v29",
+      "type": "ValueMap",
+      "name": "starting maximum hand size of -1",
+      "table": "cards",
+      "column": "hand",
+      "value": "-1"
+    },
+    "v30": {
+      "id": "v30",
+      "type": "ValueMap",
+      "name": "Rob Alexander",
+      "table": "cards",
+      "column": "artist",
+      "value": "Rob Alexander"
+    },
+    "v31": {
+      "id": "v31",
+      "type": "ValueMap",
+      "name": "available in arena",
+      "table": "cards",
+      "column": "availability",
+      "value": "arena"
+    },
+    "v32": {
+      "id": "v32",
+      "type": "ValueMap",
+      "name": "Spanish",
+      "table": "foreign_data",
+      "column": "language",
+      "value": "Spanish"
+    },
+    "v33": {
+      "id": "v33",
+      "type": "ValueMap",
+      "name": "pre-modern format",
+      "table": "legalities",
+      "column": "format",
+      "value": "premodern"
+    },
+    "v34": {
+      "id": "v34",
+      "type": "ValueMap",
+      "name": "in French",
+      "table": "foreign_data",
+      "column": "language",
+      "value": "French"
+    },
+    "v35": {
+      "id": "v35",
+      "type": "ValueMap",
+      "name": "black border color",
+      "table": "cards",
+      "column": "borderColor",
+      "value": "black"
+    },
+    "v36": {
+      "id": "v36",
+      "type": "ValueMap",
+      "name": "arena league promotional type",
+      "table": "cards",
+      "column": "promoTypes",
+      "value": "arenaleague"
+    },
+    "v37": {
+      "id": "v37",
+      "type": "ValueMap",
+      "name": "multiverse number 149934",
+      "table": "foreign_data",
+      "column": "multiverseid",
+      "value": "149934"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "cardKingdomFoilId",
+          "table": "cards",
+          "column": "cardKingdomFoilId"
+        },
+        {
+          "term": "cardKingdomId",
+          "table": "cards",
+          "column": "cardKingdomId"
+        }
+      ],
+      "name": "incredibly poweful foils rule",
+      "condition": "cardKingdomFoilId IS NOT NULL AND cardKingdomId IS NOT NULL"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "edhrecRank",
+          "table": "cards",
+          "column": "edhrecRank"
+        }
+      ],
+      "name": "below 100 on EDHRec",
+      "condition": "edhrecRank < 100"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "side",
+          "table": "cards",
+          "column": "side"
+        }
+      ],
+      "name": "card does not have multiple faces on the same card",
+      "condition": "side IS NULL"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "power",
+          "table": "cards",
+          "column": "power"
+        }
+      ],
+      "name": "unknown power",
+      "condition": "power = '*' OR power IS NULL"
+    },
+    "r5": {
+      "id": "r5",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "format",
+          "table": "legalities",
+          "column": "format",
+          "value": "commander"
+        },
+        {
+          "term": "status",
+          "table": "legalities",
+          "column": "status",
+          "value": "Legal"
+        },
+        {
+          "term": "format",
+          "table": "legalities",
+          "column": "format"
+        },
+        {
+          "term": "status",
+          "table": "legalities",
+          "column": "status"
+        }
+      ],
+      "name": "legal for commander",
+      "condition": "format = 'commander' AND status = 'Legal'"
+    },
+    "r6": {
+      "id": "r6",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "hasContentWarning",
+          "table": "cards",
+          "column": "hasContentWarning",
+          "value": 1
+        }
+      ],
+      "name": "has content warning",
+      "condition": "hasContentWarning = 1"
+    },
+    "r7": {
+      "id": "r7",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isPromo",
+          "table": "cards",
+          "column": "isPromo",
+          "value": 1
+        },
+        {
+          "term": "isPromo",
+          "table": "cards",
+          "column": "isPromo"
+        }
+      ],
+      "name": "is promotional printing",
+      "condition": "isPromo = 1"
+    },
+    "r8": {
+      "id": "r8",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "name",
+          "table": "cards",
+          "column": "name",
+          "value": "annul"
+        }
+      ],
+      "name": "annul",
+      "condition": "name = 'annul'"
+    },
+    "r9": {
+      "id": "r9",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "number",
+          "table": "cards",
+          "column": "number",
+          "value": "29"
+        }
+      ],
+      "name": "numbered 29",
+      "condition": "number = '29'"
+    },
+    "r10": {
+      "id": "r10",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "language",
+          "table": "foreign_data",
+          "column": "language"
+        }
+      ],
+      "name": "language is Chinese Simplified",
+      "condition": "language = 'Chinese Simplified'"
+    },
+    "r11": {
+      "id": "r11",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "power",
+          "table": "cards",
+          "column": "power",
+          "value": "*"
+        }
+      ],
+      "name": "power is asterisk",
+      "condition": "power = '*'"
+    },
+    "r12": {
+      "id": "r12",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "name",
+          "table": "cards",
+          "column": "name",
+          "value": "Duress"
+        }
+      ],
+      "name": "card Duress",
+      "condition": "name = 'Duress'"
+    },
+    "r13": {
+      "id": "r13",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "name",
+          "table": "cards",
+          "column": "name",
+          "value": "Ancestor's Chosen"
+        }
+      ],
+      "name": "card name is Ancestor's Chosen",
+      "condition": "name = 'Ancestor''s Chosen'"
+    },
+    "r14": {
+      "id": "r14",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isTextless",
+          "table": "cards",
+          "column": "isTextless"
+        }
+      ],
+      "name": "have text boxes",
+      "condition": "isTextless = 0"
+    },
+    "r15": {
+      "id": "r15",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "borderColor",
+          "table": "cards",
+          "column": "borderColor",
+          "value": "borderless"
+        }
+      ],
+      "name": "borderless card",
+      "condition": "borderColor = 'borderless'"
+    },
+    "r16": {
+      "id": "r16",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isReprint",
+          "table": "cards",
+          "column": "isReprint"
+        }
+      ],
+      "name": "reprinted",
+      "condition": "isReprint = 1"
+    },
+    "r17": {
+      "id": "r17",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isStorySpotlight",
+          "table": "cards",
+          "column": "isStorySpotlight",
+          "value": 1
+        }
+      ],
+      "name": "Story Spotlight card",
+      "condition": "isStorySpotlight = 1"
+    },
+    "r18": {
+      "id": "r18",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "language",
+          "table": "foreign_data",
+          "column": "language",
+          "value": "French"
+        }
+      ],
+      "name": "French language",
+      "condition": "language = 'French'"
+    },
+    "r19": {
+      "id": "r19",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "borderColor",
+          "table": "cards",
+          "column": "borderColor",
+          "value": "black"
+        }
+      ],
+      "name": "black border card",
+      "condition": "borderColor = 'black'"
+    },
+    "r20": {
+      "id": "r20",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "availability",
+          "table": "cards",
+          "column": "availability",
+          "value": "mtgo"
+        }
+      ],
+      "name": "available on mtgo",
+      "condition": "availability = 'mtgo'"
+    },
+    "r21": {
+      "id": "r21",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "convertedManaCost",
+          "table": "cards",
+          "column": "convertedManaCost"
+        }
+      ],
+      "name": "converted mana cost of 0",
+      "condition": "convertedManaCost = 0"
+    },
+    "r22": {
+      "id": "r22",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "subtypes",
+          "table": "cards",
+          "column": "subtypes"
+        }
+      ],
+      "name": "subtype other than Angel",
+      "condition": "subtypes != 'Angel'"
+    },
+    "r23": {
+      "id": "r23",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "format",
+          "table": "legalities",
+          "column": "format",
+          "value": "legacy"
+        }
+      ],
+      "name": "legacy format",
+      "condition": "format = 'legacy'"
+    },
+    "r24": {
+      "id": "r24",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "setCode",
+          "table": "cards",
+          "column": "setCode",
+          "value": "10E"
+        }
+      ],
+      "name": "set 10E",
+      "condition": "setCode = '10E'"
+    },
+    "r25": {
+      "id": "r25",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "convertedManaCost",
+          "table": "cards",
+          "column": "convertedManaCost",
+          "value": 5
+        }
+      ],
+      "name": "converted mana of 5",
+      "condition": "convertedManaCost = 5"
+    },
+    "r26": {
+      "id": "r26",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "id",
+          "table": "cards",
+          "column": "id"
+        }
+      ],
+      "name": "ID 1-20",
+      "condition": "id BETWEEN 1 AND 20"
+    },
+    "r27": {
+      "id": "r27",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "originalType",
+          "table": "cards",
+          "column": "originalType",
+          "value": "Artifact"
+        }
+      ],
+      "name": "Artifact card",
+      "condition": "originalType = 'Artifact'"
+    },
+    "r28": {
+      "id": "r28",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "colors",
+          "table": "cards",
+          "column": "colors",
+          "value": "B"
+        }
+      ],
+      "name": "black color",
+      "condition": "colors = 'B'"
+    },
+    "r29": {
+      "id": "r29",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "cardKingdomId",
+          "table": "cards",
+          "column": "cardKingdomId"
+        },
+        {
+          "term": "cardKingdomFoilId",
+          "table": "cards",
+          "column": "cardKingdomFoilId"
+        }
+      ],
+      "name": "foil powerful foils",
+      "condition": "cardKingdomFoilId IS NOT NULL"
+    },
+    "r30": {
+      "id": "r30",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "availability",
+          "table": "cards",
+          "column": "availability",
+          "value": "paper"
+        }
+      ],
+      "name": "available on paper",
+      "condition": "availability = 'paper'"
+    },
+    "r31": {
+      "id": "r31",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "availability",
+          "table": "cards",
+          "column": "availability",
+          "value": "mtgo,paper"
+        }
+      ],
+      "name": "available in paper and mtgo",
+      "condition": "availability = 'mtgo,paper'"
+    },
+    "r32": {
+      "id": "r32",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "frameVersion",
+          "table": "cards",
+          "column": "frameVersion",
+          "value": "2003"
+        }
+      ],
+      "name": "frameVersion = 2003",
+      "condition": "frameVersion = '2003'"
+    },
+    "r33": {
+      "id": "r33",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isOnlineOnly",
+          "table": "cards",
+          "column": "isOnlineOnly"
+        }
+      ],
+      "name": "only available in online game variations",
+      "condition": "isOnlineOnly = 1"
+    },
+    "r34": {
+      "id": "r34",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "frameEffects",
+          "table": "cards",
+          "column": "frameEffects"
+        }
+      ],
+      "name": "legendary frame effect cards",
+      "condition": "frameEffects = 'legendary'"
+    },
+    "r35": {
+      "id": "r35",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isStorySpotlight",
+          "table": "cards",
+          "column": "isStorySpotlight"
+        },
+        {
+          "term": "isTextless",
+          "table": "cards",
+          "column": "isTextless"
+        }
+      ],
+      "name": "Story Spotlight cards that do not have a text box",
+      "condition": "isStorySpotlight = 1 AND isTextless = 0"
+    },
+    "r36": {
+      "id": "r36",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "block",
+          "table": "sets",
+          "column": "block",
+          "value": "Commander"
+        }
+      ],
+      "name": "Commander block",
+      "condition": "block = 'Commander'"
+    },
+    "r37": {
+      "id": "r37",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "language",
+          "table": "set_translations",
+          "column": "language",
+          "value": "Portuguese (Brasil)"
+        }
+      ],
+      "name": "Portuguese language",
+      "condition": "language = 'Portuguese (Brasil)'"
+    },
+    "r38": {
+      "id": "r38",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "types",
+          "table": "cards",
+          "column": "types"
+        }
+      ],
+      "name": "Goblin-type cards",
+      "condition": "types = 'Creature'"
+    },
+    "r39": {
+      "id": "r39",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "subtypes",
+          "table": "cards",
+          "column": "subtypes"
+        },
+        {
+          "term": "supertypes",
+          "table": "cards",
+          "column": "supertypes"
+        }
+      ],
+      "name": "subtypes is not null AND supertypes is not null",
+      "condition": "subtypes IS NOT NULL AND supertypes IS NOT NULL"
+    },
+    "r40": {
+      "id": "r40",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "power",
+          "table": "cards",
+          "column": "power"
+        }
+      ],
+      "name": "unknown power",
+      "condition": "power IS NULL OR power = '*'"
+    },
+    "r41": {
+      "id": "r41",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "text",
+          "table": "cards",
+          "column": "text"
+        }
+      ],
+      "name": "contains triggered ability",
+      "condition": "text LIKE '%triggered ability%'"
+    },
+    "r42": {
+      "id": "r42",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "rarity",
+          "table": "cards",
+          "column": "rarity",
+          "value": "rare"
+        }
+      ],
+      "name": "with print rarity",
+      "condition": "rarity = 'rare'"
+    },
+    "r43": {
+      "id": "r43",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "rulings",
+          "column": "date",
+          "value": "2007-02-01"
+        }
+      ],
+      "name": "on 01/02/2007",
+      "condition": "date = '2007-02-01'"
+    },
+    "r44": {
+      "id": "r44",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "baseSetSize",
+          "table": "sets",
+          "column": "baseSetSize",
+          "value": 180
+        }
+      ],
+      "name": "set of 180 cards",
+      "condition": "baseSetSize = 180"
+    },
+    "r45": {
+      "id": "r45",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "hasContentWarning",
+          "table": "cards",
+          "column": "hasContentWarning"
+        }
+      ],
+      "name": "do not have a content warning",
+      "condition": "hasContentWarning = 0"
+    },
+    "r46": {
+      "id": "r46",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "language",
+          "table": "foreign_data",
+          "column": "language",
+          "value": "Japanese"
+        },
+        {
+          "term": "language",
+          "table": "foreign_data",
+          "column": "language"
+        }
+      ],
+      "name": "Japanese translated",
+      "condition": "language = 'Japanese'"
+    },
+    "r47": {
+      "id": "r47",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "type",
+          "table": "sets",
+          "column": "type",
+          "value": "expansion"
+        }
+      ],
+      "name": "expansion sets",
+      "condition": "type = 'expansion'"
+    },
+    "r48": {
+      "id": "r48",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "artist",
+          "table": "cards",
+          "column": "artist",
+          "value": "Daren Bader"
+        }
+      ],
+      "name": "Daren Bader created",
+      "condition": "artist = 'Daren Bader'"
+    },
+    "r49": {
+      "id": "r49",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "edhrecRank",
+          "table": "cards",
+          "column": "edhrecRank"
+        }
+      ],
+      "name": "ranked higher than 12000 on EDHRec",
+      "condition": "edhrecRank > 12000"
+    },
+    "r50": {
+      "id": "r50",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isOversized",
+          "table": "cards",
+          "column": "isOversized"
+        }
+      ],
+      "name": "isOversized = 1",
+      "condition": "isOversized = 1"
+    },
+    "r51": {
+      "id": "r51",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isTextless",
+          "table": "cards",
+          "column": "isTextless",
+          "value": 1
+        }
+      ],
+      "name": "do not have a text box",
+      "condition": "isTextless = 1"
+    },
+    "r52": {
+      "id": "r52",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "layout",
+          "table": "cards",
+          "column": "layout",
+          "value": "normal"
+        }
+      ],
+      "name": "normal layout",
+      "condition": "layout = 'normal'"
+    },
+    "r53": {
+      "id": "r53",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "mtgoCode",
+          "table": "sets",
+          "column": "mtgoCode"
+        }
+      ],
+      "name": "not on MTGO",
+      "condition": "mtgoCode IS NULL OR mtgoCode = ''"
+    },
+    "r54": {
+      "id": "r54",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "id",
+          "table": "sets",
+          "column": "id"
+        }
+      ],
+      "name": "set number 5",
+      "condition": "id = 5"
+    },
+    "r55": {
+      "id": "r55",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "id",
+          "table": "sets",
+          "column": "id"
+        }
+      ],
+      "name": "set number 206",
+      "condition": "id = 206"
+    },
+    "r56": {
+      "id": "r56",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isForeignOnly",
+          "table": "sets",
+          "column": "isForeignOnly"
+        }
+      ],
+      "name": "isForeignOnly = 1",
+      "condition": "isForeignOnly = 1"
+    },
+    "r57": {
+      "id": "r57",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "isFoilOnly",
+          "table": "sets",
+          "column": "isFoilOnly"
+        }
+      ],
+      "name": "isFoilOnly = 1",
+      "condition": "isFoilOnly = 1"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "borderColor"
+        }
+      ],
+      "name": "borderless"
+    },
+    "a2": {
+      "id": "a2",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "id"
+        }
+      ],
+      "name": "card id"
+    },
+    "a3": {
+      "id": "a3",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "name"
+        }
+      ],
+      "name": "Sublime Epiphany"
+    },
+    "a4": {
+      "id": "a4",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "text"
+        }
+      ],
+      "name": "information"
+    },
+    "a5": {
+      "id": "a5",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "sets",
+          "column": "totalSetSize"
+        }
+      ],
+      "name": "total number of card per set"
+    },
+    "a6": {
+      "id": "a6",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "promoTypes"
+        }
+      ],
+      "name": "type of promotion"
+    },
+    "a7": {
+      "id": "a7",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "originalType"
+        }
+      ],
+      "name": "type of the card as originally printed"
+    },
+    "a8": {
+      "id": "a8",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "rulings",
+          "column": "text"
+        }
+      ],
+      "name": "ruling description"
+    },
+    "a9": {
+      "id": "a9",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "legalities",
+          "column": "format"
+        }
+      ],
+      "name": "format"
+    },
+    "a10": {
+      "id": "a10",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "artist"
+        }
+      ],
+      "name": "name of artists"
+    },
+    "a11": {
+      "id": "a11",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "foreign_data",
+          "column": "language"
+        }
+      ],
+      "name": "foreign language"
+    },
+    "a12": {
+      "id": "a12",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "frameVersion"
+        }
+      ],
+      "name": "1993"
+    },
+    "a13": {
+      "id": "a13",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "manaCost"
+        }
+      ],
+      "name": "unconverted mana"
+    },
+    "a14": {
+      "id": "a14",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "subtypes"
+        },
+        {
+          "table": "cards",
+          "column": "supertypes"
+        }
+      ],
+      "name": "all types"
+    },
+    "a15": {
+      "id": "a15",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "sets",
+          "column": "code"
+        }
+      ],
+      "name": "sets"
+    },
+    "a16": {
+      "id": "a16",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "cards",
+          "column": "availability"
+        }
+      ],
+      "name": "kind of printing"
+    }
+  },
+  "columns": [
+    {
+      "table": "cards",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "artist",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "asciiName",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "availability",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "borderColor",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "cardKingdomFoilId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "cardKingdomId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "colorIdentity",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "colorIndicator",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "colors",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "convertedManaCost",
+      "type": "REAL"
+    },
+    {
+      "table": "cards",
+      "column": "duelDeck",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "edhrecRank",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "faceConvertedManaCost",
+      "type": "REAL"
+    },
+    {
+      "table": "cards",
+      "column": "faceName",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "flavorName",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "flavorText",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "frameEffects",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "frameVersion",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "hand",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "hasAlternativeDeckLimit",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "hasContentWarning",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "hasFoil",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "hasNonFoil",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isAlternative",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isFullArt",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isOnlineOnly",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isOversized",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isPromo",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isReprint",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isReserved",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isStarter",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isStorySpotlight",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isTextless",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "isTimeshifted",
+      "type": "INTEGER"
+    },
+    {
+      "table": "cards",
+      "column": "keywords",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "layout",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "leadershipSkills",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "life",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "loyalty",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "manaCost",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "mcmId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "mcmMetaId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "mtgArenaId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "mtgjsonV4Id",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "mtgoFoilId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "mtgoId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "multiverseId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "name",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "number",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "originalReleaseDate",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "originalText",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "originalType",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "otherFaceIds",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "power",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "printings",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "promoTypes",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "purchaseUrls",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "rarity",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "scryfallId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "scryfallIllustrationId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "scryfallOracleId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "setCode",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "side",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "subtypes",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "supertypes",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "tcgplayerProductId",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "text",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "toughness",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "type",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "types",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "uuid",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "variations",
+      "type": "TEXT"
+    },
+    {
+      "table": "cards",
+      "column": "watermark",
+      "type": "TEXT"
+    },
+    {
+      "table": "foreign_data",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "foreign_data",
+      "column": "flavorText",
+      "type": "TEXT"
+    },
+    {
+      "table": "foreign_data",
+      "column": "language",
+      "type": "TEXT"
+    },
+    {
+      "table": "foreign_data",
+      "column": "multiverseid",
+      "type": "INTEGER"
+    },
+    {
+      "table": "foreign_data",
+      "column": "name",
+      "type": "TEXT"
+    },
+    {
+      "table": "foreign_data",
+      "column": "text",
+      "type": "TEXT"
+    },
+    {
+      "table": "foreign_data",
+      "column": "type",
+      "type": "TEXT"
+    },
+    {
+      "table": "foreign_data",
+      "column": "uuid",
+      "type": "TEXT"
+    },
+    {
+      "table": "legalities",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "legalities",
+      "column": "format",
+      "type": "TEXT"
+    },
+    {
+      "table": "legalities",
+      "column": "status",
+      "type": "TEXT"
+    },
+    {
+      "table": "legalities",
+      "column": "uuid",
+      "type": "TEXT"
+    },
+    {
+      "table": "sets",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "baseSetSize",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "block",
+      "type": "TEXT"
+    },
+    {
+      "table": "sets",
+      "column": "booster",
+      "type": "TEXT"
+    },
+    {
+      "table": "sets",
+      "column": "code",
+      "type": "TEXT"
+    },
+    {
+      "table": "sets",
+      "column": "isFoilOnly",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "isForeignOnly",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "isNonFoilOnly",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "isOnlineOnly",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "isPartialPreview",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "keyruneCode",
+      "type": "TEXT"
+    },
+    {
+      "table": "sets",
+      "column": "mcmId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "mcmIdExtras",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "mcmName",
+      "type": "TEXT"
+    },
+    {
+      "table": "sets",
+      "column": "mtgoCode",
+      "type": "TEXT"
+    },
+    {
+      "table": "sets",
+      "column": "name",
+      "type": "TEXT"
+    },
+    {
+      "table": "sets",
+      "column": "parentCode",
+      "type": "TEXT"
+    },
+    {
+      "table": "sets",
+      "column": "releaseDate",
+      "type": "DATE"
+    },
+    {
+      "table": "sets",
+      "column": "tcgplayerGroupId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "totalSetSize",
+      "type": "INTEGER"
+    },
+    {
+      "table": "sets",
+      "column": "type",
+      "type": "TEXT"
+    },
+    {
+      "table": "set_translations",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "set_translations",
+      "column": "language",
+      "type": "TEXT"
+    },
+    {
+      "table": "set_translations",
+      "column": "setCode",
+      "type": "TEXT"
+    },
+    {
+      "table": "set_translations",
+      "column": "translation",
+      "type": "TEXT"
+    },
+    {
+      "table": "rulings",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "rulings",
+      "column": "date",
+      "type": "DATE"
+    },
+    {
+      "table": "rulings",
+      "column": "text",
+      "type": "TEXT"
+    },
+    {
+      "table": "rulings",
+      "column": "uuid",
+      "type": "TEXT"
+    }
+  ],
+  "fk_edges": [
+    {
+      "from": {
+        "table": "foreign_data",
+        "column": "uuid"
+      },
+      "to": {
+        "table": "cards",
+        "column": "uuid"
+      }
+    },
+    {
+      "from": {
+        "table": "legalities",
+        "column": "uuid"
+      },
+      "to": {
+        "table": "cards",
+        "column": "uuid"
+      }
+    },
+    {
+      "from": {
+        "table": "set_translations",
+        "column": "setCode"
+      },
+      "to": {
+        "table": "sets",
+        "column": "code"
+      }
+    },
+    {
+      "from": {
+        "table": "rulings",
+        "column": "uuid"
+      },
+      "to": {
+        "table": "cards",
+        "column": "uuid"
+      }
+    }
+  ],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c27",
+        "c28",
+        "c29",
+        "c30",
+        "c31",
+        "c32",
+        "c33",
+        "c34",
+        "c35",
+        "c36",
+        "c37"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v14",
+        "v15",
+        "v16",
+        "v17",
+        "v18",
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23",
+        "v24",
+        "v25",
+        "v26",
+        "v27",
+        "v28",
+        "v29",
+        "v30",
+        "v31",
+        "v32",
+        "v33",
+        "v34",
+        "v35",
+        "v36",
+        "v37"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15",
+        "r16",
+        "r17",
+        "r18",
+        "r19",
+        "r20",
+        "r21",
+        "r22",
+        "r23",
+        "r24",
+        "r25",
+        "r26",
+        "r27",
+        "r28",
+        "r29",
+        "r30",
+        "r31",
+        "r32",
+        "r33",
+        "r34",
+        "r35",
+        "r36",
+        "r37",
+        "r38",
+        "r39",
+        "r40",
+        "r41",
+        "r42",
+        "r43",
+        "r44",
+        "r45",
+        "r46",
+        "r47",
+        "r48",
+        "r49",
+        "r50",
+        "r51",
+        "r52",
+        "r53",
+        "r54",
+        "r55",
+        "r56",
+        "r57"
+      ],
+      "ColumnAlias": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10",
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15",
+        "a16"
+      ]
+    },
+    "by_column": {
+      "cards.faceConvertedManaCost": [
+        "f1"
+      ],
+      "rulings.uuid": [
+        "f2"
+      ],
+      "foreign_data.id": [
+        "f3",
+        "f8"
+      ],
+      "foreign_data.language": [
+        "f3",
+        "f5",
+        "f8",
+        "f10",
+        "f11",
+        "v10",
+        "v11",
+        "v16",
+        "v17",
+        "v18",
+        "v20",
+        "v32",
+        "v34",
+        "r10",
+        "r18",
+        "r46",
+        "a11"
+      ],
+      "cards.id": [
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f9",
+        "r26",
+        "a2"
+      ],
+      "cards.borderColor": [
+        "f4",
+        "v22",
+        "v35",
+        "r15",
+        "r19",
+        "a1"
+      ],
+      "cards.isStorySpotlight": [
+        "f5",
+        "f7",
+        "r17",
+        "r35"
+      ],
+      "cards.isOnlineOnly": [
+        "f6",
+        "f14",
+        "r33"
+      ],
+      "cards.frameEffects": [
+        "f6",
+        "r34"
+      ],
+      "cards.isTextless": [
+        "f7",
+        "f12",
+        "r14",
+        "r35",
+        "r51"
+      ],
+      "cards.hasContentWarning": [
+        "f9",
+        "r6",
+        "r45"
+      ],
+      "legalities.format": [
+        "f9",
+        "v4",
+        "v6",
+        "v7",
+        "v33",
+        "r5",
+        "r23",
+        "a9"
+      ],
+      "legalities.status": [
+        "f9",
+        "v3",
+        "v13",
+        "v24",
+        "r5"
+      ],
+      "cards.power": [
+        "f10",
+        "r4",
+        "r11",
+        "r40"
+      ],
+      "cards.layout": [
+        "f12",
+        "r52"
+      ],
+      "sets.baseSetSize": [
+        "f13",
+        "r44"
+      ],
+      "cards.frameVersion": [
+        "v1",
+        "v23",
+        "r32",
+        "a12"
+      ],
+      "cards.rarity": [
+        "v2",
+        "v27",
+        "r42"
+      ],
+      "cards.types": [
+        "v5",
+        "r38"
+      ],
+      "cards.artist": [
+        "v8",
+        "v12",
+        "v30",
+        "r48",
+        "a10"
+      ],
+      "cards.number": [
+        "v9",
+        "r9"
+      ],
+      "cards.isStarter": [
+        "v14"
+      ],
+      "cards.name": [
+        "v15",
+        "r8",
+        "r12",
+        "r13",
+        "a3"
+      ],
+      "cards.duelDeck": [
+        "v19"
+      ],
+      "cards.availability": [
+        "v21",
+        "v28",
+        "v31",
+        "r20",
+        "r30",
+        "r31",
+        "a16"
+      ],
+      "sets.code": [
+        "v25",
+        "a15"
+      ],
+      "cards.originalType": [
+        "v26",
+        "r27",
+        "a7"
+      ],
+      "cards.hand": [
+        "v29"
+      ],
+      "cards.promoTypes": [
+        "v36",
+        "a6"
+      ],
+      "foreign_data.multiverseid": [
+        "v37"
+      ],
+      "cards.cardKingdomFoilId": [
+        "r1",
+        "r29"
+      ],
+      "cards.cardKingdomId": [
+        "r1",
+        "r29"
+      ],
+      "cards.edhrecRank": [
+        "r2",
+        "r49"
+      ],
+      "cards.side": [
+        "r3"
+      ],
+      "cards.isPromo": [
+        "r7"
+      ],
+      "cards.isReprint": [
+        "r16"
+      ],
+      "cards.convertedManaCost": [
+        "r21",
+        "r25"
+      ],
+      "cards.subtypes": [
+        "r22",
+        "r39",
+        "a14"
+      ],
+      "cards.setCode": [
+        "r24"
+      ],
+      "cards.colors": [
+        "r28"
+      ],
+      "sets.block": [
+        "r36"
+      ],
+      "set_translations.language": [
+        "r37"
+      ],
+      "cards.supertypes": [
+        "r39",
+        "a14"
+      ],
+      "cards.text": [
+        "r41",
+        "a4"
+      ],
+      "rulings.date": [
+        "r43"
+      ],
+      "sets.type": [
+        "r47"
+      ],
+      "cards.isOversized": [
+        "r50"
+      ],
+      "sets.mtgoCode": [
+        "r53"
+      ],
+      "sets.id": [
+        "r54",
+        "r55"
+      ],
+      "sets.isForeignOnly": [
+        "r56"
+      ],
+      "sets.isFoilOnly": [
+        "r57"
+      ],
+      "sets.totalSetSize": [
+        "a5"
+      ],
+      "rulings.text": [
+        "a8"
+      ],
+      "cards.manaCost": [
+        "a13"
+      ]
+    },
+    "by_name_token": {
+      "foils": [
+        "c1",
+        "c2",
+        "c18",
+        "r1",
+        "r29"
+      ],
+      "incredibly": [
+        "c1",
+        "c14",
+        "r1"
+      ],
+      "poweful": [
+        "c1",
+        "c29",
+        "r1"
+      ],
+      "powerful": [
+        "c2",
+        "c14",
+        "c18",
+        "c19",
+        "r29"
+      ],
+      "below": [
+        "c3",
+        "r2"
+      ],
+      "edhrec": [
+        "c3",
+        "r2",
+        "r49"
+      ],
+      "on": [
+        "c3",
+        "c21",
+        "c35",
+        "r2",
+        "r3",
+        "r20",
+        "r30",
+        "r43",
+        "r49",
+        "r53"
+      ],
+      "100": [
+        "c3",
+        "f3",
+        "f4",
+        "f5",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f14",
+        "r2"
+      ],
+      "unknown": [
+        "c4",
+        "c23",
+        "r4",
+        "r40"
+      ],
+      "power": [
+        "c4",
+        "c9",
+        "c23",
+        "f10",
+        "r4",
+        "r11",
+        "r40"
+      ],
+      "legal": [
+        "c5",
+        "r5"
+      ],
+      "commander": [
+        "c5",
+        "v7",
+        "r5",
+        "r36"
+      ],
+      "format": [
+        "c5",
+        "v4",
+        "v6",
+        "v7",
+        "v33",
+        "r5",
+        "r23",
+        "a9"
+      ],
+      "play": [
+        "c5",
+        "v6",
+        "v7"
+      ],
+      "have": [
+        "c6",
+        "c22",
+        "c25",
+        "c30",
+        "r3",
+        "r14",
+        "r35",
+        "r45",
+        "r51"
+      ],
+      "missing": [
+        "c6"
+      ],
+      "cards": [
+        "c6",
+        "c19",
+        "c22",
+        "c23",
+        "c34",
+        "c36",
+        "f6",
+        "f13",
+        "v5",
+        "r34",
+        "r35",
+        "r38",
+        "r44"
+      ],
+      "properties": [
+        "c6"
+      ],
+      "degraded": [
+        "c6"
+      ],
+      "information": [
+        "c7",
+        "a4"
+      ],
+      "most": [
+        "c7",
+        "c36",
+        "f13"
+      ],
+      "ruling": [
+        "c7",
+        "f2",
+        "a8"
+      ],
+      "promotional": [
+        "c8",
+        "v36",
+        "r7"
+      ],
+      "card": [
+        "c8",
+        "c10",
+        "c11",
+        "c15",
+        "c16",
+        "v3",
+        "r3",
+        "r12",
+        "r13",
+        "r15",
+        "r17",
+        "r19",
+        "r27",
+        "a2",
+        "a5",
+        "a7"
+      ],
+      "printing": [
+        "c8",
+        "v2",
+        "r7",
+        "a16"
+      ],
+      "infinite": [
+        "c9"
+      ],
+      "borderless": [
+        "c10",
+        "f4",
+        "r15",
+        "a1"
+      ],
+      "story": [
+        "c11",
+        "c22",
+        "r17",
+        "r35"
+      ],
+      "spotlight": [
+        "c11",
+        "c22",
+        "r17",
+        "r35"
+      ],
+      "french": [
+        "c12",
+        "f5",
+        "f10",
+        "v34",
+        "r18"
+      ],
+      "percentage": [
+        "c13",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f14"
+      ],
+      "legacy": [
+        "c15",
+        "r23"
+      ],
+      "artifact": [
+        "c16",
+        "v5",
+        "r27"
+      ],
+      "black": [
+        "c17",
+        "v35",
+        "r19",
+        "r28"
+      ],
+      "color": [
+        "c17",
+        "v35",
+        "r28"
+      ],
+      "foil": [
+        "c18",
+        "c34",
+        "r29"
+      ],
+      "warning": [
+        "c20",
+        "c25",
+        "r6",
+        "r45"
+      ],
+      "content": [
+        "c20",
+        "c25",
+        "r6",
+        "r45"
+      ],
+      "sensitive": [
+        "c20"
+      ],
+      "paper": [
+        "c21",
+        "v21",
+        "r30",
+        "r31"
+      ],
+      "available": [
+        "c21",
+        "c33",
+        "c37",
+        "v21",
+        "v28",
+        "v31",
+        "r20",
+        "r30",
+        "r31",
+        "r33"
+      ],
+      "text": [
+        "c22",
+        "c30",
+        "r14",
+        "r35",
+        "r41",
+        "r51"
+      ],
+      "box": [
+        "c22",
+        "c30",
+        "r35",
+        "r51"
+      ],
+      "do": [
+        "c22",
+        "c25",
+        "c30",
+        "r35",
+        "r45",
+        "r51"
+      ],
+      "not": [
+        "c22",
+        "c25",
+        "c30",
+        "r1",
+        "r3",
+        "r29",
+        "r35",
+        "r39",
+        "r45",
+        "r51",
+        "r53"
+      ],
+      "that": [
+        "c22",
+        "r35"
+      ],
+      "ability": [
+        "c24",
+        "r41"
+      ],
+      "about": [
+        "c24"
+      ],
+      "triggered": [
+        "c24",
+        "r41"
+      ],
+      "contain": [
+        "c24"
+      ],
+      "info": [
+        "c24"
+      ],
+      "oversized": [
+        "c26"
+      ],
+      "reprinted": [
+        "c27",
+        "r16"
+      ],
+      "printed": [
+        "c28",
+        "a7"
+      ],
+      "promotions": [
+        "c28"
+      ],
+      "proportion": [
+        "c31",
+        "f12"
+      ],
+      "magic": [
+        "c32"
+      ],
+      "gathering": [
+        "c32"
+      ],
+      "don": [
+        "c32"
+      ],
+      "appear": [
+        "c32"
+      ],
+      "online": [
+        "c32",
+        "c37",
+        "f6",
+        "r33"
+      ],
+      "states": [
+        "c33"
+      ],
+      "outside": [
+        "c33"
+      ],
+      "united": [
+        "c33"
+      ],
+      "has": [
+        "c34",
+        "r6"
+      ],
+      "writing": [
+        "c35"
+      ],
+      "them": [
+        "c35"
+      ],
+      "japanese": [
+        "c35",
+        "f11",
+        "v10",
+        "r46"
+      ],
+      "overall": [
+        "c36",
+        "f13"
+      ],
+      "contains": [
+        "c36",
+        "r41"
+      ],
+      "games": [
+        "c37"
+      ],
+      "only": [
+        "c37",
+        "f6",
+        "r33"
+      ],
+      "more": [
+        "f1"
+      ],
+      "face": [
+        "f1"
+      ],
+      "mana": [
+        "f1",
+        "r21",
+        "r25",
+        "a13"
+      ],
+      "faceconvertedmanacost": [
+        "f1"
+      ],
+      "max": [
+        "f1",
+        "f2",
+        "f13"
+      ],
+      "converted": [
+        "f1",
+        "r21",
+        "r25"
+      ],
+      "count": [
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f14"
+      ],
+      "uuid": [
+        "f2"
+      ],
+      "rulings": [
+        "f2"
+      ],
+      "simplified": [
+        "f3",
+        "v20",
+        "r10"
+      ],
+      "id": [
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "r26",
+        "r54",
+        "r55",
+        "a2"
+      ],
+      "divide": [
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f14"
+      ],
+      "where": [
+        "f3",
+        "f4",
+        "f5",
+        "f7",
+        "f8"
+      ],
+      "language": [
+        "f3",
+        "f5",
+        "f8",
+        "f10",
+        "f11",
+        "v16",
+        "v17",
+        "v20",
+        "r10",
+        "r18",
+        "r37",
+        "r46",
+        "a11"
+      ],
+      "sum": [
+        "f3",
+        "f7",
+        "f8"
+      ],
+      "chinese": [
+        "f3",
+        "v20",
+        "r10"
+      ],
+      "bordercolor": [
+        "f4",
+        "r15",
+        "r19"
+      ],
+      "isstoryspotlight": [
+        "f5",
+        "f7",
+        "r17",
+        "r35"
+      ],
+      "isonlineonly": [
+        "f6",
+        "f14",
+        "r33"
+      ],
+      "legendary": [
+        "f6",
+        "r34"
+      ],
+      "effect": [
+        "f6",
+        "r34"
+      ],
+      "frame": [
+        "f6",
+        "v1",
+        "v23",
+        "r34"
+      ],
+      "istextless": [
+        "f7",
+        "f12",
+        "r14",
+        "r35",
+        "r51"
+      ],
+      "spanish": [
+        "f8",
+        "v32"
+      ],
+      "hascontentwarning": [
+        "f9",
+        "r6",
+        "r45"
+      ],
+      "null": [
+        "f10",
+        "r1",
+        "r3",
+        "r4",
+        "r29",
+        "r39",
+        "r40",
+        "r53"
+      ],
+      "normal": [
+        "f12",
+        "r52"
+      ],
+      "layout": [
+        "f12",
+        "r52"
+      ],
+      "set": [
+        "f13",
+        "v25",
+        "r24",
+        "r44",
+        "r54",
+        "r55",
+        "a5"
+      ],
+      "basesetsize": [
+        "f13",
+        "r44"
+      ],
+      "style": [
+        "v1"
+      ],
+      "2015": [
+        "v1"
+      ],
+      "mythic": [
+        "v2"
+      ],
+      "rarity": [
+        "v2",
+        "r42"
+      ],
+      "banned": [
+        "v3"
+      ],
+      "gladiator": [
+        "v4"
+      ],
+      "type": [
+        "v5",
+        "v36",
+        "r38",
+        "r47",
+        "a6",
+        "a7"
+      ],
+      "vintage": [
+        "v6"
+      ],
+      "daniele": [
+        "v8"
+      ],
+      "stephen": [
+        "v8"
+      ],
+      "74s": [
+        "v9"
+      ],
+      "number": [
+        "v9",
+        "v37",
+        "r9",
+        "r54",
+        "r55",
+        "a5"
+      ],
+      "translation": [
+        "v11"
+      ],
+      "italian": [
+        "v11"
+      ],
+      "aaron": [
+        "v12"
+      ],
+      "boyd": [
+        "v12"
+      ],
+      "artist": [
+        "v12",
+        "r48"
+      ],
+      "restricted": [
+        "v13"
+      ],
+      "deck": [
+        "v14",
+        "v19"
+      ],
+      "found": [
+        "v14"
+      ],
+      "starter": [
+        "v14"
+      ],
+      "knight": [
+        "v15"
+      ],
+      "benalish": [
+        "v15"
+      ],
+      "phyrexian": [
+        "v16"
+      ],
+      "german": [
+        "v17"
+      ],
+      "russian": [
+        "v18"
+      ],
+      "duel": [
+        "v19"
+      ],
+      "border": [
+        "v22",
+        "v35",
+        "r19"
+      ],
+      "white": [
+        "v22"
+      ],
+      "version": [
+        "v23"
+      ],
+      "future": [
+        "v23"
+      ],
+      "legality": [
+        "v24"
+      ],
+      "status": [
+        "v24",
+        "r5"
+      ],
+      "ogw": [
+        "v25"
+      ],
+      "creature": [
+        "v26",
+        "r38"
+      ],
+      "elf": [
+        "v26"
+      ],
+      "uncommon": [
+        "v27"
+      ],
+      "mtgo": [
+        "v28",
+        "r20",
+        "r31",
+        "r53"
+      ],
+      "maximum": [
+        "v29"
+      ],
+      "starting": [
+        "v29"
+      ],
+      "size": [
+        "v29"
+      ],
+      "hand": [
+        "v29"
+      ],
+      "rob": [
+        "v30"
+      ],
+      "alexander": [
+        "v30"
+      ],
+      "arena": [
+        "v31",
+        "v36"
+      ],
+      "modern": [
+        "v33"
+      ],
+      "pre": [
+        "v33"
+      ],
+      "league": [
+        "v36"
+      ],
+      "multiverse": [
+        "v37"
+      ],
+      "149934": [
+        "v37"
+      ],
+      "cardkingdomfoilid": [
+        "r1",
+        "r29"
+      ],
+      "rule": [
+        "r1"
+      ],
+      "cardkingdomid": [
+        "r1"
+      ],
+      "edhrecrank": [
+        "r2",
+        "r49"
+      ],
+      "does": [
+        "r3"
+      ],
+      "same": [
+        "r3"
+      ],
+      "faces": [
+        "r3"
+      ],
+      "multiple": [
+        "r3"
+      ],
+      "side": [
+        "r3"
+      ],
+      "ispromo": [
+        "r7"
+      ],
+      "annul": [
+        "r8"
+      ],
+      "name": [
+        "r8",
+        "r12",
+        "r13",
+        "a10"
+      ],
+      "29": [
+        "r9"
+      ],
+      "numbered": [
+        "r9"
+      ],
+      "asterisk": [
+        "r11"
+      ],
+      "duress": [
+        "r12"
+      ],
+      "chosen": [
+        "r13"
+      ],
+      "ancestor": [
+        "r13"
+      ],
+      "boxes": [
+        "r14"
+      ],
+      "isreprint": [
+        "r16"
+      ],
+      "availability": [
+        "r20",
+        "r30",
+        "r31"
+      ],
+      "cost": [
+        "r21"
+      ],
+      "convertedmanacost": [
+        "r21",
+        "r25"
+      ],
+      "angel": [
+        "r22"
+      ],
+      "subtypes": [
+        "r22",
+        "r39"
+      ],
+      "subtype": [
+        "r22"
+      ],
+      "than": [
+        "r22",
+        "r49"
+      ],
+      "other": [
+        "r22"
+      ],
+      "10e": [
+        "r24"
+      ],
+      "setcode": [
+        "r24"
+      ],
+      "20": [
+        "r26"
+      ],
+      "between": [
+        "r26"
+      ],
+      "originaltype": [
+        "r27"
+      ],
+      "colors": [
+        "r28"
+      ],
+      "frameversion": [
+        "r32"
+      ],
+      "2003": [
+        "r32"
+      ],
+      "variations": [
+        "r33"
+      ],
+      "game": [
+        "r33"
+      ],
+      "frameeffects": [
+        "r34"
+      ],
+      "block": [
+        "r36"
+      ],
+      "portuguese": [
+        "r37"
+      ],
+      "brasil": [
+        "r37"
+      ],
+      "types": [
+        "r38",
+        "a14"
+      ],
+      "goblin": [
+        "r38"
+      ],
+      "supertypes": [
+        "r39"
+      ],
+      "like": [
+        "r41"
+      ],
+      "print": [
+        "r42"
+      ],
+      "rare": [
+        "r42"
+      ],
+      "02": [
+        "r43"
+      ],
+      "2007": [
+        "r43"
+      ],
+      "01": [
+        "r43"
+      ],
+      "date": [
+        "r43"
+      ],
+      "180": [
+        "r44"
+      ],
+      "translated": [
+        "r46"
+      ],
+      "expansion": [
+        "r47"
+      ],
+      "sets": [
+        "r47",
+        "a15"
+      ],
+      "daren": [
+        "r48"
+      ],
+      "created": [
+        "r48"
+      ],
+      "bader": [
+        "r48"
+      ],
+      "12000": [
+        "r49"
+      ],
+      "ranked": [
+        "r49"
+      ],
+      "higher": [
+        "r49"
+      ],
+      "isoversized": [
+        "r50"
+      ],
+      "mtgocode": [
+        "r53"
+      ],
+      "206": [
+        "r55"
+      ],
+      "isforeignonly": [
+        "r56"
+      ],
+      "isfoilonly": [
+        "r57"
+      ],
+      "sublime": [
+        "a3"
+      ],
+      "epiphany": [
+        "a3"
+      ],
+      "per": [
+        "a5"
+      ],
+      "total": [
+        "a5"
+      ],
+      "promotion": [
+        "a6"
+      ],
+      "as": [
+        "a7"
+      ],
+      "originally": [
+        "a7"
+      ],
+      "description": [
+        "a8"
+      ],
+      "artists": [
+        "a10"
+      ],
+      "foreign": [
+        "a11"
+      ],
+      "1993": [
+        "a12"
+      ],
+      "unconverted": [
+        "a13"
+      ],
+      "all": [
+        "a14"
+      ],
+      "kind": [
+        "a16"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        340,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        341,
+        "c1"
+      ]
+    ],
+    "c3": [
+      [
+        343,
+        "c1"
+      ]
+    ],
+    "c4": [
+      [
+        346,
+        "c1"
+      ]
+    ],
+    "c5": [
+      [
+        346,
+        "c2"
+      ]
+    ],
+    "c6": [
+      [
+        347,
+        "c1"
+      ]
+    ],
+    "c7": [
+      [
+        349,
+        "c1"
+      ]
+    ],
+    "c8": [
+      [
+        349,
+        "c2"
+      ]
+    ],
+    "c9": [
+      [
+        356,
+        "c1"
+      ]
+    ],
+    "c10": [
+      [
+        368,
+        "c1"
+      ],
+      [
+        370,
+        "c1"
+      ]
+    ],
+    "c11": [
+      [
+        371,
+        "c1"
+      ]
+    ],
+    "c12": [
+      [
+        371,
+        "c2"
+      ]
+    ],
+    "c13": [
+      [
+        371,
+        "c3"
+      ],
+      [
+        401,
+        "c1"
+      ],
+      [
+        403,
+        "c1"
+      ],
+      [
+        415,
+        "c2"
+      ]
+    ],
+    "c14": [
+      [
+        378,
+        "c1"
+      ]
+    ],
+    "c15": [
+      [
+        384,
+        "c1"
+      ]
+    ],
+    "c16": [
+      [
+        391,
+        "c1"
+      ]
+    ],
+    "c17": [
+      [
+        391,
+        "c2"
+      ]
+    ],
+    "c18": [
+      [
+        393,
+        "c1"
+      ]
+    ],
+    "c19": [
+      [
+        394,
+        "c1"
+      ]
+    ],
+    "c20": [
+      [
+        396,
+        "c1"
+      ]
+    ],
+    "c21": [
+      [
+        396,
+        "c2"
+      ]
+    ],
+    "c22": [
+      [
+        402,
+        "c1"
+      ]
+    ],
+    "c23": [
+      [
+        408,
+        "c1"
+      ],
+      [
+        421,
+        "c1"
+      ]
+    ],
+    "c24": [
+      [
+        408,
+        "c2"
+      ]
+    ],
+    "c25": [
+      [
+        415,
+        "c1"
+      ]
+    ],
+    "c26": [
+      [
+        420,
+        "c1"
+      ]
+    ],
+    "c27": [
+      [
+        420,
+        "c2"
+      ]
+    ],
+    "c28": [
+      [
+        420,
+        "c3"
+      ]
+    ],
+    "c29": [
+      [
+        423,
+        "c1"
+      ]
+    ],
+    "c30": [
+      [
+        424,
+        "c1"
+      ]
+    ],
+    "c31": [
+      [
+        424,
+        "c2"
+      ]
+    ],
+    "c32": [
+      [
+        426,
+        "c1"
+      ]
+    ],
+    "c33": [
+      [
+        431,
+        "c1"
+      ]
+    ],
+    "c34": [
+      [
+        431,
+        "c2"
+      ]
+    ],
+    "c35": [
+      [
+        431,
+        "c3"
+      ]
+    ],
+    "c36": [
+      [
+        432,
+        "c1"
+      ]
+    ],
+    "c37": [
+      [
+        433,
+        "c1"
+      ]
+    ],
+    "f1": [
+      [
+        342,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        349,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        352,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        368,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        371,
+        "f1"
+      ]
+    ],
+    "f6": [
+      [
+        401,
+        "f1"
+      ]
+    ],
+    "f7": [
+      [
+        402,
+        "f1"
+      ]
+    ],
+    "f8": [
+      [
+        403,
+        "f1"
+      ]
+    ],
+    "f9": [
+      [
+        415,
+        "f1"
+      ]
+    ],
+    "f10": [
+      [
+        416,
+        "f1"
+      ]
+    ],
+    "f11": [
+      [
+        417,
+        "f1"
+      ]
+    ],
+    "f12": [
+      [
+        424,
+        "f1"
+      ]
+    ],
+    "f13": [
+      [
+        432,
+        "f1"
+      ]
+    ],
+    "f14": [
+      [
+        433,
+        "f1"
+      ]
+    ],
+    "v1": [
+      [
+        343,
+        "v1"
+      ]
+    ],
+    "v2": [
+      [
+        344,
+        "v1"
+      ]
+    ],
+    "v3": [
+      [
+        344,
+        "v2"
+      ],
+      [
+        383,
+        "v1"
+      ]
+    ],
+    "v4": [
+      [
+        344,
+        "v3"
+      ]
+    ],
+    "v5": [
+      [
+        345,
+        "v1"
+      ]
+    ],
+    "v6": [
+      [
+        345,
+        "v2"
+      ]
+    ],
+    "v7": [
+      [
+        346,
+        "v1"
+      ]
+    ],
+    "v8": [
+      [
+        347,
+        "v1"
+      ]
+    ],
+    "v9": [
+      [
+        348,
+        "v1"
+      ]
+    ],
+    "v10": [
+      [
+        351,
+        "v1"
+      ],
+      [
+        382,
+        "v2"
+      ],
+      [
+        434,
+        "v1"
+      ]
+    ],
+    "v11": [
+      [
+        353,
+        "v1"
+      ]
+    ],
+    "v12": [
+      [
+        354,
+        "v1"
+      ],
+      [
+        373,
+        "v1"
+      ]
+    ],
+    "v13": [
+      [
+        361,
+        "v1"
+      ],
+      [
+        363,
+        "v1"
+      ]
+    ],
+    "v14": [
+      [
+        363,
+        "v2"
+      ]
+    ],
+    "v15": [
+      [
+        365,
+        "v1"
+      ],
+      [
+        366,
+        "v1"
+      ]
+    ],
+    "v16": [
+      [
+        367,
+        "v1"
+      ]
+    ],
+    "v17": [
+      [
+        369,
+        "v1"
+      ],
+      [
+        407,
+        "v1"
+      ]
+    ],
+    "v18": [
+      [
+        370,
+        "v1"
+      ],
+      [
+        432,
+        "v1"
+      ]
+    ],
+    "v19": [
+      [
+        379,
+        "v1"
+      ]
+    ],
+    "v20": [
+      [
+        381,
+        "v1"
+      ]
+    ],
+    "v21": [
+      [
+        382,
+        "v1"
+      ],
+      [
+        410,
+        "v1"
+      ]
+    ],
+    "v22": [
+      [
+        383,
+        "v2"
+      ],
+      [
+        394,
+        "v1"
+      ]
+    ],
+    "v23": [
+      [
+        386,
+        "v1"
+      ]
+    ],
+    "v24": [
+      [
+        386,
+        "v2"
+      ],
+      [
+        406,
+        "v1"
+      ]
+    ],
+    "v25": [
+      [
+        387,
+        "v1"
+      ]
+    ],
+    "v26": [
+      [
+        389,
+        "v1"
+      ]
+    ],
+    "v27": [
+      [
+        392,
+        "v1"
+      ]
+    ],
+    "v28": [
+      [
+        395,
+        "v1"
+      ]
+    ],
+    "v29": [
+      [
+        395,
+        "v2"
+      ]
+    ],
+    "v30": [
+      [
+        398,
+        "v1"
+      ]
+    ],
+    "v31": [
+      [
+        399,
+        "v1"
+      ]
+    ],
+    "v32": [
+      [
+        403,
+        "v1"
+      ]
+    ],
+    "v33": [
+      [
+        409,
+        "v1"
+      ]
+    ],
+    "v34": [
+      [
+        412,
+        "v1"
+      ]
+    ],
+    "v35": [
+      [
+        412,
+        "v2"
+      ]
+    ],
+    "v36": [
+      [
+        421,
+        "v1"
+      ]
+    ],
+    "v37": [
+      [
+        422,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        340,
+        "r1"
+      ],
+      [
+        341,
+        "r1"
+      ],
+      [
+        378,
+        "r1"
+      ],
+      [
+        394,
+        "r1"
+      ],
+      [
+        423,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        343,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        345,
+        "r1"
+      ],
+      [
+        409,
+        "r1"
+      ],
+      [
+        425,
+        "r1"
+      ]
+    ],
+    "r4": [
+      [
+        346,
+        "r1"
+      ]
+    ],
+    "r5": [
+      [
+        346,
+        "r2"
+      ],
+      [
+        415,
+        "r2"
+      ]
+    ],
+    "r6": [
+      [
+        347,
+        "r1"
+      ],
+      [
+        396,
+        "r1"
+      ]
+    ],
+    "r7": [
+      [
+        349,
+        "r1"
+      ],
+      [
+        420,
+        "r3"
+      ]
+    ],
+    "r8": [
+      [
+        350,
+        "r1"
+      ]
+    ],
+    "r9": [
+      [
+        350,
+        "r2"
+      ]
+    ],
+    "r10": [
+      [
+        352,
+        "r1"
+      ]
+    ],
+    "r11": [
+      [
+        356,
+        "r1"
+      ]
+    ],
+    "r12": [
+      [
+        357,
+        "r1"
+      ]
+    ],
+    "r13": [
+      [
+        358,
+        "r1"
+      ]
+    ],
+    "r14": [
+      [
+        361,
+        "r1"
+      ]
+    ],
+    "r15": [
+      [
+        368,
+        "r1"
+      ],
+      [
+        370,
+        "r1"
+      ],
+      [
+        419,
+        "r1"
+      ]
+    ],
+    "r16": [
+      [
+        369,
+        "r1"
+      ],
+      [
+        420,
+        "r2"
+      ]
+    ],
+    "r17": [
+      [
+        371,
+        "r1"
+      ]
+    ],
+    "r18": [
+      [
+        371,
+        "r2"
+      ],
+      [
+        416,
+        "r1"
+      ]
+    ],
+    "r19": [
+      [
+        374,
+        "r1"
+      ],
+      [
+        397,
+        "r3"
+      ]
+    ],
+    "r20": [
+      [
+        374,
+        "r2"
+      ]
+    ],
+    "r21": [
+      [
+        375,
+        "r1"
+      ]
+    ],
+    "r22": [
+      [
+        377,
+        "r1"
+      ]
+    ],
+    "r23": [
+      [
+        384,
+        "r1"
+      ]
+    ],
+    "r24": [
+      [
+        388,
+        "r1"
+      ]
+    ],
+    "r25": [
+      [
+        388,
+        "r2"
+      ]
+    ],
+    "r26": [
+      [
+        390,
+        "r1"
+      ]
+    ],
+    "r27": [
+      [
+        391,
+        "r1"
+      ]
+    ],
+    "r28": [
+      [
+        391,
+        "r2"
+      ]
+    ],
+    "r29": [
+      [
+        393,
+        "r1"
+      ]
+    ],
+    "r30": [
+      [
+        396,
+        "r2"
+      ]
+    ],
+    "r31": [
+      [
+        397,
+        "r1"
+      ]
+    ],
+    "r32": [
+      [
+        397,
+        "r2"
+      ]
+    ],
+    "r33": [
+      [
+        401,
+        "r1"
+      ],
+      [
+        433,
+        "r1"
+      ]
+    ],
+    "r34": [
+      [
+        401,
+        "r2"
+      ]
+    ],
+    "r35": [
+      [
+        402,
+        "r1"
+      ]
+    ],
+    "r36": [
+      [
+        405,
+        "r1"
+      ]
+    ],
+    "r37": [
+      [
+        405,
+        "r2"
+      ]
+    ],
+    "r38": [
+      [
+        406,
+        "r1"
+      ]
+    ],
+    "r39": [
+      [
+        407,
+        "r1"
+      ]
+    ],
+    "r40": [
+      [
+        408,
+        "r1"
+      ],
+      [
+        416,
+        "r2"
+      ],
+      [
+        421,
+        "r1"
+      ]
+    ],
+    "r41": [
+      [
+        408,
+        "r2"
+      ]
+    ],
+    "r42": [
+      [
+        413,
+        "r1"
+      ]
+    ],
+    "r43": [
+      [
+        413,
+        "r2"
+      ]
+    ],
+    "r44": [
+      [
+        414,
+        "r1"
+      ]
+    ],
+    "r45": [
+      [
+        415,
+        "r1"
+      ]
+    ],
+    "r46": [
+      [
+        417,
+        "r1"
+      ],
+      [
+        431,
+        "r3"
+      ]
+    ],
+    "r47": [
+      [
+        417,
+        "r2"
+      ]
+    ],
+    "r48": [
+      [
+        418,
+        "r1"
+      ]
+    ],
+    "r49": [
+      [
+        419,
+        "r2"
+      ]
+    ],
+    "r50": [
+      [
+        420,
+        "r1"
+      ]
+    ],
+    "r51": [
+      [
+        424,
+        "r1"
+      ]
+    ],
+    "r52": [
+      [
+        424,
+        "r2"
+      ]
+    ],
+    "r53": [
+      [
+        426,
+        "r1"
+      ],
+      [
+        434,
+        "r1"
+      ]
+    ],
+    "r54": [
+      [
+        428,
+        "r1"
+      ]
+    ],
+    "r55": [
+      [
+        429,
+        "r1"
+      ]
+    ],
+    "r56": [
+      [
+        431,
+        "r1"
+      ]
+    ],
+    "r57": [
+      [
+        431,
+        "r2"
+      ]
+    ],
+    "a1": [
+      [
+        341,
+        "a1"
+      ]
+    ],
+    "a2": [
+      [
+        347,
+        "a1"
+      ]
+    ],
+    "a3": [
+      [
+        348,
+        "a1"
+      ],
+      [
+        355,
+        "a1"
+      ],
+      [
+        360,
+        "a1"
+      ],
+      [
+        362,
+        "a1"
+      ],
+      [
+        364,
+        "a1"
+      ],
+      [
+        366,
+        "a1"
+      ],
+      [
+        385,
+        "a1"
+      ]
+    ],
+    "a4": [
+      [
+        348,
+        "a2"
+      ]
+    ],
+    "a5": [
+      [
+        353,
+        "a1"
+      ]
+    ],
+    "a6": [
+      [
+        357,
+        "a1"
+      ]
+    ],
+    "a7": [
+      [
+        359,
+        "a1"
+      ]
+    ],
+    "a8": [
+      [
+        362,
+        "a2"
+      ],
+      [
+        366,
+        "a3"
+      ]
+    ],
+    "a9": [
+      [
+        366,
+        "a2"
+      ]
+    ],
+    "a10": [
+      [
+        367,
+        "a1"
+      ],
+      [
+        393,
+        "a1"
+      ],
+      [
+        395,
+        "a1"
+      ]
+    ],
+    "a11": [
+      [
+        384,
+        "a1"
+      ],
+      [
+        391,
+        "a1"
+      ]
+    ],
+    "a12": [
+      [
+        396,
+        "a1"
+      ]
+    ],
+    "a13": [
+      [
+        398,
+        "a1"
+      ]
+    ],
+    "a14": [
+      [
+        399,
+        "a1"
+      ],
+      [
+        407,
+        "a1"
+      ]
+    ],
+    "a15": [
+      [
+        405,
+        "a1"
+      ]
+    ],
+    "a16": [
+      [
+        418,
+        "a1"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,1942 @@
+{
+  "version": "p1b.2",
+  "db_id": "financial",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "Gap",
+      "defined_by": "f1"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "person B is older than person A",
+      "defined_by": "r1"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "younger than",
+      "defined_by": "r2"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "Loan validity more than 12 months",
+      "defined_by": "r3"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "male clients",
+      "defined_by": "r4"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "Percentage of the male clients",
+      "defined_by": "f2"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "increase rate of his/her account balance",
+      "defined_by": "f3"
+    },
+    "c8": {
+      "id": "c8",
+      "type": "Concept",
+      "name": "Loan paid with no issue",
+      "defined_by": "r5"
+    },
+    "c9": {
+      "id": "c9",
+      "type": "Concept",
+      "name": "Percentage of accounts by condition",
+      "defined_by": "f4"
+    },
+    "c10": {
+      "id": "c10",
+      "type": "Concept",
+      "name": "Accounts holder",
+      "definition": "the person who own this account"
+    },
+    "c11": {
+      "id": "c11",
+      "type": "Concept",
+      "name": "unemployment rate 2015",
+      "defined_by": "a2"
+    },
+    "c12": {
+      "id": "c12",
+      "type": "Concept",
+      "name": "unemployment rate 2016",
+      "defined_by": "a3"
+    },
+    "c13": {
+      "id": "c13",
+      "type": "Concept",
+      "name": "Unemployment increment rate in percentage",
+      "defined_by": "f6"
+    },
+    "c14": {
+      "id": "c14",
+      "type": "Concept",
+      "name": "Loan contracts which are still running where client are in debt",
+      "defined_by": "r6"
+    },
+    "c15": {
+      "id": "c15",
+      "type": "Concept",
+      "name": "Female",
+      "defined_by": "r7"
+    },
+    "c16": {
+      "id": "c16",
+      "type": "Concept",
+      "name": "Non-credit card withdraws",
+      "defined_by": "r8"
+    },
+    "c17": {
+      "id": "c17",
+      "type": "Concept",
+      "name": "January 1996",
+      "defined_by": "r9"
+    },
+    "c18": {
+      "id": "c18",
+      "type": "Concept",
+      "name": "district names",
+      "defined_by": "a6"
+    },
+    "c19": {
+      "id": "c19",
+      "type": "Concept",
+      "name": "active loan",
+      "defined_by": "r10"
+    },
+    "c20": {
+      "id": "c20",
+      "type": "Concept",
+      "name": "Negative balance",
+      "defined_by": "r11"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "average salary",
+          "table": "district",
+          "column": "A11"
+        }
+      ],
+      "name": "Gap",
+      "expression": "highest average salary - lowest average salary"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "clients",
+          "table": "client",
+          "column": "client_id"
+        }
+      ],
+      "depends_on": [
+        "r4"
+      ],
+      "name": "Percentage of the male clients",
+      "expression": "DIVIDE(COUNT(male clients), COUNT(clients)) * 100"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "balance of date A",
+          "table": "trans",
+          "column": "balance"
+        },
+        {
+          "term": "balance of date B",
+          "table": "trans",
+          "column": "balance"
+        }
+      ],
+      "name": "increase rate of account balance",
+      "expression": "((balance of date A - balance of date B) / balance of Date B) * 100"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "amount",
+          "table": "loan",
+          "column": "amount"
+        }
+      ],
+      "name": "Percentage of accounts by condition",
+      "expression": "(total(amount) & condition) / (total amount) * 100"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "amount",
+          "table": "loan",
+          "column": "amount"
+        }
+      ],
+      "name": "Percentage of accounts by condition",
+      "expression": "[(total(amount) & condition) / (total amount)] * 100"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "unemployment rate 2015",
+          "table": "district",
+          "column": "A12"
+        },
+        {
+          "term": "unemployment rate 2016",
+          "table": "district",
+          "column": "A13"
+        }
+      ],
+      "depends_on": [
+        "a2",
+        "a3"
+      ],
+      "name": "Unemployment increment rate in percentage",
+      "expression": "((unemployment rate 2016 - unemployment rate 2015) / unemployment rate 2015) * 100"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "issuance after transaction",
+      "table": "account",
+      "column": "frequency",
+      "value": "POPLATEK PO OBRATU"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "Female",
+      "table": "client",
+      "column": "gender",
+      "value": "F"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "Male",
+      "table": "client",
+      "column": "gender",
+      "value": "M"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "weekly issuance",
+      "table": "account",
+      "column": "frequency",
+      "value": "POPLATEK TYDNE"
+    },
+    "v5": {
+      "id": "v5",
+      "type": "ValueMap",
+      "name": "Litomerice district",
+      "table": "district",
+      "column": "A2",
+      "value": "Litomerice"
+    },
+    "v6": {
+      "id": "v6",
+      "type": "ValueMap",
+      "name": "contract finished, no problems",
+      "table": "loan",
+      "column": "status",
+      "value": "A"
+    },
+    "v7": {
+      "id": "v7",
+      "type": "ValueMap",
+      "name": "running contract",
+      "table": "loan",
+      "column": "status",
+      "value": "C"
+    },
+    "v8": {
+      "id": "v8",
+      "type": "ValueMap",
+      "name": "monthly issuance",
+      "table": "account",
+      "column": "frequency",
+      "value": "POPLATEK MESICNE"
+    },
+    "v9": {
+      "id": "v9",
+      "type": "ValueMap",
+      "name": "South Bohemia region",
+      "table": "district",
+      "column": "A3",
+      "value": "South Bohemia"
+    },
+    "v10": {
+      "id": "v10",
+      "type": "ValueMap",
+      "name": "running contract, client in debt",
+      "table": "loan",
+      "column": "status",
+      "value": "D"
+    },
+    "v11": {
+      "id": "v11",
+      "type": "ValueMap",
+      "name": "credit card withdraw",
+      "table": "trans",
+      "column": "operation",
+      "value": "VYBER KARTOU"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "birth_date",
+          "table": "client",
+          "column": "birth_date"
+        }
+      ],
+      "name": "older than",
+      "condition": "A.birth_date > B.birth_date"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "birth_date",
+          "table": "client",
+          "column": "birth_date"
+        }
+      ],
+      "name": "person B is younger than person A",
+      "condition": "A.birth_date < B.birth_date"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "duration",
+          "table": "loan",
+          "column": "duration"
+        }
+      ],
+      "name": "duration > 12",
+      "condition": "duration > 12"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "gender",
+          "table": "client",
+          "column": "gender",
+          "value": "M"
+        }
+      ],
+      "name": "male gender filter",
+      "condition": "gender = 'M'"
+    },
+    "r5": {
+      "id": "r5",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "status",
+          "table": "loan",
+          "column": "status",
+          "value": "A"
+        }
+      ],
+      "name": "contract finished, no problems",
+      "condition": "status = 'A'"
+    },
+    "r6": {
+      "id": "r6",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "status",
+          "table": "loan",
+          "column": "status",
+          "value": "D"
+        }
+      ],
+      "name": "Loan contracts which are still running where client are in debt",
+      "condition": "status = 'D'"
+    },
+    "r7": {
+      "id": "r7",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "gender",
+          "table": "client",
+          "column": "gender",
+          "value": "F"
+        }
+      ],
+      "name": "Female gender",
+      "condition": "gender = 'F'"
+    },
+    "r8": {
+      "id": "r8",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "type",
+          "table": "trans",
+          "column": "type",
+          "value": "VYDAJ"
+        }
+      ],
+      "name": "Non-credit card withdraws",
+      "condition": "type = 'VYDAJ'"
+    },
+    "r9": {
+      "id": "r9",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "trans",
+          "column": "date"
+        }
+      ],
+      "name": "January 1996",
+      "condition": "date LIKE '1996-01%'"
+    },
+    "r10": {
+      "id": "r10",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "status",
+          "table": "loan",
+          "column": "status"
+        }
+      ],
+      "name": "running contract",
+      "condition": "status = 'C' OR status = 'D'"
+    },
+    "r11": {
+      "id": "r11",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "balance",
+          "table": "trans",
+          "column": "balance"
+        }
+      ],
+      "name": "negative balance rule",
+      "condition": "balance < 0"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "district",
+          "column": "A3"
+        }
+      ],
+      "name": "region"
+    },
+    "a2": {
+      "id": "a2",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "district",
+          "column": "A12"
+        }
+      ],
+      "name": "unemploymant rate 1995"
+    },
+    "a3": {
+      "id": "a3",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "district",
+          "column": "A13"
+        }
+      ],
+      "name": "unemploymant rate 1996"
+    },
+    "a4": {
+      "id": "a4",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "district",
+          "column": "A11"
+        }
+      ],
+      "name": "average salary"
+    },
+    "a5": {
+      "id": "a5",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "client",
+          "column": "client_id"
+        }
+      ],
+      "name": "Customers"
+    },
+    "a6": {
+      "id": "a6",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "district",
+          "column": "A2"
+        }
+      ],
+      "name": "Names of districts"
+    },
+    "a7": {
+      "id": "a7",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "client",
+          "column": "gender"
+        }
+      ],
+      "name": "Woman"
+    },
+    "a8": {
+      "id": "a8",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "district",
+          "column": "A4"
+        }
+      ],
+      "name": "inhabitants"
+    },
+    "a9": {
+      "id": "a9",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "district",
+          "column": "A16"
+        }
+      ],
+      "name": "no. of committed crimes 1996"
+    }
+  },
+  "columns": [
+    {
+      "table": "account",
+      "column": "account_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "account",
+      "column": "district_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "account",
+      "column": "frequency",
+      "type": "TEXT"
+    },
+    {
+      "table": "account",
+      "column": "date",
+      "type": "DATE"
+    },
+    {
+      "table": "card",
+      "column": "card_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "card",
+      "column": "disp_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "card",
+      "column": "type",
+      "type": "TEXT"
+    },
+    {
+      "table": "card",
+      "column": "issued",
+      "type": "DATE"
+    },
+    {
+      "table": "client",
+      "column": "client_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "client",
+      "column": "gender",
+      "type": "TEXT"
+    },
+    {
+      "table": "client",
+      "column": "birth_date",
+      "type": "DATE"
+    },
+    {
+      "table": "client",
+      "column": "district_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "disp",
+      "column": "disp_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "disp",
+      "column": "client_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "disp",
+      "column": "account_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "disp",
+      "column": "type",
+      "type": "TEXT"
+    },
+    {
+      "table": "district",
+      "column": "district_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "district",
+      "column": "A2",
+      "type": "TEXT"
+    },
+    {
+      "table": "district",
+      "column": "A3",
+      "type": "TEXT"
+    },
+    {
+      "table": "district",
+      "column": "A4",
+      "type": "TEXT"
+    },
+    {
+      "table": "district",
+      "column": "A5",
+      "type": "TEXT"
+    },
+    {
+      "table": "district",
+      "column": "A6",
+      "type": "TEXT"
+    },
+    {
+      "table": "district",
+      "column": "A7",
+      "type": "TEXT"
+    },
+    {
+      "table": "district",
+      "column": "A8",
+      "type": "INTEGER"
+    },
+    {
+      "table": "district",
+      "column": "A9",
+      "type": "INTEGER"
+    },
+    {
+      "table": "district",
+      "column": "A10",
+      "type": "REAL"
+    },
+    {
+      "table": "district",
+      "column": "A11",
+      "type": "INTEGER"
+    },
+    {
+      "table": "district",
+      "column": "A12",
+      "type": "REAL"
+    },
+    {
+      "table": "district",
+      "column": "A13",
+      "type": "REAL"
+    },
+    {
+      "table": "district",
+      "column": "A14",
+      "type": "INTEGER"
+    },
+    {
+      "table": "district",
+      "column": "A15",
+      "type": "INTEGER"
+    },
+    {
+      "table": "district",
+      "column": "A16",
+      "type": "INTEGER"
+    },
+    {
+      "table": "loan",
+      "column": "loan_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "loan",
+      "column": "account_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "loan",
+      "column": "date",
+      "type": "DATE"
+    },
+    {
+      "table": "loan",
+      "column": "amount",
+      "type": "INTEGER"
+    },
+    {
+      "table": "loan",
+      "column": "duration",
+      "type": "INTEGER"
+    },
+    {
+      "table": "loan",
+      "column": "payments",
+      "type": "REAL"
+    },
+    {
+      "table": "loan",
+      "column": "status",
+      "type": "TEXT"
+    },
+    {
+      "table": "order",
+      "column": "order_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "order",
+      "column": "account_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "order",
+      "column": "bank_to",
+      "type": "TEXT"
+    },
+    {
+      "table": "order",
+      "column": "account_to",
+      "type": "INTEGER"
+    },
+    {
+      "table": "order",
+      "column": "amount",
+      "type": "REAL"
+    },
+    {
+      "table": "order",
+      "column": "k_symbol",
+      "type": "TEXT"
+    },
+    {
+      "table": "trans",
+      "column": "trans_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "trans",
+      "column": "account_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "trans",
+      "column": "date",
+      "type": "DATE"
+    },
+    {
+      "table": "trans",
+      "column": "type",
+      "type": "TEXT"
+    },
+    {
+      "table": "trans",
+      "column": "operation",
+      "type": "TEXT"
+    },
+    {
+      "table": "trans",
+      "column": "amount",
+      "type": "INTEGER"
+    },
+    {
+      "table": "trans",
+      "column": "balance",
+      "type": "INTEGER"
+    },
+    {
+      "table": "trans",
+      "column": "k_symbol",
+      "type": "TEXT"
+    },
+    {
+      "table": "trans",
+      "column": "bank",
+      "type": "TEXT"
+    },
+    {
+      "table": "trans",
+      "column": "account",
+      "type": "INTEGER"
+    }
+  ],
+  "fk_edges": [
+    {
+      "from": {
+        "table": "account",
+        "column": "district_id"
+      },
+      "to": {
+        "table": "district",
+        "column": "district_id"
+      }
+    },
+    {
+      "from": {
+        "table": "card",
+        "column": "disp_id"
+      },
+      "to": {
+        "table": "disp",
+        "column": "disp_id"
+      }
+    },
+    {
+      "from": {
+        "table": "client",
+        "column": "district_id"
+      },
+      "to": {
+        "table": "district",
+        "column": "district_id"
+      }
+    },
+    {
+      "from": {
+        "table": "disp",
+        "column": "account_id"
+      },
+      "to": {
+        "table": "account",
+        "column": "account_id"
+      }
+    },
+    {
+      "from": {
+        "table": "disp",
+        "column": "client_id"
+      },
+      "to": {
+        "table": "client",
+        "column": "client_id"
+      }
+    },
+    {
+      "from": {
+        "table": "loan",
+        "column": "account_id"
+      },
+      "to": {
+        "table": "account",
+        "column": "account_id"
+      }
+    },
+    {
+      "from": {
+        "table": "order",
+        "column": "account_id"
+      },
+      "to": {
+        "table": "account",
+        "column": "account_id"
+      }
+    },
+    {
+      "from": {
+        "table": "trans",
+        "column": "account_id"
+      },
+      "to": {
+        "table": "account",
+        "column": "account_id"
+      }
+    }
+  ],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11"
+      ],
+      "ColumnAlias": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9"
+      ]
+    },
+    "by_column": {
+      "district.A11": [
+        "f1",
+        "a4"
+      ],
+      "client.client_id": [
+        "f2",
+        "a5"
+      ],
+      "trans.balance": [
+        "f3",
+        "r11"
+      ],
+      "loan.amount": [
+        "f4",
+        "f5"
+      ],
+      "district.A12": [
+        "f6",
+        "a2"
+      ],
+      "district.A13": [
+        "f6",
+        "a3"
+      ],
+      "account.frequency": [
+        "v1",
+        "v4",
+        "v8"
+      ],
+      "client.gender": [
+        "v2",
+        "v3",
+        "r4",
+        "r7",
+        "a7"
+      ],
+      "district.A2": [
+        "v5",
+        "a6"
+      ],
+      "loan.status": [
+        "v6",
+        "v7",
+        "v10",
+        "r5",
+        "r6",
+        "r10"
+      ],
+      "district.A3": [
+        "v9",
+        "a1"
+      ],
+      "trans.operation": [
+        "v11"
+      ],
+      "client.birth_date": [
+        "r1",
+        "r2"
+      ],
+      "loan.duration": [
+        "r3"
+      ],
+      "trans.type": [
+        "r8"
+      ],
+      "trans.date": [
+        "r9"
+      ],
+      "district.A4": [
+        "a8"
+      ],
+      "district.A16": [
+        "a9"
+      ]
+    },
+    "by_name_token": {
+      "gap": [
+        "c1",
+        "f1"
+      ],
+      "person": [
+        "c2",
+        "r2"
+      ],
+      "older": [
+        "c2",
+        "r1"
+      ],
+      "than": [
+        "c2",
+        "c3",
+        "c4",
+        "r1",
+        "r2"
+      ],
+      "younger": [
+        "c3",
+        "r2"
+      ],
+      "more": [
+        "c4"
+      ],
+      "months": [
+        "c4"
+      ],
+      "validity": [
+        "c4"
+      ],
+      "12": [
+        "c4",
+        "r3"
+      ],
+      "loan": [
+        "c4",
+        "c8",
+        "c14",
+        "c19",
+        "r6"
+      ],
+      "clients": [
+        "c5",
+        "c6",
+        "f2"
+      ],
+      "male": [
+        "c5",
+        "c6",
+        "f2",
+        "v3",
+        "r4"
+      ],
+      "percentage": [
+        "c6",
+        "c9",
+        "c13",
+        "f2",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "his": [
+        "c7"
+      ],
+      "balance": [
+        "c7",
+        "c20",
+        "f3",
+        "r11"
+      ],
+      "her": [
+        "c7"
+      ],
+      "increase": [
+        "c7",
+        "f3"
+      ],
+      "account": [
+        "c7",
+        "f3"
+      ],
+      "rate": [
+        "c7",
+        "c11",
+        "c12",
+        "c13",
+        "f3",
+        "f6",
+        "a2",
+        "a3"
+      ],
+      "paid": [
+        "c8"
+      ],
+      "no": [
+        "c8",
+        "v6",
+        "r5",
+        "a9"
+      ],
+      "issue": [
+        "c8"
+      ],
+      "accounts": [
+        "c9",
+        "c10",
+        "f4",
+        "f5"
+      ],
+      "condition": [
+        "c9",
+        "f4",
+        "f5"
+      ],
+      "holder": [
+        "c10"
+      ],
+      "2015": [
+        "c11",
+        "f6"
+      ],
+      "unemployment": [
+        "c11",
+        "c12",
+        "c13",
+        "f6"
+      ],
+      "2016": [
+        "c12",
+        "f6"
+      ],
+      "increment": [
+        "c13",
+        "f6"
+      ],
+      "which": [
+        "c14",
+        "r6"
+      ],
+      "debt": [
+        "c14",
+        "v10",
+        "r6"
+      ],
+      "client": [
+        "c14",
+        "v10",
+        "r6"
+      ],
+      "where": [
+        "c14",
+        "r6"
+      ],
+      "still": [
+        "c14",
+        "r6"
+      ],
+      "contracts": [
+        "c14",
+        "r6"
+      ],
+      "running": [
+        "c14",
+        "v7",
+        "v10",
+        "r6",
+        "r10"
+      ],
+      "female": [
+        "c15",
+        "v2",
+        "r7"
+      ],
+      "withdraws": [
+        "c16",
+        "r8"
+      ],
+      "card": [
+        "c16",
+        "v11",
+        "r8"
+      ],
+      "credit": [
+        "c16",
+        "v11",
+        "r8"
+      ],
+      "non": [
+        "c16",
+        "r8"
+      ],
+      "january": [
+        "c17",
+        "r9"
+      ],
+      "1996": [
+        "c17",
+        "r9",
+        "a3",
+        "a9"
+      ],
+      "names": [
+        "c18",
+        "a6"
+      ],
+      "district": [
+        "c18",
+        "v5"
+      ],
+      "active": [
+        "c19"
+      ],
+      "negative": [
+        "c20",
+        "r11"
+      ],
+      "lowest": [
+        "f1"
+      ],
+      "average": [
+        "f1",
+        "a4"
+      ],
+      "highest": [
+        "f1"
+      ],
+      "salary": [
+        "f1",
+        "a4"
+      ],
+      "100": [
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "count": [
+        "f2"
+      ],
+      "divide": [
+        "f2"
+      ],
+      "date": [
+        "f3",
+        "r9"
+      ],
+      "amount": [
+        "f4",
+        "f5"
+      ],
+      "total": [
+        "f4",
+        "f5"
+      ],
+      "issuance": [
+        "v1",
+        "v4",
+        "v8"
+      ],
+      "transaction": [
+        "v1"
+      ],
+      "after": [
+        "v1"
+      ],
+      "weekly": [
+        "v4"
+      ],
+      "litomerice": [
+        "v5"
+      ],
+      "contract": [
+        "v6",
+        "v7",
+        "v10",
+        "r5",
+        "r10"
+      ],
+      "finished": [
+        "v6",
+        "r5"
+      ],
+      "problems": [
+        "v6",
+        "r5"
+      ],
+      "monthly": [
+        "v8"
+      ],
+      "south": [
+        "v9"
+      ],
+      "bohemia": [
+        "v9"
+      ],
+      "region": [
+        "v9",
+        "a1"
+      ],
+      "withdraw": [
+        "v11"
+      ],
+      "birth_date": [
+        "r1",
+        "r2"
+      ],
+      "duration": [
+        "r3"
+      ],
+      "gender": [
+        "r4",
+        "r7"
+      ],
+      "filter": [
+        "r4"
+      ],
+      "status": [
+        "r5",
+        "r6",
+        "r10"
+      ],
+      "vydaj": [
+        "r8"
+      ],
+      "type": [
+        "r8"
+      ],
+      "01": [
+        "r9"
+      ],
+      "like": [
+        "r9"
+      ],
+      "rule": [
+        "r11"
+      ],
+      "unemploymant": [
+        "a2",
+        "a3"
+      ],
+      "1995": [
+        "a2"
+      ],
+      "customers": [
+        "a5"
+      ],
+      "districts": [
+        "a6"
+      ],
+      "woman": [
+        "a7"
+      ],
+      "inhabitants": [
+        "a8"
+      ],
+      "crimes": [
+        "a9"
+      ],
+      "committed": [
+        "a9"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        94,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        94,
+        "c2"
+      ]
+    ],
+    "c3": [
+      [
+        95,
+        "c1"
+      ]
+    ],
+    "c4": [
+      [
+        99,
+        "c1"
+      ]
+    ],
+    "c5": [
+      [
+        115,
+        "c1"
+      ]
+    ],
+    "c6": [
+      [
+        115,
+        "c2"
+      ]
+    ],
+    "c7": [
+      [
+        116,
+        "c1"
+      ]
+    ],
+    "c8": [
+      [
+        117,
+        "c1"
+      ]
+    ],
+    "c9": [
+      [
+        117,
+        "c2"
+      ],
+      [
+        118,
+        "c1"
+      ]
+    ],
+    "c10": [
+      [
+        120,
+        "c1"
+      ]
+    ],
+    "c11": [
+      [
+        125,
+        "c1"
+      ]
+    ],
+    "c12": [
+      [
+        125,
+        "c2"
+      ]
+    ],
+    "c13": [
+      [
+        125,
+        "c3"
+      ]
+    ],
+    "c14": [
+      [
+        125,
+        "c4"
+      ]
+    ],
+    "c15": [
+      [
+        128,
+        "c1"
+      ]
+    ],
+    "c16": [
+      [
+        129,
+        "c1"
+      ]
+    ],
+    "c17": [
+      [
+        129,
+        "c2"
+      ]
+    ],
+    "c18": [
+      [
+        129,
+        "c3"
+      ]
+    ],
+    "c19": [
+      [
+        131,
+        "c1"
+      ]
+    ],
+    "c20": [
+      [
+        135,
+        "c1"
+      ]
+    ],
+    "f1": [
+      [
+        94,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        115,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        116,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        117,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        118,
+        "f1"
+      ]
+    ],
+    "f6": [
+      [
+        125,
+        "f1"
+      ]
+    ],
+    "v1": [
+      [
+        89,
+        "v1"
+      ],
+      [
+        97,
+        "v1"
+      ],
+      [
+        119,
+        "v1"
+      ]
+    ],
+    "v2": [
+      [
+        92,
+        "v1"
+      ],
+      [
+        94,
+        "v1"
+      ],
+      [
+        100,
+        "v1"
+      ],
+      [
+        109,
+        "v1"
+      ],
+      [
+        112,
+        "v1"
+      ]
+    ],
+    "v3": [
+      [
+        93,
+        "v1"
+      ],
+      [
+        132,
+        "v1"
+      ]
+    ],
+    "v4": [
+      [
+        96,
+        "v1"
+      ],
+      [
+        98,
+        "v1"
+      ]
+    ],
+    "v5": [
+      [
+        111,
+        "v1"
+      ]
+    ],
+    "v6": [
+      [
+        117,
+        "v1"
+      ]
+    ],
+    "v7": [
+      [
+        118,
+        "v1"
+      ],
+      [
+        131,
+        "v1"
+      ],
+      [
+        137,
+        "v1"
+      ]
+    ],
+    "v8": [
+      [
+        127,
+        "v1"
+      ],
+      [
+        135,
+        "v2"
+      ],
+      [
+        136,
+        "v1"
+      ]
+    ],
+    "v9": [
+      [
+        130,
+        "v1"
+      ]
+    ],
+    "v10": [
+      [
+        131,
+        "v2"
+      ],
+      [
+        137,
+        "v2"
+      ]
+    ],
+    "v11": [
+      [
+        135,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        94,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        95,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        99,
+        "r1"
+      ]
+    ],
+    "r4": [
+      [
+        115,
+        "r1"
+      ]
+    ],
+    "r5": [
+      [
+        117,
+        "r1"
+      ]
+    ],
+    "r6": [
+      [
+        125,
+        "r1"
+      ]
+    ],
+    "r7": [
+      [
+        128,
+        "r1"
+      ]
+    ],
+    "r8": [
+      [
+        129,
+        "r1"
+      ]
+    ],
+    "r9": [
+      [
+        129,
+        "r2"
+      ]
+    ],
+    "r10": [
+      [
+        131,
+        "r1"
+      ]
+    ],
+    "r11": [
+      [
+        135,
+        "r1"
+      ]
+    ],
+    "a1": [
+      [
+        89,
+        "a1"
+      ],
+      [
+        90,
+        "a1"
+      ],
+      [
+        93,
+        "a1"
+      ],
+      [
+        114,
+        "a1"
+      ],
+      [
+        115,
+        "a1"
+      ],
+      [
+        119,
+        "a2"
+      ],
+      [
+        122,
+        "a2"
+      ],
+      [
+        123,
+        "a2"
+      ],
+      [
+        124,
+        "a1"
+      ],
+      [
+        131,
+        "a1"
+      ]
+    ],
+    "a2": [
+      [
+        91,
+        "a1"
+      ],
+      [
+        125,
+        "a1"
+      ]
+    ],
+    "a3": [
+      [
+        91,
+        "a2"
+      ],
+      [
+        125,
+        "a2"
+      ],
+      [
+        133,
+        "a2"
+      ]
+    ],
+    "a4": [
+      [
+        92,
+        "a1"
+      ],
+      [
+        93,
+        "a2"
+      ],
+      [
+        94,
+        "a1"
+      ],
+      [
+        95,
+        "a1"
+      ],
+      [
+        107,
+        "a1"
+      ],
+      [
+        124,
+        "a2"
+      ]
+    ],
+    "a5": [
+      [
+        100,
+        "a1"
+      ]
+    ],
+    "a6": [
+      [
+        100,
+        "a2"
+      ],
+      [
+        109,
+        "a2"
+      ],
+      [
+        111,
+        "a1"
+      ],
+      [
+        112,
+        "a1"
+      ],
+      [
+        119,
+        "a1"
+      ],
+      [
+        121,
+        "a1"
+      ],
+      [
+        122,
+        "a1"
+      ],
+      [
+        123,
+        "a1"
+      ],
+      [
+        126,
+        "a1"
+      ],
+      [
+        128,
+        "a1"
+      ],
+      [
+        129,
+        "a1"
+      ],
+      [
+        133,
+        "a1"
+      ]
+    ],
+    "a7": [
+      [
+        109,
+        "a1"
+      ]
+    ],
+    "a8": [
+      [
+        115,
+        "a2"
+      ]
+    ],
+    "a9": [
+      [
+        134,
+        "a1"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,3165 @@
+{
+  "version": "p1b.2",
+  "db_id": "superhero",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "super power of Super Strength",
+      "defined_by": "v1"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "height of over 200cm",
+      "defined_by": "r1"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "15 super powers",
+      "defined_by": "r2"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "blue eyes",
+      "defined_by": "r3"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "the tallest hero",
+      "defined_by": "f1"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "superheroes from Marvel Comics",
+      "defined_by": "r4"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "most common color",
+      "defined_by": "f2"
+    },
+    "c8": {
+      "id": "c8",
+      "type": "Concept",
+      "name": "average height of the superheroes",
+      "defined_by": "f3"
+    },
+    "c9": {
+      "id": "c9",
+      "type": "Concept",
+      "name": "superheroes that DC Comics published",
+      "defined_by": "r5"
+    },
+    "c10": {
+      "id": "c10",
+      "type": "Concept",
+      "name": "the slowest superhero",
+      "defined_by": "r6"
+    },
+    "c11": {
+      "id": "c11",
+      "type": "Concept",
+      "name": "superheroes with blonde hair",
+      "defined_by": "r7"
+    },
+    "c12": {
+      "id": "c12",
+      "type": "Concept",
+      "name": "the dumbest superhero",
+      "defined_by": "r8"
+    },
+    "c13": {
+      "id": "c13",
+      "type": "Concept",
+      "name": "durability of less than 50",
+      "defined_by": "r9"
+    },
+    "c14": {
+      "id": "c14",
+      "type": "Concept",
+      "name": "superhero that has the most powers",
+      "defined_by": "f4"
+    },
+    "c15": {
+      "id": "c15",
+      "type": "Concept",
+      "name": "vampire superheroes",
+      "defined_by": "r11"
+    },
+    "c16": {
+      "id": "c16",
+      "type": "Concept",
+      "name": "superheroes who act in their own self-interest or make decisions based on their own moral code",
+      "defined_by": "v13"
+    },
+    "c17": {
+      "id": "c17",
+      "type": "Concept",
+      "name": "calculation",
+      "defined_by": "f6"
+    },
+    "c18": {
+      "id": "c18",
+      "type": "Concept",
+      "name": "superheroes without full name",
+      "defined_by": "r12"
+    },
+    "c19": {
+      "id": "c19",
+      "type": "Concept",
+      "name": "alien superheroes",
+      "defined_by": "r13"
+    },
+    "c20": {
+      "id": "c20",
+      "type": "Concept",
+      "name": "bad superheroes",
+      "defined_by": "v13"
+    },
+    "c21": {
+      "id": "c21",
+      "type": "Concept",
+      "name": "the heaviest superhero",
+      "defined_by": "f9"
+    },
+    "c22": {
+      "id": "c22",
+      "type": "Concept",
+      "name": "power that superheroes have the most",
+      "defined_by": "f11"
+    },
+    "c23": {
+      "id": "c23",
+      "type": "Concept",
+      "name": "highest attribute in strength",
+      "defined_by": "f12"
+    },
+    "c24": {
+      "id": "c24",
+      "type": "Concept",
+      "name": "no skin colour",
+      "defined_by": "r21"
+    },
+    "c25": {
+      "id": "c25",
+      "type": "Concept",
+      "name": "most durability",
+      "defined_by": "f14"
+    },
+    "c26": {
+      "id": "c26",
+      "type": "Concept",
+      "name": "female superheroes",
+      "defined_by": "r23"
+    },
+    "c27": {
+      "id": "c27",
+      "type": "Concept",
+      "name": "published by Dark Horse Comics",
+      "defined_by": "r22"
+    },
+    "c28": {
+      "id": "c28",
+      "type": "Concept",
+      "name": "the same eyes, hair and skin colour",
+      "defined_by": "r24"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "height_cm",
+          "table": "superhero",
+          "column": "height_cm"
+        }
+      ],
+      "name": "tallest hero height",
+      "expression": "MAX(height_cm)"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "superhero.id",
+          "table": "superhero",
+          "column": "id"
+        }
+      ],
+      "name": "most common color",
+      "expression": "COUNT(superhero.id) DESC"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "height_cm",
+          "table": "superhero",
+          "column": "height_cm"
+        }
+      ],
+      "name": "average height of the superheroes",
+      "expression": "AVG(height_cm)"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "superhero_name",
+          "table": "superhero",
+          "column": "superhero_name"
+        }
+      ],
+      "name": "superhero with max power count",
+      "expression": "MAX(COUNT(superhero_name))"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "alignment",
+          "table": "superhero",
+          "column": "alignment_id"
+        },
+        {
+          "term": "id",
+          "table": "superhero",
+          "column": "id"
+        }
+      ],
+      "name": "calculation",
+      "expression": "MULTIPLY(DIVIDE(SUM(alignment = 'Bad'), count(id)), 100)"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "publisher_name",
+          "table": "publisher",
+          "column": "publisher_name"
+        }
+      ],
+      "depends_on": [
+        "v14",
+        "v6"
+      ],
+      "name": "calculation",
+      "expression": "SUBTRACT(SUM(publisher_name = 'Marvel Comics'), SUM(publisher_name = 'DC Comics'))"
+    },
+    "f7": {
+      "id": "f7",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "attribute_value",
+          "table": "hero_attribute",
+          "column": "attribute_value"
+        }
+      ],
+      "name": "average attribute value of all superheroes",
+      "expression": "AVG(attribute_value)"
+    },
+    "f8": {
+      "id": "f8",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "weight_kg",
+          "table": "superhero",
+          "column": "weight_kg"
+        }
+      ],
+      "name": "average weight",
+      "expression": "AVG(weight_kg)"
+    },
+    "f9": {
+      "id": "f9",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "weight_kg",
+          "table": "superhero",
+          "column": "weight_kg"
+        }
+      ],
+      "name": "heaviest superhero weight",
+      "expression": "MAX(weight_kg)"
+    },
+    "f10": {
+      "id": "f10",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "publisher.id",
+          "table": "publisher",
+          "column": "id"
+        }
+      ],
+      "name": "calculation",
+      "expression": "MULTIPLY(DIVIDE(SUM(publisher.id = 13)), COUNT(publisher.id), 100)"
+    },
+    "f11": {
+      "id": "f11",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "power_name",
+          "table": "superpower",
+          "column": "power_name"
+        }
+      ],
+      "name": "most common superpower",
+      "expression": "MAX(COUNT(power_name))"
+    },
+    "f12": {
+      "id": "f12",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "attribute_value",
+          "table": "hero_attribute",
+          "column": "attribute_value"
+        },
+        {
+          "term": "attribute_name",
+          "table": "attribute",
+          "column": "attribute_name",
+          "value": "strength"
+        }
+      ],
+      "name": "highest attribute in strength",
+      "expression": "MAX(attribute_value) WHERE attribute_name = 'strength'"
+    },
+    "f13": {
+      "id": "f13",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "superhero.id",
+          "table": "superhero",
+          "column": "id"
+        },
+        {
+          "term": "skin_colour_id = 1",
+          "table": "superhero",
+          "column": "skin_colour_id",
+          "value": "1"
+        }
+      ],
+      "depends_on": [
+        "r21"
+      ],
+      "name": "average",
+      "expression": "DIVIDE(COUNT(superhero.id), SUM(skin_colour_id = 1))"
+    },
+    "f14": {
+      "id": "f14",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "attribute_value",
+          "table": "hero_attribute",
+          "column": "attribute_value"
+        },
+        {
+          "term": "attribute_name",
+          "table": "attribute",
+          "column": "attribute_name",
+          "value": "durability"
+        }
+      ],
+      "name": "most durability",
+      "expression": "MAX(attribute_value) WHERE attribute_name = 'durability'"
+    },
+    "f15": {
+      "id": "f15",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "colour",
+          "table": "colour",
+          "column": "colour"
+        },
+        {
+          "term": "gender",
+          "table": "gender",
+          "column": "gender"
+        }
+      ],
+      "depends_on": [
+        "r3",
+        "r23"
+      ],
+      "name": "percentage",
+      "expression": "MULTIPLY(DIVIDE(SUM(colour = 'Blue' WHERE gender = 'Female'), COUNT(gender = 'Female')), 100)"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "Super Strength",
+      "table": "superpower",
+      "column": "power_name",
+      "value": "Super Strength"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "Apocalypse",
+      "table": "superhero",
+      "column": "superhero_name",
+      "value": "Apocalypse"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "super power of Agility",
+      "table": "superpower",
+      "column": "power_name",
+      "value": "Agility"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "blue eyes",
+      "table": "colour",
+      "column": "colour",
+      "value": "Blue"
+    },
+    "v5": {
+      "id": "v5",
+      "type": "ValueMap",
+      "name": "blond hair",
+      "table": "colour",
+      "column": "colour",
+      "value": "Blond"
+    },
+    "v6": {
+      "id": "v6",
+      "type": "ValueMap",
+      "name": "published by Marvel Comics",
+      "table": "publisher",
+      "column": "publisher_name",
+      "value": "Marvel Comics"
+    },
+    "v7": {
+      "id": "v7",
+      "type": "ValueMap",
+      "name": "Sauron",
+      "table": "superhero",
+      "column": "superhero_name",
+      "value": "Sauron"
+    },
+    "v8": {
+      "id": "v8",
+      "type": "ValueMap",
+      "name": "gold-eyed",
+      "table": "colour",
+      "column": "colour",
+      "value": "Gold"
+    },
+    "v9": {
+      "id": "v9",
+      "type": "ValueMap",
+      "name": "Blue Beetle II",
+      "table": "superhero",
+      "column": "superhero_name",
+      "value": "Blue Beetle II"
+    },
+    "v10": {
+      "id": "v10",
+      "type": "ValueMap",
+      "name": "Copycat",
+      "table": "superhero",
+      "column": "superhero_name",
+      "value": "Copycat"
+    },
+    "v11": {
+      "id": "v11",
+      "type": "ValueMap",
+      "name": "the power of death touch",
+      "table": "superpower",
+      "column": "power_name",
+      "value": "Death Touch"
+    },
+    "v12": {
+      "id": "v12",
+      "type": "ValueMap",
+      "name": "female",
+      "table": "gender",
+      "column": "gender",
+      "value": "Female"
+    },
+    "v13": {
+      "id": "v13",
+      "type": "ValueMap",
+      "name": "superheroes who act in their own self-interest or make decisions based on their own moral code",
+      "table": "alignment",
+      "column": "alignment",
+      "value": "Bad"
+    },
+    "v14": {
+      "id": "v14",
+      "type": "ValueMap",
+      "name": "DC",
+      "table": "publisher",
+      "column": "publisher_name",
+      "value": "DC Comics"
+    },
+    "v15": {
+      "id": "v15",
+      "type": "ValueMap",
+      "name": "Star Trek",
+      "table": "publisher",
+      "column": "publisher_name",
+      "value": "Star Trek"
+    },
+    "v16": {
+      "id": "v16",
+      "type": "ValueMap",
+      "name": "Deathlok",
+      "table": "superhero",
+      "column": "superhero_name",
+      "value": "Deathlok"
+    },
+    "v17": {
+      "id": "v17",
+      "type": "ValueMap",
+      "name": "male",
+      "table": "gender",
+      "column": "gender",
+      "value": "Male"
+    },
+    "v18": {
+      "id": "v18",
+      "type": "ValueMap",
+      "name": "no eye color",
+      "table": "superhero",
+      "column": "eye_colour_id",
+      "value": "No Colour"
+    },
+    "v19": {
+      "id": "v19",
+      "type": "ValueMap",
+      "name": "Demi-God superheroes",
+      "table": "race",
+      "column": "race",
+      "value": "Demi-God"
+    },
+    "v20": {
+      "id": "v20",
+      "type": "ValueMap",
+      "name": "Abomination",
+      "table": "superhero",
+      "column": "superhero_name",
+      "value": "Abomination"
+    },
+    "v21": {
+      "id": "v21",
+      "type": "ValueMap",
+      "name": "stealth power",
+      "table": "superpower",
+      "column": "power_name",
+      "value": "stealth"
+    },
+    "v22": {
+      "id": "v22",
+      "type": "ValueMap",
+      "name": "no skin colour",
+      "table": "colour",
+      "column": "id",
+      "value": "1"
+    },
+    "v23": {
+      "id": "v23",
+      "type": "ValueMap",
+      "name": "published by Dark Horse Comics",
+      "table": "publisher",
+      "column": "publisher_name",
+      "value": "Dark Horse Comics"
+    },
+    "v24": {
+      "id": "v24",
+      "type": "ValueMap",
+      "name": "Abraham Sapien",
+      "table": "superhero",
+      "column": "full_name",
+      "value": "Abraham Sapien"
+    },
+    "v25": {
+      "id": "v25",
+      "type": "ValueMap",
+      "name": "flight power",
+      "table": "superpower",
+      "column": "power_name",
+      "value": "Flight"
+    },
+    "v26": {
+      "id": "v26",
+      "type": "ValueMap",
+      "name": "A-Bomb",
+      "table": "superhero",
+      "column": "superhero_name",
+      "value": "A-Bomb"
+    },
+    "v27": {
+      "id": "v27",
+      "type": "ValueMap",
+      "name": "Charles Chandler",
+      "table": "superhero",
+      "column": "full_name",
+      "value": "Charles Chandler"
+    },
+    "v28": {
+      "id": "v28",
+      "type": "ValueMap",
+      "name": "Agent 13 hero",
+      "table": "superhero",
+      "column": "superhero_name",
+      "value": "Agent 13"
+    },
+    "v29": {
+      "id": "v29",
+      "type": "ValueMap",
+      "name": "adaptation power",
+      "table": "superpower",
+      "column": "power_name",
+      "value": "Adaptation"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "height_cm",
+          "table": "superhero",
+          "column": "height_cm"
+        }
+      ],
+      "name": "height over 200cm",
+      "condition": "height_cm > 200"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "full_name",
+          "table": "superhero",
+          "column": "full_name"
+        }
+      ],
+      "name": "has more than 15 super powers",
+      "condition": "COUNT(full_name) > 15"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "colour",
+          "table": "colour",
+          "column": "colour",
+          "value": "Blue"
+        },
+        {
+          "term": "eye_colour_id",
+          "table": "superhero",
+          "column": "eye_colour_id"
+        }
+      ],
+      "name": "blue eyes",
+      "condition": "colour = 'Blue'"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "publisher_name",
+          "table": "publisher",
+          "column": "publisher_name",
+          "value": "Marvel Comics"
+        },
+        {
+          "term": "publisher_name",
+          "table": "publisher",
+          "column": "publisher_name"
+        }
+      ],
+      "name": "published by Marvel Comics",
+      "condition": "publisher_name = 'Marvel Comics'"
+    },
+    "r5": {
+      "id": "r5",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "publisher_name",
+          "table": "publisher",
+          "column": "publisher_name",
+          "value": "DC Comics"
+        }
+      ],
+      "name": "DC Comics publisher",
+      "condition": "publisher_name = 'DC Comics'"
+    },
+    "r6": {
+      "id": "r6",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "attribute_name",
+          "table": "attribute",
+          "column": "attribute_name",
+          "value": "Speed"
+        },
+        {
+          "term": "attribute_value",
+          "table": "hero_attribute",
+          "column": "attribute_value"
+        }
+      ],
+      "name": "slowest superhero",
+      "condition": "attribute_name = 'Speed' AND attribute_value = MIN(attribute_value)"
+    },
+    "r7": {
+      "id": "r7",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "colour",
+          "table": "colour",
+          "column": "colour",
+          "value": "Blond"
+        },
+        {
+          "term": "hair_colour_id",
+          "table": "superhero",
+          "column": "hair_colour_id"
+        }
+      ],
+      "name": "blonde hair",
+      "condition": "colour = 'Blond'"
+    },
+    "r8": {
+      "id": "r8",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "attribute_value",
+          "table": "hero_attribute",
+          "column": "attribute_value"
+        },
+        {
+          "term": "attribute_name",
+          "table": "attribute",
+          "column": "attribute_name",
+          "value": "Intelligence"
+        }
+      ],
+      "name": "lowest intelligence",
+      "condition": "attribute_value = MIN(attribute_value) WHERE attribute_name = 'Intelligence'"
+    },
+    "r9": {
+      "id": "r9",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "attribute_name",
+          "table": "attribute",
+          "column": "attribute_name",
+          "value": "Durability"
+        },
+        {
+          "term": "attribute_value",
+          "table": "hero_attribute",
+          "column": "attribute_value"
+        }
+      ],
+      "name": "durability less than 50",
+      "condition": "attribute_name = 'Durability' AND attribute_value < 50"
+    },
+    "r10": {
+      "id": "r10",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "attribute_name",
+          "table": "attribute",
+          "column": "attribute_name",
+          "value": "Strength"
+        },
+        {
+          "term": "attribute_value",
+          "table": "hero_attribute",
+          "column": "attribute_value",
+          "value": 100
+        }
+      ],
+      "name": "strength value of 100",
+      "condition": "attribute_name = 'Strength' AND attribute_value = 100"
+    },
+    "r11": {
+      "id": "r11",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "race",
+          "table": "race",
+          "column": "race",
+          "value": "Vampire"
+        }
+      ],
+      "name": "race is Vampire",
+      "condition": "race = 'Vampire'"
+    },
+    "r12": {
+      "id": "r12",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "full_name",
+          "table": "superhero",
+          "column": "full_name"
+        }
+      ],
+      "name": "full name is null",
+      "condition": "full_name IS NULL"
+    },
+    "r13": {
+      "id": "r13",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "race",
+          "table": "race",
+          "column": "race",
+          "value": "Alien"
+        }
+      ],
+      "name": "alien race",
+      "condition": "race = 'Alien'"
+    },
+    "r14": {
+      "id": "r14",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "height_cm",
+          "table": "superhero",
+          "column": "height_cm"
+        }
+      ],
+      "name": "height from 170 to 190",
+      "condition": "height_cm BETWEEN 170 AND 190"
+    },
+    "r15": {
+      "id": "r15",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "weight_kg",
+          "table": "superhero",
+          "column": "weight_kg",
+          "value": 169
+        }
+      ],
+      "name": "weighed 169 kg",
+      "condition": "weight_kg = 169"
+    },
+    "r16": {
+      "id": "r16",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "height_cm",
+          "table": "superhero",
+          "column": "height_cm",
+          "value": 185
+        }
+      ],
+      "name": "185 cm tall",
+      "condition": "height_cm = 185"
+    },
+    "r17": {
+      "id": "r17",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "race",
+          "table": "race",
+          "column": "race",
+          "value": "human"
+        }
+      ],
+      "name": "human superhero",
+      "condition": "race = 'human'"
+    },
+    "r18": {
+      "id": "r18",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "height_cm",
+          "table": "superhero",
+          "column": "height_cm"
+        }
+      ],
+      "name": "height between 150 to 180",
+      "condition": "height_cm BETWEEN 150 AND 180"
+    },
+    "r19": {
+      "id": "r19",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "weight_kg",
+          "table": "superhero",
+          "column": "weight_kg"
+        }
+      ],
+      "name": "weight_kg > MULTIPLY(AVG(weight_kg), 0.79)",
+      "condition": "weight_kg > AVG(weight_kg) * 0.79"
+    },
+    "r20": {
+      "id": "r20",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "hero_id",
+          "table": "hero_power",
+          "column": "hero_id",
+          "value": 1
+        }
+      ],
+      "name": "heroes with ID 1",
+      "condition": "hero_id = 1"
+    },
+    "r21": {
+      "id": "r21",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "skin_colour_id",
+          "table": "superhero",
+          "column": "skin_colour_id",
+          "value": "1"
+        }
+      ],
+      "name": "no skin colour",
+      "condition": "skin_colour_id = 1"
+    },
+    "r22": {
+      "id": "r22",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "publisher_name",
+          "table": "publisher",
+          "column": "publisher_name",
+          "value": "Dark Horse Comics"
+        }
+      ],
+      "name": "published by Dark Horse Comics",
+      "condition": "publisher_name = 'Dark Horse Comics'"
+    },
+    "r23": {
+      "id": "r23",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "gender",
+          "table": "gender",
+          "column": "gender",
+          "value": "Female"
+        }
+      ],
+      "name": "female superheroes",
+      "condition": "gender = 'Female'"
+    },
+    "r24": {
+      "id": "r24",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "hair_colour_id",
+          "table": "superhero",
+          "column": "hair_colour_id"
+        },
+        {
+          "term": "skin_colour_id",
+          "table": "superhero",
+          "column": "skin_colour_id"
+        },
+        {
+          "term": "eye_colour_id",
+          "table": "superhero",
+          "column": "eye_colour_id"
+        }
+      ],
+      "name": "same eyes, hair and skin colour",
+      "condition": "hair_colour_id = skin_colour_id AND hair_colour_id = eye_colour_id"
+    },
+    "r25": {
+      "id": "r25",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "superhero_name",
+          "table": "superhero",
+          "column": "superhero_name",
+          "value": "Amazo"
+        }
+      ],
+      "name": "Amazo hero",
+      "condition": "superhero_name = 'Amazo'"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "superhero",
+          "column": "superhero_name"
+        }
+      ],
+      "name": "3-D Man"
+    },
+    "a2": {
+      "id": "a2",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "superpower",
+          "column": "power_name"
+        }
+      ],
+      "name": "superpowers"
+    },
+    "a3": {
+      "id": "a3",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "colour",
+          "column": "colour"
+        }
+      ],
+      "name": "colour of skin"
+    },
+    "a4": {
+      "id": "a4",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "superhero",
+          "column": "eye_colour_id"
+        }
+      ],
+      "name": "blue eyes"
+    },
+    "a5": {
+      "id": "a5",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "superhero",
+          "column": "hair_colour_id"
+        }
+      ],
+      "name": "blond hair"
+    },
+    "a6": {
+      "id": "a6",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "publisher",
+          "column": "publisher_name"
+        }
+      ],
+      "name": "publisher"
+    },
+    "a7": {
+      "id": "a7",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "superhero",
+          "column": "publisher_id"
+        }
+      ],
+      "name": "superheroes that Marvel Comics published"
+    },
+    "a8": {
+      "id": "a8",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "hero_power",
+          "column": "power_id"
+        }
+      ],
+      "name": "superpower"
+    },
+    "a9": {
+      "id": "a9",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "superhero",
+          "column": "skin_colour_id"
+        }
+      ],
+      "name": "skin colour"
+    },
+    "a10": {
+      "id": "a10",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "race",
+          "column": "race"
+        }
+      ],
+      "name": "group"
+    }
+  },
+  "columns": [
+    {
+      "table": "alignment",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "alignment",
+      "column": "alignment",
+      "type": "TEXT"
+    },
+    {
+      "table": "attribute",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "attribute",
+      "column": "attribute_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "colour",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "colour",
+      "column": "colour",
+      "type": "TEXT"
+    },
+    {
+      "table": "gender",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "gender",
+      "column": "gender",
+      "type": "TEXT"
+    },
+    {
+      "table": "publisher",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "publisher",
+      "column": "publisher_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "race",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "race",
+      "column": "race",
+      "type": "TEXT"
+    },
+    {
+      "table": "superhero",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superhero",
+      "column": "superhero_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "superhero",
+      "column": "full_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "superhero",
+      "column": "gender_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superhero",
+      "column": "eye_colour_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superhero",
+      "column": "hair_colour_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superhero",
+      "column": "skin_colour_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superhero",
+      "column": "race_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superhero",
+      "column": "publisher_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superhero",
+      "column": "alignment_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superhero",
+      "column": "height_cm",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superhero",
+      "column": "weight_kg",
+      "type": "INTEGER"
+    },
+    {
+      "table": "hero_attribute",
+      "column": "hero_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "hero_attribute",
+      "column": "attribute_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "hero_attribute",
+      "column": "attribute_value",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superpower",
+      "column": "id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "superpower",
+      "column": "power_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "hero_power",
+      "column": "hero_id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "hero_power",
+      "column": "power_id",
+      "type": "INTEGER"
+    }
+  ],
+  "fk_edges": [
+    {
+      "from": {
+        "table": "superhero",
+        "column": "alignment_id"
+      },
+      "to": {
+        "table": "alignment",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "superhero",
+        "column": "eye_colour_id"
+      },
+      "to": {
+        "table": "colour",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "superhero",
+        "column": "gender_id"
+      },
+      "to": {
+        "table": "gender",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "superhero",
+        "column": "hair_colour_id"
+      },
+      "to": {
+        "table": "colour",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "superhero",
+        "column": "publisher_id"
+      },
+      "to": {
+        "table": "publisher",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "superhero",
+        "column": "race_id"
+      },
+      "to": {
+        "table": "race",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "superhero",
+        "column": "skin_colour_id"
+      },
+      "to": {
+        "table": "colour",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "hero_attribute",
+        "column": "attribute_id"
+      },
+      "to": {
+        "table": "attribute",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "hero_attribute",
+        "column": "hero_id"
+      },
+      "to": {
+        "table": "superhero",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "hero_power",
+        "column": "hero_id"
+      },
+      "to": {
+        "table": "superhero",
+        "column": "id"
+      }
+    },
+    {
+      "from": {
+        "table": "hero_power",
+        "column": "power_id"
+      },
+      "to": {
+        "table": "superpower",
+        "column": "id"
+      }
+    }
+  ],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c27",
+        "c28"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v14",
+        "v15",
+        "v16",
+        "v17",
+        "v18",
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23",
+        "v24",
+        "v25",
+        "v26",
+        "v27",
+        "v28",
+        "v29"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15",
+        "r16",
+        "r17",
+        "r18",
+        "r19",
+        "r20",
+        "r21",
+        "r22",
+        "r23",
+        "r24",
+        "r25"
+      ],
+      "ColumnAlias": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10"
+      ]
+    },
+    "by_column": {
+      "superhero.height_cm": [
+        "f1",
+        "f3",
+        "r1",
+        "r14",
+        "r16",
+        "r18"
+      ],
+      "superhero.id": [
+        "f2",
+        "f5",
+        "f13"
+      ],
+      "superhero.superhero_name": [
+        "f4",
+        "v2",
+        "v7",
+        "v9",
+        "v10",
+        "v16",
+        "v20",
+        "v26",
+        "v28",
+        "r25",
+        "a1"
+      ],
+      "superhero.alignment_id": [
+        "f5"
+      ],
+      "publisher.publisher_name": [
+        "f6",
+        "v6",
+        "v14",
+        "v15",
+        "v23",
+        "r4",
+        "r5",
+        "r22",
+        "a6"
+      ],
+      "hero_attribute.attribute_value": [
+        "f7",
+        "f12",
+        "f14",
+        "r6",
+        "r8",
+        "r9",
+        "r10"
+      ],
+      "superhero.weight_kg": [
+        "f8",
+        "f9",
+        "r15",
+        "r19"
+      ],
+      "publisher.id": [
+        "f10"
+      ],
+      "superpower.power_name": [
+        "f11",
+        "v1",
+        "v3",
+        "v11",
+        "v21",
+        "v25",
+        "v29",
+        "a2"
+      ],
+      "attribute.attribute_name": [
+        "f12",
+        "f14",
+        "r6",
+        "r8",
+        "r9",
+        "r10"
+      ],
+      "superhero.skin_colour_id": [
+        "f13",
+        "r21",
+        "r24",
+        "a9"
+      ],
+      "colour.colour": [
+        "f15",
+        "v4",
+        "v5",
+        "v8",
+        "r3",
+        "r7",
+        "a3"
+      ],
+      "gender.gender": [
+        "f15",
+        "v12",
+        "v17",
+        "r23"
+      ],
+      "alignment.alignment": [
+        "v13"
+      ],
+      "superhero.eye_colour_id": [
+        "v18",
+        "r3",
+        "r24",
+        "a4"
+      ],
+      "race.race": [
+        "v19",
+        "r11",
+        "r13",
+        "r17",
+        "a10"
+      ],
+      "colour.id": [
+        "v22"
+      ],
+      "superhero.full_name": [
+        "v24",
+        "v27",
+        "r2",
+        "r12"
+      ],
+      "superhero.hair_colour_id": [
+        "r7",
+        "r24",
+        "a5"
+      ],
+      "hero_power.hero_id": [
+        "r20"
+      ],
+      "superhero.publisher_id": [
+        "a7"
+      ],
+      "hero_power.power_id": [
+        "a8"
+      ]
+    },
+    "by_name_token": {
+      "super": [
+        "c1",
+        "c3",
+        "v1",
+        "v3",
+        "r2"
+      ],
+      "power": [
+        "c1",
+        "c22",
+        "f4",
+        "v3",
+        "v11",
+        "v21",
+        "v25",
+        "v29"
+      ],
+      "strength": [
+        "c1",
+        "c23",
+        "f12",
+        "v1",
+        "r10"
+      ],
+      "200cm": [
+        "c2",
+        "r1"
+      ],
+      "over": [
+        "c2",
+        "r1"
+      ],
+      "height": [
+        "c2",
+        "c8",
+        "f1",
+        "f3",
+        "r1",
+        "r14",
+        "r18"
+      ],
+      "15": [
+        "c3",
+        "r2"
+      ],
+      "powers": [
+        "c3",
+        "c14",
+        "r2"
+      ],
+      "eyes": [
+        "c4",
+        "c28",
+        "v4",
+        "r3",
+        "r24",
+        "a4"
+      ],
+      "blue": [
+        "c4",
+        "f15",
+        "v4",
+        "v9",
+        "r3",
+        "a4"
+      ],
+      "tallest": [
+        "c5",
+        "f1"
+      ],
+      "hero": [
+        "c5",
+        "f1",
+        "v28",
+        "r25"
+      ],
+      "from": [
+        "c6",
+        "r14"
+      ],
+      "comics": [
+        "c6",
+        "c9",
+        "c27",
+        "f6",
+        "v6",
+        "v23",
+        "r4",
+        "r5",
+        "r22",
+        "a7"
+      ],
+      "superheroes": [
+        "c6",
+        "c8",
+        "c9",
+        "c11",
+        "c15",
+        "c16",
+        "c18",
+        "c19",
+        "c20",
+        "c22",
+        "c26",
+        "f3",
+        "f7",
+        "v13",
+        "v19",
+        "r23",
+        "a7"
+      ],
+      "marvel": [
+        "c6",
+        "f6",
+        "v6",
+        "r4",
+        "a7"
+      ],
+      "most": [
+        "c7",
+        "c14",
+        "c22",
+        "c25",
+        "f2",
+        "f11",
+        "f14"
+      ],
+      "common": [
+        "c7",
+        "f2",
+        "f11"
+      ],
+      "color": [
+        "c7",
+        "f2",
+        "v18"
+      ],
+      "average": [
+        "c8",
+        "f3",
+        "f7",
+        "f8",
+        "f13"
+      ],
+      "published": [
+        "c9",
+        "c27",
+        "v6",
+        "v23",
+        "r4",
+        "r22",
+        "a7"
+      ],
+      "dc": [
+        "c9",
+        "f6",
+        "v14",
+        "r5"
+      ],
+      "that": [
+        "c9",
+        "c14",
+        "c22",
+        "a7"
+      ],
+      "slowest": [
+        "c10",
+        "r6"
+      ],
+      "superhero": [
+        "c10",
+        "c12",
+        "c14",
+        "c21",
+        "f2",
+        "f4",
+        "f9",
+        "f13",
+        "r6",
+        "r17"
+      ],
+      "hair": [
+        "c11",
+        "c28",
+        "v5",
+        "r7",
+        "r24",
+        "a5"
+      ],
+      "blonde": [
+        "c11",
+        "r7"
+      ],
+      "dumbest": [
+        "c12"
+      ],
+      "50": [
+        "c13",
+        "r9"
+      ],
+      "less": [
+        "c13",
+        "r9"
+      ],
+      "than": [
+        "c13",
+        "r2",
+        "r9"
+      ],
+      "durability": [
+        "c13",
+        "c25",
+        "f14",
+        "r9"
+      ],
+      "has": [
+        "c14",
+        "r2"
+      ],
+      "vampire": [
+        "c15",
+        "r11"
+      ],
+      "make": [
+        "c16",
+        "v13"
+      ],
+      "code": [
+        "c16",
+        "v13"
+      ],
+      "interest": [
+        "c16",
+        "v13"
+      ],
+      "their": [
+        "c16",
+        "v13"
+      ],
+      "based": [
+        "c16",
+        "v13"
+      ],
+      "self": [
+        "c16",
+        "v13"
+      ],
+      "who": [
+        "c16",
+        "v13"
+      ],
+      "own": [
+        "c16",
+        "v13"
+      ],
+      "act": [
+        "c16",
+        "v13"
+      ],
+      "moral": [
+        "c16",
+        "v13"
+      ],
+      "decisions": [
+        "c16",
+        "v13"
+      ],
+      "on": [
+        "c16",
+        "v13"
+      ],
+      "calculation": [
+        "c17",
+        "f5",
+        "f6",
+        "f10"
+      ],
+      "full": [
+        "c18",
+        "r12"
+      ],
+      "without": [
+        "c18"
+      ],
+      "name": [
+        "c18",
+        "r12"
+      ],
+      "alien": [
+        "c19",
+        "r13"
+      ],
+      "bad": [
+        "c20",
+        "f5"
+      ],
+      "heaviest": [
+        "c21",
+        "f9"
+      ],
+      "have": [
+        "c22"
+      ],
+      "attribute": [
+        "c23",
+        "f7",
+        "f12"
+      ],
+      "highest": [
+        "c23",
+        "f12"
+      ],
+      "no": [
+        "c24",
+        "v18",
+        "v22",
+        "r21"
+      ],
+      "skin": [
+        "c24",
+        "c28",
+        "v22",
+        "r21",
+        "r24",
+        "a3",
+        "a9"
+      ],
+      "colour": [
+        "c24",
+        "c28",
+        "f15",
+        "v22",
+        "r3",
+        "r7",
+        "r21",
+        "r24",
+        "a3",
+        "a9"
+      ],
+      "female": [
+        "c26",
+        "f15",
+        "v12",
+        "r23"
+      ],
+      "horse": [
+        "c27",
+        "v23",
+        "r22"
+      ],
+      "dark": [
+        "c27",
+        "v23",
+        "r22"
+      ],
+      "same": [
+        "c28",
+        "r24"
+      ],
+      "max": [
+        "f1",
+        "f4",
+        "f9",
+        "f11",
+        "f12",
+        "f14"
+      ],
+      "height_cm": [
+        "f1",
+        "f3",
+        "r1",
+        "r14",
+        "r16",
+        "r18"
+      ],
+      "desc": [
+        "f2"
+      ],
+      "count": [
+        "f2",
+        "f4",
+        "f5",
+        "f10",
+        "f11",
+        "f13",
+        "f15",
+        "r2"
+      ],
+      "id": [
+        "f2",
+        "f5",
+        "f10",
+        "f13",
+        "r20"
+      ],
+      "avg": [
+        "f3",
+        "f7",
+        "f8",
+        "r19"
+      ],
+      "superhero_name": [
+        "f4",
+        "r25"
+      ],
+      "multiply": [
+        "f5",
+        "f10",
+        "f15",
+        "r19"
+      ],
+      "100": [
+        "f5",
+        "f10",
+        "f15",
+        "r10"
+      ],
+      "divide": [
+        "f5",
+        "f10",
+        "f13",
+        "f15"
+      ],
+      "alignment": [
+        "f5"
+      ],
+      "sum": [
+        "f5",
+        "f6",
+        "f10",
+        "f13",
+        "f15"
+      ],
+      "publisher_name": [
+        "f6",
+        "r4",
+        "r5",
+        "r22"
+      ],
+      "subtract": [
+        "f6"
+      ],
+      "value": [
+        "f7",
+        "r10"
+      ],
+      "attribute_value": [
+        "f7",
+        "f12",
+        "f14",
+        "r6",
+        "r8",
+        "r9",
+        "r10"
+      ],
+      "all": [
+        "f7"
+      ],
+      "weight_kg": [
+        "f8",
+        "f9",
+        "r15",
+        "r19"
+      ],
+      "weight": [
+        "f8",
+        "f9"
+      ],
+      "13": [
+        "f10",
+        "v28"
+      ],
+      "publisher": [
+        "f10",
+        "r5",
+        "a6"
+      ],
+      "superpower": [
+        "f11",
+        "a8"
+      ],
+      "power_name": [
+        "f11"
+      ],
+      "where": [
+        "f12",
+        "f14",
+        "f15",
+        "r8"
+      ],
+      "attribute_name": [
+        "f12",
+        "f14",
+        "r6",
+        "r8",
+        "r9",
+        "r10"
+      ],
+      "skin_colour_id": [
+        "f13",
+        "r21",
+        "r24"
+      ],
+      "gender": [
+        "f15",
+        "r23"
+      ],
+      "percentage": [
+        "f15"
+      ],
+      "apocalypse": [
+        "v2"
+      ],
+      "agility": [
+        "v3"
+      ],
+      "blond": [
+        "v5",
+        "r7",
+        "a5"
+      ],
+      "sauron": [
+        "v7"
+      ],
+      "eyed": [
+        "v8"
+      ],
+      "gold": [
+        "v8"
+      ],
+      "beetle": [
+        "v9"
+      ],
+      "ii": [
+        "v9"
+      ],
+      "copycat": [
+        "v10"
+      ],
+      "touch": [
+        "v11"
+      ],
+      "death": [
+        "v11"
+      ],
+      "trek": [
+        "v15"
+      ],
+      "star": [
+        "v15"
+      ],
+      "deathlok": [
+        "v16"
+      ],
+      "male": [
+        "v17"
+      ],
+      "eye": [
+        "v18"
+      ],
+      "demi": [
+        "v19"
+      ],
+      "god": [
+        "v19"
+      ],
+      "abomination": [
+        "v20"
+      ],
+      "stealth": [
+        "v21"
+      ],
+      "abraham": [
+        "v24"
+      ],
+      "sapien": [
+        "v24"
+      ],
+      "flight": [
+        "v25"
+      ],
+      "bomb": [
+        "v26"
+      ],
+      "charles": [
+        "v27"
+      ],
+      "chandler": [
+        "v27"
+      ],
+      "agent": [
+        "v28"
+      ],
+      "adaptation": [
+        "v29"
+      ],
+      "200": [
+        "r1"
+      ],
+      "more": [
+        "r2"
+      ],
+      "full_name": [
+        "r2",
+        "r12"
+      ],
+      "speed": [
+        "r6"
+      ],
+      "min": [
+        "r6",
+        "r8"
+      ],
+      "lowest": [
+        "r8"
+      ],
+      "intelligence": [
+        "r8"
+      ],
+      "race": [
+        "r11",
+        "r13",
+        "r17"
+      ],
+      "null": [
+        "r12"
+      ],
+      "190": [
+        "r14"
+      ],
+      "170": [
+        "r14"
+      ],
+      "between": [
+        "r14",
+        "r18"
+      ],
+      "weighed": [
+        "r15"
+      ],
+      "169": [
+        "r15"
+      ],
+      "kg": [
+        "r15"
+      ],
+      "tall": [
+        "r16"
+      ],
+      "cm": [
+        "r16"
+      ],
+      "185": [
+        "r16"
+      ],
+      "human": [
+        "r17"
+      ],
+      "180": [
+        "r18"
+      ],
+      "150": [
+        "r18"
+      ],
+      "79": [
+        "r19"
+      ],
+      "hero_id": [
+        "r20"
+      ],
+      "heroes": [
+        "r20"
+      ],
+      "eye_colour_id": [
+        "r24"
+      ],
+      "hair_colour_id": [
+        "r24"
+      ],
+      "amazo": [
+        "r25"
+      ],
+      "man": [
+        "a1"
+      ],
+      "superpowers": [
+        "a2"
+      ],
+      "group": [
+        "a10"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        719,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        719,
+        "c2"
+      ]
+    ],
+    "c3": [
+      [
+        720,
+        "c1"
+      ]
+    ],
+    "c4": [
+      [
+        723,
+        "c1"
+      ]
+    ],
+    "c5": [
+      [
+        726,
+        "c1"
+      ]
+    ],
+    "c6": [
+      [
+        728,
+        "c1"
+      ],
+      [
+        729,
+        "c1"
+      ]
+    ],
+    "c7": [
+      [
+        728,
+        "c2"
+      ]
+    ],
+    "c8": [
+      [
+        729,
+        "c2"
+      ]
+    ],
+    "c9": [
+      [
+        731,
+        "c1"
+      ]
+    ],
+    "c10": [
+      [
+        732,
+        "c1"
+      ]
+    ],
+    "c11": [
+      [
+        735,
+        "c1"
+      ]
+    ],
+    "c12": [
+      [
+        736,
+        "c1"
+      ]
+    ],
+    "c13": [
+      [
+        738,
+        "c1"
+      ]
+    ],
+    "c14": [
+      [
+        741,
+        "c1"
+      ]
+    ],
+    "c15": [
+      [
+        742,
+        "c1"
+      ]
+    ],
+    "c16": [
+      [
+        743,
+        "c1"
+      ]
+    ],
+    "c17": [
+      [
+        744,
+        "c1"
+      ],
+      [
+        761,
+        "c1"
+      ]
+    ],
+    "c18": [
+      [
+        747,
+        "c1"
+      ]
+    ],
+    "c19": [
+      [
+        752,
+        "c1"
+      ]
+    ],
+    "c20": [
+      [
+        756,
+        "c1"
+      ]
+    ],
+    "c21": [
+      [
+        759,
+        "c1"
+      ]
+    ],
+    "c22": [
+      [
+        762,
+        "c1"
+      ]
+    ],
+    "c23": [
+      [
+        766,
+        "c1"
+      ]
+    ],
+    "c24": [
+      [
+        767,
+        "c1"
+      ]
+    ],
+    "c25": [
+      [
+        769,
+        "c1"
+      ]
+    ],
+    "c26": [
+      [
+        772,
+        "c1"
+      ]
+    ],
+    "c27": [
+      [
+        772,
+        "c2"
+      ]
+    ],
+    "c28": [
+      [
+        773,
+        "c1"
+      ]
+    ],
+    "f1": [
+      [
+        726,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        728,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        729,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        741,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        743,
+        "f1"
+      ]
+    ],
+    "f6": [
+      [
+        744,
+        "f1"
+      ]
+    ],
+    "f7": [
+      [
+        746,
+        "f1"
+      ]
+    ],
+    "f8": [
+      [
+        750,
+        "f1"
+      ]
+    ],
+    "f9": [
+      [
+        759,
+        "f1"
+      ]
+    ],
+    "f10": [
+      [
+        760,
+        "f1"
+      ]
+    ],
+    "f11": [
+      [
+        762,
+        "f1"
+      ]
+    ],
+    "f12": [
+      [
+        766,
+        "f1"
+      ]
+    ],
+    "f13": [
+      [
+        767,
+        "f1"
+      ]
+    ],
+    "f14": [
+      [
+        769,
+        "f1"
+      ]
+    ],
+    "f15": [
+      [
+        775,
+        "f1"
+      ]
+    ],
+    "v1": [
+      [
+        718,
+        "v1"
+      ],
+      [
+        719,
+        "v1"
+      ],
+      [
+        730,
+        "v2"
+      ]
+    ],
+    "v2": [
+      [
+        722,
+        "v1"
+      ]
+    ],
+    "v3": [
+      [
+        723,
+        "v1"
+      ],
+      [
+        724,
+        "v3"
+      ]
+    ],
+    "v4": [
+      [
+        724,
+        "v1"
+      ]
+    ],
+    "v5": [
+      [
+        724,
+        "v2"
+      ]
+    ],
+    "v6": [
+      [
+        725,
+        "v1"
+      ],
+      [
+        729,
+        "v1"
+      ],
+      [
+        730,
+        "v1"
+      ],
+      [
+        733,
+        "v2"
+      ],
+      [
+        743,
+        "v1"
+      ],
+      [
+        744,
+        "v2"
+      ]
+    ],
+    "v7": [
+      [
+        727,
+        "v1"
+      ]
+    ],
+    "v8": [
+      [
+        733,
+        "v1"
+      ]
+    ],
+    "v9": [
+      [
+        734,
+        "v1"
+      ]
+    ],
+    "v10": [
+      [
+        737,
+        "v1"
+      ]
+    ],
+    "v11": [
+      [
+        739,
+        "v1"
+      ]
+    ],
+    "v12": [
+      [
+        740,
+        "v1"
+      ],
+      [
+        750,
+        "v1"
+      ]
+    ],
+    "v13": [
+      [
+        743,
+        "v2"
+      ],
+      [
+        756,
+        "v1"
+      ]
+    ],
+    "v14": [
+      [
+        744,
+        "v1"
+      ]
+    ],
+    "v15": [
+      [
+        745,
+        "v1"
+      ]
+    ],
+    "v16": [
+      [
+        749,
+        "v1"
+      ]
+    ],
+    "v17": [
+      [
+        751,
+        "v1"
+      ],
+      [
+        761,
+        "v1"
+      ]
+    ],
+    "v18": [
+      [
+        753,
+        "v1"
+      ]
+    ],
+    "v19": [
+      [
+        755,
+        "v1"
+      ]
+    ],
+    "v20": [
+      [
+        763,
+        "v1"
+      ]
+    ],
+    "v21": [
+      [
+        765,
+        "v1"
+      ]
+    ],
+    "v22": [
+      [
+        767,
+        "v1"
+      ]
+    ],
+    "v23": [
+      [
+        768,
+        "v1"
+      ]
+    ],
+    "v24": [
+      [
+        770,
+        "v1"
+      ]
+    ],
+    "v25": [
+      [
+        771,
+        "v1"
+      ]
+    ],
+    "v26": [
+      [
+        774,
+        "v1"
+      ]
+    ],
+    "v27": [
+      [
+        776,
+        "v1"
+      ]
+    ],
+    "v28": [
+      [
+        777,
+        "v1"
+      ]
+    ],
+    "v29": [
+      [
+        778,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        719,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        720,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        721,
+        "r1"
+      ],
+      [
+        723,
+        "r1"
+      ],
+      [
+        775,
+        "r1"
+      ]
+    ],
+    "r4": [
+      [
+        726,
+        "r1"
+      ],
+      [
+        728,
+        "r1"
+      ],
+      [
+        760,
+        "r2"
+      ]
+    ],
+    "r5": [
+      [
+        731,
+        "r1"
+      ]
+    ],
+    "r6": [
+      [
+        732,
+        "r1"
+      ]
+    ],
+    "r7": [
+      [
+        735,
+        "r1"
+      ]
+    ],
+    "r8": [
+      [
+        736,
+        "r1"
+      ]
+    ],
+    "r9": [
+      [
+        738,
+        "r1"
+      ]
+    ],
+    "r10": [
+      [
+        740,
+        "r1"
+      ]
+    ],
+    "r11": [
+      [
+        742,
+        "r1"
+      ]
+    ],
+    "r12": [
+      [
+        747,
+        "r1"
+      ]
+    ],
+    "r13": [
+      [
+        752,
+        "r1"
+      ]
+    ],
+    "r14": [
+      [
+        753,
+        "r1"
+      ]
+    ],
+    "r15": [
+      [
+        757,
+        "r1"
+      ]
+    ],
+    "r16": [
+      [
+        758,
+        "r1"
+      ]
+    ],
+    "r17": [
+      [
+        758,
+        "r2"
+      ]
+    ],
+    "r18": [
+      [
+        760,
+        "r1"
+      ]
+    ],
+    "r19": [
+      [
+        761,
+        "r1"
+      ]
+    ],
+    "r20": [
+      [
+        764,
+        "r1"
+      ]
+    ],
+    "r21": [
+      [
+        767,
+        "r1"
+      ]
+    ],
+    "r22": [
+      [
+        769,
+        "r1"
+      ],
+      [
+        772,
+        "r2"
+      ]
+    ],
+    "r23": [
+      [
+        772,
+        "r1"
+      ],
+      [
+        775,
+        "r2"
+      ]
+    ],
+    "r24": [
+      [
+        773,
+        "r1"
+      ]
+    ],
+    "r25": [
+      [
+        779,
+        "r1"
+      ]
+    ],
+    "a1": [
+      [
+        717,
+        "a1"
+      ],
+      [
+        726,
+        "a1"
+      ],
+      [
+        739,
+        "a1"
+      ],
+      [
+        741,
+        "a1"
+      ],
+      [
+        752,
+        "a1"
+      ],
+      [
+        761,
+        "a1"
+      ],
+      [
+        769,
+        "a1"
+      ],
+      [
+        771,
+        "a1"
+      ],
+      [
+        773,
+        "a1"
+      ],
+      [
+        776,
+        "a1"
+      ]
+    ],
+    "a2": [
+      [
+        717,
+        "a2"
+      ],
+      [
+        749,
+        "a1"
+      ],
+      [
+        751,
+        "a1"
+      ],
+      [
+        764,
+        "a1"
+      ]
+    ],
+    "a3": [
+      [
+        722,
+        "a1"
+      ],
+      [
+        748,
+        "a1"
+      ],
+      [
+        758,
+        "a1"
+      ],
+      [
+        759,
+        "a1"
+      ],
+      [
+        770,
+        "a1"
+      ]
+    ],
+    "a4": [
+      [
+        724,
+        "a1"
+      ],
+      [
+        733,
+        "a1"
+      ],
+      [
+        772,
+        "a1"
+      ]
+    ],
+    "a5": [
+      [
+        724,
+        "a2"
+      ],
+      [
+        772,
+        "a2"
+      ]
+    ],
+    "a6": [
+      [
+        727,
+        "a1"
+      ],
+      [
+        732,
+        "a1"
+      ],
+      [
+        773,
+        "a2"
+      ]
+    ],
+    "a7": [
+      [
+        733,
+        "a2"
+      ]
+    ],
+    "a8": [
+      [
+        754,
+        "a1"
+      ]
+    ],
+    "a9": [
+      [
+        772,
+        "a3"
+      ]
+    ],
+    "a10": [
+      [
+        774,
+        "a1"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,3851 @@
+{
+  "version": "p1b.2",
+  "db_id": "formula_1",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "drivers who are eliminated in the first qualifying period",
+      "defined_by": "r1"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "best lap time",
+      "defined_by": "f1"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "drivers who finished the race",
+      "defined_by": "r4"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "fastest lap speed",
+      "defined_by": "f2"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "constructor which got the highest point",
+      "defined_by": "f3"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "the youngest driver",
+      "defined_by": "f4"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "first race",
+      "defined_by": "r11"
+    },
+    "c8": {
+      "id": "c8",
+      "type": "Concept",
+      "name": "earliest recorded year and month",
+      "defined_by": "f8"
+    },
+    "c9": {
+      "id": "c9",
+      "type": "Concept",
+      "name": "the last round",
+      "defined_by": "f9"
+    },
+    "c10": {
+      "id": "c10",
+      "type": "Concept",
+      "name": "the first",
+      "defined_by": "f10"
+    },
+    "c11": {
+      "id": "c11",
+      "type": "Concept",
+      "name": "the last",
+      "defined_by": "f11"
+    },
+    "c12": {
+      "id": "c12",
+      "type": "Concept",
+      "name": "the most winning",
+      "defined_by": "f16"
+    },
+    "c13": {
+      "id": "c13",
+      "type": "Concept",
+      "name": "average point scores",
+      "defined_by": "f12"
+    },
+    "c14": {
+      "id": "c14",
+      "type": "Concept",
+      "name": "Japanese",
+      "defined_by": "r15"
+    },
+    "c15": {
+      "id": "c15",
+      "type": "Concept",
+      "name": "age",
+      "defined_by": "f17"
+    },
+    "c16": {
+      "id": "c16",
+      "type": "Concept",
+      "name": "win from races",
+      "defined_by": "f12"
+    },
+    "c17": {
+      "id": "c17",
+      "type": "Concept",
+      "name": "Lewis Hamilton",
+      "defined_by": "r20"
+    },
+    "c18": {
+      "id": "c18",
+      "type": "Concept",
+      "name": "don't have a code",
+      "defined_by": "r22"
+    },
+    "c19": {
+      "id": "c19",
+      "type": "Concept",
+      "name": "fastest lap time ever",
+      "defined_by": "f20"
+    },
+    "c20": {
+      "id": "c20",
+      "type": "Concept",
+      "name": "rank the highest",
+      "defined_by": "f21"
+    },
+    "c21": {
+      "id": "c21",
+      "type": "Concept",
+      "name": "managed to finish the race",
+      "defined_by": "r4"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "q2",
+          "table": "qualifying",
+          "column": "q2"
+        }
+      ],
+      "name": "best lap time",
+      "expression": "MIN(q2)"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "fastestLapSpeed",
+          "table": "results",
+          "column": "fastestLapSpeed"
+        }
+      ],
+      "name": "fastest lap speed",
+      "expression": "MAX(fastestLapSpeed)"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "constructorResults.points",
+          "table": "constructorResults",
+          "column": "points"
+        }
+      ],
+      "name": "highest constructor points",
+      "expression": "MAX(constructorResults.points)"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "dob",
+          "table": "drivers",
+          "column": "dob"
+        }
+      ],
+      "name": "youngest driver",
+      "expression": "MAX(dob)"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "time",
+          "table": "lapTimes",
+          "column": "time"
+        }
+      ],
+      "name": "best lap time",
+      "expression": "MIN(time)"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "fastestLapSpeed",
+          "table": "results",
+          "column": "fastestLapSpeed"
+        },
+        {
+          "term": "raceId",
+          "table": "results",
+          "column": "raceId"
+        }
+      ],
+      "depends_on": [
+        "r8",
+        "r9"
+      ],
+      "name": "percentage",
+      "expression": "DIVIDE(SUBTRACT(fastestLapSpeed(raceId = 853), (fastestLapSpeed (raceId = 854)) * 100 , (fastestLapSpeed(raceId = 853))"
+    },
+    "f7": {
+      "id": "f7",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "driverid",
+          "table": "results",
+          "column": "driverId"
+        },
+        {
+          "term": "time",
+          "table": "results",
+          "column": "time"
+        }
+      ],
+      "depends_on": [
+        "r4"
+      ],
+      "name": "percentage",
+      "expression": "COUNT(driverid WHERE time IS NOT NULL) / COUNT(driverid)"
+    },
+    "f8": {
+      "id": "f8",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "races",
+          "column": "date"
+        }
+      ],
+      "name": "earliest recorded year and month",
+      "expression": "year = year(min(date)) and month = month(min(date))"
+    },
+    "f9": {
+      "id": "f9",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "round",
+          "table": "races",
+          "column": "round"
+        }
+      ],
+      "name": "last round",
+      "expression": "MAX(round)"
+    },
+    "f10": {
+      "id": "f10",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "year",
+          "table": "races",
+          "column": "year"
+        }
+      ],
+      "name": "the first",
+      "expression": "MIN(year)"
+    },
+    "f11": {
+      "id": "f11",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "year",
+          "table": "races",
+          "column": "year"
+        }
+      ],
+      "name": "the last",
+      "expression": "MAX(year)"
+    },
+    "f12": {
+      "id": "f12",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "points",
+          "table": "results",
+          "column": "points"
+        },
+        {
+          "term": "points",
+          "table": "driverStandings",
+          "column": "points"
+        }
+      ],
+      "name": "most points scored",
+      "expression": "MAX(points)"
+    },
+    "f13": {
+      "id": "f13",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "milliseconds",
+          "table": "lapTimes",
+          "column": "milliseconds"
+        }
+      ],
+      "name": "best lap time",
+      "expression": "min(milliseconds)"
+    },
+    "f14": {
+      "id": "f14",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "milliseconds",
+          "table": "lapTimes",
+          "column": "milliseconds"
+        }
+      ],
+      "name": "average lap time",
+      "expression": "AVG(milliseconds)"
+    },
+    "f15": {
+      "id": "f15",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "raceId",
+          "table": "results",
+          "column": "raceId"
+        },
+        {
+          "term": "surname",
+          "table": "drivers",
+          "column": "surname"
+        },
+        {
+          "term": "position",
+          "table": "results",
+          "column": "position"
+        },
+        {
+          "term": "year",
+          "table": "races",
+          "column": "year"
+        }
+      ],
+      "depends_on": [
+        "r12",
+        "r13",
+        "r14"
+      ],
+      "name": "percentage",
+      "expression": "DIVIDE(COUNT(raceId) WHERE surname = 'Hamilton' AND position > 1 AND year >= 2010, COUNT(raceId) WHERE surname = 'Hamilton' AND year >= 2010)"
+    },
+    "f16": {
+      "id": "f16",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "wins",
+          "table": "driverStandings",
+          "column": "wins"
+        }
+      ],
+      "name": "most winning",
+      "expression": "MAX(COUNT(wins))"
+    },
+    "f17": {
+      "id": "f17",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "dob",
+          "table": "drivers",
+          "column": "dob"
+        }
+      ],
+      "name": "age",
+      "expression": "YEAR(CURRENT_TIMESTAMP) - YEAR(dob)"
+    },
+    "f18": {
+      "id": "f18",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "points",
+          "table": "results",
+          "column": "points"
+        },
+        {
+          "term": "year",
+          "table": "races",
+          "column": "year"
+        }
+      ],
+      "depends_on": [
+        "r19"
+      ],
+      "name": "average points",
+      "expression": "AVG(points WHERE year = 2000)"
+    },
+    "f19": {
+      "id": "f19",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "races",
+          "table": "races",
+          "column": "raceId"
+        },
+        {
+          "term": "name",
+          "table": "races",
+          "column": "name"
+        },
+        {
+          "term": "country",
+          "table": "circuits",
+          "column": "country"
+        }
+      ],
+      "depends_on": [
+        "v19",
+        "r21"
+      ],
+      "name": "percentage",
+      "expression": "divide(COUNT(races WHERE country = 'Germany' AND name = 'European Grand Prix'), COUNT(races WHERE name = 'European Grand Prix')) * 100"
+    },
+    "f20": {
+      "id": "f20",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "fastestLapTime",
+          "table": "results",
+          "column": "fastestLapTime"
+        }
+      ],
+      "name": "fastest lap time ever",
+      "expression": "min(fastestLapTime)"
+    },
+    "f21": {
+      "id": "f21",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "rank",
+          "table": "results",
+          "column": "rank"
+        }
+      ],
+      "name": "rank the highest",
+      "expression": "min(rank)"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "Shanghai",
+      "table": "circuits",
+      "column": "location",
+      "value": "Shanghai"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "Circuit de Barcelona-Catalunya",
+      "table": "circuits",
+      "column": "name",
+      "value": "Circuit de Barcelona-Catalunya"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "Germany",
+      "table": "circuits",
+      "column": "country",
+      "value": "Germany"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "Renault",
+      "table": "constructors",
+      "column": "name",
+      "value": "Renault"
+    },
+    "v5": {
+      "id": "v5",
+      "type": "ValueMap",
+      "name": "Spain",
+      "table": "circuits",
+      "column": "country",
+      "value": "Spain"
+    },
+    "v6": {
+      "id": "v6",
+      "type": "ValueMap",
+      "name": "Abu Dhabi Grand Prix",
+      "table": "races",
+      "column": "name",
+      "value": "Abu Dhabi Grand Prix"
+    },
+    "v7": {
+      "id": "v7",
+      "type": "ValueMap",
+      "name": "Bruno Senna",
+      "table": "drivers",
+      "column": "surname",
+      "value": "Senna"
+    },
+    "v8": {
+      "id": "v8",
+      "type": "ValueMap",
+      "name": "Bruno Senna",
+      "table": "drivers",
+      "column": "forename",
+      "value": "Bruno"
+    },
+    "v9": {
+      "id": "v9",
+      "type": "ValueMap",
+      "name": "Bahrain Grand Prix",
+      "table": "races",
+      "column": "name",
+      "value": "Bahrain Grand Prix"
+    },
+    "v10": {
+      "id": "v10",
+      "type": "ValueMap",
+      "name": "Malaysian Grand Prix",
+      "table": "races",
+      "column": "name",
+      "value": "Malaysian Grand Prix"
+    },
+    "v11": {
+      "id": "v11",
+      "type": "ValueMap",
+      "name": "finished second",
+      "table": "results",
+      "column": "position",
+      "value": "2"
+    },
+    "v12": {
+      "id": "v12",
+      "type": "ValueMap",
+      "name": "not hosted",
+      "table": "status",
+      "column": "status",
+      "value": "not in"
+    },
+    "v13": {
+      "id": "v13",
+      "type": "ValueMap",
+      "name": "British Grand Prix",
+      "table": "races",
+      "column": "name",
+      "value": "British Grand Prix"
+    },
+    "v14": {
+      "id": "v14",
+      "type": "ValueMap",
+      "name": "United Kingdom",
+      "table": "circuits",
+      "column": "country",
+      "value": "UK"
+    },
+    "v15": {
+      "id": "v15",
+      "type": "ValueMap",
+      "name": "Lewis Hamilton",
+      "table": "drivers",
+      "column": "surname",
+      "value": "Hamilton"
+    },
+    "v16": {
+      "id": "v16",
+      "type": "ValueMap",
+      "name": "Lewis Hamilton",
+      "table": "drivers",
+      "column": "forename",
+      "value": "Lewis"
+    },
+    "v17": {
+      "id": "v17",
+      "type": "ValueMap",
+      "name": "Alex Yoong",
+      "table": "drivers",
+      "column": "forename",
+      "value": "Alex"
+    },
+    "v18": {
+      "id": "v18",
+      "type": "ValueMap",
+      "name": "Alex Yoong",
+      "table": "drivers",
+      "column": "surname",
+      "value": "Yoong"
+    },
+    "v19": {
+      "id": "v19",
+      "type": "ValueMap",
+      "name": "European Grand Prix races",
+      "table": "races",
+      "column": "name",
+      "value": "European Grand Prix"
+    },
+    "v20": {
+      "id": "v20",
+      "type": "ValueMap",
+      "name": "Silverstone Circuit",
+      "table": "circuits",
+      "column": "name",
+      "value": "Silverstone Circuit"
+    },
+    "v21": {
+      "id": "v21",
+      "type": "ValueMap",
+      "name": "Marina Bay Street Circuit",
+      "table": "circuits",
+      "column": "name",
+      "value": "Marina Bay Street Circuit"
+    },
+    "v22": {
+      "id": "v22",
+      "type": "ValueMap",
+      "name": "Italian",
+      "table": "drivers",
+      "column": "nationality",
+      "value": "italian"
+    },
+    "v23": {
+      "id": "v23",
+      "type": "ValueMap",
+      "name": "Canadian Grand Prix",
+      "table": "races",
+      "column": "name",
+      "value": "Canadian Grand Prix"
+    },
+    "v24": {
+      "id": "v24",
+      "type": "ValueMap",
+      "name": "Chinese Grand Prix",
+      "table": "races",
+      "column": "name",
+      "value": "Chinese Grand Prix"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "q1",
+          "table": "qualifying",
+          "column": "q1"
+        }
+      ],
+      "name": "eliminated in Q1",
+      "condition": "5 drivers with MAX(q1)"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "races.name",
+          "table": "races",
+          "column": "name",
+          "value": "Australian Grand Prix"
+        }
+      ],
+      "name": "Australian Grand Prix",
+      "condition": "races.name = 'Australian Grand Prix'"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "q3",
+          "table": "qualifying",
+          "column": "q3"
+        }
+      ],
+      "name": "finished 0:0M:SS in the Q3",
+      "condition": "q3 LIKE 'M:SS%'"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "time",
+          "table": "results",
+          "column": "time"
+        }
+      ],
+      "name": "finished the race",
+      "condition": "time IS NOT NULL"
+    },
+    "r5": {
+      "id": "r5",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "lapTime.time",
+          "table": "lapTimes",
+          "column": "time"
+        }
+      ],
+      "name": "lap time of 0:0M:SS",
+      "condition": "lapTime.time LIKE 'M:SS%'"
+    },
+    "r6": {
+      "id": "r6",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "time",
+          "table": "results",
+          "column": "time"
+        }
+      ],
+      "name": "did not finish the race",
+      "condition": "time IS NULL"
+    },
+    "r7": {
+      "id": "r7",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "forename",
+          "table": "drivers",
+          "column": "forename",
+          "value": "Paul"
+        },
+        {
+          "term": "surname",
+          "table": "drivers",
+          "column": "surname",
+          "value": "di Resta"
+        }
+      ],
+      "name": "Full name of the driver",
+      "condition": "drivers.forename = 'Paul' AND drivers.surname = 'di Resta'"
+    },
+    "r8": {
+      "id": "r8",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "raceId",
+          "table": "results",
+          "column": "raceId",
+          "value": 853
+        }
+      ],
+      "name": "raceId = 853",
+      "condition": "raceId = 853"
+    },
+    "r9": {
+      "id": "r9",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "raceId",
+          "table": "results",
+          "column": "raceId",
+          "value": 854
+        }
+      ],
+      "name": "raceId = 854",
+      "condition": "raceId = 854"
+    },
+    "r10": {
+      "id": "r10",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "races",
+          "column": "date"
+        }
+      ],
+      "name": "date is 1983-07-16",
+      "condition": "date = '1983-07-16'"
+    },
+    "r11": {
+      "id": "r11",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "year",
+          "table": "races",
+          "column": "year"
+        }
+      ],
+      "name": "race happened in min(year)",
+      "condition": "year = MIN(year)"
+    },
+    "r12": {
+      "id": "r12",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "year",
+          "table": "races",
+          "column": "year"
+        }
+      ],
+      "name": "since 2010",
+      "condition": "year >= 2010"
+    },
+    "r13": {
+      "id": "r13",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "surname",
+          "table": "drivers",
+          "column": "surname"
+        }
+      ],
+      "name": "driver is Hamilton",
+      "condition": "surname = 'Hamilton'"
+    },
+    "r14": {
+      "id": "r14",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "position",
+          "table": "results",
+          "column": "position"
+        }
+      ],
+      "name": "position greater than 1",
+      "condition": "position > 1"
+    },
+    "r15": {
+      "id": "r15",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "nationality",
+          "table": "drivers",
+          "column": "nationality",
+          "value": "Japanese"
+        }
+      ],
+      "name": "Japanese nationality",
+      "condition": "nationality = 'Japanese'"
+    },
+    "r16": {
+      "id": "r16",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "races",
+          "column": "date"
+        }
+      ],
+      "name": "from year 1990 to 2000",
+      "condition": "year(date) BETWEEN 1990 AND 2000"
+    },
+    "r17": {
+      "id": "r17",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date",
+          "table": "races",
+          "column": "date"
+        }
+      ],
+      "name": "in September 2005",
+      "condition": "MONTH(date) = 9 AND YEAR(date) = 2005"
+    },
+    "r18": {
+      "id": "r18",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "position",
+          "table": "results",
+          "column": "position"
+        }
+      ],
+      "name": "track number less than 10",
+      "condition": "position < 20"
+    },
+    "r19": {
+      "id": "r19",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "year",
+          "table": "races",
+          "column": "year"
+        }
+      ],
+      "name": "year 2000",
+      "condition": "year = 2000"
+    },
+    "r20": {
+      "id": "r20",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "forename",
+          "table": "drivers",
+          "column": "forename",
+          "value": "Lewis"
+        },
+        {
+          "term": "surname",
+          "table": "drivers",
+          "column": "surname",
+          "value": "Hamilton"
+        }
+      ],
+      "name": "Lewis Hamilton driver",
+      "condition": "forename = 'Lewis' AND surname = 'Hamilton'"
+    },
+    "r21": {
+      "id": "r21",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "country",
+          "table": "circuits",
+          "column": "country"
+        }
+      ],
+      "name": "country is Germany",
+      "condition": "country = 'Germany'"
+    },
+    "r22": {
+      "id": "r22",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "code",
+          "table": "drivers",
+          "column": "code"
+        }
+      ],
+      "name": "code is null",
+      "condition": "code IS NULL"
+    },
+    "r23": {
+      "id": "r23",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "name",
+          "table": "races",
+          "column": "name",
+          "value": "Spanish Grand Prix"
+        }
+      ],
+      "name": "Spanish Grand Prix",
+      "condition": "races.name = 'Spanish Grand Prix'"
+    },
+    "r24": {
+      "id": "r24",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "grid",
+          "table": "results",
+          "column": "grid",
+          "value": 4
+        }
+      ],
+      "name": "no. 4 grid formation",
+      "condition": "grid = 4"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "drivers",
+          "column": "driverRef"
+        }
+      ],
+      "name": "driver reference name"
+    },
+    "a2": {
+      "id": "a2",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "qualifying",
+          "column": "q1"
+        }
+      ],
+      "name": "first qualifying period"
+    },
+    "a3": {
+      "id": "a3",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "races",
+          "column": "raceId"
+        }
+      ],
+      "name": "race number"
+    },
+    "a4": {
+      "id": "a4",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "qualifying",
+          "column": "q2"
+        }
+      ],
+      "name": "second qualifying period"
+    },
+    "a5": {
+      "id": "a5",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "races",
+          "column": "url"
+        }
+      ],
+      "name": "introduction of races"
+    },
+    "a6": {
+      "id": "a6",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "circuits",
+          "column": "lat"
+        },
+        {
+          "table": "circuits",
+          "column": "lng"
+        }
+      ],
+      "name": "coordinate position/location"
+    },
+    "a7": {
+      "id": "a7",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "drivers",
+          "column": "forename"
+        },
+        {
+          "table": "drivers",
+          "column": "surname"
+        }
+      ],
+      "name": "Full name of the driver"
+    },
+    "a8": {
+      "id": "a8",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "races",
+          "column": "name"
+        }
+      ],
+      "name": "game"
+    },
+    "a9": {
+      "id": "a9",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "drivers",
+          "column": "dob"
+        }
+      ],
+      "name": "date of birth"
+    },
+    "a10": {
+      "id": "a10",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "drivers",
+          "column": "url"
+        }
+      ],
+      "name": "introduction website of the drivers"
+    },
+    "a11": {
+      "id": "a11",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "constructors",
+          "column": "url"
+        }
+      ],
+      "name": "introduction website of the constructor"
+    },
+    "a12": {
+      "id": "a12",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "seasons",
+          "column": "url"
+        }
+      ],
+      "name": "season page"
+    },
+    "a13": {
+      "id": "a13",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "results",
+          "column": "fastestLapSpeed"
+        }
+      ],
+      "name": "fastest lap speed"
+    },
+    "a14": {
+      "id": "a14",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "races",
+          "column": "round"
+        }
+      ],
+      "name": "the most number of races"
+    },
+    "a15": {
+      "id": "a15",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "lapTimes",
+          "column": "milliseconds"
+        }
+      ],
+      "name": "fastest lap"
+    },
+    "a16": {
+      "id": "a16",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "races",
+          "column": "year"
+        }
+      ],
+      "name": "first race"
+    },
+    "a17": {
+      "id": "a17",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "circuits",
+          "column": "lat"
+        }
+      ],
+      "name": "higher latitude"
+    },
+    "a18": {
+      "id": "a18",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "circuits",
+          "column": "circuitRef"
+        }
+      ],
+      "name": "reference name"
+    },
+    "a19": {
+      "id": "a19",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "circuits",
+          "column": "alt"
+        }
+      ],
+      "name": "highest altitude"
+    },
+    "a20": {
+      "id": "a20",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "circuits",
+          "column": "url"
+        }
+      ],
+      "name": "website"
+    },
+    "a21": {
+      "id": "a21",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "circuits",
+          "column": "url"
+        },
+        {
+          "table": "constructors",
+          "column": "url"
+        },
+        {
+          "table": "drivers",
+          "column": "url"
+        },
+        {
+          "table": "seasons",
+          "column": "url"
+        },
+        {
+          "table": "races",
+          "column": "url"
+        }
+      ],
+      "name": "more information"
+    },
+    "a22": {
+      "id": "a22",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "results",
+          "column": "positionOrder"
+        }
+      ],
+      "name": "final rank"
+    }
+  },
+  "columns": [
+    {
+      "table": "circuits",
+      "column": "circuitId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "circuits",
+      "column": "circuitRef",
+      "type": "TEXT"
+    },
+    {
+      "table": "circuits",
+      "column": "name",
+      "type": "TEXT"
+    },
+    {
+      "table": "circuits",
+      "column": "location",
+      "type": "TEXT"
+    },
+    {
+      "table": "circuits",
+      "column": "country",
+      "type": "TEXT"
+    },
+    {
+      "table": "circuits",
+      "column": "lat",
+      "type": "REAL"
+    },
+    {
+      "table": "circuits",
+      "column": "lng",
+      "type": "REAL"
+    },
+    {
+      "table": "circuits",
+      "column": "alt",
+      "type": "INTEGER"
+    },
+    {
+      "table": "circuits",
+      "column": "url",
+      "type": "TEXT"
+    },
+    {
+      "table": "constructors",
+      "column": "constructorId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "constructors",
+      "column": "constructorRef",
+      "type": "TEXT"
+    },
+    {
+      "table": "constructors",
+      "column": "name",
+      "type": "TEXT"
+    },
+    {
+      "table": "constructors",
+      "column": "nationality",
+      "type": "TEXT"
+    },
+    {
+      "table": "constructors",
+      "column": "url",
+      "type": "TEXT"
+    },
+    {
+      "table": "drivers",
+      "column": "driverId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "drivers",
+      "column": "driverRef",
+      "type": "TEXT"
+    },
+    {
+      "table": "drivers",
+      "column": "number",
+      "type": "INTEGER"
+    },
+    {
+      "table": "drivers",
+      "column": "code",
+      "type": "TEXT"
+    },
+    {
+      "table": "drivers",
+      "column": "forename",
+      "type": "TEXT"
+    },
+    {
+      "table": "drivers",
+      "column": "surname",
+      "type": "TEXT"
+    },
+    {
+      "table": "drivers",
+      "column": "dob",
+      "type": "DATE"
+    },
+    {
+      "table": "drivers",
+      "column": "nationality",
+      "type": "TEXT"
+    },
+    {
+      "table": "drivers",
+      "column": "url",
+      "type": "TEXT"
+    },
+    {
+      "table": "seasons",
+      "column": "year",
+      "type": "INTEGER"
+    },
+    {
+      "table": "seasons",
+      "column": "url",
+      "type": "TEXT"
+    },
+    {
+      "table": "races",
+      "column": "raceId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "races",
+      "column": "year",
+      "type": "INTEGER"
+    },
+    {
+      "table": "races",
+      "column": "round",
+      "type": "INTEGER"
+    },
+    {
+      "table": "races",
+      "column": "circuitId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "races",
+      "column": "name",
+      "type": "TEXT"
+    },
+    {
+      "table": "races",
+      "column": "date",
+      "type": "DATE"
+    },
+    {
+      "table": "races",
+      "column": "time",
+      "type": "TEXT"
+    },
+    {
+      "table": "races",
+      "column": "url",
+      "type": "TEXT"
+    },
+    {
+      "table": "constructorResults",
+      "column": "constructorResultsId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "constructorResults",
+      "column": "raceId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "constructorResults",
+      "column": "constructorId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "constructorResults",
+      "column": "points",
+      "type": "REAL"
+    },
+    {
+      "table": "constructorResults",
+      "column": "status",
+      "type": "TEXT"
+    },
+    {
+      "table": "constructorStandings",
+      "column": "constructorStandingsId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "constructorStandings",
+      "column": "raceId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "constructorStandings",
+      "column": "constructorId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "constructorStandings",
+      "column": "points",
+      "type": "REAL"
+    },
+    {
+      "table": "constructorStandings",
+      "column": "position",
+      "type": "INTEGER"
+    },
+    {
+      "table": "constructorStandings",
+      "column": "positionText",
+      "type": "TEXT"
+    },
+    {
+      "table": "constructorStandings",
+      "column": "wins",
+      "type": "INTEGER"
+    },
+    {
+      "table": "driverStandings",
+      "column": "driverStandingsId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "driverStandings",
+      "column": "raceId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "driverStandings",
+      "column": "driverId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "driverStandings",
+      "column": "points",
+      "type": "REAL"
+    },
+    {
+      "table": "driverStandings",
+      "column": "position",
+      "type": "INTEGER"
+    },
+    {
+      "table": "driverStandings",
+      "column": "positionText",
+      "type": "TEXT"
+    },
+    {
+      "table": "driverStandings",
+      "column": "wins",
+      "type": "INTEGER"
+    },
+    {
+      "table": "lapTimes",
+      "column": "raceId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "lapTimes",
+      "column": "driverId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "lapTimes",
+      "column": "lap",
+      "type": "INTEGER"
+    },
+    {
+      "table": "lapTimes",
+      "column": "position",
+      "type": "INTEGER"
+    },
+    {
+      "table": "lapTimes",
+      "column": "time",
+      "type": "TEXT"
+    },
+    {
+      "table": "lapTimes",
+      "column": "milliseconds",
+      "type": "INTEGER"
+    },
+    {
+      "table": "pitStops",
+      "column": "raceId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "pitStops",
+      "column": "driverId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "pitStops",
+      "column": "stop",
+      "type": "INTEGER"
+    },
+    {
+      "table": "pitStops",
+      "column": "lap",
+      "type": "INTEGER"
+    },
+    {
+      "table": "pitStops",
+      "column": "time",
+      "type": "TEXT"
+    },
+    {
+      "table": "pitStops",
+      "column": "duration",
+      "type": "TEXT"
+    },
+    {
+      "table": "pitStops",
+      "column": "milliseconds",
+      "type": "INTEGER"
+    },
+    {
+      "table": "qualifying",
+      "column": "qualifyId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "qualifying",
+      "column": "raceId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "qualifying",
+      "column": "driverId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "qualifying",
+      "column": "constructorId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "qualifying",
+      "column": "number",
+      "type": "INTEGER"
+    },
+    {
+      "table": "qualifying",
+      "column": "position",
+      "type": "INTEGER"
+    },
+    {
+      "table": "qualifying",
+      "column": "q1",
+      "type": "TEXT"
+    },
+    {
+      "table": "qualifying",
+      "column": "q2",
+      "type": "TEXT"
+    },
+    {
+      "table": "qualifying",
+      "column": "q3",
+      "type": "TEXT"
+    },
+    {
+      "table": "status",
+      "column": "statusId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "status",
+      "column": "status",
+      "type": "TEXT"
+    },
+    {
+      "table": "results",
+      "column": "resultId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "raceId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "driverId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "constructorId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "number",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "grid",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "position",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "positionText",
+      "type": "TEXT"
+    },
+    {
+      "table": "results",
+      "column": "positionOrder",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "points",
+      "type": "REAL"
+    },
+    {
+      "table": "results",
+      "column": "laps",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "time",
+      "type": "TEXT"
+    },
+    {
+      "table": "results",
+      "column": "milliseconds",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "fastestLap",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "rank",
+      "type": "INTEGER"
+    },
+    {
+      "table": "results",
+      "column": "fastestLapTime",
+      "type": "TEXT"
+    },
+    {
+      "table": "results",
+      "column": "fastestLapSpeed",
+      "type": "TEXT"
+    },
+    {
+      "table": "results",
+      "column": "statusId",
+      "type": "INTEGER"
+    }
+  ],
+  "fk_edges": [
+    {
+      "from": {
+        "table": "races",
+        "column": "year"
+      },
+      "to": {
+        "table": "seasons",
+        "column": "year"
+      }
+    },
+    {
+      "from": {
+        "table": "races",
+        "column": "circuitId"
+      },
+      "to": {
+        "table": "circuits",
+        "column": "circuitId"
+      }
+    },
+    {
+      "from": {
+        "table": "constructorResults",
+        "column": "raceId"
+      },
+      "to": {
+        "table": "races",
+        "column": "raceId"
+      }
+    },
+    {
+      "from": {
+        "table": "constructorResults",
+        "column": "constructorId"
+      },
+      "to": {
+        "table": "constructors",
+        "column": "constructorId"
+      }
+    },
+    {
+      "from": {
+        "table": "constructorStandings",
+        "column": "raceId"
+      },
+      "to": {
+        "table": "races",
+        "column": "raceId"
+      }
+    },
+    {
+      "from": {
+        "table": "constructorStandings",
+        "column": "constructorId"
+      },
+      "to": {
+        "table": "constructors",
+        "column": "constructorId"
+      }
+    },
+    {
+      "from": {
+        "table": "driverStandings",
+        "column": "raceId"
+      },
+      "to": {
+        "table": "races",
+        "column": "raceId"
+      }
+    },
+    {
+      "from": {
+        "table": "driverStandings",
+        "column": "driverId"
+      },
+      "to": {
+        "table": "drivers",
+        "column": "driverId"
+      }
+    },
+    {
+      "from": {
+        "table": "lapTimes",
+        "column": "raceId"
+      },
+      "to": {
+        "table": "races",
+        "column": "raceId"
+      }
+    },
+    {
+      "from": {
+        "table": "lapTimes",
+        "column": "driverId"
+      },
+      "to": {
+        "table": "drivers",
+        "column": "driverId"
+      }
+    },
+    {
+      "from": {
+        "table": "pitStops",
+        "column": "raceId"
+      },
+      "to": {
+        "table": "races",
+        "column": "raceId"
+      }
+    },
+    {
+      "from": {
+        "table": "pitStops",
+        "column": "driverId"
+      },
+      "to": {
+        "table": "drivers",
+        "column": "driverId"
+      }
+    },
+    {
+      "from": {
+        "table": "qualifying",
+        "column": "raceId"
+      },
+      "to": {
+        "table": "races",
+        "column": "raceId"
+      }
+    },
+    {
+      "from": {
+        "table": "qualifying",
+        "column": "driverId"
+      },
+      "to": {
+        "table": "drivers",
+        "column": "driverId"
+      }
+    },
+    {
+      "from": {
+        "table": "qualifying",
+        "column": "constructorId"
+      },
+      "to": {
+        "table": "constructors",
+        "column": "constructorId"
+      }
+    },
+    {
+      "from": {
+        "table": "results",
+        "column": "raceId"
+      },
+      "to": {
+        "table": "races",
+        "column": "raceId"
+      }
+    },
+    {
+      "from": {
+        "table": "results",
+        "column": "driverId"
+      },
+      "to": {
+        "table": "drivers",
+        "column": "driverId"
+      }
+    },
+    {
+      "from": {
+        "table": "results",
+        "column": "constructorId"
+      },
+      "to": {
+        "table": "constructors",
+        "column": "constructorId"
+      }
+    },
+    {
+      "from": {
+        "table": "results",
+        "column": "statusId"
+      },
+      "to": {
+        "table": "status",
+        "column": "statusId"
+      }
+    }
+  ],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16",
+        "f17",
+        "f18",
+        "f19",
+        "f20",
+        "f21"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v14",
+        "v15",
+        "v16",
+        "v17",
+        "v18",
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23",
+        "v24"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15",
+        "r16",
+        "r17",
+        "r18",
+        "r19",
+        "r20",
+        "r21",
+        "r22",
+        "r23",
+        "r24"
+      ],
+      "ColumnAlias": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10",
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15",
+        "a16",
+        "a17",
+        "a18",
+        "a19",
+        "a20",
+        "a21",
+        "a22"
+      ]
+    },
+    "by_column": {
+      "qualifying.q2": [
+        "f1",
+        "a4"
+      ],
+      "results.fastestLapSpeed": [
+        "f2",
+        "f6",
+        "a13"
+      ],
+      "constructorResults.points": [
+        "f3"
+      ],
+      "drivers.dob": [
+        "f4",
+        "f17",
+        "a9"
+      ],
+      "lapTimes.time": [
+        "f5",
+        "r5"
+      ],
+      "results.raceId": [
+        "f6",
+        "f15",
+        "r8",
+        "r9"
+      ],
+      "results.driverId": [
+        "f7"
+      ],
+      "results.time": [
+        "f7",
+        "r4",
+        "r6"
+      ],
+      "races.date": [
+        "f8",
+        "r10",
+        "r16",
+        "r17"
+      ],
+      "races.round": [
+        "f9",
+        "a14"
+      ],
+      "races.year": [
+        "f10",
+        "f11",
+        "f15",
+        "f18",
+        "r11",
+        "r12",
+        "r19",
+        "a16"
+      ],
+      "results.points": [
+        "f12",
+        "f18"
+      ],
+      "driverStandings.points": [
+        "f12"
+      ],
+      "lapTimes.milliseconds": [
+        "f13",
+        "f14",
+        "a15"
+      ],
+      "drivers.surname": [
+        "f15",
+        "v7",
+        "v15",
+        "v18",
+        "r7",
+        "r13",
+        "r20",
+        "a7"
+      ],
+      "results.position": [
+        "f15",
+        "v11",
+        "r14",
+        "r18"
+      ],
+      "driverStandings.wins": [
+        "f16"
+      ],
+      "races.raceId": [
+        "f19",
+        "a3"
+      ],
+      "races.name": [
+        "f19",
+        "v6",
+        "v9",
+        "v10",
+        "v13",
+        "v19",
+        "v23",
+        "v24",
+        "r2",
+        "r23",
+        "a8"
+      ],
+      "circuits.country": [
+        "f19",
+        "v3",
+        "v5",
+        "v14",
+        "r21"
+      ],
+      "results.fastestLapTime": [
+        "f20"
+      ],
+      "results.rank": [
+        "f21"
+      ],
+      "circuits.location": [
+        "v1"
+      ],
+      "circuits.name": [
+        "v2",
+        "v20",
+        "v21"
+      ],
+      "constructors.name": [
+        "v4"
+      ],
+      "drivers.forename": [
+        "v8",
+        "v16",
+        "v17",
+        "r7",
+        "r20",
+        "a7"
+      ],
+      "status.status": [
+        "v12"
+      ],
+      "drivers.nationality": [
+        "v22",
+        "r15"
+      ],
+      "qualifying.q1": [
+        "r1",
+        "a2"
+      ],
+      "qualifying.q3": [
+        "r3"
+      ],
+      "drivers.code": [
+        "r22"
+      ],
+      "results.grid": [
+        "r24"
+      ],
+      "drivers.driverRef": [
+        "a1"
+      ],
+      "races.url": [
+        "a5",
+        "a21"
+      ],
+      "circuits.lat": [
+        "a6",
+        "a17"
+      ],
+      "circuits.lng": [
+        "a6"
+      ],
+      "drivers.url": [
+        "a10",
+        "a21"
+      ],
+      "constructors.url": [
+        "a11",
+        "a21"
+      ],
+      "seasons.url": [
+        "a12",
+        "a21"
+      ],
+      "circuits.circuitRef": [
+        "a18"
+      ],
+      "circuits.alt": [
+        "a19"
+      ],
+      "circuits.url": [
+        "a20",
+        "a21"
+      ],
+      "results.positionOrder": [
+        "a22"
+      ]
+    },
+    "by_name_token": {
+      "period": [
+        "c1",
+        "a2",
+        "a4"
+      ],
+      "drivers": [
+        "c1",
+        "c3",
+        "r1",
+        "r7",
+        "a10"
+      ],
+      "who": [
+        "c1",
+        "c3"
+      ],
+      "qualifying": [
+        "c1",
+        "a2",
+        "a4"
+      ],
+      "first": [
+        "c1",
+        "c7",
+        "c10",
+        "f10",
+        "a2",
+        "a16"
+      ],
+      "eliminated": [
+        "c1",
+        "r1"
+      ],
+      "lap": [
+        "c2",
+        "c4",
+        "c19",
+        "f1",
+        "f2",
+        "f5",
+        "f13",
+        "f14",
+        "f20",
+        "r5",
+        "a13",
+        "a15"
+      ],
+      "time": [
+        "c2",
+        "c19",
+        "f1",
+        "f5",
+        "f7",
+        "f13",
+        "f14",
+        "f20",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "best": [
+        "c2",
+        "f1",
+        "f5",
+        "f13"
+      ],
+      "finished": [
+        "c3",
+        "v11",
+        "r3",
+        "r4"
+      ],
+      "race": [
+        "c3",
+        "c7",
+        "c21",
+        "r4",
+        "r6",
+        "r11",
+        "a3",
+        "a16"
+      ],
+      "speed": [
+        "c4",
+        "f2",
+        "a13"
+      ],
+      "fastest": [
+        "c4",
+        "c19",
+        "f2",
+        "f20",
+        "a13",
+        "a15"
+      ],
+      "which": [
+        "c5"
+      ],
+      "got": [
+        "c5"
+      ],
+      "highest": [
+        "c5",
+        "c20",
+        "f3",
+        "f21",
+        "a19"
+      ],
+      "constructor": [
+        "c5",
+        "f3",
+        "a11"
+      ],
+      "point": [
+        "c5",
+        "c13"
+      ],
+      "youngest": [
+        "c6",
+        "f4"
+      ],
+      "driver": [
+        "c6",
+        "f4",
+        "r7",
+        "r13",
+        "r20",
+        "a1",
+        "a7"
+      ],
+      "recorded": [
+        "c8",
+        "f8"
+      ],
+      "earliest": [
+        "c8",
+        "f8"
+      ],
+      "year": [
+        "c8",
+        "f8",
+        "f10",
+        "f11",
+        "f15",
+        "f17",
+        "f18",
+        "r11",
+        "r12",
+        "r16",
+        "r17",
+        "r19"
+      ],
+      "month": [
+        "c8",
+        "f8",
+        "r17"
+      ],
+      "last": [
+        "c9",
+        "c11",
+        "f9",
+        "f11"
+      ],
+      "round": [
+        "c9",
+        "f9"
+      ],
+      "most": [
+        "c12",
+        "f12",
+        "f16",
+        "a14"
+      ],
+      "winning": [
+        "c12",
+        "f16"
+      ],
+      "average": [
+        "c13",
+        "f14",
+        "f18"
+      ],
+      "scores": [
+        "c13"
+      ],
+      "japanese": [
+        "c14",
+        "r15"
+      ],
+      "age": [
+        "c15",
+        "f17"
+      ],
+      "from": [
+        "c16",
+        "r16"
+      ],
+      "races": [
+        "c16",
+        "f19",
+        "v19",
+        "r2",
+        "r23",
+        "a5",
+        "a14"
+      ],
+      "win": [
+        "c16"
+      ],
+      "hamilton": [
+        "c17",
+        "f15",
+        "v15",
+        "v16",
+        "r13",
+        "r20"
+      ],
+      "lewis": [
+        "c17",
+        "v15",
+        "v16",
+        "r20"
+      ],
+      "code": [
+        "c18",
+        "r22"
+      ],
+      "have": [
+        "c18"
+      ],
+      "don": [
+        "c18"
+      ],
+      "ever": [
+        "c19",
+        "f20"
+      ],
+      "rank": [
+        "c20",
+        "f21",
+        "a22"
+      ],
+      "managed": [
+        "c21"
+      ],
+      "finish": [
+        "c21",
+        "r6"
+      ],
+      "min": [
+        "f1",
+        "f5",
+        "f8",
+        "f10",
+        "f13",
+        "f20",
+        "f21",
+        "r11"
+      ],
+      "q2": [
+        "f1"
+      ],
+      "fastestlapspeed": [
+        "f2",
+        "f6"
+      ],
+      "max": [
+        "f2",
+        "f3",
+        "f4",
+        "f9",
+        "f11",
+        "f12",
+        "f16",
+        "r1"
+      ],
+      "points": [
+        "f3",
+        "f12",
+        "f18"
+      ],
+      "constructorresults": [
+        "f3"
+      ],
+      "dob": [
+        "f4",
+        "f17"
+      ],
+      "raceid": [
+        "f6",
+        "f15",
+        "r8",
+        "r9"
+      ],
+      "100": [
+        "f6",
+        "f19"
+      ],
+      "853": [
+        "f6",
+        "r8"
+      ],
+      "divide": [
+        "f6",
+        "f15",
+        "f19"
+      ],
+      "854": [
+        "f6",
+        "r9"
+      ],
+      "percentage": [
+        "f6",
+        "f7",
+        "f15",
+        "f19"
+      ],
+      "subtract": [
+        "f6"
+      ],
+      "null": [
+        "f7",
+        "r4",
+        "r6",
+        "r22"
+      ],
+      "count": [
+        "f7",
+        "f15",
+        "f16",
+        "f19"
+      ],
+      "driverid": [
+        "f7"
+      ],
+      "where": [
+        "f7",
+        "f15",
+        "f18",
+        "f19"
+      ],
+      "not": [
+        "f7",
+        "v12",
+        "r4",
+        "r6"
+      ],
+      "date": [
+        "f8",
+        "r10",
+        "r16",
+        "r17",
+        "a9"
+      ],
+      "scored": [
+        "f12"
+      ],
+      "milliseconds": [
+        "f13",
+        "f14"
+      ],
+      "avg": [
+        "f14",
+        "f18"
+      ],
+      "2010": [
+        "f15",
+        "r12"
+      ],
+      "surname": [
+        "f15",
+        "r7",
+        "r13",
+        "r20"
+      ],
+      "position": [
+        "f15",
+        "r14",
+        "r18",
+        "a6"
+      ],
+      "wins": [
+        "f16"
+      ],
+      "current_timestamp": [
+        "f17"
+      ],
+      "2000": [
+        "f18",
+        "r16",
+        "r19"
+      ],
+      "prix": [
+        "f19",
+        "v6",
+        "v9",
+        "v10",
+        "v13",
+        "v19",
+        "v23",
+        "v24",
+        "r2",
+        "r23"
+      ],
+      "germany": [
+        "f19",
+        "v3",
+        "r21"
+      ],
+      "grand": [
+        "f19",
+        "v6",
+        "v9",
+        "v10",
+        "v13",
+        "v19",
+        "v23",
+        "v24",
+        "r2",
+        "r23"
+      ],
+      "european": [
+        "f19",
+        "v19"
+      ],
+      "name": [
+        "f19",
+        "r2",
+        "r7",
+        "r23",
+        "a1",
+        "a7",
+        "a18"
+      ],
+      "country": [
+        "f19",
+        "r21"
+      ],
+      "fastestlaptime": [
+        "f20"
+      ],
+      "shanghai": [
+        "v1"
+      ],
+      "circuit": [
+        "v2",
+        "v20",
+        "v21"
+      ],
+      "catalunya": [
+        "v2"
+      ],
+      "barcelona": [
+        "v2"
+      ],
+      "de": [
+        "v2"
+      ],
+      "renault": [
+        "v4"
+      ],
+      "spain": [
+        "v5"
+      ],
+      "dhabi": [
+        "v6"
+      ],
+      "abu": [
+        "v6"
+      ],
+      "bruno": [
+        "v7",
+        "v8"
+      ],
+      "senna": [
+        "v7",
+        "v8"
+      ],
+      "bahrain": [
+        "v9"
+      ],
+      "malaysian": [
+        "v10"
+      ],
+      "second": [
+        "v11",
+        "a4"
+      ],
+      "hosted": [
+        "v12"
+      ],
+      "british": [
+        "v13"
+      ],
+      "kingdom": [
+        "v14"
+      ],
+      "united": [
+        "v14"
+      ],
+      "yoong": [
+        "v17",
+        "v18"
+      ],
+      "alex": [
+        "v17",
+        "v18"
+      ],
+      "silverstone": [
+        "v20"
+      ],
+      "marina": [
+        "v21"
+      ],
+      "bay": [
+        "v21"
+      ],
+      "street": [
+        "v21"
+      ],
+      "italian": [
+        "v22"
+      ],
+      "canadian": [
+        "v23"
+      ],
+      "chinese": [
+        "v24"
+      ],
+      "q1": [
+        "r1"
+      ],
+      "australian": [
+        "r2"
+      ],
+      "0m": [
+        "r3",
+        "r5"
+      ],
+      "ss": [
+        "r3",
+        "r5"
+      ],
+      "q3": [
+        "r3"
+      ],
+      "like": [
+        "r3",
+        "r5"
+      ],
+      "laptime": [
+        "r5"
+      ],
+      "did": [
+        "r6"
+      ],
+      "di": [
+        "r7"
+      ],
+      "forename": [
+        "r7",
+        "r20"
+      ],
+      "full": [
+        "r7",
+        "a7"
+      ],
+      "paul": [
+        "r7"
+      ],
+      "resta": [
+        "r7"
+      ],
+      "1983": [
+        "r10"
+      ],
+      "16": [
+        "r10"
+      ],
+      "07": [
+        "r10"
+      ],
+      "happened": [
+        "r11"
+      ],
+      "since": [
+        "r12"
+      ],
+      "greater": [
+        "r14"
+      ],
+      "than": [
+        "r14",
+        "r18"
+      ],
+      "nationality": [
+        "r15"
+      ],
+      "1990": [
+        "r16"
+      ],
+      "between": [
+        "r16"
+      ],
+      "2005": [
+        "r17"
+      ],
+      "september": [
+        "r17"
+      ],
+      "less": [
+        "r18"
+      ],
+      "20": [
+        "r18"
+      ],
+      "track": [
+        "r18"
+      ],
+      "number": [
+        "r18",
+        "a3",
+        "a14"
+      ],
+      "10": [
+        "r18"
+      ],
+      "spanish": [
+        "r23"
+      ],
+      "grid": [
+        "r24"
+      ],
+      "no": [
+        "r24"
+      ],
+      "formation": [
+        "r24"
+      ],
+      "reference": [
+        "a1",
+        "a18"
+      ],
+      "introduction": [
+        "a5",
+        "a10",
+        "a11"
+      ],
+      "location": [
+        "a6"
+      ],
+      "coordinate": [
+        "a6"
+      ],
+      "game": [
+        "a8"
+      ],
+      "birth": [
+        "a9"
+      ],
+      "website": [
+        "a10",
+        "a11",
+        "a20"
+      ],
+      "page": [
+        "a12"
+      ],
+      "season": [
+        "a12"
+      ],
+      "latitude": [
+        "a17"
+      ],
+      "higher": [
+        "a17"
+      ],
+      "altitude": [
+        "a19"
+      ],
+      "more": [
+        "a21"
+      ],
+      "information": [
+        "a21"
+      ],
+      "final": [
+        "a22"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        846,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        847,
+        "c1"
+      ],
+      [
+        878,
+        "c1"
+      ],
+      [
+        894,
+        "c1"
+      ]
+    ],
+    "c3": [
+      [
+        862,
+        "c1"
+      ],
+      [
+        864,
+        "c1"
+      ],
+      [
+        865,
+        "c1"
+      ],
+      [
+        877,
+        "c1"
+      ]
+    ],
+    "c4": [
+      [
+        867,
+        "c1"
+      ]
+    ],
+    "c5": [
+      [
+        869,
+        "c1"
+      ]
+    ],
+    "c6": [
+      [
+        877,
+        "c2"
+      ]
+    ],
+    "c7": [
+      [
+        882,
+        "c1"
+      ],
+      [
+        906,
+        "c1"
+      ]
+    ],
+    "c8": [
+      [
+        884,
+        "c1"
+      ]
+    ],
+    "c9": [
+      [
+        885,
+        "c1"
+      ]
+    ],
+    "c10": [
+      [
+        888,
+        "c1"
+      ]
+    ],
+    "c11": [
+      [
+        889,
+        "c1"
+      ]
+    ],
+    "c12": [
+      [
+        897,
+        "c1"
+      ]
+    ],
+    "c13": [
+      [
+        897,
+        "c2"
+      ]
+    ],
+    "c14": [
+      [
+        898,
+        "c1"
+      ]
+    ],
+    "c15": [
+      [
+        898,
+        "c2"
+      ]
+    ],
+    "c16": [
+      [
+        903,
+        "c1"
+      ]
+    ],
+    "c17": [
+      [
+        906,
+        "c2"
+      ]
+    ],
+    "c18": [
+      [
+        914,
+        "c1"
+      ]
+    ],
+    "c19": [
+      [
+        926,
+        "c1"
+      ]
+    ],
+    "c20": [
+      [
+        930,
+        "c1"
+      ]
+    ],
+    "c21": [
+      [
+        935,
+        "c1"
+      ]
+    ],
+    "f1": [
+      [
+        847,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        867,
+        "f1"
+      ],
+      [
+        931,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        869,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        877,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        878,
+        "f1"
+      ]
+    ],
+    "f6": [
+      [
+        880,
+        "f1"
+      ]
+    ],
+    "f7": [
+      [
+        881,
+        "f1"
+      ]
+    ],
+    "f8": [
+      [
+        884,
+        "f1"
+      ]
+    ],
+    "f9": [
+      [
+        885,
+        "f1"
+      ]
+    ],
+    "f10": [
+      [
+        888,
+        "f1"
+      ],
+      [
+        906,
+        "f1"
+      ]
+    ],
+    "f11": [
+      [
+        889,
+        "f1"
+      ]
+    ],
+    "f12": [
+      [
+        892,
+        "f1"
+      ],
+      [
+        897,
+        "f2"
+      ],
+      [
+        903,
+        "f1"
+      ]
+    ],
+    "f13": [
+      [
+        894,
+        "f1"
+      ]
+    ],
+    "f14": [
+      [
+        895,
+        "f1"
+      ]
+    ],
+    "f15": [
+      [
+        896,
+        "f1"
+      ]
+    ],
+    "f16": [
+      [
+        897,
+        "f1"
+      ]
+    ],
+    "f17": [
+      [
+        898,
+        "f1"
+      ]
+    ],
+    "f18": [
+      [
+        905,
+        "f1"
+      ]
+    ],
+    "f19": [
+      [
+        909,
+        "f1"
+      ]
+    ],
+    "f20": [
+      [
+        926,
+        "f1"
+      ]
+    ],
+    "f21": [
+      [
+        930,
+        "f1"
+      ]
+    ],
+    "v1": [
+      [
+        848,
+        "v1"
+      ]
+    ],
+    "v2": [
+      [
+        849,
+        "v1"
+      ]
+    ],
+    "v3": [
+      [
+        850,
+        "v1"
+      ]
+    ],
+    "v4": [
+      [
+        851,
+        "v1"
+      ]
+    ],
+    "v5": [
+      [
+        853,
+        "v1"
+      ]
+    ],
+    "v6": [
+      [
+        857,
+        "v1"
+      ]
+    ],
+    "v7": [
+      [
+        859,
+        "v1"
+      ]
+    ],
+    "v8": [
+      [
+        859,
+        "v2"
+      ]
+    ],
+    "v9": [
+      [
+        862,
+        "v1"
+      ]
+    ],
+    "v10": [
+      [
+        868,
+        "v1"
+      ],
+      [
+        895,
+        "v3"
+      ]
+    ],
+    "v11": [
+      [
+        874,
+        "v1"
+      ]
+    ],
+    "v12": [
+      [
+        887,
+        "v1"
+      ]
+    ],
+    "v13": [
+      [
+        890,
+        "v1"
+      ]
+    ],
+    "v14": [
+      [
+        890,
+        "v2"
+      ]
+    ],
+    "v15": [
+      [
+        895,
+        "v1"
+      ],
+      [
+        930,
+        "v1"
+      ]
+    ],
+    "v16": [
+      [
+        895,
+        "v2"
+      ],
+      [
+        930,
+        "v2"
+      ]
+    ],
+    "v17": [
+      [
+        904,
+        "v1"
+      ]
+    ],
+    "v18": [
+      [
+        904,
+        "v2"
+      ]
+    ],
+    "v19": [
+      [
+        909,
+        "v1"
+      ]
+    ],
+    "v20": [
+      [
+        910,
+        "v1"
+      ]
+    ],
+    "v21": [
+      [
+        912,
+        "v1"
+      ]
+    ],
+    "v22": [
+      [
+        916,
+        "v1"
+      ]
+    ],
+    "v23": [
+      [
+        928,
+        "v1"
+      ]
+    ],
+    "v24": [
+      [
+        933,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        846,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        854,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        861,
+        "r1"
+      ],
+      [
+        872,
+        "r1"
+      ]
+    ],
+    "r4": [
+      [
+        862,
+        "r1"
+      ],
+      [
+        864,
+        "r1"
+      ],
+      [
+        865,
+        "r1"
+      ],
+      [
+        877,
+        "r1"
+      ],
+      [
+        881,
+        "r2"
+      ],
+      [
+        935,
+        "r1"
+      ]
+    ],
+    "r5": [
+      [
+        866,
+        "r1"
+      ]
+    ],
+    "r6": [
+      [
+        876,
+        "r1"
+      ]
+    ],
+    "r7": [
+      [
+        880,
+        "r1"
+      ]
+    ],
+    "r8": [
+      [
+        880,
+        "r2"
+      ]
+    ],
+    "r9": [
+      [
+        880,
+        "r3"
+      ]
+    ],
+    "r10": [
+      [
+        881,
+        "r1"
+      ]
+    ],
+    "r11": [
+      [
+        882,
+        "r1"
+      ]
+    ],
+    "r12": [
+      [
+        896,
+        "r1"
+      ]
+    ],
+    "r13": [
+      [
+        896,
+        "r2"
+      ]
+    ],
+    "r14": [
+      [
+        896,
+        "r3"
+      ]
+    ],
+    "r15": [
+      [
+        898,
+        "r1"
+      ]
+    ],
+    "r16": [
+      [
+        899,
+        "r1"
+      ]
+    ],
+    "r17": [
+      [
+        901,
+        "r1"
+      ]
+    ],
+    "r18": [
+      [
+        902,
+        "r1"
+      ]
+    ],
+    "r19": [
+      [
+        905,
+        "r1"
+      ]
+    ],
+    "r20": [
+      [
+        906,
+        "r1"
+      ]
+    ],
+    "r21": [
+      [
+        909,
+        "r1"
+      ]
+    ],
+    "r22": [
+      [
+        914,
+        "r1"
+      ]
+    ],
+    "r23": [
+      [
+        931,
+        "r1"
+      ]
+    ],
+    "r24": [
+      [
+        934,
+        "r1"
+      ]
+    ],
+    "a1": [
+      [
+        846,
+        "a1"
+      ],
+      [
+        866,
+        "a1"
+      ],
+      [
+        918,
+        "a1"
+      ],
+      [
+        928,
+        "a1"
+      ]
+    ],
+    "a2": [
+      [
+        846,
+        "a2"
+      ]
+    ],
+    "a3": [
+      [
+        846,
+        "a3"
+      ],
+      [
+        847,
+        "a1"
+      ],
+      [
+        858,
+        "a1"
+      ],
+      [
+        859,
+        "a1"
+      ],
+      [
+        860,
+        "a1"
+      ],
+      [
+        861,
+        "a1"
+      ],
+      [
+        863,
+        "a1"
+      ],
+      [
+        865,
+        "a1"
+      ],
+      [
+        866,
+        "a2"
+      ],
+      [
+        869,
+        "a1"
+      ],
+      [
+        870,
+        "a1"
+      ],
+      [
+        871,
+        "a1"
+      ],
+      [
+        872,
+        "a1"
+      ],
+      [
+        873,
+        "a1"
+      ],
+      [
+        875,
+        "a2"
+      ],
+      [
+        877,
+        "a1"
+      ],
+      [
+        878,
+        "a1"
+      ],
+      [
+        880,
+        "a2"
+      ]
+    ],
+    "a4": [
+      [
+        847,
+        "a2"
+      ]
+    ],
+    "a5": [
+      [
+        849,
+        "a1"
+      ],
+      [
+        855,
+        "a1"
+      ]
+    ],
+    "a6": [
+      [
+        854,
+        "a1"
+      ],
+      [
+        857,
+        "a1"
+      ],
+      [
+        868,
+        "a1"
+      ],
+      [
+        910,
+        "a1"
+      ]
+    ],
+    "a7": [
+      [
+        859,
+        "a2"
+      ],
+      [
+        880,
+        "a1"
+      ],
+      [
+        892,
+        "a1"
+      ],
+      [
+        894,
+        "a1"
+      ],
+      [
+        895,
+        "a1"
+      ],
+      [
+        897,
+        "a1"
+      ],
+      [
+        902,
+        "a1"
+      ],
+      [
+        902,
+        "a2"
+      ],
+      [
+        904,
+        "a2"
+      ],
+      [
+        906,
+        "a2"
+      ],
+      [
+        930,
+        "a1"
+      ],
+      [
+        933,
+        "a1"
+      ],
+      [
+        933,
+        "a2"
+      ]
+    ],
+    "a8": [
+      [
+        864,
+        "a1"
+      ],
+      [
+        876,
+        "a1"
+      ],
+      [
+        894,
+        "a2"
+      ]
+    ],
+    "a9": [
+      [
+        865,
+        "a2"
+      ],
+      [
+        898,
+        "a1"
+      ],
+      [
+        915,
+        "a1"
+      ]
+    ],
+    "a10": [
+      [
+        866,
+        "a3"
+      ]
+    ],
+    "a11": [
+      [
+        869,
+        "a2"
+      ]
+    ],
+    "a12": [
+      [
+        875,
+        "a1"
+      ]
+    ],
+    "a13": [
+      [
+        879,
+        "a1"
+      ]
+    ],
+    "a14": [
+      [
+        886,
+        "a1"
+      ]
+    ],
+    "a15": [
+      [
+        904,
+        "a1"
+      ]
+    ],
+    "a16": [
+      [
+        906,
+        "a1"
+      ]
+    ],
+    "a17": [
+      [
+        911,
+        "a1"
+      ]
+    ],
+    "a18": [
+      [
+        912,
+        "a1"
+      ]
+    ],
+    "a19": [
+      [
+        913,
+        "a1"
+      ]
+    ],
+    "a20": [
+      [
+        917,
+        "a1"
+      ],
+      [
+        925,
+        "a1"
+      ]
+    ],
+    "a21": [
+      [
+        921,
+        "a1"
+      ]
+    ],
+    "a22": [
+      [
+        933,
+        "a3"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,1626 @@
+{
+  "version": "p1b.2",
+  "db_id": "debit_card_specializing",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "ratio of customers who pay in EUR against customers who pay in CZK",
+      "defined_by": "f1"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "Average Monthly consumption",
+      "defined_by": "f3"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "Year 2013",
+      "defined_by": "r2"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "Year 2011",
+      "defined_by": "r3"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "Difference in Consumption",
+      "defined_by": "f4"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "year",
+      "defined_by": "f2"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "annual average consumption of customer with the lowest consumption in each segment",
+      "defined_by": "f6"
+    },
+    "c8": {
+      "id": "c8",
+      "type": "Concept",
+      "name": "Difference in annual average (SME - LAM)",
+      "defined_by": "f7"
+    },
+    "c9": {
+      "id": "c9",
+      "type": "Concept",
+      "name": "Difference in annual average (LAM - KAM)",
+      "defined_by": "f8"
+    },
+    "c10": {
+      "id": "c10",
+      "type": "Concept",
+      "name": "more discount gas stations",
+      "defined_by": "f11"
+    },
+    "c11": {
+      "id": "c11",
+      "type": "Concept",
+      "name": "Percentage of LAM customer consumed more than 46.73",
+      "defined_by": "f13"
+    },
+    "c12": {
+      "id": "c12",
+      "type": "Concept",
+      "name": "Percentage of KAM uses Euro",
+      "defined_by": "f14"
+    },
+    "c13": {
+      "id": "c13",
+      "type": "Concept",
+      "name": "Percentage of premium gas station",
+      "defined_by": "f15"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Currency",
+          "table": "customers",
+          "column": "Currency"
+        }
+      ],
+      "name": "EUR to CZK customer ratio",
+      "expression": "count(Currency = 'EUR') / count(Currency = 'CZK')"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "yearmonth",
+          "column": "Date"
+        }
+      ],
+      "name": "Year from Date",
+      "expression": "SUBSTR(Date, 1, 4)"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Consumption",
+          "table": "yearmonth",
+          "column": "Consumption"
+        }
+      ],
+      "name": "Average Monthly consumption",
+      "expression": "AVG(Consumption) / 12"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Consumption",
+          "table": "yearmonth",
+          "column": "Consumption"
+        },
+        {
+          "term": "Date",
+          "table": "yearmonth",
+          "column": "Date"
+        },
+        {
+          "term": "Currency",
+          "table": "customers",
+          "column": "Currency"
+        }
+      ],
+      "depends_on": [
+        "r1",
+        "r4",
+        "r5"
+      ],
+      "name": "Difference in Consumption",
+      "expression": "CZK customers consumption in 2012 - EUR customers consumption in 2012"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "yearmonth",
+          "column": "Date"
+        }
+      ],
+      "name": "Month from Date",
+      "expression": "SUBSTR(Date, 5, 2)"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "total consumption per year",
+          "table": "yearmonth",
+          "column": "Consumption"
+        },
+        {
+          "term": "the number of customer with lowest consumption in each segment",
+          "table": "customers",
+          "column": "CustomerID"
+        },
+        {
+          "term": "Segment",
+          "table": "customers",
+          "column": "Segment"
+        }
+      ],
+      "name": "annual average consumption of customer with the lowest consumption in each segment",
+      "expression": "total consumption per year / the number of customer with lowest consumption in each segment"
+    },
+    "f7": {
+      "id": "f7",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "SME's annual average",
+          "table": "yearmonth",
+          "column": "Consumption"
+        },
+        {
+          "term": "LAM's annual average",
+          "table": "yearmonth",
+          "column": "Consumption"
+        },
+        {
+          "term": "Segment",
+          "table": "customers",
+          "column": "Segment"
+        }
+      ],
+      "depends_on": [
+        "f6"
+      ],
+      "name": "Difference in annual average (SME - LAM)",
+      "expression": "SME's annual average - LAM's annual average"
+    },
+    "f8": {
+      "id": "f8",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "LAM's annual average",
+          "table": "yearmonth",
+          "column": "Consumption"
+        },
+        {
+          "term": "KAM's annual average",
+          "table": "yearmonth",
+          "column": "Consumption"
+        },
+        {
+          "term": "Segment",
+          "table": "customers",
+          "column": "Segment"
+        }
+      ],
+      "depends_on": [
+        "f6"
+      ],
+      "name": "Difference in annual average (LAM - KAM)",
+      "expression": "LAM's annual average - KAM's annual average"
+    },
+    "f9": {
+      "id": "f9",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "consumption for 2013",
+          "table": "yearmonth",
+          "column": "Consumption"
+        },
+        {
+          "term": "consumption for 2012",
+          "table": "yearmonth",
+          "column": "Consumption"
+        }
+      ],
+      "name": "Increase or Decrease",
+      "expression": "consumption for 2013 - consumption for 2012"
+    },
+    "f10": {
+      "id": "f10",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Increase or Decrease",
+          "table": "yearmonth",
+          "column": "Consumption"
+        },
+        {
+          "term": "consumption for 2013",
+          "table": "yearmonth",
+          "column": "Consumption"
+        }
+      ],
+      "depends_on": [
+        "f9"
+      ],
+      "name": "Percentage of Increase",
+      "expression": "(Increase or Decrease / consumption for 2013) * 100%"
+    },
+    "f11": {
+      "id": "f11",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Total no. of discount gas stations in Czech Republic",
+          "table": "gasstations",
+          "column": "GasStationID"
+        },
+        {
+          "term": "Total no. of discount gas stations in Slovakia",
+          "table": "gasstations",
+          "column": "GasStationID"
+        }
+      ],
+      "depends_on": [
+        "v1",
+        "v2"
+      ],
+      "name": "Computation of more discount gas stations",
+      "expression": "Total no. of discount gas stations in Czech Republic - Total no. of discount gas stations in Slovakia"
+    },
+    "f12": {
+      "id": "f12",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Total of SMEs pay using Currency CZK",
+          "table": "transactions_1k",
+          "column": "Amount"
+        },
+        {
+          "term": "Total of SMEs pay using Currency EUR",
+          "table": "transactions_1k",
+          "column": "Amount"
+        }
+      ],
+      "name": "Amount of more SMEs",
+      "expression": "Total of SMEs pay using Currency CZK - Total of SMEs pay using Currency EUR"
+    },
+    "f13": {
+      "id": "f13",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "CustomerID",
+          "table": "customers",
+          "column": "CustomerID"
+        },
+        {
+          "term": "Segment",
+          "table": "customers",
+          "column": "Segment"
+        },
+        {
+          "term": "Consumption",
+          "table": "yearmonth",
+          "column": "Consumption"
+        }
+      ],
+      "depends_on": [
+        "r9",
+        "r10"
+      ],
+      "name": "Percentage of LAM customer consumed more than 46.73",
+      "expression": "(Total no. of LAM customers who consumed more than 46.73 / Total no. of LAM customers) * 100"
+    },
+    "f14": {
+      "id": "f14",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "KAM",
+          "table": "customers",
+          "column": "Segment"
+        },
+        {
+          "term": "Euro",
+          "table": "customers",
+          "column": "Currency"
+        }
+      ],
+      "name": "Percentage of KAM uses Euro",
+      "expression": "(Total of KAM uses Euro / Total of KAM) * 100"
+    },
+    "f15": {
+      "id": "f15",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Total of premium gas station in Slovakia",
+          "table": "gasstations",
+          "column": "GasStationID"
+        },
+        {
+          "term": "Total of gas station in Slovakia",
+          "table": "gasstations",
+          "column": "GasStationID"
+        }
+      ],
+      "depends_on": [
+        "r11",
+        "r12"
+      ],
+      "name": "Percentage of premium gas station",
+      "expression": "(Total of premium gas station in Slovakia / Total of gas station in Slovakia) * 100"
+    },
+    "f16": {
+      "id": "f16",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "consumption",
+          "table": "yearmonth",
+          "column": "Consumption"
+        }
+      ],
+      "name": "Monthly consumption",
+      "expression": "SUM(consumption) / 12"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "Czech Republic",
+      "table": "gasstations",
+      "column": "Country",
+      "value": "CZE"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "Slovakia",
+      "table": "gasstations",
+      "column": "Country",
+      "value": "SVK"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "April 2013",
+      "table": "yearmonth",
+      "column": "Date",
+      "value": "201304"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "October 2013",
+      "table": "yearmonth",
+      "column": "Date",
+      "value": "201310"
+    },
+    "v5": {
+      "id": "v5",
+      "type": "ValueMap",
+      "name": "May 2013",
+      "table": "yearmonth",
+      "column": "Date",
+      "value": "201305"
+    },
+    "v6": {
+      "id": "v6",
+      "type": "ValueMap",
+      "name": "February 2012",
+      "table": "yearmonth",
+      "column": "Date",
+      "value": "201202"
+    },
+    "v7": {
+      "id": "v7",
+      "type": "ValueMap",
+      "name": "September 2013",
+      "table": "yearmonth",
+      "column": "Date",
+      "value": "201309"
+    },
+    "v8": {
+      "id": "v8",
+      "type": "ValueMap",
+      "name": "June 2012",
+      "table": "yearmonth",
+      "column": "Date",
+      "value": "201206"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "yearmonth",
+          "column": "Date"
+        }
+      ],
+      "name": "Year 2012",
+      "condition": "Date BETWEEN '201201' AND '201212'"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "yearmonth",
+          "column": "Date"
+        }
+      ],
+      "name": "Year 2013",
+      "condition": "Date BETWEEN '201301' AND '201312'"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "yearmonth",
+          "column": "Date"
+        }
+      ],
+      "name": "between January and December in 2011",
+      "condition": "Date BETWEEN '201101' AND '201112'"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Currency",
+          "table": "customers",
+          "column": "Currency"
+        }
+      ],
+      "name": "CZK customers",
+      "condition": "Currency = 'CZK'"
+    },
+    "r5": {
+      "id": "r5",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Currency",
+          "table": "customers",
+          "column": "Currency"
+        }
+      ],
+      "name": "EUR customers",
+      "condition": "Currency = 'EUR'"
+    },
+    "r6": {
+      "id": "r6",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "yearmonth",
+          "column": "Date"
+        }
+      ],
+      "name": "year 2013",
+      "condition": "SUBSTR(Date, 1, 4) = '2013'"
+    },
+    "r7": {
+      "id": "r7",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "yearmonth",
+          "column": "Date"
+        }
+      ],
+      "name": "year 2012",
+      "condition": "SUBSTR(Date, 1, 4) = '2012'"
+    },
+    "r8": {
+      "id": "r8",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "yearmonth",
+          "column": "Date"
+        }
+      ],
+      "name": "Between August And November 2013",
+      "condition": "Date BETWEEN '201308' AND '201311'"
+    },
+    "r9": {
+      "id": "r9",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Segment",
+          "table": "customers",
+          "column": "Segment",
+          "value": "LAM"
+        }
+      ],
+      "name": "LAM customer",
+      "condition": "Segment = 'LAM'"
+    },
+    "r10": {
+      "id": "r10",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Consumption",
+          "table": "yearmonth",
+          "column": "Consumption"
+        }
+      ],
+      "name": "consumed more than 46.73",
+      "condition": "Consumption > 46.73"
+    },
+    "r11": {
+      "id": "r11",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Segment",
+          "table": "gasstations",
+          "column": "Segment",
+          "value": "Premium"
+        }
+      ],
+      "name": "premium gas station",
+      "condition": "Segment = 'Premium'"
+    },
+    "r12": {
+      "id": "r12",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Country",
+          "table": "gasstations",
+          "column": "Country",
+          "value": "Slovakia"
+        }
+      ],
+      "name": "gas station in Slovakia",
+      "condition": "Country = 'Slovakia'"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "yearmonth",
+          "column": "Date"
+        }
+      ],
+      "name": "year"
+    }
+  },
+  "columns": [
+    {
+      "table": "customers",
+      "column": "CustomerID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "customers",
+      "column": "Segment",
+      "type": "TEXT"
+    },
+    {
+      "table": "customers",
+      "column": "Currency",
+      "type": "TEXT"
+    },
+    {
+      "table": "gasstations",
+      "column": "GasStationID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "gasstations",
+      "column": "ChainID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "gasstations",
+      "column": "Country",
+      "type": "TEXT"
+    },
+    {
+      "table": "gasstations",
+      "column": "Segment",
+      "type": "TEXT"
+    },
+    {
+      "table": "products",
+      "column": "ProductID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "products",
+      "column": "Description",
+      "type": "TEXT"
+    },
+    {
+      "table": "transactions_1k",
+      "column": "TransactionID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "transactions_1k",
+      "column": "Date",
+      "type": "DATE"
+    },
+    {
+      "table": "transactions_1k",
+      "column": "Time",
+      "type": "TEXT"
+    },
+    {
+      "table": "transactions_1k",
+      "column": "CustomerID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "transactions_1k",
+      "column": "CardID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "transactions_1k",
+      "column": "GasStationID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "transactions_1k",
+      "column": "ProductID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "transactions_1k",
+      "column": "Amount",
+      "type": "INTEGER"
+    },
+    {
+      "table": "transactions_1k",
+      "column": "Price",
+      "type": "REAL"
+    },
+    {
+      "table": "yearmonth",
+      "column": "CustomerID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "yearmonth",
+      "column": "Date",
+      "type": "TEXT"
+    },
+    {
+      "table": "yearmonth",
+      "column": "Consumption",
+      "type": "REAL"
+    }
+  ],
+  "fk_edges": [],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12"
+      ],
+      "ColumnAlias": [
+        "a1"
+      ]
+    },
+    "by_column": {
+      "customers.Currency": [
+        "f1",
+        "f4",
+        "f14",
+        "r4",
+        "r5"
+      ],
+      "yearmonth.Date": [
+        "f2",
+        "f4",
+        "f5",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "r1",
+        "r2",
+        "r3",
+        "r6",
+        "r7",
+        "r8",
+        "a1"
+      ],
+      "yearmonth.Consumption": [
+        "f3",
+        "f4",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f13",
+        "f16",
+        "r10"
+      ],
+      "customers.CustomerID": [
+        "f6",
+        "f13"
+      ],
+      "customers.Segment": [
+        "f6",
+        "f7",
+        "f8",
+        "f13",
+        "f14",
+        "r9"
+      ],
+      "gasstations.GasStationID": [
+        "f11",
+        "f15"
+      ],
+      "transactions_1k.Amount": [
+        "f12"
+      ],
+      "gasstations.Country": [
+        "v1",
+        "v2",
+        "r12"
+      ],
+      "gasstations.Segment": [
+        "r11"
+      ]
+    },
+    "by_name_token": {
+      "czk": [
+        "c1",
+        "f1",
+        "f4",
+        "f12",
+        "r4"
+      ],
+      "pay": [
+        "c1",
+        "f12"
+      ],
+      "eur": [
+        "c1",
+        "f1",
+        "f4",
+        "f12",
+        "r5"
+      ],
+      "against": [
+        "c1"
+      ],
+      "customers": [
+        "c1",
+        "f4",
+        "f13",
+        "r4",
+        "r5"
+      ],
+      "who": [
+        "c1",
+        "f13"
+      ],
+      "ratio": [
+        "c1",
+        "f1"
+      ],
+      "average": [
+        "c2",
+        "c7",
+        "c8",
+        "c9",
+        "f3",
+        "f6",
+        "f7",
+        "f8"
+      ],
+      "monthly": [
+        "c2",
+        "f3",
+        "f16"
+      ],
+      "consumption": [
+        "c2",
+        "c5",
+        "c7",
+        "f3",
+        "f4",
+        "f6",
+        "f9",
+        "f10",
+        "f16",
+        "r10"
+      ],
+      "2013": [
+        "c3",
+        "f9",
+        "f10",
+        "v3",
+        "v4",
+        "v5",
+        "v7",
+        "r2",
+        "r6",
+        "r8"
+      ],
+      "year": [
+        "c3",
+        "c4",
+        "c6",
+        "f2",
+        "f6",
+        "r1",
+        "r2",
+        "r6",
+        "r7",
+        "a1"
+      ],
+      "2011": [
+        "c4",
+        "r3"
+      ],
+      "difference": [
+        "c5",
+        "c8",
+        "c9",
+        "f4",
+        "f7",
+        "f8"
+      ],
+      "lowest": [
+        "c7",
+        "f6"
+      ],
+      "each": [
+        "c7",
+        "f6"
+      ],
+      "customer": [
+        "c7",
+        "c11",
+        "f1",
+        "f6",
+        "f13",
+        "r9"
+      ],
+      "segment": [
+        "c7",
+        "f6",
+        "r9",
+        "r11"
+      ],
+      "annual": [
+        "c7",
+        "c8",
+        "c9",
+        "f6",
+        "f7",
+        "f8"
+      ],
+      "lam": [
+        "c8",
+        "c9",
+        "c11",
+        "f7",
+        "f8",
+        "f13",
+        "r9"
+      ],
+      "sme": [
+        "c8",
+        "f7"
+      ],
+      "kam": [
+        "c9",
+        "c12",
+        "f8",
+        "f14"
+      ],
+      "more": [
+        "c10",
+        "c11",
+        "f11",
+        "f12",
+        "f13",
+        "r10"
+      ],
+      "gas": [
+        "c10",
+        "c13",
+        "f11",
+        "f15",
+        "r11",
+        "r12"
+      ],
+      "stations": [
+        "c10",
+        "f11"
+      ],
+      "discount": [
+        "c10",
+        "f11"
+      ],
+      "73": [
+        "c11",
+        "f13",
+        "r10"
+      ],
+      "consumed": [
+        "c11",
+        "f13",
+        "r10"
+      ],
+      "46": [
+        "c11",
+        "f13",
+        "r10"
+      ],
+      "than": [
+        "c11",
+        "f13",
+        "r10"
+      ],
+      "percentage": [
+        "c11",
+        "c12",
+        "c13",
+        "f10",
+        "f13",
+        "f14",
+        "f15"
+      ],
+      "euro": [
+        "c12",
+        "f14"
+      ],
+      "uses": [
+        "c12",
+        "f14"
+      ],
+      "premium": [
+        "c13",
+        "f15",
+        "r11"
+      ],
+      "station": [
+        "c13",
+        "f15",
+        "r11",
+        "r12"
+      ],
+      "currency": [
+        "f1",
+        "f12",
+        "r4",
+        "r5"
+      ],
+      "count": [
+        "f1"
+      ],
+      "from": [
+        "f2",
+        "f5"
+      ],
+      "substr": [
+        "f2",
+        "f5",
+        "r6",
+        "r7"
+      ],
+      "date": [
+        "f2",
+        "f5",
+        "r1",
+        "r2",
+        "r3",
+        "r6",
+        "r7",
+        "r8"
+      ],
+      "12": [
+        "f3",
+        "f16"
+      ],
+      "avg": [
+        "f3"
+      ],
+      "2012": [
+        "f4",
+        "f9",
+        "v6",
+        "v8",
+        "r1",
+        "r7"
+      ],
+      "month": [
+        "f5"
+      ],
+      "per": [
+        "f6"
+      ],
+      "number": [
+        "f6"
+      ],
+      "total": [
+        "f6",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15"
+      ],
+      "increase": [
+        "f9",
+        "f10"
+      ],
+      "decrease": [
+        "f9",
+        "f10"
+      ],
+      "100": [
+        "f10",
+        "f13",
+        "f14",
+        "f15"
+      ],
+      "czech": [
+        "f11",
+        "v1"
+      ],
+      "republic": [
+        "f11",
+        "v1"
+      ],
+      "slovakia": [
+        "f11",
+        "f15",
+        "v2",
+        "r12"
+      ],
+      "no": [
+        "f11",
+        "f13"
+      ],
+      "computation": [
+        "f11"
+      ],
+      "amount": [
+        "f12"
+      ],
+      "smes": [
+        "f12"
+      ],
+      "using": [
+        "f12"
+      ],
+      "sum": [
+        "f16"
+      ],
+      "april": [
+        "v3"
+      ],
+      "october": [
+        "v4"
+      ],
+      "may": [
+        "v5"
+      ],
+      "february": [
+        "v6"
+      ],
+      "september": [
+        "v7"
+      ],
+      "june": [
+        "v8"
+      ],
+      "201201": [
+        "r1"
+      ],
+      "201212": [
+        "r1"
+      ],
+      "between": [
+        "r1",
+        "r2",
+        "r3",
+        "r8"
+      ],
+      "201301": [
+        "r2"
+      ],
+      "201312": [
+        "r2"
+      ],
+      "december": [
+        "r3"
+      ],
+      "201101": [
+        "r3"
+      ],
+      "january": [
+        "r3"
+      ],
+      "201112": [
+        "r3"
+      ],
+      "november": [
+        "r8"
+      ],
+      "201308": [
+        "r8"
+      ],
+      "august": [
+        "r8"
+      ],
+      "201311": [
+        "r8"
+      ],
+      "country": [
+        "r12"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        1471,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        1473,
+        "c1"
+      ]
+    ],
+    "c3": [
+      [
+        1473,
+        "c2"
+      ]
+    ],
+    "c4": [
+      [
+        1474,
+        "c1"
+      ]
+    ],
+    "c5": [
+      [
+        1476,
+        "c1"
+      ]
+    ],
+    "c6": [
+      [
+        1479,
+        "c1"
+      ]
+    ],
+    "c7": [
+      [
+        1481,
+        "c1"
+      ]
+    ],
+    "c8": [
+      [
+        1481,
+        "c2"
+      ]
+    ],
+    "c9": [
+      [
+        1481,
+        "c3"
+      ]
+    ],
+    "c10": [
+      [
+        1484,
+        "c1"
+      ]
+    ],
+    "c11": [
+      [
+        1490,
+        "c1"
+      ]
+    ],
+    "c12": [
+      [
+        1492,
+        "c1"
+      ]
+    ],
+    "c13": [
+      [
+        1494,
+        "c1"
+      ]
+    ],
+    "f1": [
+      [
+        1471,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        1472,
+        "f1"
+      ],
+      [
+        1479,
+        "f1"
+      ],
+      [
+        1480,
+        "f1"
+      ],
+      [
+        1481,
+        "f1"
+      ],
+      [
+        1483,
+        "f1"
+      ],
+      [
+        1493,
+        "f1"
+      ],
+      [
+        1498,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        1473,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        1476,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        1480,
+        "f2"
+      ],
+      [
+        1483,
+        "f2"
+      ],
+      [
+        1493,
+        "f2"
+      ],
+      [
+        1498,
+        "f2"
+      ]
+    ],
+    "f6": [
+      [
+        1481,
+        "f2"
+      ]
+    ],
+    "f7": [
+      [
+        1481,
+        "f3"
+      ]
+    ],
+    "f8": [
+      [
+        1481,
+        "f4"
+      ]
+    ],
+    "f9": [
+      [
+        1482,
+        "f1"
+      ]
+    ],
+    "f10": [
+      [
+        1482,
+        "f2"
+      ]
+    ],
+    "f11": [
+      [
+        1484,
+        "f1"
+      ]
+    ],
+    "f12": [
+      [
+        1486,
+        "f1"
+      ]
+    ],
+    "f13": [
+      [
+        1490,
+        "f1"
+      ]
+    ],
+    "f14": [
+      [
+        1492,
+        "f1"
+      ]
+    ],
+    "f15": [
+      [
+        1494,
+        "f1"
+      ]
+    ],
+    "f16": [
+      [
+        1499,
+        "f1"
+      ]
+    ],
+    "v1": [
+      [
+        1484,
+        "v1"
+      ]
+    ],
+    "v2": [
+      [
+        1484,
+        "v2"
+      ]
+    ],
+    "v3": [
+      [
+        1485,
+        "v1"
+      ]
+    ],
+    "v4": [
+      [
+        1487,
+        "v1"
+      ]
+    ],
+    "v5": [
+      [
+        1489,
+        "v1"
+      ]
+    ],
+    "v6": [
+      [
+        1493,
+        "v1"
+      ]
+    ],
+    "v7": [
+      [
+        1495,
+        "v1"
+      ],
+      [
+        1496,
+        "v1"
+      ]
+    ],
+    "v8": [
+      [
+        1497,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        1472,
+        "r1"
+      ],
+      [
+        1475,
+        "r1"
+      ],
+      [
+        1476,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        1473,
+        "r1"
+      ],
+      [
+        1480,
+        "r1"
+      ],
+      [
+        1481,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        1474,
+        "r1"
+      ]
+    ],
+    "r4": [
+      [
+        1476,
+        "r2"
+      ]
+    ],
+    "r5": [
+      [
+        1476,
+        "r3"
+      ]
+    ],
+    "r6": [
+      [
+        1482,
+        "r1"
+      ]
+    ],
+    "r7": [
+      [
+        1482,
+        "r2"
+      ]
+    ],
+    "r8": [
+      [
+        1483,
+        "r1"
+      ]
+    ],
+    "r9": [
+      [
+        1490,
+        "r1"
+      ]
+    ],
+    "r10": [
+      [
+        1490,
+        "r2"
+      ]
+    ],
+    "r11": [
+      [
+        1494,
+        "r1"
+      ]
+    ],
+    "r12": [
+      [
+        1494,
+        "r2"
+      ]
+    ],
+    "a1": [
+      [
+        1473,
+        "a1"
+      ],
+      [
+        1476,
+        "a1"
+      ]
+    ]
+  }
+}

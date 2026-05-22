@@ -1,0 +1,5401 @@
+{
+  "version": "p1b.2",
+  "db_id": "thrombosis_prediction",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "percentage",
+      "defined_by": "f1"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "patient who were born after 1930",
+      "defined_by": "r1"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "patient born between Year 1930 to 1940",
+      "defined_by": "r2"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "inpatient",
+      "defined_by": "v2"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "SLE inpatient to outpatient ratio",
+      "defined_by": "f3"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "LDH beyond normal range",
+      "defined_by": "r3"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "age",
+      "defined_by": "f4"
+    },
+    "c8": {
+      "id": "c8",
+      "type": "Concept",
+      "name": "who were born in 1937",
+      "defined_by": "r4"
+    },
+    "c9": {
+      "id": "c9",
+      "type": "Concept",
+      "name": "total cholesterol was beyond the normal range",
+      "defined_by": "r5"
+    },
+    "c10": {
+      "id": "c10",
+      "type": "Concept",
+      "name": "albumin level lower than 3.5",
+      "defined_by": "r6"
+    },
+    "c11": {
+      "id": "c11",
+      "type": "Concept",
+      "name": "total protein not within the normal range",
+      "defined_by": "r7"
+    },
+    "c12": {
+      "id": "c12",
+      "type": "Concept",
+      "name": "calculation",
+      "defined_by": "f5"
+    },
+    "c13": {
+      "id": "c13",
+      "type": "Concept",
+      "name": "age 50 and above",
+      "defined_by": "r8"
+    },
+    "c14": {
+      "id": "c14",
+      "type": "Concept",
+      "name": "average anti-cardiolipin antibody (IgG) concentration",
+      "defined_by": "f6"
+    },
+    "c15": {
+      "id": "c15",
+      "type": "Concept",
+      "name": "the most serious thrombosis",
+      "defined_by": "v9"
+    },
+    "c16": {
+      "id": "c16",
+      "type": "Concept",
+      "name": "women",
+      "defined_by": "v4"
+    },
+    "c17": {
+      "id": "c17",
+      "type": "Concept",
+      "name": "normal triglyceride",
+      "defined_by": "r10"
+    },
+    "c18": {
+      "id": "c18",
+      "type": "Concept",
+      "name": "age of the patients when they initially arrived at the hospital",
+      "defined_by": "f9"
+    },
+    "c19": {
+      "id": "c19",
+      "type": "Concept",
+      "name": "abnormal uric acid",
+      "defined_by": "r14"
+    },
+    "c20": {
+      "id": "c20",
+      "type": "Concept",
+      "name": "average age of patients as of year 1999",
+      "defined_by": "f11"
+    },
+    "c21": {
+      "id": "c21",
+      "type": "Concept",
+      "name": "How old the patient",
+      "defined_by": "f12"
+    },
+    "c22": {
+      "id": "c22",
+      "type": "Concept",
+      "name": "the highest hemoglobin count",
+      "defined_by": "f13"
+    },
+    "c23": {
+      "id": "c23",
+      "type": "Concept",
+      "name": "total cholesterol normal level",
+      "defined_by": "r16"
+    },
+    "c24": {
+      "id": "c24",
+      "type": "Concept",
+      "name": "proteinuria level within the normal range",
+      "defined_by": "r23"
+    },
+    "c25": {
+      "id": "c25",
+      "type": "Concept",
+      "name": "uric acid level below the normal range",
+      "defined_by": "r24"
+    },
+    "c26": {
+      "id": "c26",
+      "type": "Concept",
+      "name": "blood bilirubin level within the normal range",
+      "defined_by": "r26"
+    },
+    "c27": {
+      "id": "c27",
+      "type": "Concept",
+      "name": "born between 1980 and 1989",
+      "defined_by": "r28"
+    },
+    "c28": {
+      "id": "c28",
+      "type": "Concept",
+      "name": "protein levels within the normal range",
+      "defined_by": "r34"
+    },
+    "c29": {
+      "id": "c29",
+      "type": "Concept",
+      "name": "born in 1980",
+      "defined_by": "r35"
+    },
+    "c30": {
+      "id": "c30",
+      "type": "Concept",
+      "name": "RA",
+      "defined_by": "r36"
+    },
+    "c31": {
+      "id": "c31",
+      "type": "Concept",
+      "name": "white blood cells that were below 3.5",
+      "defined_by": "r38"
+    },
+    "c32": {
+      "id": "c32",
+      "type": "Concept",
+      "name": "uric acid within a normal range",
+      "defined_by": "r39"
+    },
+    "c33": {
+      "id": "c33",
+      "type": "Concept",
+      "name": "AST glutamic oxaloacetic transaminase (GOT) index is above the normal range",
+      "defined_by": "r40"
+    },
+    "c34": {
+      "id": "c34",
+      "type": "Concept",
+      "name": "ALT glutamic pylvic transaminase (GPT) exceed the normal range",
+      "defined_by": "r41"
+    },
+    "c35": {
+      "id": "c35",
+      "type": "Concept",
+      "name": "ALT glutamic pylvic transaminase beyond the normal range",
+      "defined_by": "r42"
+    },
+    "c36": {
+      "id": "c36",
+      "type": "Concept",
+      "name": "average index of the lactate dehydrogenase (LDH)",
+      "defined_by": "f22"
+    },
+    "c37": {
+      "id": "c37",
+      "type": "Concept",
+      "name": "LDH within the normal range",
+      "defined_by": "r43"
+    },
+    "c38": {
+      "id": "c38",
+      "type": "Concept",
+      "name": "lactate dehydrogenase (LDH) between 100-300 index above the normal range",
+      "defined_by": "r44"
+    },
+    "c39": {
+      "id": "c39",
+      "type": "Concept",
+      "name": "alkaliphophatase (ALP) within normal range",
+      "defined_by": "r45"
+    },
+    "c40": {
+      "id": "c40",
+      "type": "Concept",
+      "name": "total protein (TP) below the lower range of the normal index",
+      "defined_by": "r46"
+    },
+    "c41": {
+      "id": "c41",
+      "type": "Concept",
+      "name": "total protein (TP) beyond the normal index",
+      "defined_by": "r47"
+    },
+    "c42": {
+      "id": "c42",
+      "type": "Concept",
+      "name": "deviation of TP index from normal",
+      "defined_by": "f23"
+    },
+    "c43": {
+      "id": "c43",
+      "type": "Concept",
+      "name": "albumin not within range",
+      "defined_by": "r48"
+    },
+    "c44": {
+      "id": "c44",
+      "type": "Concept",
+      "name": "albumin is within normal range",
+      "defined_by": "r50"
+    },
+    "c45": {
+      "id": "c45",
+      "type": "Concept",
+      "name": "uric acid (UA) beyond the normal range",
+      "defined_by": "r39"
+    },
+    "c46": {
+      "id": "c46",
+      "type": "Concept",
+      "name": "uric acid (UA) with normal range",
+      "defined_by": "r51"
+    },
+    "c47": {
+      "id": "c47",
+      "type": "Concept",
+      "name": "average UA index",
+      "defined_by": "f24"
+    },
+    "c48": {
+      "id": "c48",
+      "type": "Concept",
+      "name": "urea nitrogen (UN) just within the borderline of passing",
+      "defined_by": "r52"
+    },
+    "c49": {
+      "id": "c49",
+      "type": "Concept",
+      "name": "creatinine (CRE) out of the normal range",
+      "defined_by": "r54"
+    },
+    "c50": {
+      "id": "c50",
+      "type": "Concept",
+      "name": "creatinine (CRE) not within the normal range",
+      "defined_by": "r54"
+    },
+    "c51": {
+      "id": "c51",
+      "type": "Concept",
+      "name": "total bilirubin (T-BIL) not within normal range",
+      "defined_by": "r55"
+    },
+    "c52": {
+      "id": "c52",
+      "type": "Concept",
+      "name": "oldest patient",
+      "defined_by": "f26"
+    },
+    "c53": {
+      "id": "c53",
+      "type": "Concept",
+      "name": "highest total cholesterol",
+      "defined_by": "f27"
+    },
+    "c54": {
+      "id": "c54",
+      "type": "Concept",
+      "name": "average age",
+      "defined_by": "f28"
+    },
+    "c55": {
+      "id": "c55",
+      "type": "Concept",
+      "name": "high cholesterol",
+      "defined_by": "r56"
+    },
+    "c56": {
+      "id": "c56",
+      "type": "Concept",
+      "name": "triglyceride (TG) index greater than 100 of the normal range",
+      "defined_by": "r57"
+    },
+    "c57": {
+      "id": "c57",
+      "type": "Concept",
+      "name": "triglyceride (TG) level beyond the normal range",
+      "defined_by": "r10"
+    },
+    "c58": {
+      "id": "c58",
+      "type": "Concept",
+      "name": "more than 50 years of age",
+      "defined_by": "r58"
+    },
+    "c59": {
+      "id": "c59",
+      "type": "Concept",
+      "name": "normal range of creatinine phosphokinase",
+      "defined_by": "r59"
+    },
+    "c60": {
+      "id": "c60",
+      "type": "Concept",
+      "name": "blood glucose (GLU) not within normal range",
+      "defined_by": "r62"
+    },
+    "c61": {
+      "id": "c61",
+      "type": "Concept",
+      "name": "total cholesterol(T-CHO) within normal range",
+      "defined_by": "r16"
+    },
+    "c62": {
+      "id": "c62",
+      "type": "Concept",
+      "name": "blood glucose (GLU) index that were within normal range",
+      "defined_by": "r63"
+    },
+    "c63": {
+      "id": "c63",
+      "type": "Concept",
+      "name": "data that was first recorded in 1991",
+      "defined_by": "r64"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ID",
+          "table": "Patient",
+          "column": "ID"
+        },
+        {
+          "term": "SEX",
+          "table": "Patient",
+          "column": "SEX",
+          "value": "M"
+        },
+        {
+          "term": "Admission",
+          "table": "Patient",
+          "column": "Admission",
+          "value": "+"
+        },
+        {
+          "term": "Admission",
+          "table": "Patient",
+          "column": "Admission",
+          "value": "-"
+        }
+      ],
+      "name": "percentage",
+      "expression": "DIVIDE(COUNT(ID) where SEX = 'M' and Admission = '+', COUNT(ID) where SEX = 'M' and Admission = '-')"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ID",
+          "table": "Patient",
+          "column": "ID"
+        },
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        },
+        {
+          "term": "SEX",
+          "table": "Patient",
+          "column": "SEX"
+        }
+      ],
+      "depends_on": [
+        "v4",
+        "r1"
+      ],
+      "name": "calculation",
+      "expression": "DIVIDE(COUNT(ID) where year(Birthday) > '1930' and SEX = 'F'), (COUNT(ID) where SEX = 'F')"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ID",
+          "table": "Patient",
+          "column": "ID"
+        },
+        {
+          "term": "Diagnosis",
+          "table": "Examination",
+          "column": "Diagnosis",
+          "value": "SLE"
+        },
+        {
+          "term": "Admission",
+          "table": "Patient",
+          "column": "Admission",
+          "value": "+"
+        },
+        {
+          "term": "Admission",
+          "table": "Patient",
+          "column": "Admission",
+          "value": "-"
+        }
+      ],
+      "depends_on": [
+        "v5",
+        "v2",
+        "v3"
+      ],
+      "name": "SLE inpatient to outpatient ratio",
+      "expression": "DIVIDE(COUNT(ID) where Diagnosis = 'SLE' and Admission = '+', COUNT(ID) where Diagnosis = 'SLE' and Admission = '-')"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "age",
+      "expression": "SUBTRACT(year(current_timestamp), year(Birthday))"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ID",
+          "table": "Patient",
+          "column": "ID"
+        },
+        {
+          "term": "sex",
+          "table": "Patient",
+          "column": "SEX"
+        },
+        {
+          "term": "TP",
+          "table": "Laboratory",
+          "column": "TP"
+        }
+      ],
+      "depends_on": [
+        "v4",
+        "r7"
+      ],
+      "name": "calculation",
+      "expression": "DIVIDE((ID where sex = 'F' and TP < '6.0' or TP > '8.5'), COUNT(ID)) * 100"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "aCL IgG",
+          "table": "Examination",
+          "column": "aCL IgG"
+        }
+      ],
+      "name": "average anti-cardiolipin antibody (IgG) concentration",
+      "expression": "AVG(aCL IgG)"
+    },
+    "f7": {
+      "id": "f7",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "age",
+      "expression": "SUBTRACT(YEAR(`First Date`), YEAR(Birthday))"
+    },
+    "f8": {
+      "id": "f8",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ID",
+          "table": "Patient",
+          "column": "ID"
+        }
+      ],
+      "name": "calculation",
+      "expression": "DIVIDE(COUNT(ID), 12)"
+    },
+    "f9": {
+      "id": "f9",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "age at first arrival",
+      "expression": "year(`First Date`) - year(Birthday)"
+    },
+    "f10": {
+      "id": "f10",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "UA",
+          "table": "Laboratory",
+          "column": "UA"
+        },
+        {
+          "term": "SEX",
+          "table": "Patient",
+          "column": "SEX"
+        }
+      ],
+      "depends_on": [
+        "v1",
+        "v4",
+        "r14"
+      ],
+      "name": "calculation",
+      "expression": "DIVIDE(SUM(UA <= 8.0 AND SEX = 'M'), SUM(UA <= 6.5 AND SEX = 'F'))"
+    },
+    "f11": {
+      "id": "f11",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "average age of patients as of year 1999",
+      "expression": "AVG(SUBTRACT('1999', year(Birthday)))"
+    },
+    "f12": {
+      "id": "f12",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "How old the patient",
+      "expression": "SUBTRACT(year(`Examination Date`), year(Birthday))"
+    },
+    "f13": {
+      "id": "f13",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "HGB",
+          "table": "Laboratory",
+          "column": "HGB"
+        }
+      ],
+      "name": "the highest hemoglobin count",
+      "expression": "MAX(HGB)"
+    },
+    "f14": {
+      "id": "f14",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "test date",
+          "table": "Laboratory",
+          "column": "Date"
+        },
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "how old at that time",
+      "expression": "SUBTRACT(year(test date), year(Birthday))"
+    },
+    "f15": {
+      "id": "f15",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        },
+        {
+          "term": "Date",
+          "table": "Laboratory",
+          "column": "Date"
+        },
+        {
+          "term": "`T-CHO`",
+          "table": "Laboratory",
+          "column": "T-CHO"
+        }
+      ],
+      "depends_on": [
+        "r17"
+      ],
+      "name": "calculation",
+      "expression": "SUBTRACT(SUM(Birthday = '1959-02-18' AND Date LIKE '1981-11-%' THEN `T-CHO`), SUM(Birthday = '1959-02-18' AND Date LIKE '1981-12-%' THEN `T-CHO`))"
+    },
+    "f16": {
+      "id": "f16",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "UA",
+          "table": "Laboratory",
+          "column": "UA"
+        },
+        {
+          "term": "U-PRO",
+          "table": "Laboratory",
+          "column": "U-PRO"
+        }
+      ],
+      "depends_on": [
+        "r23",
+        "r24"
+      ],
+      "name": "calculation",
+      "expression": "MULTIPLY(DIVIDE(UA <= 6.5, `U-PRO` > 0 AND `U-PRO` < 30), 100)"
+    },
+    "f17": {
+      "id": "f17",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ALB",
+          "table": "Laboratory",
+          "column": "ALB"
+        }
+      ],
+      "name": "average blood albumin level",
+      "expression": "AVG(ALB)"
+    },
+    "f18": {
+      "id": "f18",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "symptoms",
+          "table": "Examination",
+          "column": "Symptoms"
+        }
+      ],
+      "name": "most common sign",
+      "expression": "MAX(symptoms)"
+    },
+    "f19": {
+      "id": "f19",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "DIAGNOSIS",
+          "table": "Examination",
+          "column": "Diagnosis"
+        }
+      ],
+      "name": "calculation",
+      "expression": "DIVIDE(SUM(DIAGNOSIS LIKE '%ITP%'), SUM(DIAGNOSIS LIKE '%SLE%')) MULTIPLY 100"
+    },
+    "f20": {
+      "id": "f20",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "SEX",
+          "table": "Patient",
+          "column": "SEX"
+        }
+      ],
+      "depends_on": [
+        "r37"
+      ],
+      "name": "calculation",
+      "expression": "DIVIDE(SUM(SEX = 'F'), COUNT(SEX)) * 100"
+    },
+    "f21": {
+      "id": "f21",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "age from birthday",
+      "expression": "current_date - Birthday"
+    },
+    "f22": {
+      "id": "f22",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "LDH",
+          "table": "Laboratory",
+          "column": "LDH"
+        }
+      ],
+      "name": "average LDH",
+      "expression": "AVG(LDH)"
+    },
+    "f23": {
+      "id": "f23",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "TP",
+          "table": "Laboratory",
+          "column": "TP"
+        }
+      ],
+      "name": "TP deviation from normal",
+      "expression": "TP - 8.5"
+    },
+    "f24": {
+      "id": "f24",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "UA",
+          "table": "Laboratory",
+          "column": "UA"
+        }
+      ],
+      "name": "average UA index",
+      "expression": "AVG(UA)"
+    },
+    "f25": {
+      "id": "f25",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "SEX",
+          "table": "Patient",
+          "column": "SEX"
+        },
+        {
+          "term": "CRE",
+          "table": "Laboratory",
+          "column": "CRE"
+        }
+      ],
+      "depends_on": [
+        "r54",
+        "v1",
+        "v4"
+      ],
+      "name": "calculation",
+      "expression": "(SUM(SEX = 'M') > SUM(SEX = 'F')) WHERE CRE >= 1.5"
+    },
+    "f26": {
+      "id": "f26",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "oldest patient",
+      "expression": "MIN(birthday)"
+    },
+    "f27": {
+      "id": "f27",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "T-CHO",
+          "table": "Laboratory",
+          "column": "T-CHO"
+        }
+      ],
+      "name": "highest total cholesterol",
+      "expression": "MAX(T-CHO)"
+    },
+    "f28": {
+      "id": "f28",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        },
+        {
+          "term": "ID",
+          "table": "Patient",
+          "column": "ID"
+        }
+      ],
+      "name": "average age",
+      "expression": "DIVIDE(SUM(SUBTRACT(YEAR(NOW()), YEAR(birthday))), COUNT(ID))"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "male",
+      "table": "Patient",
+      "column": "SEX",
+      "value": "M"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "in-patient",
+      "table": "Patient",
+      "column": "Admission",
+      "value": "+"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "outpatient",
+      "table": "Patient",
+      "column": "Admission",
+      "value": "-"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "female",
+      "table": "Patient",
+      "column": "SEX",
+      "value": "F"
+    },
+    "v5": {
+      "id": "v5",
+      "type": "ValueMap",
+      "name": "SLE diagnosed patient",
+      "table": "Examination",
+      "column": "Diagnosis",
+      "value": "SLE"
+    },
+    "v6": {
+      "id": "v6",
+      "type": "ValueMap",
+      "name": "Patient ID",
+      "table": "Patient",
+      "column": "ID",
+      "value": "30609"
+    },
+    "v7": {
+      "id": "v7",
+      "type": "ValueMap",
+      "name": "positive degree of coagulation",
+      "table": "Examination",
+      "column": "RVVT",
+      "value": "+"
+    },
+    "v8": {
+      "id": "v8",
+      "type": "ValueMap",
+      "name": "severe degree of thrombosis",
+      "table": "Examination",
+      "column": "Thrombosis",
+      "value": "2"
+    },
+    "v9": {
+      "id": "v9",
+      "type": "ValueMap",
+      "name": "most serious thrombosis",
+      "table": "Examination",
+      "column": "Thrombosis",
+      "value": "1"
+    },
+    "v10": {
+      "id": "v10",
+      "type": "ValueMap",
+      "name": "SJS diagnosis",
+      "table": "Patient",
+      "column": "Diagnosis",
+      "value": "SJS"
+    },
+    "v11": {
+      "id": "v11",
+      "type": "ValueMap",
+      "name": "AORTITIS",
+      "table": "Patient",
+      "column": "Diagnosis",
+      "value": "AORTITIS"
+    },
+    "v12": {
+      "id": "v12",
+      "type": "ValueMap",
+      "name": "ALT glutamic pylvic transaminase status got 9",
+      "table": "Laboratory",
+      "column": "GPT",
+      "value": "9"
+    },
+    "v13": {
+      "id": "v13",
+      "type": "ValueMap",
+      "name": "1992/6/12",
+      "table": "Laboratory",
+      "column": "Date",
+      "value": "1992-06-12"
+    },
+    "v14": {
+      "id": "v14",
+      "type": "ValueMap",
+      "name": "uric acid level as 8.4",
+      "table": "Laboratory",
+      "column": "UA",
+      "value": "8.4"
+    },
+    "v15": {
+      "id": "v15",
+      "type": "ValueMap",
+      "name": "1991/10/21",
+      "table": "Laboratory",
+      "column": "Date",
+      "value": "1991-10-21"
+    },
+    "v16": {
+      "id": "v16",
+      "type": "ValueMap",
+      "name": "Behcet's disease diagnosis",
+      "table": "Patient",
+      "column": "Diagnosis",
+      "value": "Behcet"
+    },
+    "v17": {
+      "id": "v17",
+      "type": "ValueMap",
+      "name": "PSS",
+      "table": "Examination",
+      "column": "Diagnosis",
+      "value": "PSS"
+    },
+    "v18": {
+      "id": "v18",
+      "type": "ValueMap",
+      "name": "diagnosed with SLE",
+      "table": "Patient",
+      "column": "Diagnosis",
+      "value": "SLE"
+    },
+    "v19": {
+      "id": "v19",
+      "type": "ValueMap",
+      "name": "APS diagnosis",
+      "table": "Examination",
+      "column": "Diagnosis",
+      "value": "APS"
+    },
+    "v20": {
+      "id": "v20",
+      "type": "ValueMap",
+      "name": "thrombocytopenia",
+      "table": "Examination",
+      "column": "Symptoms",
+      "value": "thrombocytopenia"
+    },
+    "v21": {
+      "id": "v21",
+      "type": "ValueMap",
+      "name": "RA diagnosis",
+      "table": "Patient",
+      "column": "Diagnosis",
+      "value": "RA"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "born after 1930",
+      "condition": "year(Birthday) > '1930'"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "birth year between 1930 and 1940",
+      "condition": "year(Birthday) BETWEEN '1930-01-01' AND '1940-12-31'"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "LDH",
+          "table": "Laboratory",
+          "column": "LDH"
+        }
+      ],
+      "name": "LDH > 500",
+      "condition": "LDH > 500"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "born in 1937",
+      "condition": "year(birthday) = '1937'"
+    },
+    "r5": {
+      "id": "r5",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "T-CHO",
+          "table": "Laboratory",
+          "column": "T-CHO"
+        }
+      ],
+      "name": "total cholesterol beyond normal range",
+      "condition": "`T-CHO` >= '250'"
+    },
+    "r6": {
+      "id": "r6",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "ALB",
+          "table": "Laboratory",
+          "column": "ALB"
+        }
+      ],
+      "name": "low albumin",
+      "condition": "ALB < 3.5"
+    },
+    "r7": {
+      "id": "r7",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "TP",
+          "table": "Laboratory",
+          "column": "TP"
+        }
+      ],
+      "name": "abnormal TP range",
+      "condition": "TP < '6.0' OR TP > '8.5'"
+    },
+    "r8": {
+      "id": "r8",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "age 50 and above",
+      "condition": "SUBTRACT(year(current_timestamp), year(Birthday)) >= '50'"
+    },
+    "r9": {
+      "id": "r9",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Description",
+          "table": "Patient",
+          "column": "Description"
+        }
+      ],
+      "name": "came at the hospital in 1997",
+      "condition": "year(Description) = '1997'"
+    },
+    "r10": {
+      "id": "r10",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "tg",
+          "table": "Laboratory",
+          "column": "TG"
+        },
+        {
+          "term": "TG",
+          "table": "Laboratory",
+          "column": "TG"
+        }
+      ],
+      "name": "normal triglyceride range",
+      "condition": "tg >= 200"
+    },
+    "r11": {
+      "id": "r11",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "age interpretation",
+      "condition": "larger Birthday value means younger person"
+    },
+    "r12": {
+      "id": "r12",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Symptoms",
+          "table": "Examination",
+          "column": "Symptoms"
+        }
+      ],
+      "name": "symptoms observed",
+      "condition": "Symptoms IS NOT NULL"
+    },
+    "r13": {
+      "id": "r13",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "Laboratory",
+          "column": "Date"
+        }
+      ],
+      "name": "year that concluded on December 31, 1998",
+      "condition": "Date BETWEEN '1998-01-01' AND '1998-12-31'"
+    },
+    "r14": {
+      "id": "r14",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UA",
+          "table": "Laboratory",
+          "column": "UA"
+        },
+        {
+          "term": "SEX",
+          "table": "Patient",
+          "column": "SEX"
+        }
+      ],
+      "name": "abnormal uric acid rule",
+      "condition": "(UA <= 8.0 AND SEX = 'M') OR (UA <= 6.5 AND SEX = 'F')"
+    },
+    "r15": {
+      "id": "r15",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "Laboratory",
+          "column": "Date"
+        }
+      ],
+      "name": "October of 1991",
+      "condition": "Date BETWEEN '1991-10-01' AND '1991-10-30'"
+    },
+    "r16": {
+      "id": "r16",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "T-CHO",
+          "table": "Laboratory",
+          "column": "T-CHO"
+        }
+      ],
+      "name": "total cholesterol normal range",
+      "condition": "`T-CHO` < 250"
+    },
+    "r17": {
+      "id": "r17",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "born on 1959/2/18",
+      "condition": "Birthday = '1959-02-18'"
+    },
+    "r18": {
+      "id": "r18",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Description",
+          "table": "Patient",
+          "column": "Description"
+        }
+      ],
+      "name": "exam between 01/01/1997 and 12/31/1997",
+      "condition": "YEAR(Description) >= '1997-1-1' AND YEAR(Description) < '1998-1-1'"
+    },
+    "r19": {
+      "id": "r19",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "Laboratory",
+          "column": "Date"
+        }
+      ],
+      "name": "examined between 1987/7/6 and 1996/1/31",
+      "condition": "Date BETWEEN '1987-07-06' AND '1996-01-31'"
+    },
+    "r20": {
+      "id": "r20",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "GPT",
+          "table": "Laboratory",
+          "column": "GPT"
+        }
+      ],
+      "name": "GPT level greater than 30",
+      "condition": "GPT > 30"
+    },
+    "r21": {
+      "id": "r21",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "ALB",
+          "table": "Laboratory",
+          "column": "ALB"
+        }
+      ],
+      "name": "ALB level less than 4",
+      "condition": "ALB < 4"
+    },
+    "r22": {
+      "id": "r22",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "born in 1964",
+      "condition": "YEAR(Birthday) = 1964"
+    },
+    "r23": {
+      "id": "r23",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "U-PRO",
+          "table": "Laboratory",
+          "column": "U-PRO"
+        }
+      ],
+      "name": "proteinuria level within the normal range",
+      "condition": "`U-PRO` > 0 AND `U-PRO` < 30"
+    },
+    "r24": {
+      "id": "r24",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UA",
+          "table": "Laboratory",
+          "column": "UA"
+        }
+      ],
+      "name": "uric acid level below the normal range",
+      "condition": "UA <= 6.5"
+    },
+    "r25": {
+      "id": "r25",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "Laboratory",
+          "column": "Date"
+        }
+      ],
+      "name": "laboratory test in April 1981",
+      "condition": "Date LIKE '1991-10%'"
+    },
+    "r26": {
+      "id": "r26",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "T-BIL",
+          "table": "Laboratory",
+          "column": "T-BIL"
+        }
+      ],
+      "name": "normal T-BIL range",
+      "condition": "T-BIL < 2.0"
+    },
+    "r27": {
+      "id": "r27",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "ANA Pattern",
+          "table": "Examination",
+          "column": "ANA Pattern"
+        }
+      ],
+      "name": "Excluding all P only ANA Pattern",
+      "condition": "`ANA Pattern` != 'P'"
+    },
+    "r28": {
+      "id": "r28",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "BIRTHDAY",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "born between 1980 and 1989",
+      "condition": "BIRTHDAY BETWEEN '1980-01-01' AND '1989-12-31'"
+    },
+    "r29": {
+      "id": "r29",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CRP",
+          "table": "Laboratory",
+          "column": "CRP"
+        }
+      ],
+      "name": "blood level of C-reactive protein de 2+",
+      "condition": "CRP > 2"
+    },
+    "r30": {
+      "id": "r30",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CRE",
+          "table": "Laboratory",
+          "column": "CRE"
+        }
+      ],
+      "name": "createnine 1",
+      "condition": "CRE = 1"
+    },
+    "r31": {
+      "id": "r31",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "LDH",
+          "table": "Laboratory",
+          "column": "LDH"
+        }
+      ],
+      "name": "LDH 123",
+      "condition": "LDH = 123"
+    },
+    "r32": {
+      "id": "r32",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "PLT",
+          "table": "Laboratory",
+          "column": "PLT"
+        }
+      ],
+      "name": "PLT greater than 400",
+      "condition": "PLT > 400"
+    },
+    "r33": {
+      "id": "r33",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "DATE",
+          "table": "Laboratory",
+          "column": "Date"
+        }
+      ],
+      "name": "underwent testing in 1997",
+      "condition": "YEAR(DATE) = '1997'"
+    },
+    "r34": {
+      "id": "r34",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "tp",
+          "table": "Laboratory",
+          "column": "TP"
+        }
+      ],
+      "name": "normal protein range",
+      "condition": "tp > 6 AND tp < 8.5"
+    },
+    "r35": {
+      "id": "r35",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "born in 1980",
+      "condition": "YEAR(Birthday) = '1980'"
+    },
+    "r36": {
+      "id": "r36",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Diagnosis",
+          "table": "Examination",
+          "column": "Diagnosis",
+          "value": "RA"
+        }
+      ],
+      "name": "RA diagnosis",
+      "condition": "Diagnosis = 'RA'"
+    },
+    "r37": {
+      "id": "r37",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "SEX",
+          "table": "Patient",
+          "column": "SEX",
+          "value": "F"
+        }
+      ],
+      "name": "women",
+      "condition": "SEX = 'F'"
+    },
+    "r38": {
+      "id": "r38",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "WBC",
+          "table": "Laboratory",
+          "column": "WBC"
+        }
+      ],
+      "name": "WBC below 3.5",
+      "condition": "WBC < 3.5"
+    },
+    "r39": {
+      "id": "r39",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UA",
+          "table": "Laboratory",
+          "column": "UA"
+        },
+        {
+          "term": "SEX",
+          "table": "Patient",
+          "column": "SEX"
+        }
+      ],
+      "name": "normal uric acid range",
+      "condition": "(UA > 8.0 AND SEX = 'M') OR (UA > 6.5 AND SEX = 'F')"
+    },
+    "r40": {
+      "id": "r40",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "GOT",
+          "table": "Laboratory",
+          "column": "GOT"
+        }
+      ],
+      "name": "GOT above normal range",
+      "condition": "GOT >= 60"
+    },
+    "r41": {
+      "id": "r41",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "GPT",
+          "table": "Laboratory",
+          "column": "GPT"
+        }
+      ],
+      "name": "GPT >= 60",
+      "condition": "GPT >= 60"
+    },
+    "r42": {
+      "id": "r42",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "GPT",
+          "table": "Laboratory",
+          "column": "GPT"
+        }
+      ],
+      "name": "GPT > 60",
+      "condition": "GPT > 60"
+    },
+    "r43": {
+      "id": "r43",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "LDH",
+          "table": "Laboratory",
+          "column": "LDH"
+        }
+      ],
+      "name": "normal LDH range",
+      "condition": "LDH < 500"
+    },
+    "r44": {
+      "id": "r44",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "LDH",
+          "table": "Laboratory",
+          "column": "LDH"
+        }
+      ],
+      "name": "LDH between 100-300 index above the normal range",
+      "condition": "LDH BETWEEN 600 AND 800"
+    },
+    "r45": {
+      "id": "r45",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "ALP",
+          "table": "Laboratory",
+          "column": "ALP"
+        }
+      ],
+      "name": "ALP within normal range",
+      "condition": "ALP < 300"
+    },
+    "r46": {
+      "id": "r46",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "TP",
+          "table": "Laboratory",
+          "column": "TP"
+        }
+      ],
+      "name": "TP below normal range",
+      "condition": "TP < 6.0"
+    },
+    "r47": {
+      "id": "r47",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "TP",
+          "table": "Laboratory",
+          "column": "TP"
+        }
+      ],
+      "name": "TP > 8.5",
+      "condition": "TP > 8.5"
+    },
+    "r48": {
+      "id": "r48",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "ALB",
+          "table": "Laboratory",
+          "column": "ALB"
+        }
+      ],
+      "name": "abnormal ALB range",
+      "condition": "ALB <= 3.5 OR ALB >= 5.5"
+    },
+    "r49": {
+      "id": "r49",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "Year(Birthday) = '1982'",
+      "condition": "Year(Birthday) = '1982'"
+    },
+    "r50": {
+      "id": "r50",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "ALB",
+          "table": "Laboratory",
+          "column": "ALB"
+        }
+      ],
+      "name": "albumin within normal range",
+      "condition": "ALB BETWEEN 3.5 AND 5.5"
+    },
+    "r51": {
+      "id": "r51",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UA",
+          "table": "Laboratory",
+          "column": "UA"
+        },
+        {
+          "term": "SEX",
+          "table": "Patient",
+          "column": "SEX"
+        }
+      ],
+      "name": "normal UA range by sex",
+      "condition": "(UA < 8.0 AND SEX = 'M') OR (UA < 6.5 AND SEX = 'F')"
+    },
+    "r52": {
+      "id": "r52",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UN",
+          "table": "Laboratory",
+          "column": "UN",
+          "value": 29
+        }
+      ],
+      "name": "UN borderline passing",
+      "condition": "UN = 29"
+    },
+    "r53": {
+      "id": "r53",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UN",
+          "table": "Laboratory",
+          "column": "UN"
+        }
+      ],
+      "name": "UN within normal index",
+      "condition": "UN < 30"
+    },
+    "r54": {
+      "id": "r54",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CRE",
+          "table": "Laboratory",
+          "column": "CRE"
+        }
+      ],
+      "name": "CRE out of normal range",
+      "condition": "CRE >= 1.5"
+    },
+    "r55": {
+      "id": "r55",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "T-BIL",
+          "table": "Laboratory",
+          "column": "T-BIL"
+        }
+      ],
+      "name": "T-BIL >= 2.0",
+      "condition": "`T-BIL` >= 2.0"
+    },
+    "r56": {
+      "id": "r56",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "T-CHO",
+          "table": "Laboratory",
+          "column": "T-CHO"
+        }
+      ],
+      "name": "high cholesterol",
+      "condition": "`T-CHO` >= 250"
+    },
+    "r57": {
+      "id": "r57",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "TG",
+          "table": "Laboratory",
+          "column": "TG"
+        }
+      ],
+      "name": "TG > 300",
+      "condition": "TG > 300"
+    },
+    "r58": {
+      "id": "r58",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "age > 50",
+      "condition": "SUBTRACT(year(current_timestamp), year(Birthday)) > 50"
+    },
+    "r59": {
+      "id": "r59",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CPK",
+          "table": "Laboratory",
+          "column": "CPK"
+        }
+      ],
+      "name": "normal CPK range",
+      "condition": "CPK < 250"
+    },
+    "r60": {
+      "id": "r60",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Birthday",
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "born between 1936-1956",
+      "condition": "year(Birthday) BETWEEN '1936' AND '1956'"
+    },
+    "r61": {
+      "id": "r61",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CPK",
+          "table": "Laboratory",
+          "column": "CPK"
+        }
+      ],
+      "name": "creatinine phosphokinase beyond the normal range",
+      "condition": "CPK >= 250"
+    },
+    "r62": {
+      "id": "r62",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "GLU",
+          "table": "Laboratory",
+          "column": "GLU"
+        }
+      ],
+      "name": "GLU >= 180",
+      "condition": "GLU >= 180"
+    },
+    "r63": {
+      "id": "r63",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "GLU",
+          "table": "Laboratory",
+          "column": "GLU"
+        }
+      ],
+      "name": "normal blood glucose range",
+      "condition": "GLU < 180"
+    },
+    "r64": {
+      "id": "r64",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Description",
+          "table": "Patient",
+          "column": "Description"
+        }
+      ],
+      "name": "first recorded in 1991",
+      "condition": "year(Description) = 1991"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Patient",
+          "column": "Diagnosis"
+        }
+      ],
+      "name": "disease"
+    },
+    "a2": {
+      "id": "a2",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Examination",
+          "column": "Diagnosis"
+        }
+      ],
+      "name": "disease"
+    },
+    "a3": {
+      "id": "a3",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Patient",
+          "column": "Birthday"
+        }
+      ],
+      "name": "age gap"
+    },
+    "a4": {
+      "id": "a4",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Laboratory",
+          "column": "HGB"
+        }
+      ],
+      "name": "the highest hemoglobin count"
+    },
+    "a5": {
+      "id": "a5",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Patient",
+          "column": "SEX"
+        }
+      ],
+      "name": "gender"
+    },
+    "a6": {
+      "id": "a6",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Patient",
+          "column": "Description"
+        }
+      ],
+      "name": "medical information first documented"
+    },
+    "a7": {
+      "id": "a7",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Patient",
+          "column": "ID"
+        }
+      ],
+      "name": "patient number"
+    },
+    "a8": {
+      "id": "a8",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Laboratory",
+          "column": "Date"
+        }
+      ],
+      "name": "DATE"
+    },
+    "a9": {
+      "id": "a9",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "Laboratory",
+          "column": "T-BIL"
+        }
+      ],
+      "name": "highest total bilirubin"
+    }
+  },
+  "columns": [
+    {
+      "table": "Examination",
+      "column": "ID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Examination",
+      "column": "Examination",
+      "type": "DATE"
+    },
+    {
+      "table": "Examination",
+      "column": "aCL IgG",
+      "type": "REAL"
+    },
+    {
+      "table": "Examination",
+      "column": "aCL IgM",
+      "type": "REAL"
+    },
+    {
+      "table": "Examination",
+      "column": "ANA",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Examination",
+      "column": "ANA Pattern",
+      "type": "TEXT"
+    },
+    {
+      "table": "Examination",
+      "column": "aCL IgA",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Examination",
+      "column": "Diagnosis",
+      "type": "TEXT"
+    },
+    {
+      "table": "Examination",
+      "column": "KCT",
+      "type": "TEXT"
+    },
+    {
+      "table": "Examination",
+      "column": "RVVT",
+      "type": "TEXT"
+    },
+    {
+      "table": "Examination",
+      "column": "LAC",
+      "type": "TEXT"
+    },
+    {
+      "table": "Examination",
+      "column": "Symptoms",
+      "type": "TEXT"
+    },
+    {
+      "table": "Examination",
+      "column": "Thrombosis",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Patient",
+      "column": "ID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Patient",
+      "column": "SEX",
+      "type": "TEXT"
+    },
+    {
+      "table": "Patient",
+      "column": "Birthday",
+      "type": "DATE"
+    },
+    {
+      "table": "Patient",
+      "column": "Description",
+      "type": "DATE"
+    },
+    {
+      "table": "Patient",
+      "column": "First",
+      "type": "DATE"
+    },
+    {
+      "table": "Patient",
+      "column": "Admission",
+      "type": "TEXT"
+    },
+    {
+      "table": "Patient",
+      "column": "Diagnosis",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "ID",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "Date",
+      "type": "DATE"
+    },
+    {
+      "table": "Laboratory",
+      "column": "GOT",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "GPT",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "LDH",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "ALP",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "TP",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "ALB",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "UA",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "UN",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "CRE",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "T-BIL",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "T-CHO",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "TG",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "CPK",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "GLU",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "WBC",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "RBC",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "HGB",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "HCT",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "PLT",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "PT",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "APTT",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "FG",
+      "type": "REAL"
+    },
+    {
+      "table": "Laboratory",
+      "column": "PIC",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "TAT",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "TAT2",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "U-PRO",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "IGG",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "IGA",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "IGM",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "CRP",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "RA",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "RF",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "C3",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "C4",
+      "type": "INTEGER"
+    },
+    {
+      "table": "Laboratory",
+      "column": "RNP",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "SM",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "SC170",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "SSA",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "SSB",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "CENTROMEA",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "DNA",
+      "type": "TEXT"
+    },
+    {
+      "table": "Laboratory",
+      "column": "DNA-II",
+      "type": "INTEGER"
+    }
+  ],
+  "fk_edges": [
+    {
+      "from": {
+        "table": "Examination",
+        "column": "ID"
+      },
+      "to": {
+        "table": "Patient",
+        "column": "ID"
+      }
+    },
+    {
+      "from": {
+        "table": "Laboratory",
+        "column": "ID"
+      },
+      "to": {
+        "table": "Patient",
+        "column": "ID"
+      }
+    }
+  ],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c27",
+        "c28",
+        "c29",
+        "c30",
+        "c31",
+        "c32",
+        "c33",
+        "c34",
+        "c35",
+        "c36",
+        "c37",
+        "c38",
+        "c39",
+        "c40",
+        "c41",
+        "c42",
+        "c43",
+        "c44",
+        "c45",
+        "c46",
+        "c47",
+        "c48",
+        "c49",
+        "c50",
+        "c51",
+        "c52",
+        "c53",
+        "c54",
+        "c55",
+        "c56",
+        "c57",
+        "c58",
+        "c59",
+        "c60",
+        "c61",
+        "c62",
+        "c63"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16",
+        "f17",
+        "f18",
+        "f19",
+        "f20",
+        "f21",
+        "f22",
+        "f23",
+        "f24",
+        "f25",
+        "f26",
+        "f27",
+        "f28"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v14",
+        "v15",
+        "v16",
+        "v17",
+        "v18",
+        "v19",
+        "v20",
+        "v21"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15",
+        "r16",
+        "r17",
+        "r18",
+        "r19",
+        "r20",
+        "r21",
+        "r22",
+        "r23",
+        "r24",
+        "r25",
+        "r26",
+        "r27",
+        "r28",
+        "r29",
+        "r30",
+        "r31",
+        "r32",
+        "r33",
+        "r34",
+        "r35",
+        "r36",
+        "r37",
+        "r38",
+        "r39",
+        "r40",
+        "r41",
+        "r42",
+        "r43",
+        "r44",
+        "r45",
+        "r46",
+        "r47",
+        "r48",
+        "r49",
+        "r50",
+        "r51",
+        "r52",
+        "r53",
+        "r54",
+        "r55",
+        "r56",
+        "r57",
+        "r58",
+        "r59",
+        "r60",
+        "r61",
+        "r62",
+        "r63",
+        "r64"
+      ],
+      "ColumnAlias": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9"
+      ]
+    },
+    "by_column": {
+      "Patient.ID": [
+        "f1",
+        "f2",
+        "f3",
+        "f5",
+        "f8",
+        "f28",
+        "v6",
+        "a7"
+      ],
+      "Patient.SEX": [
+        "f1",
+        "f2",
+        "f5",
+        "f10",
+        "f20",
+        "f25",
+        "v1",
+        "v4",
+        "r14",
+        "r37",
+        "r39",
+        "r51",
+        "a5"
+      ],
+      "Patient.Admission": [
+        "f1",
+        "f3",
+        "v2",
+        "v3"
+      ],
+      "Patient.Birthday": [
+        "f2",
+        "f4",
+        "f7",
+        "f9",
+        "f11",
+        "f12",
+        "f14",
+        "f15",
+        "f21",
+        "f26",
+        "f28",
+        "r1",
+        "r2",
+        "r4",
+        "r8",
+        "r11",
+        "r17",
+        "r22",
+        "r28",
+        "r35",
+        "r49",
+        "r58",
+        "r60",
+        "a3"
+      ],
+      "Examination.Diagnosis": [
+        "f3",
+        "f19",
+        "v5",
+        "v17",
+        "v19",
+        "r36",
+        "a2"
+      ],
+      "Laboratory.TP": [
+        "f5",
+        "f23",
+        "r7",
+        "r34",
+        "r46",
+        "r47"
+      ],
+      "Examination.aCL IgG": [
+        "f6"
+      ],
+      "Laboratory.UA": [
+        "f10",
+        "f16",
+        "f24",
+        "v14",
+        "r14",
+        "r24",
+        "r39",
+        "r51"
+      ],
+      "Laboratory.HGB": [
+        "f13",
+        "a4"
+      ],
+      "Laboratory.Date": [
+        "f14",
+        "f15",
+        "v13",
+        "v15",
+        "r13",
+        "r15",
+        "r19",
+        "r25",
+        "r33",
+        "a8"
+      ],
+      "Laboratory.T-CHO": [
+        "f15",
+        "f27",
+        "r5",
+        "r16",
+        "r56"
+      ],
+      "Laboratory.U-PRO": [
+        "f16",
+        "r23"
+      ],
+      "Laboratory.ALB": [
+        "f17",
+        "r6",
+        "r21",
+        "r48",
+        "r50"
+      ],
+      "Examination.Symptoms": [
+        "f18",
+        "v20",
+        "r12"
+      ],
+      "Laboratory.LDH": [
+        "f22",
+        "r3",
+        "r31",
+        "r43",
+        "r44"
+      ],
+      "Laboratory.CRE": [
+        "f25",
+        "r30",
+        "r54"
+      ],
+      "Examination.RVVT": [
+        "v7"
+      ],
+      "Examination.Thrombosis": [
+        "v8",
+        "v9"
+      ],
+      "Patient.Diagnosis": [
+        "v10",
+        "v11",
+        "v16",
+        "v18",
+        "v21",
+        "a1"
+      ],
+      "Laboratory.GPT": [
+        "v12",
+        "r20",
+        "r41",
+        "r42"
+      ],
+      "Patient.Description": [
+        "r9",
+        "r18",
+        "r64",
+        "a6"
+      ],
+      "Laboratory.TG": [
+        "r10",
+        "r57"
+      ],
+      "Laboratory.T-BIL": [
+        "r26",
+        "r55",
+        "a9"
+      ],
+      "Examination.ANA Pattern": [
+        "r27"
+      ],
+      "Laboratory.CRP": [
+        "r29"
+      ],
+      "Laboratory.PLT": [
+        "r32"
+      ],
+      "Laboratory.WBC": [
+        "r38"
+      ],
+      "Laboratory.GOT": [
+        "r40"
+      ],
+      "Laboratory.ALP": [
+        "r45"
+      ],
+      "Laboratory.UN": [
+        "r52",
+        "r53"
+      ],
+      "Laboratory.CPK": [
+        "r59",
+        "r61"
+      ],
+      "Laboratory.GLU": [
+        "r62",
+        "r63"
+      ]
+    },
+    "by_name_token": {
+      "percentage": [
+        "c1",
+        "f1"
+      ],
+      "born": [
+        "c2",
+        "c3",
+        "c8",
+        "c27",
+        "c29",
+        "r1",
+        "r4",
+        "r17",
+        "r22",
+        "r28",
+        "r35",
+        "r60"
+      ],
+      "1930": [
+        "c2",
+        "c3",
+        "f2",
+        "r1",
+        "r2"
+      ],
+      "patient": [
+        "c2",
+        "c3",
+        "c21",
+        "c52",
+        "f12",
+        "f26",
+        "v2",
+        "v5",
+        "v6",
+        "a7"
+      ],
+      "after": [
+        "c2",
+        "r1"
+      ],
+      "who": [
+        "c2",
+        "c8"
+      ],
+      "were": [
+        "c2",
+        "c8",
+        "c31",
+        "c62"
+      ],
+      "1940": [
+        "c3",
+        "r2"
+      ],
+      "year": [
+        "c3",
+        "c20",
+        "f2",
+        "f4",
+        "f7",
+        "f9",
+        "f11",
+        "f12",
+        "f14",
+        "f28",
+        "r1",
+        "r2",
+        "r4",
+        "r8",
+        "r9",
+        "r13",
+        "r18",
+        "r22",
+        "r33",
+        "r35",
+        "r49",
+        "r58",
+        "r60",
+        "r64"
+      ],
+      "between": [
+        "c3",
+        "c27",
+        "c38",
+        "r2",
+        "r13",
+        "r15",
+        "r18",
+        "r19",
+        "r28",
+        "r44",
+        "r50",
+        "r60"
+      ],
+      "inpatient": [
+        "c4",
+        "c5",
+        "f3"
+      ],
+      "outpatient": [
+        "c5",
+        "f3",
+        "v3"
+      ],
+      "sle": [
+        "c5",
+        "f3",
+        "f19",
+        "v5",
+        "v18"
+      ],
+      "ratio": [
+        "c5",
+        "f3"
+      ],
+      "beyond": [
+        "c6",
+        "c9",
+        "c35",
+        "c41",
+        "c45",
+        "c57",
+        "r5",
+        "r61"
+      ],
+      "ldh": [
+        "c6",
+        "c36",
+        "c37",
+        "c38",
+        "f22",
+        "r3",
+        "r31",
+        "r43",
+        "r44"
+      ],
+      "normal": [
+        "c6",
+        "c9",
+        "c11",
+        "c17",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c28",
+        "c32",
+        "c33",
+        "c34",
+        "c35",
+        "c37",
+        "c38",
+        "c39",
+        "c40",
+        "c41",
+        "c42",
+        "c44",
+        "c45",
+        "c46",
+        "c49",
+        "c50",
+        "c51",
+        "c56",
+        "c57",
+        "c59",
+        "c60",
+        "c61",
+        "c62",
+        "f23",
+        "r5",
+        "r10",
+        "r16",
+        "r23",
+        "r24",
+        "r26",
+        "r34",
+        "r39",
+        "r40",
+        "r43",
+        "r44",
+        "r45",
+        "r46",
+        "r50",
+        "r51",
+        "r53",
+        "r54",
+        "r59",
+        "r61",
+        "r63"
+      ],
+      "range": [
+        "c6",
+        "c9",
+        "c11",
+        "c24",
+        "c25",
+        "c26",
+        "c28",
+        "c32",
+        "c33",
+        "c34",
+        "c35",
+        "c37",
+        "c38",
+        "c39",
+        "c40",
+        "c43",
+        "c44",
+        "c45",
+        "c46",
+        "c49",
+        "c50",
+        "c51",
+        "c56",
+        "c57",
+        "c59",
+        "c60",
+        "c61",
+        "c62",
+        "r5",
+        "r7",
+        "r10",
+        "r16",
+        "r23",
+        "r24",
+        "r26",
+        "r34",
+        "r39",
+        "r40",
+        "r43",
+        "r44",
+        "r45",
+        "r46",
+        "r48",
+        "r50",
+        "r51",
+        "r54",
+        "r59",
+        "r61",
+        "r63"
+      ],
+      "age": [
+        "c7",
+        "c13",
+        "c18",
+        "c20",
+        "c54",
+        "c58",
+        "f4",
+        "f7",
+        "f9",
+        "f11",
+        "f21",
+        "f28",
+        "r8",
+        "r11",
+        "r58",
+        "a3"
+      ],
+      "1937": [
+        "c8",
+        "r4"
+      ],
+      "was": [
+        "c9",
+        "c63"
+      ],
+      "cholesterol": [
+        "c9",
+        "c23",
+        "c53",
+        "c55",
+        "c61",
+        "f27",
+        "r5",
+        "r16",
+        "r56"
+      ],
+      "total": [
+        "c9",
+        "c11",
+        "c23",
+        "c40",
+        "c41",
+        "c51",
+        "c53",
+        "c61",
+        "f27",
+        "r5",
+        "r16",
+        "a9"
+      ],
+      "lower": [
+        "c10",
+        "c40"
+      ],
+      "than": [
+        "c10",
+        "c56",
+        "c58",
+        "r20",
+        "r21",
+        "r32"
+      ],
+      "albumin": [
+        "c10",
+        "c43",
+        "c44",
+        "f17",
+        "r6",
+        "r50"
+      ],
+      "level": [
+        "c10",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c57",
+        "f17",
+        "v14",
+        "r20",
+        "r21",
+        "r23",
+        "r24",
+        "r29"
+      ],
+      "within": [
+        "c11",
+        "c24",
+        "c26",
+        "c28",
+        "c32",
+        "c37",
+        "c39",
+        "c43",
+        "c44",
+        "c48",
+        "c50",
+        "c51",
+        "c60",
+        "c61",
+        "c62",
+        "r23",
+        "r45",
+        "r50",
+        "r53"
+      ],
+      "protein": [
+        "c11",
+        "c28",
+        "c40",
+        "c41",
+        "r29",
+        "r34"
+      ],
+      "not": [
+        "c11",
+        "c43",
+        "c50",
+        "c51",
+        "c60",
+        "r12"
+      ],
+      "calculation": [
+        "c12",
+        "f2",
+        "f5",
+        "f8",
+        "f10",
+        "f15",
+        "f16",
+        "f19",
+        "f20",
+        "f25"
+      ],
+      "50": [
+        "c13",
+        "c58",
+        "r8",
+        "r58"
+      ],
+      "above": [
+        "c13",
+        "c33",
+        "c38",
+        "r8",
+        "r40",
+        "r44"
+      ],
+      "concentration": [
+        "c14",
+        "f6"
+      ],
+      "average": [
+        "c14",
+        "c20",
+        "c36",
+        "c47",
+        "c54",
+        "f6",
+        "f11",
+        "f17",
+        "f22",
+        "f24",
+        "f28"
+      ],
+      "cardiolipin": [
+        "c14",
+        "f6"
+      ],
+      "anti": [
+        "c14",
+        "f6"
+      ],
+      "igg": [
+        "c14",
+        "f6"
+      ],
+      "antibody": [
+        "c14",
+        "f6"
+      ],
+      "most": [
+        "c15",
+        "f18",
+        "v9"
+      ],
+      "thrombosis": [
+        "c15",
+        "v8",
+        "v9"
+      ],
+      "serious": [
+        "c15",
+        "v9"
+      ],
+      "women": [
+        "c16",
+        "r37"
+      ],
+      "triglyceride": [
+        "c17",
+        "c56",
+        "c57",
+        "r10"
+      ],
+      "patients": [
+        "c18",
+        "c20",
+        "f11"
+      ],
+      "hospital": [
+        "c18",
+        "r9"
+      ],
+      "they": [
+        "c18"
+      ],
+      "initially": [
+        "c18"
+      ],
+      "when": [
+        "c18"
+      ],
+      "arrived": [
+        "c18"
+      ],
+      "acid": [
+        "c19",
+        "c25",
+        "c32",
+        "c45",
+        "c46",
+        "v14",
+        "r14",
+        "r24",
+        "r39"
+      ],
+      "uric": [
+        "c19",
+        "c25",
+        "c32",
+        "c45",
+        "c46",
+        "v14",
+        "r14",
+        "r24",
+        "r39"
+      ],
+      "abnormal": [
+        "c19",
+        "r7",
+        "r14",
+        "r48"
+      ],
+      "as": [
+        "c20",
+        "f11",
+        "v14"
+      ],
+      "1999": [
+        "c20",
+        "f11"
+      ],
+      "how": [
+        "c21",
+        "f12",
+        "f14"
+      ],
+      "old": [
+        "c21",
+        "f12",
+        "f14"
+      ],
+      "highest": [
+        "c22",
+        "c53",
+        "f13",
+        "f27",
+        "a4",
+        "a9"
+      ],
+      "hemoglobin": [
+        "c22",
+        "f13",
+        "a4"
+      ],
+      "count": [
+        "c22",
+        "f1",
+        "f2",
+        "f3",
+        "f5",
+        "f8",
+        "f13",
+        "f20",
+        "f28",
+        "a4"
+      ],
+      "proteinuria": [
+        "c24",
+        "r23"
+      ],
+      "below": [
+        "c25",
+        "c31",
+        "c40",
+        "r24",
+        "r38",
+        "r46"
+      ],
+      "bilirubin": [
+        "c26",
+        "c51",
+        "a9"
+      ],
+      "blood": [
+        "c26",
+        "c31",
+        "c60",
+        "c62",
+        "f17",
+        "r29",
+        "r63"
+      ],
+      "1989": [
+        "c27",
+        "r28"
+      ],
+      "1980": [
+        "c27",
+        "c29",
+        "r28",
+        "r35"
+      ],
+      "levels": [
+        "c28"
+      ],
+      "ra": [
+        "c30",
+        "v21",
+        "r36"
+      ],
+      "white": [
+        "c31"
+      ],
+      "cells": [
+        "c31"
+      ],
+      "that": [
+        "c31",
+        "c62",
+        "c63",
+        "f14",
+        "r13"
+      ],
+      "glutamic": [
+        "c33",
+        "c34",
+        "c35",
+        "v12"
+      ],
+      "got": [
+        "c33",
+        "v12",
+        "r40"
+      ],
+      "oxaloacetic": [
+        "c33"
+      ],
+      "ast": [
+        "c33"
+      ],
+      "transaminase": [
+        "c33",
+        "c34",
+        "c35",
+        "v12"
+      ],
+      "index": [
+        "c33",
+        "c36",
+        "c38",
+        "c40",
+        "c41",
+        "c42",
+        "c47",
+        "c56",
+        "c62",
+        "f24",
+        "r44",
+        "r53"
+      ],
+      "pylvic": [
+        "c34",
+        "c35",
+        "v12"
+      ],
+      "alt": [
+        "c34",
+        "c35",
+        "v12"
+      ],
+      "exceed": [
+        "c34"
+      ],
+      "gpt": [
+        "c34",
+        "r20",
+        "r41",
+        "r42"
+      ],
+      "lactate": [
+        "c36",
+        "c38"
+      ],
+      "dehydrogenase": [
+        "c36",
+        "c38"
+      ],
+      "100": [
+        "c38",
+        "c56",
+        "f5",
+        "f16",
+        "f19",
+        "f20",
+        "r44"
+      ],
+      "300": [
+        "c38",
+        "r44",
+        "r45",
+        "r57"
+      ],
+      "alp": [
+        "c39",
+        "r45"
+      ],
+      "alkaliphophatase": [
+        "c39"
+      ],
+      "tp": [
+        "c40",
+        "c41",
+        "c42",
+        "f5",
+        "f23",
+        "r7",
+        "r34",
+        "r46",
+        "r47"
+      ],
+      "deviation": [
+        "c42",
+        "f23"
+      ],
+      "from": [
+        "c42",
+        "f21",
+        "f23"
+      ],
+      "ua": [
+        "c45",
+        "c46",
+        "c47",
+        "f10",
+        "f16",
+        "f24",
+        "r14",
+        "r24",
+        "r39",
+        "r51"
+      ],
+      "just": [
+        "c48"
+      ],
+      "un": [
+        "c48",
+        "r52",
+        "r53"
+      ],
+      "passing": [
+        "c48",
+        "r52"
+      ],
+      "borderline": [
+        "c48",
+        "r52"
+      ],
+      "urea": [
+        "c48"
+      ],
+      "nitrogen": [
+        "c48"
+      ],
+      "out": [
+        "c49",
+        "r54"
+      ],
+      "cre": [
+        "c49",
+        "c50",
+        "f25",
+        "r30",
+        "r54"
+      ],
+      "creatinine": [
+        "c49",
+        "c50",
+        "c59",
+        "r61"
+      ],
+      "bil": [
+        "c51",
+        "r26",
+        "r55"
+      ],
+      "oldest": [
+        "c52",
+        "f26"
+      ],
+      "high": [
+        "c55",
+        "r56"
+      ],
+      "greater": [
+        "c56",
+        "r20",
+        "r32"
+      ],
+      "tg": [
+        "c56",
+        "c57",
+        "r10",
+        "r57"
+      ],
+      "more": [
+        "c58"
+      ],
+      "years": [
+        "c58"
+      ],
+      "phosphokinase": [
+        "c59",
+        "r61"
+      ],
+      "glucose": [
+        "c60",
+        "c62",
+        "r63"
+      ],
+      "glu": [
+        "c60",
+        "c62",
+        "r62",
+        "r63"
+      ],
+      "cho": [
+        "c61",
+        "f15",
+        "f27",
+        "r5",
+        "r16",
+        "r56"
+      ],
+      "1991": [
+        "c63",
+        "v15",
+        "r15",
+        "r25",
+        "r64"
+      ],
+      "recorded": [
+        "c63",
+        "r64"
+      ],
+      "data": [
+        "c63"
+      ],
+      "first": [
+        "c63",
+        "f7",
+        "f9",
+        "r64",
+        "a6"
+      ],
+      "id": [
+        "f1",
+        "f2",
+        "f3",
+        "f5",
+        "f8",
+        "f28",
+        "v6"
+      ],
+      "divide": [
+        "f1",
+        "f2",
+        "f3",
+        "f5",
+        "f8",
+        "f10",
+        "f16",
+        "f19",
+        "f20",
+        "f28"
+      ],
+      "where": [
+        "f1",
+        "f2",
+        "f3",
+        "f5",
+        "f25"
+      ],
+      "sex": [
+        "f1",
+        "f2",
+        "f5",
+        "f10",
+        "f20",
+        "f25",
+        "r14",
+        "r37",
+        "r39",
+        "r51"
+      ],
+      "admission": [
+        "f1",
+        "f3"
+      ],
+      "birthday": [
+        "f2",
+        "f4",
+        "f7",
+        "f9",
+        "f11",
+        "f12",
+        "f14",
+        "f15",
+        "f21",
+        "f26",
+        "f28",
+        "r1",
+        "r2",
+        "r4",
+        "r8",
+        "r11",
+        "r17",
+        "r22",
+        "r28",
+        "r35",
+        "r49",
+        "r58",
+        "r60"
+      ],
+      "diagnosis": [
+        "f3",
+        "f19",
+        "v10",
+        "v16",
+        "v19",
+        "v21",
+        "r36"
+      ],
+      "current_timestamp": [
+        "f4",
+        "r8",
+        "r58"
+      ],
+      "subtract": [
+        "f4",
+        "f7",
+        "f11",
+        "f12",
+        "f14",
+        "f15",
+        "f28",
+        "r8",
+        "r58"
+      ],
+      "acl": [
+        "f6"
+      ],
+      "avg": [
+        "f6",
+        "f11",
+        "f17",
+        "f22",
+        "f24"
+      ],
+      "date": [
+        "f7",
+        "f9",
+        "f12",
+        "f14",
+        "f15",
+        "r13",
+        "r15",
+        "r19",
+        "r25",
+        "r33",
+        "a8"
+      ],
+      "12": [
+        "f8",
+        "f15",
+        "v13",
+        "r2",
+        "r13",
+        "r18",
+        "r28"
+      ],
+      "arrival": [
+        "f9"
+      ],
+      "sum": [
+        "f10",
+        "f15",
+        "f19",
+        "f20",
+        "f25",
+        "f28"
+      ],
+      "examination": [
+        "f12"
+      ],
+      "hgb": [
+        "f13"
+      ],
+      "max": [
+        "f13",
+        "f18",
+        "f27"
+      ],
+      "time": [
+        "f14"
+      ],
+      "test": [
+        "f14",
+        "r25"
+      ],
+      "02": [
+        "f15",
+        "r17"
+      ],
+      "1981": [
+        "f15",
+        "r25"
+      ],
+      "11": [
+        "f15"
+      ],
+      "then": [
+        "f15"
+      ],
+      "18": [
+        "f15",
+        "r17"
+      ],
+      "like": [
+        "f15",
+        "f19",
+        "r25"
+      ],
+      "1959": [
+        "f15",
+        "r17"
+      ],
+      "30": [
+        "f16",
+        "r15",
+        "r20",
+        "r23",
+        "r53"
+      ],
+      "multiply": [
+        "f16",
+        "f19"
+      ],
+      "pro": [
+        "f16",
+        "r23"
+      ],
+      "alb": [
+        "f17",
+        "r6",
+        "r21",
+        "r48",
+        "r50"
+      ],
+      "symptoms": [
+        "f18",
+        "r12"
+      ],
+      "common": [
+        "f18"
+      ],
+      "sign": [
+        "f18"
+      ],
+      "itp": [
+        "f19"
+      ],
+      "current_date": [
+        "f21"
+      ],
+      "min": [
+        "f26"
+      ],
+      "now": [
+        "f28"
+      ],
+      "male": [
+        "v1"
+      ],
+      "female": [
+        "v4"
+      ],
+      "diagnosed": [
+        "v5",
+        "v18"
+      ],
+      "positive": [
+        "v7"
+      ],
+      "coagulation": [
+        "v7"
+      ],
+      "degree": [
+        "v7",
+        "v8"
+      ],
+      "severe": [
+        "v8"
+      ],
+      "sjs": [
+        "v10"
+      ],
+      "aortitis": [
+        "v11"
+      ],
+      "status": [
+        "v12"
+      ],
+      "1992": [
+        "v13"
+      ],
+      "10": [
+        "v15",
+        "r15",
+        "r25"
+      ],
+      "21": [
+        "v15"
+      ],
+      "disease": [
+        "v16",
+        "a1",
+        "a2"
+      ],
+      "behcet": [
+        "v16"
+      ],
+      "pss": [
+        "v17"
+      ],
+      "aps": [
+        "v19"
+      ],
+      "thrombocytopenia": [
+        "v20"
+      ],
+      "01": [
+        "r2",
+        "r13",
+        "r15",
+        "r18",
+        "r19",
+        "r28"
+      ],
+      "birth": [
+        "r2"
+      ],
+      "31": [
+        "r2",
+        "r13",
+        "r18",
+        "r19",
+        "r28"
+      ],
+      "500": [
+        "r3",
+        "r43"
+      ],
+      "250": [
+        "r5",
+        "r16",
+        "r56",
+        "r59",
+        "r61"
+      ],
+      "low": [
+        "r6"
+      ],
+      "description": [
+        "r9",
+        "r18",
+        "r64"
+      ],
+      "1997": [
+        "r9",
+        "r18",
+        "r33"
+      ],
+      "came": [
+        "r9"
+      ],
+      "200": [
+        "r10"
+      ],
+      "means": [
+        "r11"
+      ],
+      "value": [
+        "r11"
+      ],
+      "person": [
+        "r11"
+      ],
+      "younger": [
+        "r11"
+      ],
+      "larger": [
+        "r11"
+      ],
+      "interpretation": [
+        "r11"
+      ],
+      "null": [
+        "r12"
+      ],
+      "observed": [
+        "r12"
+      ],
+      "december": [
+        "r13"
+      ],
+      "1998": [
+        "r13",
+        "r18"
+      ],
+      "concluded": [
+        "r13"
+      ],
+      "on": [
+        "r13",
+        "r17"
+      ],
+      "rule": [
+        "r14"
+      ],
+      "october": [
+        "r15"
+      ],
+      "exam": [
+        "r18"
+      ],
+      "1996": [
+        "r19"
+      ],
+      "06": [
+        "r19"
+      ],
+      "examined": [
+        "r19"
+      ],
+      "07": [
+        "r19"
+      ],
+      "1987": [
+        "r19"
+      ],
+      "less": [
+        "r21"
+      ],
+      "1964": [
+        "r22"
+      ],
+      "april": [
+        "r25"
+      ],
+      "laboratory": [
+        "r25"
+      ],
+      "excluding": [
+        "r27"
+      ],
+      "pattern": [
+        "r27"
+      ],
+      "ana": [
+        "r27"
+      ],
+      "only": [
+        "r27"
+      ],
+      "all": [
+        "r27"
+      ],
+      "de": [
+        "r29"
+      ],
+      "reactive": [
+        "r29"
+      ],
+      "crp": [
+        "r29"
+      ],
+      "createnine": [
+        "r30"
+      ],
+      "123": [
+        "r31"
+      ],
+      "400": [
+        "r32"
+      ],
+      "plt": [
+        "r32"
+      ],
+      "testing": [
+        "r33"
+      ],
+      "underwent": [
+        "r33"
+      ],
+      "wbc": [
+        "r38"
+      ],
+      "60": [
+        "r40",
+        "r41",
+        "r42"
+      ],
+      "600": [
+        "r44"
+      ],
+      "800": [
+        "r44"
+      ],
+      "1982": [
+        "r49"
+      ],
+      "29": [
+        "r52"
+      ],
+      "cpk": [
+        "r59",
+        "r61"
+      ],
+      "1956": [
+        "r60"
+      ],
+      "1936": [
+        "r60"
+      ],
+      "180": [
+        "r62",
+        "r63"
+      ],
+      "gap": [
+        "a3"
+      ],
+      "gender": [
+        "a5"
+      ],
+      "information": [
+        "a6"
+      ],
+      "medical": [
+        "a6"
+      ],
+      "documented": [
+        "a6"
+      ],
+      "number": [
+        "a7"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        1149,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        1150,
+        "c1"
+      ]
+    ],
+    "c3": [
+      [
+        1151,
+        "c1"
+      ]
+    ],
+    "c4": [
+      [
+        1151,
+        "c2"
+      ]
+    ],
+    "c5": [
+      [
+        1152,
+        "c1"
+      ]
+    ],
+    "c6": [
+      [
+        1155,
+        "c1"
+      ]
+    ],
+    "c7": [
+      [
+        1156,
+        "c1"
+      ],
+      [
+        1163,
+        "c1"
+      ],
+      [
+        1166,
+        "c1"
+      ],
+      [
+        1209,
+        "c2"
+      ],
+      [
+        1211,
+        "c1"
+      ]
+    ],
+    "c8": [
+      [
+        1158,
+        "c1"
+      ]
+    ],
+    "c9": [
+      [
+        1158,
+        "c2"
+      ]
+    ],
+    "c10": [
+      [
+        1159,
+        "c1"
+      ]
+    ],
+    "c11": [
+      [
+        1160,
+        "c1"
+      ]
+    ],
+    "c12": [
+      [
+        1160,
+        "c2"
+      ],
+      [
+        1169,
+        "c2"
+      ],
+      [
+        1201,
+        "c4"
+      ],
+      [
+        1223,
+        "c2"
+      ]
+    ],
+    "c13": [
+      [
+        1161,
+        "c1"
+      ]
+    ],
+    "c14": [
+      [
+        1161,
+        "c2"
+      ]
+    ],
+    "c15": [
+      [
+        1164,
+        "c1"
+      ]
+    ],
+    "c16": [
+      [
+        1164,
+        "c2"
+      ],
+      [
+        1201,
+        "c3"
+      ]
+    ],
+    "c17": [
+      [
+        1165,
+        "c1"
+      ]
+    ],
+    "c18": [
+      [
+        1168,
+        "c1"
+      ]
+    ],
+    "c19": [
+      [
+        1169,
+        "c1"
+      ]
+    ],
+    "c20": [
+      [
+        1174,
+        "c1"
+      ]
+    ],
+    "c21": [
+      [
+        1175,
+        "c1"
+      ]
+    ],
+    "c22": [
+      [
+        1175,
+        "c2"
+      ]
+    ],
+    "c23": [
+      [
+        1177,
+        "c1"
+      ]
+    ],
+    "c24": [
+      [
+        1190,
+        "c1"
+      ]
+    ],
+    "c25": [
+      [
+        1190,
+        "c2"
+      ]
+    ],
+    "c26": [
+      [
+        1192,
+        "c1"
+      ]
+    ],
+    "c27": [
+      [
+        1193,
+        "c1"
+      ]
+    ],
+    "c28": [
+      [
+        1199,
+        "c1"
+      ]
+    ],
+    "c29": [
+      [
+        1201,
+        "c1"
+      ]
+    ],
+    "c30": [
+      [
+        1201,
+        "c2"
+      ]
+    ],
+    "c31": [
+      [
+        1203,
+        "c1"
+      ]
+    ],
+    "c32": [
+      [
+        1205,
+        "c1"
+      ]
+    ],
+    "c33": [
+      [
+        1206,
+        "c1"
+      ]
+    ],
+    "c34": [
+      [
+        1208,
+        "c1"
+      ]
+    ],
+    "c35": [
+      [
+        1209,
+        "c1"
+      ]
+    ],
+    "c36": [
+      [
+        1210,
+        "c1"
+      ]
+    ],
+    "c37": [
+      [
+        1210,
+        "c2"
+      ]
+    ],
+    "c38": [
+      [
+        1211,
+        "c2"
+      ]
+    ],
+    "c39": [
+      [
+        1212,
+        "c1"
+      ],
+      [
+        1213,
+        "c1"
+      ]
+    ],
+    "c40": [
+      [
+        1214,
+        "c1"
+      ]
+    ],
+    "c41": [
+      [
+        1215,
+        "c1"
+      ]
+    ],
+    "c42": [
+      [
+        1215,
+        "c2"
+      ]
+    ],
+    "c43": [
+      [
+        1216,
+        "c1"
+      ]
+    ],
+    "c44": [
+      [
+        1217,
+        "c1"
+      ]
+    ],
+    "c45": [
+      [
+        1218,
+        "c1"
+      ]
+    ],
+    "c46": [
+      [
+        1219,
+        "c1"
+      ]
+    ],
+    "c47": [
+      [
+        1219,
+        "c2"
+      ]
+    ],
+    "c48": [
+      [
+        1220,
+        "c1"
+      ]
+    ],
+    "c49": [
+      [
+        1222,
+        "c1"
+      ]
+    ],
+    "c50": [
+      [
+        1223,
+        "c1"
+      ]
+    ],
+    "c51": [
+      [
+        1225,
+        "c1"
+      ]
+    ],
+    "c52": [
+      [
+        1226,
+        "c1"
+      ]
+    ],
+    "c53": [
+      [
+        1226,
+        "c2"
+      ]
+    ],
+    "c54": [
+      [
+        1227,
+        "c1"
+      ]
+    ],
+    "c55": [
+      [
+        1227,
+        "c2"
+      ]
+    ],
+    "c56": [
+      [
+        1228,
+        "c1"
+      ]
+    ],
+    "c57": [
+      [
+        1229,
+        "c1"
+      ]
+    ],
+    "c58": [
+      [
+        1229,
+        "c2"
+      ]
+    ],
+    "c59": [
+      [
+        1230,
+        "c1"
+      ]
+    ],
+    "c60": [
+      [
+        1232,
+        "c1"
+      ]
+    ],
+    "c61": [
+      [
+        1232,
+        "c2"
+      ]
+    ],
+    "c62": [
+      [
+        1233,
+        "c1"
+      ]
+    ],
+    "c63": [
+      [
+        1233,
+        "c2"
+      ]
+    ],
+    "f1": [
+      [
+        1149,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        1150,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        1152,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        1156,
+        "f1"
+      ],
+      [
+        1211,
+        "f1"
+      ],
+      [
+        1232,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        1160,
+        "f1"
+      ]
+    ],
+    "f6": [
+      [
+        1161,
+        "f1"
+      ]
+    ],
+    "f7": [
+      [
+        1163,
+        "f1"
+      ]
+    ],
+    "f8": [
+      [
+        1167,
+        "f1"
+      ]
+    ],
+    "f9": [
+      [
+        1168,
+        "f1"
+      ]
+    ],
+    "f10": [
+      [
+        1169,
+        "f1"
+      ]
+    ],
+    "f11": [
+      [
+        1174,
+        "f1"
+      ]
+    ],
+    "f12": [
+      [
+        1175,
+        "f1"
+      ]
+    ],
+    "f13": [
+      [
+        1175,
+        "f2"
+      ]
+    ],
+    "f14": [
+      [
+        1181,
+        "f1"
+      ]
+    ],
+    "f15": [
+      [
+        1185,
+        "f1"
+      ]
+    ],
+    "f16": [
+      [
+        1190,
+        "f1"
+      ]
+    ],
+    "f17": [
+      [
+        1195,
+        "f1"
+      ]
+    ],
+    "f18": [
+      [
+        1196,
+        "f1"
+      ]
+    ],
+    "f19": [
+      [
+        1200,
+        "f1"
+      ]
+    ],
+    "f20": [
+      [
+        1201,
+        "f1"
+      ]
+    ],
+    "f21": [
+      [
+        1209,
+        "f1"
+      ]
+    ],
+    "f22": [
+      [
+        1210,
+        "f1"
+      ]
+    ],
+    "f23": [
+      [
+        1215,
+        "f1"
+      ]
+    ],
+    "f24": [
+      [
+        1219,
+        "f1"
+      ]
+    ],
+    "f25": [
+      [
+        1223,
+        "f1"
+      ]
+    ],
+    "f26": [
+      [
+        1226,
+        "f1"
+      ]
+    ],
+    "f27": [
+      [
+        1226,
+        "f2"
+      ]
+    ],
+    "f28": [
+      [
+        1227,
+        "f1"
+      ]
+    ],
+    "v1": [
+      [
+        1149,
+        "v1"
+      ],
+      [
+        1167,
+        "v1"
+      ],
+      [
+        1169,
+        "v1"
+      ],
+      [
+        1180,
+        "v1"
+      ],
+      [
+        1208,
+        "v1"
+      ],
+      [
+        1216,
+        "v1"
+      ],
+      [
+        1222,
+        "v1"
+      ],
+      [
+        1223,
+        "v1"
+      ],
+      [
+        1227,
+        "v1"
+      ],
+      [
+        1231,
+        "v1"
+      ]
+    ],
+    "v2": [
+      [
+        1149,
+        "v2"
+      ],
+      [
+        1151,
+        "v1"
+      ],
+      [
+        1152,
+        "v2"
+      ],
+      [
+        1161,
+        "v1"
+      ],
+      [
+        1188,
+        "v2"
+      ],
+      [
+        1212,
+        "v1"
+      ]
+    ],
+    "v3": [
+      [
+        1149,
+        "v3"
+      ],
+      [
+        1152,
+        "v3"
+      ],
+      [
+        1162,
+        "v2"
+      ],
+      [
+        1192,
+        "v1"
+      ],
+      [
+        1212,
+        "v2"
+      ],
+      [
+        1230,
+        "v1"
+      ]
+    ],
+    "v4": [
+      [
+        1150,
+        "v1"
+      ],
+      [
+        1160,
+        "v1"
+      ],
+      [
+        1162,
+        "v1"
+      ],
+      [
+        1164,
+        "v2"
+      ],
+      [
+        1169,
+        "v2"
+      ],
+      [
+        1180,
+        "v2"
+      ],
+      [
+        1188,
+        "v1"
+      ],
+      [
+        1193,
+        "v1"
+      ],
+      [
+        1195,
+        "v1"
+      ],
+      [
+        1198,
+        "v1"
+      ],
+      [
+        1203,
+        "v1"
+      ],
+      [
+        1215,
+        "v1"
+      ],
+      [
+        1218,
+        "v1"
+      ],
+      [
+        1223,
+        "v2"
+      ]
+    ],
+    "v5": [
+      [
+        1152,
+        "v1"
+      ],
+      [
+        1196,
+        "v1"
+      ],
+      [
+        1200,
+        "v2"
+      ]
+    ],
+    "v6": [
+      [
+        1153,
+        "v1"
+      ]
+    ],
+    "v7": [
+      [
+        1156,
+        "v1"
+      ]
+    ],
+    "v8": [
+      [
+        1157,
+        "v1"
+      ]
+    ],
+    "v9": [
+      [
+        1164,
+        "v1"
+      ]
+    ],
+    "v10": [
+      [
+        1168,
+        "v1"
+      ]
+    ],
+    "v11": [
+      [
+        1178,
+        "v1"
+      ]
+    ],
+    "v12": [
+      [
+        1180,
+        "v3"
+      ]
+    ],
+    "v13": [
+      [
+        1180,
+        "v4"
+      ]
+    ],
+    "v14": [
+      [
+        1181,
+        "v1"
+      ]
+    ],
+    "v15": [
+      [
+        1181,
+        "v2"
+      ]
+    ],
+    "v16": [
+      [
+        1186,
+        "v1"
+      ]
+    ],
+    "v17": [
+      [
+        1194,
+        "v1"
+      ]
+    ],
+    "v18": [
+      [
+        1195,
+        "v2"
+      ]
+    ],
+    "v19": [
+      [
+        1198,
+        "v2"
+      ]
+    ],
+    "v20": [
+      [
+        1200,
+        "v1"
+      ]
+    ],
+    "v21": [
+      [
+        1221,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        1150,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        1151,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        1155,
+        "r1"
+      ]
+    ],
+    "r4": [
+      [
+        1158,
+        "r1"
+      ]
+    ],
+    "r5": [
+      [
+        1158,
+        "r2"
+      ]
+    ],
+    "r6": [
+      [
+        1159,
+        "r1"
+      ]
+    ],
+    "r7": [
+      [
+        1160,
+        "r1"
+      ]
+    ],
+    "r8": [
+      [
+        1161,
+        "r1"
+      ]
+    ],
+    "r9": [
+      [
+        1162,
+        "r1"
+      ]
+    ],
+    "r10": [
+      [
+        1165,
+        "r1"
+      ],
+      [
+        1229,
+        "r1"
+      ]
+    ],
+    "r11": [
+      [
+        1166,
+        "r1"
+      ]
+    ],
+    "r12": [
+      [
+        1166,
+        "r2"
+      ]
+    ],
+    "r13": [
+      [
+        1167,
+        "r1"
+      ]
+    ],
+    "r14": [
+      [
+        1169,
+        "r1"
+      ]
+    ],
+    "r15": [
+      [
+        1174,
+        "r1"
+      ]
+    ],
+    "r16": [
+      [
+        1177,
+        "r1"
+      ],
+      [
+        1232,
+        "r2"
+      ]
+    ],
+    "r17": [
+      [
+        1185,
+        "r1"
+      ]
+    ],
+    "r18": [
+      [
+        1186,
+        "r1"
+      ]
+    ],
+    "r19": [
+      [
+        1187,
+        "r1"
+      ]
+    ],
+    "r20": [
+      [
+        1187,
+        "r2"
+      ]
+    ],
+    "r21": [
+      [
+        1187,
+        "r3"
+      ]
+    ],
+    "r22": [
+      [
+        1188,
+        "r1"
+      ]
+    ],
+    "r23": [
+      [
+        1190,
+        "r1"
+      ]
+    ],
+    "r24": [
+      [
+        1190,
+        "r2"
+      ]
+    ],
+    "r25": [
+      [
+        1192,
+        "r1"
+      ]
+    ],
+    "r26": [
+      [
+        1192,
+        "r2"
+      ]
+    ],
+    "r27": [
+      [
+        1193,
+        "r1"
+      ]
+    ],
+    "r28": [
+      [
+        1193,
+        "r2"
+      ]
+    ],
+    "r29": [
+      [
+        1194,
+        "r1"
+      ]
+    ],
+    "r30": [
+      [
+        1194,
+        "r2"
+      ]
+    ],
+    "r31": [
+      [
+        1194,
+        "r3"
+      ]
+    ],
+    "r32": [
+      [
+        1195,
+        "r1"
+      ]
+    ],
+    "r33": [
+      [
+        1199,
+        "r1"
+      ]
+    ],
+    "r34": [
+      [
+        1199,
+        "r2"
+      ]
+    ],
+    "r35": [
+      [
+        1201,
+        "r1"
+      ]
+    ],
+    "r36": [
+      [
+        1201,
+        "r2"
+      ]
+    ],
+    "r37": [
+      [
+        1201,
+        "r3"
+      ]
+    ],
+    "r38": [
+      [
+        1203,
+        "r1"
+      ]
+    ],
+    "r39": [
+      [
+        1205,
+        "r1"
+      ],
+      [
+        1218,
+        "r1"
+      ]
+    ],
+    "r40": [
+      [
+        1206,
+        "r1"
+      ]
+    ],
+    "r41": [
+      [
+        1208,
+        "r1"
+      ]
+    ],
+    "r42": [
+      [
+        1209,
+        "r1"
+      ]
+    ],
+    "r43": [
+      [
+        1210,
+        "r1"
+      ]
+    ],
+    "r44": [
+      [
+        1211,
+        "r1"
+      ]
+    ],
+    "r45": [
+      [
+        1212,
+        "r1"
+      ],
+      [
+        1213,
+        "r1"
+      ]
+    ],
+    "r46": [
+      [
+        1214,
+        "r1"
+      ]
+    ],
+    "r47": [
+      [
+        1215,
+        "r1"
+      ]
+    ],
+    "r48": [
+      [
+        1216,
+        "r1"
+      ]
+    ],
+    "r49": [
+      [
+        1217,
+        "r1"
+      ]
+    ],
+    "r50": [
+      [
+        1217,
+        "r2"
+      ]
+    ],
+    "r51": [
+      [
+        1219,
+        "r1"
+      ]
+    ],
+    "r52": [
+      [
+        1220,
+        "r1"
+      ]
+    ],
+    "r53": [
+      [
+        1221,
+        "r1"
+      ]
+    ],
+    "r54": [
+      [
+        1222,
+        "r1"
+      ],
+      [
+        1223,
+        "r1"
+      ]
+    ],
+    "r55": [
+      [
+        1225,
+        "r1"
+      ]
+    ],
+    "r56": [
+      [
+        1227,
+        "r1"
+      ]
+    ],
+    "r57": [
+      [
+        1228,
+        "r1"
+      ]
+    ],
+    "r58": [
+      [
+        1229,
+        "r2"
+      ]
+    ],
+    "r59": [
+      [
+        1230,
+        "r1"
+      ]
+    ],
+    "r60": [
+      [
+        1231,
+        "r1"
+      ]
+    ],
+    "r61": [
+      [
+        1231,
+        "r2"
+      ]
+    ],
+    "r62": [
+      [
+        1232,
+        "r1"
+      ]
+    ],
+    "r63": [
+      [
+        1233,
+        "r1"
+      ]
+    ],
+    "r64": [
+      [
+        1233,
+        "r2"
+      ]
+    ],
+    "a1": [
+      [
+        1153,
+        "a1"
+      ],
+      [
+        1197,
+        "a2"
+      ]
+    ],
+    "a2": [
+      [
+        1157,
+        "a1"
+      ]
+    ],
+    "a3": [
+      [
+        1165,
+        "a1"
+      ],
+      [
+        1175,
+        "a1"
+      ]
+    ],
+    "a4": [
+      [
+        1175,
+        "a2"
+      ]
+    ],
+    "a5": [
+      [
+        1178,
+        "a1"
+      ]
+    ],
+    "a6": [
+      [
+        1197,
+        "a1"
+      ]
+    ],
+    "a7": [
+      [
+        1197,
+        "a3"
+      ],
+      [
+        1225,
+        "a1"
+      ]
+    ],
+    "a8": [
+      [
+        1206,
+        "a1"
+      ]
+    ],
+    "a9": [
+      [
+        1224,
+        "a1"
+      ]
+    ]
+  }
+}

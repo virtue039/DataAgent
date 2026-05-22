@@ -1,0 +1,4316 @@
+{
+  "version": "p1b.2",
+  "db_id": "codebase_community",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "highest reputation",
+      "defined_by": "f1"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "user who has the most number of view",
+      "defined_by": "f2"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "more than 100 upvotes",
+      "defined_by": "r3"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "more than 1 downvotes",
+      "defined_by": "r4"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "more than 10 views",
+      "defined_by": "r5"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "created after the year 2013",
+      "defined_by": "r6"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "highest popularity",
+      "defined_by": "f3"
+    },
+    "c8": {
+      "id": "c8",
+      "type": "Concept",
+      "name": "most valuable post",
+      "defined_by": "f4"
+    },
+    "c9": {
+      "id": "c9",
+      "type": "Concept",
+      "name": "total number of comments",
+      "defined_by": "f5"
+    },
+    "c10": {
+      "id": "c10",
+      "type": "Concept",
+      "name": "most number of answer",
+      "defined_by": "f6"
+    },
+    "c11": {
+      "id": "c11",
+      "type": "Concept",
+      "name": "root post",
+      "defined_by": "r9"
+    },
+    "c12": {
+      "id": "c12",
+      "type": "Concept",
+      "name": "well-finished post",
+      "defined_by": "r10"
+    },
+    "c13": {
+      "id": "c13",
+      "type": "Concept",
+      "name": "elder users",
+      "defined_by": "r11"
+    },
+    "c14": {
+      "id": "c14",
+      "type": "Concept",
+      "name": "Score of over 19",
+      "defined_by": "r12"
+    },
+    "c15": {
+      "id": "c15",
+      "type": "Concept",
+      "name": "who obtained the most number of badges",
+      "defined_by": "f8"
+    },
+    "c16": {
+      "id": "c16",
+      "type": "Concept",
+      "name": "average score",
+      "defined_by": "f9"
+    },
+    "c17": {
+      "id": "c17",
+      "type": "Concept",
+      "name": "user with over 200 views",
+      "defined_by": "r14"
+    },
+    "c18": {
+      "id": "c18",
+      "type": "Concept",
+      "name": "average number of badges",
+      "defined_by": "f10"
+    },
+    "c19": {
+      "id": "c19",
+      "type": "Concept",
+      "name": "elder user",
+      "defined_by": "r11"
+    },
+    "c20": {
+      "id": "c20",
+      "type": "Concept",
+      "name": "percentage of elder users",
+      "defined_by": "f11"
+    },
+    "c21": {
+      "id": "c21",
+      "type": "Concept",
+      "name": "creation date of the maximum number of votes",
+      "defined_by": "f12"
+    },
+    "c22": {
+      "id": "c22",
+      "type": "Concept",
+      "name": "About data visualization",
+      "defined_by": "r21"
+    },
+    "c23": {
+      "id": "c23",
+      "type": "Concept",
+      "name": "user no. 24",
+      "defined_by": "r22"
+    },
+    "c24": {
+      "id": "c24",
+      "type": "Concept",
+      "name": "About data",
+      "defined_by": "r25"
+    },
+    "c25": {
+      "id": "c25",
+      "type": "Concept",
+      "name": "total bounty Amount",
+      "defined_by": "f14"
+    },
+    "c26": {
+      "id": "c26",
+      "type": "Concept",
+      "name": "average view count",
+      "defined_by": "f15"
+    },
+    "c27": {
+      "id": "c27",
+      "type": "Concept",
+      "name": "having at least 1000 view",
+      "defined_by": "r28"
+    },
+    "c28": {
+      "id": "c28",
+      "type": "Concept",
+      "name": "user with the most comments",
+      "defined_by": "f16"
+    },
+    "c29": {
+      "id": "c29",
+      "type": "Concept",
+      "name": "creating more than 10 posts",
+      "defined_by": "r32"
+    },
+    "c30": {
+      "id": "c30",
+      "type": "Concept",
+      "name": "average of the up votes",
+      "defined_by": "f18"
+    },
+    "c31": {
+      "id": "c31",
+      "type": "Concept",
+      "name": "average age",
+      "defined_by": "f19"
+    },
+    "c32": {
+      "id": "c32",
+      "type": "Concept",
+      "name": "Positive comment",
+      "defined_by": "r30"
+    },
+    "c33": {
+      "id": "c33",
+      "type": "Concept",
+      "name": "percentage of users with Teacher badge",
+      "defined_by": "f20"
+    },
+    "c34": {
+      "id": "c34",
+      "type": "Concept",
+      "name": "teenager",
+      "defined_by": "r37"
+    },
+    "c35": {
+      "id": "c35",
+      "type": "Concept",
+      "name": "percentage of teenagers",
+      "defined_by": "f21"
+    },
+    "c36": {
+      "id": "c36",
+      "type": "Concept",
+      "name": "adult",
+      "defined_by": "r40"
+    },
+    "c37": {
+      "id": "c37",
+      "type": "Concept",
+      "name": "lowest reputation",
+      "defined_by": "f22"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Reputation",
+          "table": "users",
+          "column": "Reputation"
+        }
+      ],
+      "name": "highest reputation",
+      "expression": "MAX(Reputation)"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Views",
+          "table": "users",
+          "column": "Views"
+        }
+      ],
+      "name": "Max(Views)",
+      "expression": "MAX(Views)"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ViewCount",
+          "table": "posts",
+          "column": "ViewCount"
+        }
+      ],
+      "name": "highest popularity",
+      "expression": "MAX(ViewCount)"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "FavoriteCount",
+          "table": "posts",
+          "column": "FavoriteCount"
+        }
+      ],
+      "name": "most valuable post",
+      "expression": "MAX(FavoriteCount)"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "CommentCount",
+          "table": "posts",
+          "column": "CommentCount"
+        }
+      ],
+      "name": "total number of comments",
+      "expression": "Sum(CommentCount)"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "AnswerCount",
+          "table": "posts",
+          "column": "AnswerCount"
+        }
+      ],
+      "name": "most number of answer",
+      "expression": "MAX(AnswerCount)"
+    },
+    "f7": {
+      "id": "f7",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Count",
+          "table": "tags",
+          "column": "Count"
+        }
+      ],
+      "name": "most popular tag",
+      "expression": "Max(Count)"
+    },
+    "f8": {
+      "id": "f8",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "UserID",
+          "table": "badges",
+          "column": "UserId"
+        },
+        {
+          "term": "Id",
+          "table": "badges",
+          "column": "Id"
+        }
+      ],
+      "name": "user with max badge count",
+      "expression": "UserID with Max(Count(Id))"
+    },
+    "f9": {
+      "id": "f9",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Score",
+          "table": "posts",
+          "column": "Score"
+        }
+      ],
+      "name": "average score",
+      "expression": "AVG(Score)"
+    },
+    "f10": {
+      "id": "f10",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Id",
+          "table": "badges",
+          "column": "Id"
+        },
+        {
+          "term": "DisplayName",
+          "table": "users",
+          "column": "DisplayName"
+        }
+      ],
+      "name": "average number of badges",
+      "expression": "Divide(Count(Id), Count(DisplayName))"
+    },
+    "f11": {
+      "id": "f11",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Id",
+          "table": "users",
+          "column": "Id"
+        },
+        {
+          "term": "Age",
+          "table": "users",
+          "column": "Age"
+        }
+      ],
+      "depends_on": [
+        "r11"
+      ],
+      "name": "percentage of elder users",
+      "expression": "Divide(Count(Id WHERE Age > 65), Count(Id)) * 100"
+    },
+    "f12": {
+      "id": "f12",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "CreationDate",
+          "table": "votes",
+          "column": "CreationDate"
+        },
+        {
+          "term": "Id",
+          "table": "votes",
+          "column": "Id"
+        }
+      ],
+      "name": "creation date of the maximum number of votes",
+      "expression": "CreationDate WHERE MAX(COUNT(Id))"
+    },
+    "f13": {
+      "id": "f13",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "posts.Id",
+          "table": "posts",
+          "column": "Id"
+        },
+        {
+          "term": "votes.Id",
+          "table": "votes",
+          "column": "Id"
+        }
+      ],
+      "depends_on": [
+        "r22"
+      ],
+      "name": "times of his/her post than votes",
+      "expression": "COUNT(posts.Id) / COUNT(votes.Id)"
+    },
+    "f14": {
+      "id": "f14",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "BountyAmount",
+          "table": "votes",
+          "column": "BountyAmount"
+        }
+      ],
+      "name": "total bounty Amount",
+      "expression": "SUM(BountyAmount)"
+    },
+    "f15": {
+      "id": "f15",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "ViewCount",
+          "table": "posts",
+          "column": "ViewCount"
+        }
+      ],
+      "name": "average view count",
+      "expression": "AVG(ViewCount)"
+    },
+    "f16": {
+      "id": "f16",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "UserId",
+          "table": "comments",
+          "column": "UserId"
+        },
+        {
+          "term": "Id",
+          "table": "comments",
+          "column": "Id"
+        }
+      ],
+      "name": "user with the most comments",
+      "expression": "UserId WHERE MAX(COUNT(Id))"
+    },
+    "f17": {
+      "id": "f17",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Name",
+          "table": "badges",
+          "column": "Name"
+        },
+        {
+          "term": "Date",
+          "table": "badges",
+          "column": "Date"
+        }
+      ],
+      "depends_on": [
+        "r29",
+        "r13"
+      ],
+      "name": "percentage difference",
+      "expression": "Subtract(Divide(Count(Name where Year(Date) = 2010), Count(Name)) * 100, Divide(Count(Name where Year(Date) = 2011), Count(Name)) * 100)"
+    },
+    "f18": {
+      "id": "f18",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "UpVotes",
+          "table": "users",
+          "column": "UpVotes"
+        },
+        {
+          "term": "UserId",
+          "table": "users",
+          "column": "Id"
+        }
+      ],
+      "name": "average of the up votes",
+      "expression": "SUM(UpVotes) / COUNT(UserId)"
+    },
+    "f19": {
+      "id": "f19",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Age",
+          "table": "users",
+          "column": "Age"
+        },
+        {
+          "term": "UserId",
+          "table": "users",
+          "column": "Id"
+        }
+      ],
+      "name": "average age",
+      "expression": "SUM(Age) / COUNT(UserId)"
+    },
+    "f20": {
+      "id": "f20",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "UserId",
+          "table": "badges",
+          "column": "UserId"
+        },
+        {
+          "term": "Name",
+          "table": "badges",
+          "column": "Name",
+          "value": "Teacher"
+        }
+      ],
+      "depends_on": [
+        "v25"
+      ],
+      "name": "Teacher badge percentage",
+      "expression": "COUNT(UserId WHERE Name = 'Teacher') / COUNT(UserId) * 100"
+    },
+    "f21": {
+      "id": "f21",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "UserId",
+          "table": "users",
+          "column": "Id"
+        },
+        {
+          "term": "Age",
+          "table": "users",
+          "column": "Age"
+        }
+      ],
+      "depends_on": [
+        "r37"
+      ],
+      "name": "teenager percentage",
+      "expression": "Divide(Count(UserId WHERE Age BETWEEN 13 AND 18), Count(UserId)) * 100"
+    },
+    "f22": {
+      "id": "f22",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "Reputation",
+          "table": "users",
+          "column": "Reputation"
+        }
+      ],
+      "name": "lowest reputation",
+      "expression": "MIN(Reputation)"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "Harlan",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "Harlan"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "Jarrod Dixon",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "Jarrod Dixon"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "csgillespie",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "csgillespie"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "Eliciting priors from experts",
+      "table": "posts",
+      "column": "Title",
+      "value": "Eliciting priors from experts"
+    },
+    "v5": {
+      "id": "v5",
+      "type": "ValueMap",
+      "name": "bayesian tag",
+      "table": "tags",
+      "column": "TagName",
+      "value": "bayesian"
+    },
+    "v6": {
+      "id": "v6",
+      "type": "ValueMap",
+      "name": "Revival badge",
+      "table": "badges",
+      "column": "Name",
+      "value": "Revival"
+    },
+    "v7": {
+      "id": "v7",
+      "type": "ValueMap",
+      "name": "post no. 65041",
+      "table": "posts",
+      "column": "Id",
+      "value": "65041"
+    },
+    "v8": {
+      "id": "v8",
+      "type": "ValueMap",
+      "name": "Tiago Pasqualini",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "Tiago Pasqualini"
+    },
+    "v9": {
+      "id": "v9",
+      "type": "ValueMap",
+      "name": "vote no. 6347",
+      "table": "votes",
+      "column": "Id",
+      "value": "6347"
+    },
+    "v10": {
+      "id": "v10",
+      "type": "ValueMap",
+      "name": "DatEpicCoderGuyWhoPrograms",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "DatEpicCoderGuyWhoPrograms"
+    },
+    "v11": {
+      "id": "v11",
+      "type": "ValueMap",
+      "name": "score of 17",
+      "table": "comments",
+      "column": "Score",
+      "value": "17"
+    },
+    "v12": {
+      "id": "v12",
+      "type": "ValueMap",
+      "name": "WebsiteUrl",
+      "table": "users",
+      "column": "WebsiteUrl",
+      "value": "http://stackoverflow.com"
+    },
+    "v13": {
+      "id": "v13",
+      "type": "ValueMap",
+      "name": "SilentGhost",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "SilentGhost"
+    },
+    "v14": {
+      "id": "v14",
+      "type": "ValueMap",
+      "name": "A Lion",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "A Lion"
+    },
+    "v15": {
+      "id": "v15",
+      "type": "ValueMap",
+      "name": "Necromancer badge",
+      "table": "badges",
+      "column": "Name",
+      "value": "Necromancer"
+    },
+    "v16": {
+      "id": "v16",
+      "type": "ValueMap",
+      "name": "Vebjorn Ljosa",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "Vebjorn Ljosa"
+    },
+    "v17": {
+      "id": "v17",
+      "type": "ValueMap",
+      "name": "Yevgeny",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "Yevgeny"
+    },
+    "v18": {
+      "id": "v18",
+      "type": "ValueMap",
+      "name": "post title",
+      "table": "posts",
+      "column": "Title",
+      "value": "Why square the difference instead of taking the absolute value in standard deviation?"
+    },
+    "v19": {
+      "id": "v19",
+      "type": "ValueMap",
+      "name": "bounty amount of 50",
+      "table": "votes",
+      "column": "BountyAmount",
+      "value": "50"
+    },
+    "v20": {
+      "id": "v20",
+      "type": "ValueMap",
+      "name": "tagged as 'humor'",
+      "table": "posts",
+      "column": "Tags",
+      "value": "<humor>"
+    },
+    "v21": {
+      "id": "v21",
+      "type": "ValueMap",
+      "name": "Supporter badge",
+      "table": "badges",
+      "column": "Name",
+      "value": "Supporter"
+    },
+    "v22": {
+      "id": "v22",
+      "type": "ValueMap",
+      "name": "Teacher badge",
+      "table": "badges",
+      "column": "Name",
+      "value": "Teachers"
+    },
+    "v23": {
+      "id": "v23",
+      "type": "ValueMap",
+      "name": "New York location",
+      "table": "users",
+      "column": "Location",
+      "value": "New York"
+    },
+    "v24": {
+      "id": "v24",
+      "type": "ValueMap",
+      "name": "India",
+      "table": "users",
+      "column": "Location",
+      "value": "India"
+    },
+    "v25": {
+      "id": "v25",
+      "type": "ValueMap",
+      "name": "Teacher",
+      "table": "badges",
+      "column": "Name",
+      "value": "Teacher"
+    },
+    "v26": {
+      "id": "v26",
+      "type": "ValueMap",
+      "name": "student badges",
+      "table": "badges",
+      "column": "Name",
+      "value": "Student"
+    },
+    "v27": {
+      "id": "v27",
+      "type": "ValueMap",
+      "name": "Announcer badge",
+      "table": "badges",
+      "column": "Name",
+      "value": "Announcer"
+    },
+    "v28": {
+      "id": "v28",
+      "type": "ValueMap",
+      "name": "Organizer badge",
+      "table": "badges",
+      "column": "Name",
+      "value": "Organizer"
+    },
+    "v29": {
+      "id": "v29",
+      "type": "ValueMap",
+      "name": "Vienna, Austria",
+      "table": "users",
+      "column": "Location",
+      "value": "Vienna, Austria"
+    },
+    "v30": {
+      "id": "v30",
+      "type": "ValueMap",
+      "name": "Sharpie",
+      "table": "users",
+      "column": "DisplayName",
+      "value": "Sharpie"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CreationDate",
+          "table": "users",
+          "column": "CreationDate"
+        }
+      ],
+      "name": "account created in the year 2011",
+      "condition": "year(CreationDate) = 2011"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "LastAccessDate",
+          "table": "users",
+          "column": "LastAccessDate"
+        }
+      ],
+      "name": "last accessed after 2014/9/1",
+      "condition": "LastAccessDate > '2014-09-01'"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Upvotes",
+          "table": "users",
+          "column": "UpVotes"
+        }
+      ],
+      "name": "more than 100 upvotes",
+      "condition": "Upvotes > 100"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Downvotes",
+          "table": "users",
+          "column": "DownVotes"
+        }
+      ],
+      "name": "more than 1 downvotes",
+      "condition": "Downvotes > 1"
+    },
+    "r5": {
+      "id": "r5",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Views",
+          "table": "posts",
+          "column": "ViewCount"
+        }
+      ],
+      "name": "more than 10 views",
+      "condition": "Views > 10"
+    },
+    "r6": {
+      "id": "r6",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CreationDate",
+          "table": "posts",
+          "column": "CreaionDate"
+        }
+      ],
+      "name": "created after the year 2013",
+      "condition": "year(CreationDate) > 2013"
+    },
+    "r7": {
+      "id": "r7",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Title",
+          "table": "posts",
+          "column": "Title",
+          "value": "Eliciting priors from experts"
+        }
+      ],
+      "name": "post title is 'Eliciting priors from experts'",
+      "condition": "Title = 'Eliciting priors from experts'"
+    },
+    "r8": {
+      "id": "r8",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Title",
+          "table": "posts",
+          "column": "Title",
+          "value": "Examples for teaching: Correlation does not mean causation"
+        }
+      ],
+      "name": "post title filter",
+      "condition": "Title = 'Examples for teaching: Correlation does not mean causation'"
+    },
+    "r9": {
+      "id": "r9",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "ParentId",
+          "table": "posts",
+          "column": "ParentId"
+        }
+      ],
+      "name": "root post",
+      "condition": "ParentId IS NULL"
+    },
+    "r10": {
+      "id": "r10",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "ClosedDate",
+          "table": "posts",
+          "column": "ClosedDate"
+        }
+      ],
+      "name": "post is well-finished",
+      "condition": "ClosedDate IS NOT NULL"
+    },
+    "r11": {
+      "id": "r11",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Age",
+          "table": "users",
+          "column": "Age"
+        }
+      ],
+      "name": "elder users",
+      "condition": "Age > 65"
+    },
+    "r12": {
+      "id": "r12",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Score",
+          "table": "posts",
+          "column": "Score"
+        }
+      ],
+      "name": "Score of over 19",
+      "condition": "Score >= 20"
+    },
+    "r13": {
+      "id": "r13",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "badges",
+          "column": "Date"
+        }
+      ],
+      "name": "obtained in 2011",
+      "condition": "YEAR(Date) = 2011"
+    },
+    "r14": {
+      "id": "r14",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Views",
+          "table": "users",
+          "column": "Views"
+        }
+      ],
+      "name": "Views > 200",
+      "condition": "Views > 200"
+    },
+    "r15": {
+      "id": "r15",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Score",
+          "table": "posts",
+          "column": "Score"
+        }
+      ],
+      "name": "score of over 5",
+      "condition": "Score > 5"
+    },
+    "r16": {
+      "id": "r16",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UserId",
+          "table": "users",
+          "column": "Id"
+        }
+      ],
+      "name": "user no. 58",
+      "condition": "UserId = 58"
+    },
+    "r17": {
+      "id": "r17",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CreationDate",
+          "table": "users",
+          "column": "CreationDate"
+        }
+      ],
+      "name": "on 2010/7/19",
+      "condition": "CreationDate = '2010-07-19'"
+    },
+    "r18": {
+      "id": "r18",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UserId",
+          "table": "users",
+          "column": "Id"
+        }
+      ],
+      "name": "user no. 3025",
+      "condition": "UserId = '3025'"
+    },
+    "r19": {
+      "id": "r19",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CreationDate",
+          "table": "comments",
+          "column": "CreationDate"
+        }
+      ],
+      "name": "comment at 20:29:39 on 2014/4/23",
+      "condition": "CreationDate = '2014/4/23 20:29:39.0'"
+    },
+    "r20": {
+      "id": "r20",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CommentCount",
+          "table": "posts",
+          "column": "CommentCount"
+        }
+      ],
+      "name": "one comment",
+      "condition": "CommentCount = 1"
+    },
+    "r21": {
+      "id": "r21",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Title",
+          "table": "posts",
+          "column": "Title"
+        }
+      ],
+      "name": "Title contains 'data visualization'",
+      "condition": "Title LIKE '%data visualization%'"
+    },
+    "r22": {
+      "id": "r22",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UserId",
+          "table": "users",
+          "column": "Id"
+        },
+        {
+          "term": "OwnerUserId",
+          "table": "posts",
+          "column": "OwnerUserId"
+        }
+      ],
+      "name": "user no. 24",
+      "condition": "UserId = '24' OR OwnerUserId = '24'"
+    },
+    "r23": {
+      "id": "r23",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Text",
+          "table": "comments",
+          "column": "Text",
+          "value": "thank you user93"
+        }
+      ],
+      "name": "thank you user93 comment",
+      "condition": "Text = 'thank you user93'"
+    },
+    "r24": {
+      "id": "r24",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "LastEditorUserId",
+          "table": "posts",
+          "column": "LastEditorUserId"
+        }
+      ],
+      "name": "edited",
+      "condition": "LastEditorUserId IS NOT NULL"
+    },
+    "r25": {
+      "id": "r25",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "title",
+          "table": "posts",
+          "column": "Title"
+        }
+      ],
+      "name": "about data",
+      "condition": "title LIKE '%data%'"
+    },
+    "r26": {
+      "id": "r26",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Title",
+          "table": "posts",
+          "column": "Title"
+        }
+      ],
+      "name": "title mentioning variance",
+      "condition": "Title LIKE '%variance%'"
+    },
+    "r27": {
+      "id": "r27",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Name",
+          "table": "badges",
+          "column": "Name"
+        }
+      ],
+      "name": "more than 5 badges",
+      "condition": "COUNT(Name) > 5"
+    },
+    "r28": {
+      "id": "r28",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Views",
+          "table": "users",
+          "column": "Views"
+        }
+      ],
+      "name": "Views >= 1000",
+      "condition": "Views >= 1000"
+    },
+    "r29": {
+      "id": "r29",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "badges",
+          "column": "Date"
+        }
+      ],
+      "name": "during 2010",
+      "condition": "Year(Date) = 2010"
+    },
+    "r30": {
+      "id": "r30",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Score",
+          "table": "posts",
+          "column": "Score"
+        },
+        {
+          "term": "Score",
+          "table": "comments",
+          "column": "Score"
+        }
+      ],
+      "name": "score more than 60",
+      "condition": "Score > 60"
+    },
+    "r31": {
+      "id": "r31",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CreaionDate",
+          "table": "posts",
+          "column": "CreaionDate"
+        }
+      ],
+      "name": "in 2011",
+      "condition": "year(CreaionDate) = 2011"
+    },
+    "r32": {
+      "id": "r32",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "UserId",
+          "table": "posts",
+          "column": "OwnerUserId"
+        }
+      ],
+      "name": "creating more than 10 posts",
+      "condition": "COUNT(UserId) > 10"
+    },
+    "r33": {
+      "id": "r33",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Date",
+          "table": "badges",
+          "column": "Date"
+        }
+      ],
+      "name": "on 7/19/2010 7:39:08 PM",
+      "condition": "Date = '2010-07-19 19:39:08.0'"
+    },
+    "r34": {
+      "id": "r34",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CreationDate",
+          "table": "comments",
+          "column": "CreationDate",
+          "value": "2010-07-19 19:16:14.0"
+        }
+      ],
+      "name": "created on 7/19/2010 7:16:14 PM",
+      "condition": "CreationDate = '2010-07-19 19:16:14.0'"
+    },
+    "r35": {
+      "id": "r35",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Score",
+          "table": "posts",
+          "column": "Score",
+          "value": "10"
+        }
+      ],
+      "name": "score of 10",
+      "condition": "Score = 10"
+    },
+    "r36": {
+      "id": "r36",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Location",
+          "table": "users",
+          "column": "Location",
+          "value": "Rochester, NY"
+        }
+      ],
+      "name": "user location is Rochester, NY",
+      "condition": "Location = 'Rochester, NY'"
+    },
+    "r37": {
+      "id": "r37",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Age",
+          "table": "users",
+          "column": "Age"
+        }
+      ],
+      "name": "teenager age range",
+      "condition": "Age BETWEEN 13 AND 18"
+    },
+    "r38": {
+      "id": "r38",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CreationDate",
+          "table": "users",
+          "column": "CreationDate"
+        }
+      ],
+      "name": "created on 7/19/2010 7:19:56 PM",
+      "condition": "CreationDate = '2010-07-19 19:19:56.0'"
+    },
+    "r39": {
+      "id": "r39",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "CreationDate",
+          "table": "comments",
+          "column": "CreationDate",
+          "value": "2010-07-19 19:37:33.0"
+        }
+      ],
+      "name": "created on 7/19/2010 7:37:33 PM",
+      "condition": "CreationDate = '2010-07-19 19:37:33.0'"
+    },
+    "r40": {
+      "id": "r40",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "Age",
+          "table": "users",
+          "column": "Age"
+        }
+      ],
+      "name": "adult age range",
+      "condition": "Age BETWEEN 19 AND 65"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "users",
+          "column": "DisplayName"
+        }
+      ],
+      "name": "owner"
+    },
+    "a2": {
+      "id": "a2",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "posts",
+          "column": "LastEditorUserId"
+        }
+      ],
+      "name": "user who last edited"
+    },
+    "a3": {
+      "id": "a3",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "posts",
+          "column": "OwnerUserId"
+        }
+      ],
+      "name": "Owner"
+    },
+    "a4": {
+      "id": "a4",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "tags",
+          "column": "ExcerptPostId"
+        }
+      ],
+      "name": "excerpt from"
+    },
+    "a5": {
+      "id": "a5",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "badges",
+          "column": "Id"
+        }
+      ],
+      "name": "number"
+    },
+    "a6": {
+      "id": "a6",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "comments",
+          "column": "Score"
+        }
+      ],
+      "name": "highest score comment"
+    },
+    "a7": {
+      "id": "a7",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "users",
+          "column": "Reputation"
+        }
+      ],
+      "name": "reputation point"
+    },
+    "a8": {
+      "id": "a8",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "posts",
+          "column": "ViewCount"
+        }
+      ],
+      "name": "views"
+    },
+    "a9": {
+      "id": "a9",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "comments",
+          "column": "Text"
+        }
+      ],
+      "name": "contents of comments"
+    },
+    "a10": {
+      "id": "a10",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "posts",
+          "column": "Title"
+        }
+      ],
+      "name": "Title of post"
+    },
+    "a11": {
+      "id": "a11",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "users",
+          "column": "Views"
+        }
+      ],
+      "name": "lowest views"
+    },
+    "a12": {
+      "id": "a12",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "badges",
+          "column": "UserId"
+        }
+      ],
+      "name": "user"
+    },
+    "a13": {
+      "id": "a13",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "users",
+          "column": "Id"
+        }
+      ],
+      "name": "user"
+    },
+    "a14": {
+      "id": "a14",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "postLinks",
+          "column": "RelatedPostId"
+        }
+      ],
+      "name": "post related"
+    },
+    "a15": {
+      "id": "a15",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "posts",
+          "column": "Id"
+        }
+      ],
+      "name": "post"
+    }
+  },
+  "columns": [
+    {
+      "table": "badges",
+      "column": "Id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "badges",
+      "column": "UserId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "badges",
+      "column": "Name",
+      "type": "TEXT"
+    },
+    {
+      "table": "badges",
+      "column": "Date",
+      "type": "DATE"
+    },
+    {
+      "table": "comments",
+      "column": "Id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "comments",
+      "column": "PostId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "comments",
+      "column": "Score",
+      "type": "INTEGER"
+    },
+    {
+      "table": "comments",
+      "column": "Text",
+      "type": "TEXT"
+    },
+    {
+      "table": "comments",
+      "column": "CreationDate",
+      "type": "DATE"
+    },
+    {
+      "table": "comments",
+      "column": "UserId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "comments",
+      "column": "UserDisplayName",
+      "type": "TEXT"
+    },
+    {
+      "table": "postHistory",
+      "column": "Id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "postHistory",
+      "column": "PostHistoryTypeId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "postHistory",
+      "column": "PostId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "postHistory",
+      "column": "RevisionGUID",
+      "type": "TEXT"
+    },
+    {
+      "table": "postHistory",
+      "column": "CreationDate",
+      "type": "DATE"
+    },
+    {
+      "table": "postHistory",
+      "column": "UserId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "postHistory",
+      "column": "Text",
+      "type": "TEXT"
+    },
+    {
+      "table": "postHistory",
+      "column": "Comment",
+      "type": "TEXT"
+    },
+    {
+      "table": "postHistory",
+      "column": "UserDisplayName",
+      "type": "TEXT"
+    },
+    {
+      "table": "postLinks",
+      "column": "Id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "postLinks",
+      "column": "CreationDate",
+      "type": "DATE"
+    },
+    {
+      "table": "postLinks",
+      "column": "PostId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "postLinks",
+      "column": "RelatedPostId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "postLinks",
+      "column": "LinkTypeId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "Id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "PostTypeId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "AcceptedAnswerId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "CreaionDate",
+      "type": "DATE"
+    },
+    {
+      "table": "posts",
+      "column": "Score",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "ViewCount",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "Body",
+      "type": "TEXT"
+    },
+    {
+      "table": "posts",
+      "column": "OwnerUserId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "LasActivityDate",
+      "type": "DATE"
+    },
+    {
+      "table": "posts",
+      "column": "Title",
+      "type": "TEXT"
+    },
+    {
+      "table": "posts",
+      "column": "Tags",
+      "type": "TEXT"
+    },
+    {
+      "table": "posts",
+      "column": "AnswerCount",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "CommentCount",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "FavoriteCount",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "LastEditorUserId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "LastEditDate",
+      "type": "DATE"
+    },
+    {
+      "table": "posts",
+      "column": "CommunityOwnedDate",
+      "type": "DATE"
+    },
+    {
+      "table": "posts",
+      "column": "ParentId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "posts",
+      "column": "ClosedDate",
+      "type": "DATE"
+    },
+    {
+      "table": "posts",
+      "column": "OwnerDisplayName",
+      "type": "TEXT"
+    },
+    {
+      "table": "posts",
+      "column": "LastEditorDisplayName",
+      "type": "TEXT"
+    },
+    {
+      "table": "tags",
+      "column": "Id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "tags",
+      "column": "TagName",
+      "type": "TEXT"
+    },
+    {
+      "table": "tags",
+      "column": "Count",
+      "type": "INTEGER"
+    },
+    {
+      "table": "tags",
+      "column": "ExcerptPostId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "tags",
+      "column": "WikiPostId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "users",
+      "column": "Id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "users",
+      "column": "Reputation",
+      "type": "INTEGER"
+    },
+    {
+      "table": "users",
+      "column": "CreationDate",
+      "type": "DATE"
+    },
+    {
+      "table": "users",
+      "column": "DisplayName",
+      "type": "TEXT"
+    },
+    {
+      "table": "users",
+      "column": "LastAccessDate",
+      "type": "DATE"
+    },
+    {
+      "table": "users",
+      "column": "WebsiteUrl",
+      "type": "TEXT"
+    },
+    {
+      "table": "users",
+      "column": "Location",
+      "type": "TEXT"
+    },
+    {
+      "table": "users",
+      "column": "AboutMe",
+      "type": "TEXT"
+    },
+    {
+      "table": "users",
+      "column": "Views",
+      "type": "INTEGER"
+    },
+    {
+      "table": "users",
+      "column": "UpVotes",
+      "type": "INTEGER"
+    },
+    {
+      "table": "users",
+      "column": "DownVotes",
+      "type": "INTEGER"
+    },
+    {
+      "table": "users",
+      "column": "AccountId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "users",
+      "column": "Age",
+      "type": "INTEGER"
+    },
+    {
+      "table": "users",
+      "column": "ProfileImageUrl",
+      "type": "TEXT"
+    },
+    {
+      "table": "votes",
+      "column": "Id",
+      "type": "INTEGER"
+    },
+    {
+      "table": "votes",
+      "column": "PostId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "votes",
+      "column": "VoteTypeId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "votes",
+      "column": "CreationDate",
+      "type": "DATE"
+    },
+    {
+      "table": "votes",
+      "column": "UserId",
+      "type": "INTEGER"
+    },
+    {
+      "table": "votes",
+      "column": "BountyAmount",
+      "type": "INTEGER"
+    }
+  ],
+  "fk_edges": [
+    {
+      "from": {
+        "table": "badges",
+        "column": "UserId"
+      },
+      "to": {
+        "table": "users",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "comments",
+        "column": "PostId"
+      },
+      "to": {
+        "table": "posts",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "comments",
+        "column": "UserId"
+      },
+      "to": {
+        "table": "users",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "postHistory",
+        "column": "PostId"
+      },
+      "to": {
+        "table": "posts",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "postHistory",
+        "column": "UserId"
+      },
+      "to": {
+        "table": "users",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "postLinks",
+        "column": "PostId"
+      },
+      "to": {
+        "table": "posts",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "postLinks",
+        "column": "RelatedPostId"
+      },
+      "to": {
+        "table": "posts",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "posts",
+        "column": "LastEditorUserId"
+      },
+      "to": {
+        "table": "users",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "posts",
+        "column": "OwnerUserId"
+      },
+      "to": {
+        "table": "users",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "posts",
+        "column": "ParentId"
+      },
+      "to": {
+        "table": "posts",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "tags",
+        "column": "ExcerptPostId"
+      },
+      "to": {
+        "table": "posts",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "votes",
+        "column": "PostId"
+      },
+      "to": {
+        "table": "posts",
+        "column": "Id"
+      }
+    },
+    {
+      "from": {
+        "table": "votes",
+        "column": "UserId"
+      },
+      "to": {
+        "table": "users",
+        "column": "Id"
+      }
+    }
+  ],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c27",
+        "c28",
+        "c29",
+        "c30",
+        "c31",
+        "c32",
+        "c33",
+        "c34",
+        "c35",
+        "c36",
+        "c37"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16",
+        "f17",
+        "f18",
+        "f19",
+        "f20",
+        "f21",
+        "f22"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v14",
+        "v15",
+        "v16",
+        "v17",
+        "v18",
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23",
+        "v24",
+        "v25",
+        "v26",
+        "v27",
+        "v28",
+        "v29",
+        "v30"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15",
+        "r16",
+        "r17",
+        "r18",
+        "r19",
+        "r20",
+        "r21",
+        "r22",
+        "r23",
+        "r24",
+        "r25",
+        "r26",
+        "r27",
+        "r28",
+        "r29",
+        "r30",
+        "r31",
+        "r32",
+        "r33",
+        "r34",
+        "r35",
+        "r36",
+        "r37",
+        "r38",
+        "r39",
+        "r40"
+      ],
+      "ColumnAlias": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10",
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15"
+      ]
+    },
+    "by_column": {
+      "users.Reputation": [
+        "f1",
+        "f22",
+        "a7"
+      ],
+      "users.Views": [
+        "f2",
+        "r14",
+        "r28",
+        "a11"
+      ],
+      "posts.ViewCount": [
+        "f3",
+        "f15",
+        "r5",
+        "a8"
+      ],
+      "posts.FavoriteCount": [
+        "f4"
+      ],
+      "posts.CommentCount": [
+        "f5",
+        "r20"
+      ],
+      "posts.AnswerCount": [
+        "f6"
+      ],
+      "tags.Count": [
+        "f7"
+      ],
+      "badges.UserId": [
+        "f8",
+        "f20",
+        "a12"
+      ],
+      "badges.Id": [
+        "f8",
+        "f10",
+        "a5"
+      ],
+      "posts.Score": [
+        "f9",
+        "r12",
+        "r15",
+        "r30",
+        "r35"
+      ],
+      "users.DisplayName": [
+        "f10",
+        "v1",
+        "v2",
+        "v3",
+        "v8",
+        "v10",
+        "v13",
+        "v14",
+        "v16",
+        "v17",
+        "v30",
+        "a1"
+      ],
+      "users.Id": [
+        "f11",
+        "f18",
+        "f19",
+        "f21",
+        "r16",
+        "r18",
+        "r22",
+        "a13"
+      ],
+      "users.Age": [
+        "f11",
+        "f19",
+        "f21",
+        "r11",
+        "r37",
+        "r40"
+      ],
+      "votes.CreationDate": [
+        "f12"
+      ],
+      "votes.Id": [
+        "f12",
+        "f13",
+        "v9"
+      ],
+      "posts.Id": [
+        "f13",
+        "v7",
+        "a15"
+      ],
+      "votes.BountyAmount": [
+        "f14",
+        "v19"
+      ],
+      "comments.UserId": [
+        "f16"
+      ],
+      "comments.Id": [
+        "f16"
+      ],
+      "badges.Name": [
+        "f17",
+        "f20",
+        "v6",
+        "v15",
+        "v21",
+        "v22",
+        "v25",
+        "v26",
+        "v27",
+        "v28",
+        "r27"
+      ],
+      "badges.Date": [
+        "f17",
+        "r13",
+        "r29",
+        "r33"
+      ],
+      "users.UpVotes": [
+        "f18",
+        "r3"
+      ],
+      "posts.Title": [
+        "v4",
+        "v18",
+        "r7",
+        "r8",
+        "r21",
+        "r25",
+        "r26",
+        "a10"
+      ],
+      "tags.TagName": [
+        "v5"
+      ],
+      "comments.Score": [
+        "v11",
+        "r30",
+        "a6"
+      ],
+      "users.WebsiteUrl": [
+        "v12"
+      ],
+      "posts.Tags": [
+        "v20"
+      ],
+      "users.Location": [
+        "v23",
+        "v24",
+        "v29",
+        "r36"
+      ],
+      "users.CreationDate": [
+        "r1",
+        "r17",
+        "r38"
+      ],
+      "users.LastAccessDate": [
+        "r2"
+      ],
+      "users.DownVotes": [
+        "r4"
+      ],
+      "posts.CreaionDate": [
+        "r6",
+        "r31"
+      ],
+      "posts.ParentId": [
+        "r9"
+      ],
+      "posts.ClosedDate": [
+        "r10"
+      ],
+      "comments.CreationDate": [
+        "r19",
+        "r34",
+        "r39"
+      ],
+      "posts.OwnerUserId": [
+        "r22",
+        "r32",
+        "a3"
+      ],
+      "comments.Text": [
+        "r23",
+        "a9"
+      ],
+      "posts.LastEditorUserId": [
+        "r24",
+        "a2"
+      ],
+      "tags.ExcerptPostId": [
+        "a4"
+      ],
+      "postLinks.RelatedPostId": [
+        "a14"
+      ]
+    },
+    "by_name_token": {
+      "highest": [
+        "c1",
+        "c7",
+        "f1",
+        "f3",
+        "a6"
+      ],
+      "reputation": [
+        "c1",
+        "c37",
+        "f1",
+        "f22",
+        "a7"
+      ],
+      "user": [
+        "c2",
+        "c17",
+        "c19",
+        "c23",
+        "c28",
+        "f8",
+        "f16",
+        "r16",
+        "r18",
+        "r22",
+        "r36",
+        "a2",
+        "a12",
+        "a13"
+      ],
+      "number": [
+        "c2",
+        "c9",
+        "c10",
+        "c15",
+        "c18",
+        "c21",
+        "f5",
+        "f6",
+        "f10",
+        "f12",
+        "a5"
+      ],
+      "view": [
+        "c2",
+        "c26",
+        "c27",
+        "f15"
+      ],
+      "who": [
+        "c2",
+        "c15",
+        "a2"
+      ],
+      "most": [
+        "c2",
+        "c8",
+        "c10",
+        "c15",
+        "c28",
+        "f4",
+        "f6",
+        "f7",
+        "f16"
+      ],
+      "has": [
+        "c2"
+      ],
+      "more": [
+        "c3",
+        "c4",
+        "c5",
+        "c29",
+        "r3",
+        "r4",
+        "r5",
+        "r27",
+        "r30",
+        "r32"
+      ],
+      "than": [
+        "c3",
+        "c4",
+        "c5",
+        "c29",
+        "f13",
+        "r3",
+        "r4",
+        "r5",
+        "r27",
+        "r30",
+        "r32"
+      ],
+      "100": [
+        "c3",
+        "f11",
+        "f17",
+        "f20",
+        "f21",
+        "r3"
+      ],
+      "upvotes": [
+        "c3",
+        "f18",
+        "r3"
+      ],
+      "downvotes": [
+        "c4",
+        "r4"
+      ],
+      "10": [
+        "c5",
+        "c29",
+        "r5",
+        "r32",
+        "r35"
+      ],
+      "views": [
+        "c5",
+        "c17",
+        "f2",
+        "r5",
+        "r14",
+        "r28",
+        "a8",
+        "a11"
+      ],
+      "2013": [
+        "c6",
+        "r6"
+      ],
+      "year": [
+        "c6",
+        "f17",
+        "r1",
+        "r6",
+        "r13",
+        "r29",
+        "r31"
+      ],
+      "after": [
+        "c6",
+        "r2",
+        "r6"
+      ],
+      "created": [
+        "c6",
+        "r1",
+        "r6",
+        "r34",
+        "r38",
+        "r39"
+      ],
+      "popularity": [
+        "c7",
+        "f3"
+      ],
+      "post": [
+        "c8",
+        "c11",
+        "c12",
+        "f4",
+        "f13",
+        "v7",
+        "v18",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "a10",
+        "a14",
+        "a15"
+      ],
+      "valuable": [
+        "c8",
+        "f4"
+      ],
+      "total": [
+        "c9",
+        "c25",
+        "f5",
+        "f14"
+      ],
+      "comments": [
+        "c9",
+        "c28",
+        "f5",
+        "f16",
+        "a9"
+      ],
+      "answer": [
+        "c10",
+        "f6"
+      ],
+      "root": [
+        "c11",
+        "r9"
+      ],
+      "finished": [
+        "c12",
+        "r10"
+      ],
+      "well": [
+        "c12",
+        "r10"
+      ],
+      "elder": [
+        "c13",
+        "c19",
+        "c20",
+        "f11",
+        "r11"
+      ],
+      "users": [
+        "c13",
+        "c20",
+        "c33",
+        "f11",
+        "r11"
+      ],
+      "19": [
+        "c14",
+        "r12",
+        "r17",
+        "r33",
+        "r34",
+        "r38",
+        "r39",
+        "r40"
+      ],
+      "over": [
+        "c14",
+        "c17",
+        "r12",
+        "r15"
+      ],
+      "score": [
+        "c14",
+        "c16",
+        "f9",
+        "v11",
+        "r12",
+        "r15",
+        "r30",
+        "r35",
+        "a6"
+      ],
+      "obtained": [
+        "c15",
+        "r13"
+      ],
+      "badges": [
+        "c15",
+        "c18",
+        "f10",
+        "v26",
+        "r27"
+      ],
+      "average": [
+        "c16",
+        "c18",
+        "c26",
+        "c30",
+        "c31",
+        "f9",
+        "f10",
+        "f15",
+        "f18",
+        "f19"
+      ],
+      "200": [
+        "c17",
+        "r14"
+      ],
+      "percentage": [
+        "c20",
+        "c33",
+        "c35",
+        "f11",
+        "f17",
+        "f20",
+        "f21"
+      ],
+      "votes": [
+        "c21",
+        "c30",
+        "f12",
+        "f13",
+        "f18"
+      ],
+      "maximum": [
+        "c21",
+        "f12"
+      ],
+      "creation": [
+        "c21",
+        "f12"
+      ],
+      "date": [
+        "c21",
+        "f12",
+        "f17",
+        "r13",
+        "r29",
+        "r33"
+      ],
+      "data": [
+        "c22",
+        "c24",
+        "r21",
+        "r25"
+      ],
+      "visualization": [
+        "c22",
+        "r21"
+      ],
+      "about": [
+        "c22",
+        "c24",
+        "r25"
+      ],
+      "no": [
+        "c23",
+        "v7",
+        "v9",
+        "r16",
+        "r18",
+        "r22"
+      ],
+      "24": [
+        "c23",
+        "r22"
+      ],
+      "amount": [
+        "c25",
+        "f14",
+        "v19"
+      ],
+      "bounty": [
+        "c25",
+        "f14",
+        "v19"
+      ],
+      "count": [
+        "c26",
+        "f7",
+        "f8",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f15",
+        "f16",
+        "f17",
+        "f18",
+        "f19",
+        "f20",
+        "f21",
+        "r27",
+        "r32"
+      ],
+      "least": [
+        "c27"
+      ],
+      "1000": [
+        "c27",
+        "r28"
+      ],
+      "having": [
+        "c27"
+      ],
+      "creating": [
+        "c29",
+        "r32"
+      ],
+      "posts": [
+        "c29",
+        "f13",
+        "r32"
+      ],
+      "up": [
+        "c30",
+        "f18"
+      ],
+      "age": [
+        "c31",
+        "f11",
+        "f19",
+        "f21",
+        "r11",
+        "r37",
+        "r40"
+      ],
+      "positive": [
+        "c32"
+      ],
+      "comment": [
+        "c32",
+        "r19",
+        "r20",
+        "r23",
+        "a6"
+      ],
+      "badge": [
+        "c33",
+        "f8",
+        "f20",
+        "v6",
+        "v15",
+        "v21",
+        "v22",
+        "v27",
+        "v28"
+      ],
+      "teacher": [
+        "c33",
+        "f20",
+        "v22",
+        "v25"
+      ],
+      "teenager": [
+        "c34",
+        "f21",
+        "r37"
+      ],
+      "teenagers": [
+        "c35"
+      ],
+      "adult": [
+        "c36",
+        "r40"
+      ],
+      "lowest": [
+        "c37",
+        "f22",
+        "a11"
+      ],
+      "max": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f6",
+        "f7",
+        "f8",
+        "f12",
+        "f16"
+      ],
+      "viewcount": [
+        "f3",
+        "f15"
+      ],
+      "favoritecount": [
+        "f4"
+      ],
+      "commentcount": [
+        "f5",
+        "r20"
+      ],
+      "sum": [
+        "f5",
+        "f14",
+        "f18",
+        "f19"
+      ],
+      "answercount": [
+        "f6"
+      ],
+      "tag": [
+        "f7",
+        "v5"
+      ],
+      "popular": [
+        "f7"
+      ],
+      "id": [
+        "f8",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f16"
+      ],
+      "userid": [
+        "f8",
+        "f16",
+        "f18",
+        "f19",
+        "f20",
+        "f21",
+        "r16",
+        "r18",
+        "r22",
+        "r32"
+      ],
+      "avg": [
+        "f9",
+        "f15"
+      ],
+      "displayname": [
+        "f10"
+      ],
+      "divide": [
+        "f10",
+        "f11",
+        "f17",
+        "f21"
+      ],
+      "65": [
+        "f11",
+        "r11",
+        "r40"
+      ],
+      "where": [
+        "f11",
+        "f12",
+        "f16",
+        "f17",
+        "f20",
+        "f21"
+      ],
+      "creationdate": [
+        "f12",
+        "r1",
+        "r6",
+        "r17",
+        "r19",
+        "r34",
+        "r38",
+        "r39"
+      ],
+      "his": [
+        "f13"
+      ],
+      "her": [
+        "f13"
+      ],
+      "times": [
+        "f13"
+      ],
+      "bountyamount": [
+        "f14"
+      ],
+      "2010": [
+        "f17",
+        "r17",
+        "r29",
+        "r33",
+        "r34",
+        "r38",
+        "r39"
+      ],
+      "difference": [
+        "f17"
+      ],
+      "2011": [
+        "f17",
+        "r1",
+        "r13",
+        "r31"
+      ],
+      "name": [
+        "f17",
+        "f20",
+        "r27"
+      ],
+      "subtract": [
+        "f17"
+      ],
+      "13": [
+        "f21",
+        "r37"
+      ],
+      "18": [
+        "f21",
+        "r37"
+      ],
+      "between": [
+        "f21",
+        "r37",
+        "r40"
+      ],
+      "min": [
+        "f22"
+      ],
+      "harlan": [
+        "v1"
+      ],
+      "dixon": [
+        "v2"
+      ],
+      "jarrod": [
+        "v2"
+      ],
+      "csgillespie": [
+        "v3"
+      ],
+      "from": [
+        "v4",
+        "r7",
+        "a4"
+      ],
+      "experts": [
+        "v4",
+        "r7"
+      ],
+      "eliciting": [
+        "v4",
+        "r7"
+      ],
+      "priors": [
+        "v4",
+        "r7"
+      ],
+      "bayesian": [
+        "v5"
+      ],
+      "revival": [
+        "v6"
+      ],
+      "65041": [
+        "v7"
+      ],
+      "tiago": [
+        "v8"
+      ],
+      "pasqualini": [
+        "v8"
+      ],
+      "vote": [
+        "v9"
+      ],
+      "6347": [
+        "v9"
+      ],
+      "datepiccoderguywhoprograms": [
+        "v10"
+      ],
+      "17": [
+        "v11"
+      ],
+      "websiteurl": [
+        "v12"
+      ],
+      "silentghost": [
+        "v13"
+      ],
+      "lion": [
+        "v14"
+      ],
+      "necromancer": [
+        "v15"
+      ],
+      "vebjorn": [
+        "v16"
+      ],
+      "ljosa": [
+        "v16"
+      ],
+      "yevgeny": [
+        "v17"
+      ],
+      "title": [
+        "v18",
+        "r7",
+        "r8",
+        "r21",
+        "r25",
+        "r26",
+        "a10"
+      ],
+      "50": [
+        "v19"
+      ],
+      "as": [
+        "v20"
+      ],
+      "humor": [
+        "v20"
+      ],
+      "tagged": [
+        "v20"
+      ],
+      "supporter": [
+        "v21"
+      ],
+      "york": [
+        "v23"
+      ],
+      "location": [
+        "v23",
+        "r36"
+      ],
+      "new": [
+        "v23"
+      ],
+      "india": [
+        "v24"
+      ],
+      "student": [
+        "v26"
+      ],
+      "announcer": [
+        "v27"
+      ],
+      "organizer": [
+        "v28"
+      ],
+      "austria": [
+        "v29"
+      ],
+      "vienna": [
+        "v29"
+      ],
+      "sharpie": [
+        "v30"
+      ],
+      "account": [
+        "r1"
+      ],
+      "09": [
+        "r2"
+      ],
+      "accessed": [
+        "r2"
+      ],
+      "2014": [
+        "r2",
+        "r19"
+      ],
+      "lastaccessdate": [
+        "r2"
+      ],
+      "01": [
+        "r2"
+      ],
+      "last": [
+        "r2",
+        "a2"
+      ],
+      "does": [
+        "r8"
+      ],
+      "mean": [
+        "r8"
+      ],
+      "teaching": [
+        "r8"
+      ],
+      "correlation": [
+        "r8"
+      ],
+      "filter": [
+        "r8"
+      ],
+      "examples": [
+        "r8"
+      ],
+      "not": [
+        "r8",
+        "r10",
+        "r24"
+      ],
+      "causation": [
+        "r8"
+      ],
+      "parentid": [
+        "r9"
+      ],
+      "null": [
+        "r9",
+        "r10",
+        "r24"
+      ],
+      "closeddate": [
+        "r10"
+      ],
+      "20": [
+        "r12",
+        "r19"
+      ],
+      "58": [
+        "r16"
+      ],
+      "07": [
+        "r17",
+        "r33",
+        "r34",
+        "r38",
+        "r39"
+      ],
+      "on": [
+        "r17",
+        "r19",
+        "r33",
+        "r34",
+        "r38",
+        "r39"
+      ],
+      "3025": [
+        "r18"
+      ],
+      "29": [
+        "r19"
+      ],
+      "39": [
+        "r19",
+        "r33"
+      ],
+      "23": [
+        "r19"
+      ],
+      "one": [
+        "r20"
+      ],
+      "contains": [
+        "r21"
+      ],
+      "like": [
+        "r21",
+        "r25",
+        "r26"
+      ],
+      "owneruserid": [
+        "r22"
+      ],
+      "you": [
+        "r23"
+      ],
+      "text": [
+        "r23"
+      ],
+      "thank": [
+        "r23"
+      ],
+      "user93": [
+        "r23"
+      ],
+      "lasteditoruserid": [
+        "r24"
+      ],
+      "edited": [
+        "r24",
+        "a2"
+      ],
+      "variance": [
+        "r26"
+      ],
+      "mentioning": [
+        "r26"
+      ],
+      "during": [
+        "r29"
+      ],
+      "60": [
+        "r30"
+      ],
+      "creaiondate": [
+        "r31"
+      ],
+      "pm": [
+        "r33",
+        "r34",
+        "r38",
+        "r39"
+      ],
+      "08": [
+        "r33"
+      ],
+      "16": [
+        "r34"
+      ],
+      "14": [
+        "r34"
+      ],
+      "rochester": [
+        "r36"
+      ],
+      "ny": [
+        "r36"
+      ],
+      "range": [
+        "r37",
+        "r40"
+      ],
+      "56": [
+        "r38"
+      ],
+      "33": [
+        "r39"
+      ],
+      "37": [
+        "r39"
+      ],
+      "owner": [
+        "a1",
+        "a3"
+      ],
+      "excerpt": [
+        "a4"
+      ],
+      "point": [
+        "a7"
+      ],
+      "contents": [
+        "a9"
+      ],
+      "related": [
+        "a14"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        531,
+        "c1"
+      ],
+      [
+        589,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        534,
+        "c1"
+      ]
+    ],
+    "c3": [
+      [
+        535,
+        "c1"
+      ]
+    ],
+    "c4": [
+      [
+        535,
+        "c2"
+      ]
+    ],
+    "c5": [
+      [
+        536,
+        "c1"
+      ]
+    ],
+    "c6": [
+      [
+        536,
+        "c2"
+      ]
+    ],
+    "c7": [
+      [
+        540,
+        "c1"
+      ]
+    ],
+    "c8": [
+      [
+        541,
+        "c1"
+      ]
+    ],
+    "c9": [
+      [
+        542,
+        "c1"
+      ]
+    ],
+    "c10": [
+      [
+        543,
+        "c1"
+      ]
+    ],
+    "c11": [
+      [
+        545,
+        "c1"
+      ]
+    ],
+    "c12": [
+      [
+        546,
+        "c1"
+      ]
+    ],
+    "c13": [
+      [
+        547,
+        "c1"
+      ]
+    ],
+    "c14": [
+      [
+        547,
+        "c2"
+      ]
+    ],
+    "c15": [
+      [
+        554,
+        "c1"
+      ]
+    ],
+    "c16": [
+      [
+        555,
+        "c1"
+      ]
+    ],
+    "c17": [
+      [
+        556,
+        "c1"
+      ]
+    ],
+    "c18": [
+      [
+        556,
+        "c2"
+      ]
+    ],
+    "c19": [
+      [
+        557,
+        "c1"
+      ]
+    ],
+    "c20": [
+      [
+        557,
+        "c2"
+      ]
+    ],
+    "c21": [
+      [
+        559,
+        "c1"
+      ]
+    ],
+    "c22": [
+      [
+        569,
+        "c1"
+      ]
+    ],
+    "c23": [
+      [
+        571,
+        "c1"
+      ]
+    ],
+    "c24": [
+      [
+        585,
+        "c1"
+      ]
+    ],
+    "c25": [
+      [
+        585,
+        "c2"
+      ]
+    ],
+    "c26": [
+      [
+        587,
+        "c1"
+      ]
+    ],
+    "c27": [
+      [
+        595,
+        "c1"
+      ]
+    ],
+    "c28": [
+      [
+        596,
+        "c1"
+      ]
+    ],
+    "c29": [
+      [
+        604,
+        "c1"
+      ]
+    ],
+    "c30": [
+      [
+        604,
+        "c2"
+      ]
+    ],
+    "c31": [
+      [
+        604,
+        "c3"
+      ]
+    ],
+    "c32": [
+      [
+        607,
+        "c1"
+      ]
+    ],
+    "c33": [
+      [
+        614,
+        "c1"
+      ]
+    ],
+    "c34": [
+      [
+        615,
+        "c1"
+      ]
+    ],
+    "c35": [
+      [
+        615,
+        "c2"
+      ]
+    ],
+    "c36": [
+      [
+        619,
+        "c1"
+      ]
+    ],
+    "c37": [
+      [
+        621,
+        "c1"
+      ]
+    ],
+    "f1": [
+      [
+        531,
+        "f1"
+      ],
+      [
+        589,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        534,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        540,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        541,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        542,
+        "f1"
+      ]
+    ],
+    "f6": [
+      [
+        543,
+        "f1"
+      ]
+    ],
+    "f7": [
+      [
+        550,
+        "f1"
+      ]
+    ],
+    "f8": [
+      [
+        554,
+        "f1"
+      ]
+    ],
+    "f9": [
+      [
+        555,
+        "f1"
+      ]
+    ],
+    "f10": [
+      [
+        556,
+        "f1"
+      ]
+    ],
+    "f11": [
+      [
+        557,
+        "f1"
+      ]
+    ],
+    "f12": [
+      [
+        559,
+        "f1"
+      ]
+    ],
+    "f13": [
+      [
+        571,
+        "f1"
+      ]
+    ],
+    "f14": [
+      [
+        585,
+        "f1"
+      ]
+    ],
+    "f15": [
+      [
+        587,
+        "f1"
+      ]
+    ],
+    "f16": [
+      [
+        596,
+        "f1"
+      ]
+    ],
+    "f17": [
+      [
+        598,
+        "f1"
+      ]
+    ],
+    "f18": [
+      [
+        604,
+        "f1"
+      ]
+    ],
+    "f19": [
+      [
+        604,
+        "f2"
+      ]
+    ],
+    "f20": [
+      [
+        614,
+        "f1"
+      ]
+    ],
+    "f21": [
+      [
+        615,
+        "f1"
+      ]
+    ],
+    "f22": [
+      [
+        621,
+        "f1"
+      ]
+    ],
+    "v1": [
+      [
+        531,
+        "v1"
+      ]
+    ],
+    "v2": [
+      [
+        531,
+        "v2"
+      ]
+    ],
+    "v3": [
+      [
+        537,
+        "v1"
+      ],
+      [
+        538,
+        "v1"
+      ],
+      [
+        540,
+        "v1"
+      ],
+      [
+        542,
+        "v1"
+      ],
+      [
+        543,
+        "v1"
+      ],
+      [
+        545,
+        "v1"
+      ],
+      [
+        551,
+        "v1"
+      ],
+      [
+        552,
+        "v1"
+      ],
+      [
+        553,
+        "v1"
+      ],
+      [
+        555,
+        "v1"
+      ]
+    ],
+    "v4": [
+      [
+        548,
+        "v1"
+      ]
+    ],
+    "v5": [
+      [
+        549,
+        "v1"
+      ]
+    ],
+    "v6": [
+      [
+        560,
+        "v1"
+      ]
+    ],
+    "v7": [
+      [
+        566,
+        "v1"
+      ]
+    ],
+    "v8": [
+      [
+        567,
+        "v1"
+      ]
+    ],
+    "v9": [
+      [
+        568,
+        "v1"
+      ]
+    ],
+    "v10": [
+      [
+        570,
+        "v1"
+      ]
+    ],
+    "v11": [
+      [
+        573,
+        "v1"
+      ]
+    ],
+    "v12": [
+      [
+        574,
+        "v1"
+      ]
+    ],
+    "v13": [
+      [
+        575,
+        "v1"
+      ]
+    ],
+    "v14": [
+      [
+        577,
+        "v1"
+      ]
+    ],
+    "v15": [
+      [
+        580,
+        "v1"
+      ]
+    ],
+    "v16": [
+      [
+        582,
+        "v1"
+      ]
+    ],
+    "v17": [
+      [
+        583,
+        "v1"
+      ]
+    ],
+    "v18": [
+      [
+        584,
+        "v1"
+      ]
+    ],
+    "v19": [
+      [
+        586,
+        "v1"
+      ]
+    ],
+    "v20": [
+      [
+        587,
+        "v1"
+      ]
+    ],
+    "v21": [
+      [
+        591,
+        "v1"
+      ],
+      [
+        593,
+        "v1"
+      ],
+      [
+        619,
+        "v1"
+      ]
+    ],
+    "v22": [
+      [
+        593,
+        "v2"
+      ]
+    ],
+    "v23": [
+      [
+        593,
+        "v3"
+      ]
+    ],
+    "v24": [
+      [
+        597,
+        "v1"
+      ]
+    ],
+    "v25": [
+      [
+        597,
+        "v2"
+      ],
+      [
+        614,
+        "v1"
+      ]
+    ],
+    "v26": [
+      [
+        598,
+        "v1"
+      ]
+    ],
+    "v27": [
+      [
+        605,
+        "v1"
+      ]
+    ],
+    "v28": [
+      [
+        615,
+        "v1"
+      ]
+    ],
+    "v29": [
+      [
+        618,
+        "v1"
+      ]
+    ],
+    "v30": [
+      [
+        622,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        532,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        533,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        535,
+        "r1"
+      ]
+    ],
+    "r4": [
+      [
+        535,
+        "r2"
+      ]
+    ],
+    "r5": [
+      [
+        536,
+        "r1"
+      ]
+    ],
+    "r6": [
+      [
+        536,
+        "r2"
+      ]
+    ],
+    "r7": [
+      [
+        539,
+        "r1"
+      ]
+    ],
+    "r8": [
+      [
+        544,
+        "r1"
+      ]
+    ],
+    "r9": [
+      [
+        545,
+        "r1"
+      ]
+    ],
+    "r10": [
+      [
+        546,
+        "r1"
+      ]
+    ],
+    "r11": [
+      [
+        547,
+        "r1"
+      ],
+      [
+        557,
+        "r2"
+      ]
+    ],
+    "r12": [
+      [
+        547,
+        "r2"
+      ]
+    ],
+    "r13": [
+      [
+        553,
+        "r1"
+      ],
+      [
+        591,
+        "r1"
+      ],
+      [
+        598,
+        "r2"
+      ]
+    ],
+    "r14": [
+      [
+        556,
+        "r1"
+      ]
+    ],
+    "r15": [
+      [
+        557,
+        "r1"
+      ]
+    ],
+    "r16": [
+      [
+        558,
+        "r1"
+      ]
+    ],
+    "r17": [
+      [
+        558,
+        "r2"
+      ]
+    ],
+    "r18": [
+      [
+        563,
+        "r1"
+      ]
+    ],
+    "r19": [
+      [
+        563,
+        "r2"
+      ]
+    ],
+    "r20": [
+      [
+        564,
+        "r1"
+      ]
+    ],
+    "r21": [
+      [
+        569,
+        "r1"
+      ]
+    ],
+    "r22": [
+      [
+        571,
+        "r1"
+      ]
+    ],
+    "r23": [
+      [
+        576,
+        "r1"
+      ]
+    ],
+    "r24": [
+      [
+        583,
+        "r1"
+      ]
+    ],
+    "r25": [
+      [
+        585,
+        "r1"
+      ]
+    ],
+    "r26": [
+      [
+        586,
+        "r1"
+      ]
+    ],
+    "r27": [
+      [
+        592,
+        "r1"
+      ]
+    ],
+    "r28": [
+      [
+        595,
+        "r1"
+      ]
+    ],
+    "r29": [
+      [
+        598,
+        "r1"
+      ]
+    ],
+    "r30": [
+      [
+        602,
+        "r1"
+      ],
+      [
+        607,
+        "r1"
+      ]
+    ],
+    "r31": [
+      [
+        603,
+        "r1"
+      ]
+    ],
+    "r32": [
+      [
+        604,
+        "r1"
+      ]
+    ],
+    "r33": [
+      [
+        606,
+        "r1"
+      ],
+      [
+        611,
+        "r1"
+      ],
+      [
+        620,
+        "r1"
+      ]
+    ],
+    "r34": [
+      [
+        608,
+        "r1"
+      ]
+    ],
+    "r35": [
+      [
+        609,
+        "r1"
+      ]
+    ],
+    "r36": [
+      [
+        613,
+        "r1"
+      ]
+    ],
+    "r37": [
+      [
+        615,
+        "r1"
+      ]
+    ],
+    "r38": [
+      [
+        616,
+        "r1"
+      ]
+    ],
+    "r39": [
+      [
+        617,
+        "r1"
+      ]
+    ],
+    "r40": [
+      [
+        619,
+        "r1"
+      ]
+    ],
+    "a1": [
+      [
+        539,
+        "a1"
+      ],
+      [
+        574,
+        "a1"
+      ],
+      [
+        576,
+        "a1"
+      ],
+      [
+        578,
+        "a2"
+      ],
+      [
+        580,
+        "a1"
+      ],
+      [
+        581,
+        "a1"
+      ],
+      [
+        586,
+        "a1"
+      ]
+    ],
+    "a2": [
+      [
+        544,
+        "a1"
+      ],
+      [
+        582,
+        "a1"
+      ]
+    ],
+    "a3": [
+      [
+        548,
+        "a1"
+      ]
+    ],
+    "a4": [
+      [
+        549,
+        "a1"
+      ],
+      [
+        550,
+        "a1"
+      ]
+    ],
+    "a5": [
+      [
+        560,
+        "a1"
+      ]
+    ],
+    "a6": [
+      [
+        561,
+        "a1"
+      ]
+    ],
+    "a7": [
+      [
+        566,
+        "a1"
+      ]
+    ],
+    "a8": [
+      [
+        572,
+        "a1"
+      ],
+      [
+        600,
+        "a2"
+      ]
+    ],
+    "a9": [
+      [
+        573,
+        "a1"
+      ],
+      [
+        577,
+        "a1"
+      ],
+      [
+        579,
+        "a2"
+      ],
+      [
+        587,
+        "a1"
+      ],
+      [
+        608,
+        "a1"
+      ],
+      [
+        617,
+        "a1"
+      ]
+    ],
+    "a10": [
+      [
+        578,
+        "a1"
+      ],
+      [
+        579,
+        "a1"
+      ]
+    ],
+    "a11": [
+      [
+        590,
+        "a1"
+      ]
+    ],
+    "a12": [
+      [
+        592,
+        "a1"
+      ],
+      [
+        605,
+        "a1"
+      ]
+    ],
+    "a13": [
+      [
+        593,
+        "a1"
+      ],
+      [
+        595,
+        "a1"
+      ],
+      [
+        613,
+        "a1"
+      ],
+      [
+        621,
+        "a1"
+      ],
+      [
+        622,
+        "a1"
+      ]
+    ],
+    "a14": [
+      [
+        600,
+        "a1"
+      ]
+    ],
+    "a15": [
+      [
+        609,
+        "a1"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,3474 @@
+{
+  "version": "p1b.2",
+  "db_id": "student_club",
+  "match_signature_hash": "b535a4ab394715afec1e0d2facf7b46f095857d3fce6bcbbde847b00692cf6c2",
+  "nodes": {
+    "c1": {
+      "id": "c1",
+      "type": "Concept",
+      "name": "event with highest attendance",
+      "defined_by": "f1"
+    },
+    "c2": {
+      "id": "c2",
+      "type": "Concept",
+      "name": "meetings events",
+      "defined_by": "r2"
+    },
+    "c3": {
+      "id": "c3",
+      "type": "Concept",
+      "name": "attended by more than 10 members",
+      "defined_by": "r3"
+    },
+    "c4": {
+      "id": "c4",
+      "type": "Concept",
+      "name": "attendance of over 20 students",
+      "defined_by": "r4"
+    },
+    "c5": {
+      "id": "c5",
+      "type": "Concept",
+      "name": "most expensive",
+      "defined_by": "f3"
+    },
+    "c6": {
+      "id": "c6",
+      "type": "Concept",
+      "name": "total budgeted amount",
+      "defined_by": "f4"
+    },
+    "c7": {
+      "id": "c7",
+      "type": "Concept",
+      "name": "Elijah Allen",
+      "defined_by": "r10"
+    },
+    "c8": {
+      "id": "c8",
+      "type": "Concept",
+      "name": "events in September and October",
+      "defined_by": "r11"
+    },
+    "c9": {
+      "id": "c9",
+      "type": "Concept",
+      "name": "biggest budget for 'Food'",
+      "defined_by": "r14"
+    },
+    "c10": {
+      "id": "c10",
+      "type": "Concept",
+      "name": "cost exceeded budget",
+      "defined_by": "r16"
+    },
+    "c11": {
+      "id": "c11",
+      "type": "Concept",
+      "name": "total number of budget amount",
+      "defined_by": "f4"
+    },
+    "c12": {
+      "id": "c12",
+      "type": "Concept",
+      "name": "first paid dues",
+      "defined_by": "f7"
+    },
+    "c13": {
+      "id": "c13",
+      "type": "Concept",
+      "name": "lowest remaining",
+      "defined_by": "f11"
+    },
+    "c14": {
+      "id": "c14",
+      "type": "Concept",
+      "name": "college most members go",
+      "defined_by": "f12"
+    },
+    "c15": {
+      "id": "c15",
+      "type": "Concept",
+      "name": "highest budget amount",
+      "defined_by": "f13"
+    },
+    "c16": {
+      "id": "c16",
+      "type": "Concept",
+      "name": "closed events",
+      "defined_by": "r22"
+    },
+    "c17": {
+      "id": "c17",
+      "type": "Concept",
+      "name": "highest spend-to budget ratio",
+      "defined_by": "f14"
+    },
+    "c18": {
+      "id": "c18",
+      "type": "Concept",
+      "name": "name of students",
+      "defined_by": "a1"
+    },
+    "c19": {
+      "id": "c19",
+      "type": "Concept",
+      "name": "attended more than 7 events",
+      "defined_by": "r24"
+    },
+    "c20": {
+      "id": "c20",
+      "type": "Concept",
+      "name": "generate income more than $50",
+      "defined_by": "r25"
+    },
+    "c21": {
+      "id": "c21",
+      "type": "Concept",
+      "name": "highest income",
+      "defined_by": "f16"
+    },
+    "c22": {
+      "id": "c22",
+      "type": "Concept",
+      "name": "lowest cost",
+      "defined_by": "f17"
+    },
+    "c23": {
+      "id": "c23",
+      "type": "Concept",
+      "name": "September 2019",
+      "defined_by": "r26"
+    },
+    "f1": {
+      "id": "f1",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "link_to_event",
+          "table": "attendance",
+          "column": "link_to_event"
+        }
+      ],
+      "name": "event with highest attendance",
+      "expression": "MAX(COUNT(link_to_event))"
+    },
+    "f2": {
+      "id": "f2",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "event_id",
+          "table": "event",
+          "column": "event_id"
+        },
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name"
+        }
+      ],
+      "depends_on": [
+        "r5"
+      ],
+      "name": "average",
+      "expression": "DIVIDE(COUNT(event_id), COUNT(DISTINCT event_name))"
+    },
+    "f3": {
+      "id": "f3",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "cost",
+          "table": "expense",
+          "column": "cost"
+        }
+      ],
+      "name": "most expensive",
+      "expression": "MAX(cost)"
+    },
+    "f4": {
+      "id": "f4",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "amount",
+          "table": "budget",
+          "column": "amount"
+        }
+      ],
+      "name": "total budgeted amount",
+      "expression": "SUM(amount)"
+    },
+    "f5": {
+      "id": "f5",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "expense_date",
+          "table": "expense",
+          "column": "expense_date"
+        }
+      ],
+      "name": "month from expense_date",
+      "expression": "SUBSTR(expense_date, 5, 2)"
+    },
+    "f6": {
+      "id": "f6",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "spent",
+          "table": "budget",
+          "column": "spent"
+        },
+        {
+          "term": "event_date",
+          "table": "event",
+          "column": "event_date"
+        }
+      ],
+      "depends_on": [
+        "r1",
+        "r12"
+      ],
+      "name": "difference of total amount spent",
+      "expression": "SUBTRACT(spent WHERE YEAR(event_date) = 2019, spent WHERE YEAR(event_date) = 2020)"
+    },
+    "f7": {
+      "id": "f7",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "received_date",
+          "table": "income",
+          "column": "date_received"
+        },
+        {
+          "term": "source",
+          "table": "income",
+          "column": "notes",
+          "value": "Dues"
+        }
+      ],
+      "name": "first paid dues",
+      "expression": "MIN(received_date) WHERE source = 'Dues'"
+    },
+    "f8": {
+      "id": "f8",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "amount",
+          "table": "budget",
+          "column": "amount"
+        },
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name"
+        }
+      ],
+      "depends_on": [
+        "r18",
+        "r19"
+      ],
+      "name": "Advertisement budget ratio",
+      "expression": "DIVIDE(SUM(amount WHERE event_name = 'Yearly Kickoff'), SUM(amount WHERE event_name = 'October Meeting'))"
+    },
+    "f9": {
+      "id": "f9",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "amount",
+          "table": "budget",
+          "column": "amount"
+        },
+        {
+          "term": "category",
+          "table": "budget",
+          "column": "category"
+        },
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name"
+        }
+      ],
+      "depends_on": [
+        "r20",
+        "r21"
+      ],
+      "name": "Parking cost per November Speaker event",
+      "expression": "DIVIDE(SUM(amount WHERE category = 'Parking' AND event_name = 'November Speaker'), COUNT(event_name = 'November Speaker')) * 100"
+    },
+    "f10": {
+      "id": "f10",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "cost",
+          "table": "expense",
+          "column": "cost"
+        },
+        {
+          "term": "expense_description",
+          "table": "expense",
+          "column": "expense_description",
+          "value": "Pizza"
+        }
+      ],
+      "name": "total cost of the pizzas",
+      "expression": "SUM(cost)"
+    },
+    "f11": {
+      "id": "f11",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "remaining",
+          "table": "budget",
+          "column": "remaining"
+        }
+      ],
+      "name": "lowest remaining",
+      "expression": "MIN(remaining)"
+    },
+    "f12": {
+      "id": "f12",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "major.college",
+          "table": "major",
+          "column": "college"
+        }
+      ],
+      "name": "college with maximum member count",
+      "expression": "MAX(COUNT(major.college))"
+    },
+    "f13": {
+      "id": "f13",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "amount",
+          "table": "budget",
+          "column": "amount"
+        }
+      ],
+      "name": "highest budget amount",
+      "expression": "MAX(amount)"
+    },
+    "f14": {
+      "id": "f14",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "spent",
+          "table": "budget",
+          "column": "spent"
+        },
+        {
+          "term": "amount",
+          "table": "budget",
+          "column": "amount"
+        }
+      ],
+      "name": "highest spend-to budget ratio",
+      "expression": "MAX(DIVIDE(spent, amount))"
+    },
+    "f15": {
+      "id": "f15",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "spent",
+          "table": "budget",
+          "column": "spent"
+        }
+      ],
+      "name": "total amount of money spent",
+      "expression": "SUM(spent)"
+    },
+    "f16": {
+      "id": "f16",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "income.amount",
+          "table": "income",
+          "column": "amount"
+        }
+      ],
+      "name": "generate the highest income",
+      "expression": "MAX(income.amount)"
+    },
+    "f17": {
+      "id": "f17",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "cost",
+          "table": "expense",
+          "column": "cost"
+        }
+      ],
+      "name": "lowest cost",
+      "expression": "MIN(cost)"
+    },
+    "f18": {
+      "id": "f18",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "cost",
+          "table": "expense",
+          "column": "cost"
+        },
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name"
+        }
+      ],
+      "depends_on": [
+        "r18"
+      ],
+      "name": "percentage",
+      "expression": "DIVIDE(SUM(cost WHERE event_name = 'Yearly Kickoff'), SUM(cost)) * 100"
+    },
+    "f19": {
+      "id": "f19",
+      "type": "Formula",
+      "grounding": [
+        {
+          "term": "major_name",
+          "table": "major",
+          "column": "major_name"
+        }
+      ],
+      "name": "Finance to Physics major ratio",
+      "expression": "DIVIDE(SUM(major_name = 'Finance'), SUM(major_name = 'Physics'))"
+    },
+    "v1": {
+      "id": "v1",
+      "type": "ValueMap",
+      "name": "Women's Soccer",
+      "table": "event",
+      "column": "event_name",
+      "value": "Women's Soccer"
+    },
+    "v2": {
+      "id": "v2",
+      "type": "ValueMap",
+      "name": "T-shirt in medium size",
+      "table": "member",
+      "column": "t_shirt_size",
+      "value": "Medium"
+    },
+    "v3": {
+      "id": "v3",
+      "type": "ValueMap",
+      "name": "Vice President",
+      "table": "member",
+      "column": "position",
+      "value": "Vice President"
+    },
+    "v4": {
+      "id": "v4",
+      "type": "ValueMap",
+      "name": "Environmental Engineering",
+      "table": "major",
+      "column": "major_name",
+      "value": "Environmental Engineering"
+    },
+    "v5": {
+      "id": "v5",
+      "type": "ValueMap",
+      "name": "Laugh Out Loud event",
+      "table": "event",
+      "column": "event_name",
+      "value": "Laugh Out Loud"
+    },
+    "v6": {
+      "id": "v6",
+      "type": "ValueMap",
+      "name": "Law and Constitutional Studies",
+      "table": "major",
+      "column": "major_name",
+      "value": "Law and Constitutional Studies"
+    },
+    "v7": {
+      "id": "v7",
+      "type": "ValueMap",
+      "name": "President",
+      "table": "member",
+      "column": "position",
+      "value": "President"
+    },
+    "v8": {
+      "id": "v8",
+      "type": "ValueMap",
+      "name": "expenses was approved",
+      "table": "expense",
+      "column": "approved",
+      "value": "True"
+    },
+    "v9": {
+      "id": "v9",
+      "type": "ValueMap",
+      "name": "expenses was not approved",
+      "table": "expense",
+      "column": "approved",
+      "value": "False"
+    },
+    "v10": {
+      "id": "v10",
+      "type": "ValueMap",
+      "name": "Spring Budget Review",
+      "table": "event",
+      "column": "event_name",
+      "value": "Spring Budget Review"
+    },
+    "v11": {
+      "id": "v11",
+      "type": "ValueMap",
+      "name": "Poster event",
+      "table": "event",
+      "column": "event_name",
+      "value": "Poster"
+    },
+    "v12": {
+      "id": "v12",
+      "type": "ValueMap",
+      "name": "November Meeting",
+      "table": "event",
+      "column": "event_name",
+      "value": "November Meeting"
+    },
+    "v13": {
+      "id": "v13",
+      "type": "ValueMap",
+      "name": "September Speaker",
+      "table": "event",
+      "column": "event_name",
+      "value": "September Speaker"
+    },
+    "v14": {
+      "id": "v14",
+      "type": "ValueMap",
+      "name": "Post Cards, Posters expense",
+      "table": "expense",
+      "column": "expense_description",
+      "value": "Post Cards, Posters"
+    },
+    "v15": {
+      "id": "v15",
+      "type": "ValueMap",
+      "name": "expense date 2019-08-20",
+      "table": "expense",
+      "column": "expense_date",
+      "value": "2019-8-20"
+    },
+    "v16": {
+      "id": "v16",
+      "type": "ValueMap",
+      "name": "Business major",
+      "table": "major",
+      "column": "major_name",
+      "value": "Business"
+    },
+    "v17": {
+      "id": "v17",
+      "type": "ValueMap",
+      "name": "date the dues was paid",
+      "table": "income",
+      "column": "date_received",
+      "value": "Dues"
+    },
+    "v18": {
+      "id": "v18",
+      "type": "ValueMap",
+      "name": "budget in Advertisement",
+      "table": "budget",
+      "column": "category",
+      "value": "Advertisement"
+    },
+    "v19": {
+      "id": "v19",
+      "type": "ValueMap",
+      "name": "Orange County",
+      "table": "zip_code",
+      "column": "county",
+      "value": "Orange County"
+    },
+    "v20": {
+      "id": "v20",
+      "type": "ValueMap",
+      "name": "Virginia",
+      "table": "zip_code",
+      "column": "state",
+      "value": "Virginia"
+    },
+    "v21": {
+      "id": "v21",
+      "type": "ValueMap",
+      "name": "October Meeting",
+      "table": "event",
+      "column": "event_name",
+      "value": "October Meeting"
+    },
+    "v22": {
+      "id": "v22",
+      "type": "ValueMap",
+      "name": "meeting events",
+      "table": "event",
+      "column": "type",
+      "value": "Meeting"
+    },
+    "v23": {
+      "id": "v23",
+      "type": "ValueMap",
+      "name": "majored in music",
+      "table": "major",
+      "column": "major_name",
+      "value": "Interior Design"
+    },
+    "v24": {
+      "id": "v24",
+      "type": "ValueMap",
+      "name": "Community Theater",
+      "table": "event",
+      "column": "event_name",
+      "value": "Community Theater"
+    },
+    "v25": {
+      "id": "v25",
+      "type": "ValueMap",
+      "name": "Georgetown",
+      "table": "zip_code",
+      "column": "city",
+      "value": "Georgetown"
+    },
+    "v26": {
+      "id": "v26",
+      "type": "ValueMap",
+      "name": "South Carolina",
+      "table": "zip_code",
+      "column": "state",
+      "value": "South Carolina"
+    },
+    "v27": {
+      "id": "v27",
+      "type": "ValueMap",
+      "name": "Yearly Kickoff event",
+      "table": "event",
+      "column": "event_name",
+      "value": "Yearly Kickoff"
+    },
+    "v28": {
+      "id": "v28",
+      "type": "ValueMap",
+      "name": "Secretary position",
+      "table": "member",
+      "column": "position",
+      "value": "Secretary"
+    },
+    "v29": {
+      "id": "v29",
+      "type": "ValueMap",
+      "name": "Physics Teaching",
+      "table": "major",
+      "column": "major_name",
+      "value": "Physics Teaching"
+    },
+    "r1": {
+      "id": "r1",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_date",
+          "table": "event",
+          "column": "event_date"
+        }
+      ],
+      "name": "events attended in 2019",
+      "condition": "YEAR(event_date) = 2019"
+    },
+    "r2": {
+      "id": "r2",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "type",
+          "table": "event",
+          "column": "type",
+          "value": "Meeting"
+        }
+      ],
+      "name": "meetings events",
+      "condition": "type = 'Meeting'"
+    },
+    "r3": {
+      "id": "r3",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_id",
+          "table": "attendance",
+          "column": "link_to_event"
+        }
+      ],
+      "name": "attended by more than 10 members",
+      "condition": "COUNT(event_id) > 10"
+    },
+    "r4": {
+      "id": "r4",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_id",
+          "table": "attendance",
+          "column": "link_to_event"
+        }
+      ],
+      "name": "attendance over 20",
+      "condition": "COUNT(event_id) > 20"
+    },
+    "r5": {
+      "id": "r5",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "type",
+          "table": "event",
+          "column": "type",
+          "value": "Meeting"
+        },
+        {
+          "term": "event_date",
+          "table": "event",
+          "column": "event_date"
+        }
+      ],
+      "name": "meetings in 2020",
+      "condition": "type = 'Meeting' AND YEAR(event_date) = 2020"
+    },
+    "r6": {
+      "id": "r6",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "category",
+          "table": "budget",
+          "column": "category",
+          "value": "Food"
+        },
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name",
+          "value": "September Meeting"
+        }
+      ],
+      "name": "spend on food in September Meeting",
+      "condition": "category = 'Food' AND event_name = 'September Meeting'"
+    },
+    "r7": {
+      "id": "r7",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "category",
+          "table": "budget",
+          "column": "category",
+          "value": "Advertisement"
+        },
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name",
+          "value": "September Meeting"
+        }
+      ],
+      "name": "spend on food in September Meeting",
+      "condition": "category = 'Advertisement' AND event_name = 'September Meeting'"
+    },
+    "r8": {
+      "id": "r8",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name",
+          "value": "October Speaker"
+        }
+      ],
+      "name": "event_name is October Speaker",
+      "condition": "event_name = 'October Speaker'"
+    },
+    "r9": {
+      "id": "r9",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name",
+          "value": "October Meeting"
+        },
+        {
+          "term": "event_date",
+          "table": "event",
+          "column": "event_date",
+          "value": "2019-10-08"
+        }
+      ],
+      "name": "October Meeting",
+      "condition": "event_name = 'October Meeting' AND event_date = '2019-10-08'"
+    },
+    "r10": {
+      "id": "r10",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "first_name",
+          "table": "member",
+          "column": "first_name"
+        },
+        {
+          "term": "last_name",
+          "table": "member",
+          "column": "last_name"
+        }
+      ],
+      "name": "Elijah Allen full name",
+      "condition": "first_name = 'Elijah' AND last_name = 'Allen'"
+    },
+    "r11": {
+      "id": "r11",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "expense_date",
+          "table": "expense",
+          "column": "expense_date"
+        }
+      ],
+      "depends_on": [
+        "f5"
+      ],
+      "name": "September or October expense",
+      "condition": "SUBSTR(expense_date, 5, 2) = '09' OR SUBSTR(expense_date, 5, 2) = '10'"
+    },
+    "r12": {
+      "id": "r12",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_date",
+          "table": "event",
+          "column": "event_date"
+        }
+      ],
+      "name": "year 2020",
+      "condition": "YEAR(event_date) = 2020"
+    },
+    "r13": {
+      "id": "r13",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_date",
+          "table": "event",
+          "column": "event_date"
+        }
+      ],
+      "name": "on 2019/9/14",
+      "condition": "event_date = '2019-09-04'"
+    },
+    "r14": {
+      "id": "r14",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "amount",
+          "table": "budget",
+          "column": "amount"
+        },
+        {
+          "term": "category",
+          "table": "budget",
+          "column": "category",
+          "value": "Food"
+        }
+      ],
+      "name": "biggest budget for Food",
+      "condition": "MAX(budget.amount) WHERE category = 'Food'"
+    },
+    "r15": {
+      "id": "r15",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "source",
+          "table": "income",
+          "column": "notes"
+        },
+        {
+          "term": "date_received",
+          "table": "income",
+          "column": "date_received",
+          "value": "2019-09-14"
+        }
+      ],
+      "name": "fundraising on 2019/9/14",
+      "condition": "source = 'Fundraising' AND date_received = '2019-09-14'"
+    },
+    "r16": {
+      "id": "r16",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "remaining",
+          "table": "budget",
+          "column": "remaining"
+        }
+      ],
+      "name": "remaining less than 0",
+      "condition": "remaining < 0"
+    },
+    "r17": {
+      "id": "r17",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "first_name",
+          "table": "member",
+          "column": "first_name",
+          "value": "Brent"
+        },
+        {
+          "term": "last_name",
+          "table": "member",
+          "column": "last_name",
+          "value": "Thomason"
+        }
+      ],
+      "name": "Brent Thomason",
+      "condition": "first_name = 'Brent' AND last_name = 'Thomason'"
+    },
+    "r18": {
+      "id": "r18",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name"
+        }
+      ],
+      "name": "event_name is Yearly Kickoff",
+      "condition": "event_name = 'Yearly Kickoff'"
+    },
+    "r19": {
+      "id": "r19",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name"
+        }
+      ],
+      "name": "event_name is October Meeting",
+      "condition": "event_name = 'October Meeting'"
+    },
+    "r20": {
+      "id": "r20",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "category",
+          "table": "budget",
+          "column": "category",
+          "value": "Parking"
+        }
+      ],
+      "name": "category is Parking",
+      "condition": "category = 'Parking'"
+    },
+    "r21": {
+      "id": "r21",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name",
+          "value": "November Speaker"
+        }
+      ],
+      "name": "event is November Speaker",
+      "condition": "event_name = 'November Speaker'"
+    },
+    "r22": {
+      "id": "r22",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "status",
+          "table": "event",
+          "column": "status",
+          "value": "Closed"
+        },
+        {
+          "term": "event_name",
+          "table": "event",
+          "column": "event_name"
+        }
+      ],
+      "name": "closed events",
+      "condition": "status = 'Closed'"
+    },
+    "r23": {
+      "id": "r23",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "category",
+          "table": "budget",
+          "column": "category",
+          "value": "Food"
+        }
+      ],
+      "name": "spent for food",
+      "condition": "category = 'Food'"
+    },
+    "r24": {
+      "id": "r24",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "link_to_event",
+          "table": "attendance",
+          "column": "link_to_event"
+        }
+      ],
+      "name": "attended more than 7 events",
+      "condition": "COUNT(link_to_event) > 7"
+    },
+    "r25": {
+      "id": "r25",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "income.amount",
+          "table": "income",
+          "column": "amount"
+        }
+      ],
+      "name": "income more than $50",
+      "condition": "income.amount > 40"
+    },
+    "r26": {
+      "id": "r26",
+      "type": "Rule",
+      "grounding": [
+        {
+          "term": "date_received",
+          "table": "income",
+          "column": "date_received"
+        }
+      ],
+      "name": "September 2019",
+      "condition": "date_received BETWEEN '2019-09-01' AND '2019-09-30'"
+    },
+    "a1": {
+      "id": "a1",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "member",
+          "column": "first_name"
+        },
+        {
+          "table": "member",
+          "column": "last_name"
+        }
+      ],
+      "name": "full name"
+    },
+    "a2": {
+      "id": "a2",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "major",
+          "column": "major_name"
+        }
+      ],
+      "name": "major"
+    },
+    "a3": {
+      "id": "a3",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "member",
+          "column": "phone"
+        }
+      ],
+      "name": "phone numbers"
+    },
+    "a4": {
+      "id": "a4",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "event",
+          "column": "event_name"
+        }
+      ],
+      "name": "name of events"
+    },
+    "a5": {
+      "id": "a5",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "expense",
+          "column": "expense_description"
+        }
+      ],
+      "name": "item in support of club events"
+    },
+    "a6": {
+      "id": "a6",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "income",
+          "column": "amount"
+        }
+      ],
+      "name": "funds received"
+    },
+    "a7": {
+      "id": "a7",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "budget",
+          "column": "spent"
+        }
+      ],
+      "name": "amount spent"
+    },
+    "a8": {
+      "id": "a8",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "event",
+          "column": "event_date"
+        }
+      ],
+      "name": "year"
+    },
+    "a9": {
+      "id": "a9",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "budget",
+          "column": "remaining"
+        }
+      ],
+      "name": "remaining of budget"
+    },
+    "a10": {
+      "id": "a10",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "zip_code",
+          "column": "county"
+        }
+      ],
+      "name": "hometown county"
+    },
+    "a11": {
+      "id": "a11",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "budget",
+          "column": "event_status"
+        }
+      ],
+      "name": "status of event"
+    },
+    "a12": {
+      "id": "a12",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "zip_code",
+          "column": "state"
+        }
+      ],
+      "name": "hometown state"
+    },
+    "a13": {
+      "id": "a13",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "zip_code",
+          "column": "city"
+        },
+        {
+          "table": "zip_code",
+          "column": "county"
+        },
+        {
+          "table": "zip_code",
+          "column": "state"
+        }
+      ],
+      "name": "hometown"
+    },
+    "a14": {
+      "id": "a14",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "income",
+          "column": "date_received"
+        }
+      ],
+      "name": "when the income was received"
+    },
+    "a15": {
+      "id": "a15",
+      "type": "ColumnAlias",
+      "bindings": [
+        {
+          "table": "income",
+          "column": "source"
+        }
+      ],
+      "name": "top source funds"
+    }
+  },
+  "columns": [
+    {
+      "table": "event",
+      "column": "event_id",
+      "type": "TEXT"
+    },
+    {
+      "table": "event",
+      "column": "event_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "event",
+      "column": "event_date",
+      "type": "TEXT"
+    },
+    {
+      "table": "event",
+      "column": "type",
+      "type": "TEXT"
+    },
+    {
+      "table": "event",
+      "column": "notes",
+      "type": "TEXT"
+    },
+    {
+      "table": "event",
+      "column": "location",
+      "type": "TEXT"
+    },
+    {
+      "table": "event",
+      "column": "status",
+      "type": "TEXT"
+    },
+    {
+      "table": "major",
+      "column": "major_id",
+      "type": "TEXT"
+    },
+    {
+      "table": "major",
+      "column": "major_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "major",
+      "column": "department",
+      "type": "TEXT"
+    },
+    {
+      "table": "major",
+      "column": "college",
+      "type": "TEXT"
+    },
+    {
+      "table": "zip_code",
+      "column": "zip_code",
+      "type": "INTEGER"
+    },
+    {
+      "table": "zip_code",
+      "column": "type",
+      "type": "TEXT"
+    },
+    {
+      "table": "zip_code",
+      "column": "city",
+      "type": "TEXT"
+    },
+    {
+      "table": "zip_code",
+      "column": "county",
+      "type": "TEXT"
+    },
+    {
+      "table": "zip_code",
+      "column": "state",
+      "type": "TEXT"
+    },
+    {
+      "table": "zip_code",
+      "column": "short_state",
+      "type": "TEXT"
+    },
+    {
+      "table": "attendance",
+      "column": "link_to_event",
+      "type": "TEXT"
+    },
+    {
+      "table": "attendance",
+      "column": "link_to_member",
+      "type": "TEXT"
+    },
+    {
+      "table": "budget",
+      "column": "budget_id",
+      "type": "TEXT"
+    },
+    {
+      "table": "budget",
+      "column": "category",
+      "type": "TEXT"
+    },
+    {
+      "table": "budget",
+      "column": "spent",
+      "type": "REAL"
+    },
+    {
+      "table": "budget",
+      "column": "remaining",
+      "type": "REAL"
+    },
+    {
+      "table": "budget",
+      "column": "amount",
+      "type": "INTEGER"
+    },
+    {
+      "table": "budget",
+      "column": "event_status",
+      "type": "TEXT"
+    },
+    {
+      "table": "budget",
+      "column": "link_to_event",
+      "type": "TEXT"
+    },
+    {
+      "table": "expense",
+      "column": "expense_id",
+      "type": "TEXT"
+    },
+    {
+      "table": "expense",
+      "column": "expense_description",
+      "type": "TEXT"
+    },
+    {
+      "table": "expense",
+      "column": "expense_date",
+      "type": "TEXT"
+    },
+    {
+      "table": "expense",
+      "column": "cost",
+      "type": "REAL"
+    },
+    {
+      "table": "expense",
+      "column": "approved",
+      "type": "TEXT"
+    },
+    {
+      "table": "expense",
+      "column": "link_to_member",
+      "type": "TEXT"
+    },
+    {
+      "table": "expense",
+      "column": "link_to_budget",
+      "type": "TEXT"
+    },
+    {
+      "table": "income",
+      "column": "income_id",
+      "type": "TEXT"
+    },
+    {
+      "table": "income",
+      "column": "date_received",
+      "type": "TEXT"
+    },
+    {
+      "table": "income",
+      "column": "amount",
+      "type": "INTEGER"
+    },
+    {
+      "table": "income",
+      "column": "source",
+      "type": "TEXT"
+    },
+    {
+      "table": "income",
+      "column": "notes",
+      "type": "TEXT"
+    },
+    {
+      "table": "income",
+      "column": "link_to_member",
+      "type": "TEXT"
+    },
+    {
+      "table": "member",
+      "column": "member_id",
+      "type": "TEXT"
+    },
+    {
+      "table": "member",
+      "column": "first_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "member",
+      "column": "last_name",
+      "type": "TEXT"
+    },
+    {
+      "table": "member",
+      "column": "email",
+      "type": "TEXT"
+    },
+    {
+      "table": "member",
+      "column": "position",
+      "type": "TEXT"
+    },
+    {
+      "table": "member",
+      "column": "t_shirt_size",
+      "type": "TEXT"
+    },
+    {
+      "table": "member",
+      "column": "phone",
+      "type": "TEXT"
+    },
+    {
+      "table": "member",
+      "column": "zip",
+      "type": "INTEGER"
+    },
+    {
+      "table": "member",
+      "column": "link_to_major",
+      "type": "TEXT"
+    }
+  ],
+  "fk_edges": [
+    {
+      "from": {
+        "table": "attendance",
+        "column": "link_to_event"
+      },
+      "to": {
+        "table": "event",
+        "column": "event_id"
+      }
+    },
+    {
+      "from": {
+        "table": "attendance",
+        "column": "link_to_member"
+      },
+      "to": {
+        "table": "member",
+        "column": "member_id"
+      }
+    },
+    {
+      "from": {
+        "table": "budget",
+        "column": "link_to_event"
+      },
+      "to": {
+        "table": "event",
+        "column": "event_id"
+      }
+    },
+    {
+      "from": {
+        "table": "expense",
+        "column": "link_to_budget"
+      },
+      "to": {
+        "table": "budget",
+        "column": "budget_id"
+      }
+    },
+    {
+      "from": {
+        "table": "expense",
+        "column": "link_to_member"
+      },
+      "to": {
+        "table": "member",
+        "column": "member_id"
+      }
+    },
+    {
+      "from": {
+        "table": "income",
+        "column": "link_to_member"
+      },
+      "to": {
+        "table": "member",
+        "column": "member_id"
+      }
+    },
+    {
+      "from": {
+        "table": "member",
+        "column": "link_to_major"
+      },
+      "to": {
+        "table": "major",
+        "column": "major_id"
+      }
+    },
+    {
+      "from": {
+        "table": "member",
+        "column": "zip"
+      },
+      "to": {
+        "table": "zip_code",
+        "column": "zip_code"
+      }
+    }
+  ],
+  "indexes": {
+    "by_type": {
+      "Concept": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c23"
+      ],
+      "Formula": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16",
+        "f17",
+        "f18",
+        "f19"
+      ],
+      "ValueMap": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v14",
+        "v15",
+        "v16",
+        "v17",
+        "v18",
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23",
+        "v24",
+        "v25",
+        "v26",
+        "v27",
+        "v28",
+        "v29"
+      ],
+      "Rule": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15",
+        "r16",
+        "r17",
+        "r18",
+        "r19",
+        "r20",
+        "r21",
+        "r22",
+        "r23",
+        "r24",
+        "r25",
+        "r26"
+      ],
+      "ColumnAlias": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10",
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15"
+      ]
+    },
+    "by_column": {
+      "attendance.link_to_event": [
+        "f1",
+        "r3",
+        "r4",
+        "r24"
+      ],
+      "event.event_id": [
+        "f2"
+      ],
+      "event.event_name": [
+        "f2",
+        "f8",
+        "f9",
+        "f18",
+        "v1",
+        "v5",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v21",
+        "v24",
+        "v27",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r18",
+        "r19",
+        "r21",
+        "r22",
+        "a4"
+      ],
+      "expense.cost": [
+        "f3",
+        "f10",
+        "f17",
+        "f18"
+      ],
+      "budget.amount": [
+        "f4",
+        "f8",
+        "f9",
+        "f13",
+        "f14",
+        "r14"
+      ],
+      "expense.expense_date": [
+        "f5",
+        "v15",
+        "r11"
+      ],
+      "budget.spent": [
+        "f6",
+        "f14",
+        "f15",
+        "a7"
+      ],
+      "event.event_date": [
+        "f6",
+        "r1",
+        "r5",
+        "r9",
+        "r12",
+        "r13",
+        "a8"
+      ],
+      "income.date_received": [
+        "f7",
+        "v17",
+        "r15",
+        "r26",
+        "a14"
+      ],
+      "income.notes": [
+        "f7",
+        "r15"
+      ],
+      "budget.category": [
+        "f9",
+        "v18",
+        "r6",
+        "r7",
+        "r14",
+        "r20",
+        "r23"
+      ],
+      "expense.expense_description": [
+        "f10",
+        "v14",
+        "a5"
+      ],
+      "budget.remaining": [
+        "f11",
+        "r16",
+        "a9"
+      ],
+      "major.college": [
+        "f12"
+      ],
+      "income.amount": [
+        "f16",
+        "r25",
+        "a6"
+      ],
+      "major.major_name": [
+        "f19",
+        "v4",
+        "v6",
+        "v16",
+        "v23",
+        "v29",
+        "a2"
+      ],
+      "member.t_shirt_size": [
+        "v2"
+      ],
+      "member.position": [
+        "v3",
+        "v7",
+        "v28"
+      ],
+      "expense.approved": [
+        "v8",
+        "v9"
+      ],
+      "zip_code.county": [
+        "v19",
+        "a10",
+        "a13"
+      ],
+      "zip_code.state": [
+        "v20",
+        "v26",
+        "a12",
+        "a13"
+      ],
+      "event.type": [
+        "v22",
+        "r2",
+        "r5"
+      ],
+      "zip_code.city": [
+        "v25",
+        "a13"
+      ],
+      "member.first_name": [
+        "r10",
+        "r17",
+        "a1"
+      ],
+      "member.last_name": [
+        "r10",
+        "r17",
+        "a1"
+      ],
+      "event.status": [
+        "r22"
+      ],
+      "member.phone": [
+        "a3"
+      ],
+      "budget.event_status": [
+        "a11"
+      ],
+      "income.source": [
+        "a15"
+      ]
+    },
+    "by_name_token": {
+      "highest": [
+        "c1",
+        "c15",
+        "c17",
+        "c21",
+        "f1",
+        "f13",
+        "f14",
+        "f16"
+      ],
+      "event": [
+        "c1",
+        "f1",
+        "f9",
+        "v5",
+        "v11",
+        "v27",
+        "r21",
+        "a11"
+      ],
+      "attendance": [
+        "c1",
+        "c4",
+        "f1",
+        "r4"
+      ],
+      "meetings": [
+        "c2",
+        "r2",
+        "r5"
+      ],
+      "events": [
+        "c2",
+        "c8",
+        "c16",
+        "c19",
+        "v22",
+        "r1",
+        "r2",
+        "r22",
+        "r24",
+        "a4",
+        "a5"
+      ],
+      "more": [
+        "c3",
+        "c19",
+        "c20",
+        "r3",
+        "r24",
+        "r25"
+      ],
+      "members": [
+        "c3",
+        "c14",
+        "r3"
+      ],
+      "attended": [
+        "c3",
+        "c19",
+        "r1",
+        "r3",
+        "r24"
+      ],
+      "than": [
+        "c3",
+        "c19",
+        "c20",
+        "r3",
+        "r16",
+        "r24",
+        "r25"
+      ],
+      "10": [
+        "c3",
+        "r3",
+        "r9",
+        "r11"
+      ],
+      "over": [
+        "c4",
+        "r4"
+      ],
+      "20": [
+        "c4",
+        "v15",
+        "r4"
+      ],
+      "students": [
+        "c4",
+        "c18"
+      ],
+      "most": [
+        "c5",
+        "c14",
+        "f3"
+      ],
+      "expensive": [
+        "c5",
+        "f3"
+      ],
+      "total": [
+        "c6",
+        "c11",
+        "f4",
+        "f6",
+        "f10",
+        "f15"
+      ],
+      "amount": [
+        "c6",
+        "c11",
+        "c15",
+        "f4",
+        "f6",
+        "f8",
+        "f9",
+        "f13",
+        "f14",
+        "f15",
+        "f16",
+        "r14",
+        "r25",
+        "a7"
+      ],
+      "budgeted": [
+        "c6",
+        "f4"
+      ],
+      "allen": [
+        "c7",
+        "r10"
+      ],
+      "elijah": [
+        "c7",
+        "r10"
+      ],
+      "september": [
+        "c8",
+        "c23",
+        "v13",
+        "r6",
+        "r7",
+        "r11",
+        "r26"
+      ],
+      "october": [
+        "c8",
+        "f8",
+        "v21",
+        "r8",
+        "r9",
+        "r11",
+        "r19"
+      ],
+      "food": [
+        "c9",
+        "r6",
+        "r7",
+        "r14",
+        "r23"
+      ],
+      "biggest": [
+        "c9",
+        "r14"
+      ],
+      "budget": [
+        "c9",
+        "c10",
+        "c11",
+        "c15",
+        "c17",
+        "f8",
+        "f13",
+        "f14",
+        "v10",
+        "v18",
+        "r14",
+        "a9"
+      ],
+      "exceeded": [
+        "c10"
+      ],
+      "cost": [
+        "c10",
+        "c22",
+        "f3",
+        "f9",
+        "f10",
+        "f17",
+        "f18"
+      ],
+      "number": [
+        "c11"
+      ],
+      "paid": [
+        "c12",
+        "f7",
+        "v17"
+      ],
+      "first": [
+        "c12",
+        "f7"
+      ],
+      "dues": [
+        "c12",
+        "f7",
+        "v17"
+      ],
+      "lowest": [
+        "c13",
+        "c22",
+        "f11",
+        "f17"
+      ],
+      "remaining": [
+        "c13",
+        "f11",
+        "r16",
+        "a9"
+      ],
+      "go": [
+        "c14"
+      ],
+      "college": [
+        "c14",
+        "f12"
+      ],
+      "closed": [
+        "c16",
+        "r22"
+      ],
+      "spend": [
+        "c17",
+        "f14",
+        "r6",
+        "r7"
+      ],
+      "ratio": [
+        "c17",
+        "f8",
+        "f14",
+        "f19"
+      ],
+      "name": [
+        "c18",
+        "r10",
+        "a1",
+        "a4"
+      ],
+      "50": [
+        "c20",
+        "r25"
+      ],
+      "income": [
+        "c20",
+        "c21",
+        "f16",
+        "r25",
+        "a14"
+      ],
+      "generate": [
+        "c20",
+        "f16"
+      ],
+      "2019": [
+        "c23",
+        "f6",
+        "v15",
+        "r1",
+        "r9",
+        "r13",
+        "r15",
+        "r26"
+      ],
+      "count": [
+        "f1",
+        "f2",
+        "f9",
+        "f12",
+        "r3",
+        "r4",
+        "r24"
+      ],
+      "max": [
+        "f1",
+        "f3",
+        "f12",
+        "f13",
+        "f14",
+        "f16",
+        "r14"
+      ],
+      "link_to_event": [
+        "f1",
+        "r24"
+      ],
+      "event_id": [
+        "f2",
+        "r3",
+        "r4"
+      ],
+      "average": [
+        "f2"
+      ],
+      "event_name": [
+        "f2",
+        "f8",
+        "f9",
+        "f18",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r18",
+        "r19",
+        "r21"
+      ],
+      "divide": [
+        "f2",
+        "f8",
+        "f9",
+        "f14",
+        "f18",
+        "f19"
+      ],
+      "distinct": [
+        "f2"
+      ],
+      "sum": [
+        "f4",
+        "f8",
+        "f9",
+        "f10",
+        "f15",
+        "f18",
+        "f19"
+      ],
+      "month": [
+        "f5"
+      ],
+      "from": [
+        "f5"
+      ],
+      "substr": [
+        "f5",
+        "r11"
+      ],
+      "expense_date": [
+        "f5",
+        "r11"
+      ],
+      "spent": [
+        "f6",
+        "f14",
+        "f15",
+        "r23",
+        "a7"
+      ],
+      "difference": [
+        "f6"
+      ],
+      "where": [
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f18",
+        "r14"
+      ],
+      "event_date": [
+        "f6",
+        "r1",
+        "r5",
+        "r9",
+        "r12",
+        "r13"
+      ],
+      "2020": [
+        "f6",
+        "r5",
+        "r12"
+      ],
+      "year": [
+        "f6",
+        "r1",
+        "r5",
+        "r12",
+        "a8"
+      ],
+      "subtract": [
+        "f6"
+      ],
+      "source": [
+        "f7",
+        "r15",
+        "a15"
+      ],
+      "received_date": [
+        "f7"
+      ],
+      "min": [
+        "f7",
+        "f11",
+        "f17"
+      ],
+      "kickoff": [
+        "f8",
+        "f18",
+        "v27",
+        "r18"
+      ],
+      "advertisement": [
+        "f8",
+        "v18",
+        "r7"
+      ],
+      "yearly": [
+        "f8",
+        "f18",
+        "v27",
+        "r18"
+      ],
+      "meeting": [
+        "f8",
+        "v12",
+        "v21",
+        "v22",
+        "r2",
+        "r5",
+        "r6",
+        "r7",
+        "r9",
+        "r19"
+      ],
+      "per": [
+        "f9"
+      ],
+      "100": [
+        "f9",
+        "f18"
+      ],
+      "november": [
+        "f9",
+        "v12",
+        "r21"
+      ],
+      "parking": [
+        "f9",
+        "r20"
+      ],
+      "category": [
+        "f9",
+        "r6",
+        "r7",
+        "r14",
+        "r20",
+        "r23"
+      ],
+      "speaker": [
+        "f9",
+        "v13",
+        "r8",
+        "r21"
+      ],
+      "pizzas": [
+        "f10"
+      ],
+      "member": [
+        "f12"
+      ],
+      "major": [
+        "f12",
+        "f19",
+        "v16",
+        "a2"
+      ],
+      "maximum": [
+        "f12"
+      ],
+      "money": [
+        "f15"
+      ],
+      "percentage": [
+        "f18"
+      ],
+      "physics": [
+        "f19",
+        "v29"
+      ],
+      "finance": [
+        "f19"
+      ],
+      "major_name": [
+        "f19"
+      ],
+      "women": [
+        "v1"
+      ],
+      "soccer": [
+        "v1"
+      ],
+      "medium": [
+        "v2"
+      ],
+      "shirt": [
+        "v2"
+      ],
+      "size": [
+        "v2"
+      ],
+      "president": [
+        "v3",
+        "v7"
+      ],
+      "vice": [
+        "v3"
+      ],
+      "environmental": [
+        "v4"
+      ],
+      "engineering": [
+        "v4"
+      ],
+      "loud": [
+        "v5"
+      ],
+      "laugh": [
+        "v5"
+      ],
+      "out": [
+        "v5"
+      ],
+      "law": [
+        "v6"
+      ],
+      "constitutional": [
+        "v6"
+      ],
+      "studies": [
+        "v6"
+      ],
+      "expenses": [
+        "v8",
+        "v9"
+      ],
+      "was": [
+        "v8",
+        "v9",
+        "v17",
+        "a14"
+      ],
+      "approved": [
+        "v8",
+        "v9"
+      ],
+      "not": [
+        "v9"
+      ],
+      "review": [
+        "v10"
+      ],
+      "spring": [
+        "v10"
+      ],
+      "poster": [
+        "v11"
+      ],
+      "posters": [
+        "v14"
+      ],
+      "cards": [
+        "v14"
+      ],
+      "expense": [
+        "v14",
+        "v15",
+        "r11"
+      ],
+      "post": [
+        "v14"
+      ],
+      "08": [
+        "v15",
+        "r9"
+      ],
+      "date": [
+        "v15",
+        "v17"
+      ],
+      "business": [
+        "v16"
+      ],
+      "orange": [
+        "v19"
+      ],
+      "county": [
+        "v19",
+        "a10"
+      ],
+      "virginia": [
+        "v20"
+      ],
+      "music": [
+        "v23"
+      ],
+      "majored": [
+        "v23"
+      ],
+      "theater": [
+        "v24"
+      ],
+      "community": [
+        "v24"
+      ],
+      "georgetown": [
+        "v25"
+      ],
+      "south": [
+        "v26"
+      ],
+      "carolina": [
+        "v26"
+      ],
+      "position": [
+        "v28"
+      ],
+      "secretary": [
+        "v28"
+      ],
+      "teaching": [
+        "v29"
+      ],
+      "type": [
+        "r2",
+        "r5"
+      ],
+      "on": [
+        "r6",
+        "r7",
+        "r13",
+        "r15"
+      ],
+      "first_name": [
+        "r10",
+        "r17"
+      ],
+      "full": [
+        "r10",
+        "a1"
+      ],
+      "last_name": [
+        "r10",
+        "r17"
+      ],
+      "09": [
+        "r11",
+        "r13",
+        "r15",
+        "r26"
+      ],
+      "14": [
+        "r13",
+        "r15"
+      ],
+      "04": [
+        "r13"
+      ],
+      "date_received": [
+        "r15",
+        "r26"
+      ],
+      "fundraising": [
+        "r15"
+      ],
+      "less": [
+        "r16"
+      ],
+      "thomason": [
+        "r17"
+      ],
+      "brent": [
+        "r17"
+      ],
+      "status": [
+        "r22",
+        "a11"
+      ],
+      "40": [
+        "r25"
+      ],
+      "30": [
+        "r26"
+      ],
+      "01": [
+        "r26"
+      ],
+      "between": [
+        "r26"
+      ],
+      "numbers": [
+        "a3"
+      ],
+      "phone": [
+        "a3"
+      ],
+      "club": [
+        "a5"
+      ],
+      "item": [
+        "a5"
+      ],
+      "support": [
+        "a5"
+      ],
+      "funds": [
+        "a6",
+        "a15"
+      ],
+      "received": [
+        "a6",
+        "a14"
+      ],
+      "hometown": [
+        "a10",
+        "a12",
+        "a13"
+      ],
+      "state": [
+        "a12"
+      ],
+      "when": [
+        "a14"
+      ],
+      "top": [
+        "a15"
+      ]
+    }
+  },
+  "provenance": {
+    "c1": [
+      [
+        1318,
+        "c1"
+      ]
+    ],
+    "c2": [
+      [
+        1322,
+        "c1"
+      ]
+    ],
+    "c3": [
+      [
+        1322,
+        "c2"
+      ]
+    ],
+    "c4": [
+      [
+        1323,
+        "c1"
+      ]
+    ],
+    "c5": [
+      [
+        1325,
+        "c1"
+      ]
+    ],
+    "c6": [
+      [
+        1337,
+        "c1"
+      ]
+    ],
+    "c7": [
+      [
+        1339,
+        "c1"
+      ]
+    ],
+    "c8": [
+      [
+        1339,
+        "c2"
+      ]
+    ],
+    "c9": [
+      [
+        1343,
+        "c1"
+      ]
+    ],
+    "c10": [
+      [
+        1348,
+        "c1"
+      ]
+    ],
+    "c11": [
+      [
+        1349,
+        "c1"
+      ]
+    ],
+    "c12": [
+      [
+        1358,
+        "c1"
+      ]
+    ],
+    "c13": [
+      [
+        1365,
+        "c1"
+      ]
+    ],
+    "c14": [
+      [
+        1367,
+        "c1"
+      ]
+    ],
+    "c15": [
+      [
+        1369,
+        "c1"
+      ]
+    ],
+    "c16": [
+      [
+        1376,
+        "c1"
+      ]
+    ],
+    "c17": [
+      [
+        1376,
+        "c2"
+      ]
+    ],
+    "c18": [
+      [
+        1381,
+        "c1"
+      ],
+      [
+        1383,
+        "c1"
+      ],
+      [
+        1385,
+        "c1"
+      ],
+      [
+        1387,
+        "c1"
+      ],
+      [
+        1388,
+        "c1"
+      ]
+    ],
+    "c19": [
+      [
+        1381,
+        "c2"
+      ]
+    ],
+    "c20": [
+      [
+        1385,
+        "c2"
+      ]
+    ],
+    "c21": [
+      [
+        1388,
+        "c2"
+      ]
+    ],
+    "c22": [
+      [
+        1389,
+        "c1"
+      ]
+    ],
+    "c23": [
+      [
+        1392,
+        "c1"
+      ]
+    ],
+    "f1": [
+      [
+        1318,
+        "f1"
+      ]
+    ],
+    "f2": [
+      [
+        1324,
+        "f1"
+      ]
+    ],
+    "f3": [
+      [
+        1325,
+        "f1"
+      ]
+    ],
+    "f4": [
+      [
+        1337,
+        "f1"
+      ],
+      [
+        1349,
+        "f1"
+      ]
+    ],
+    "f5": [
+      [
+        1339,
+        "f1"
+      ]
+    ],
+    "f6": [
+      [
+        1340,
+        "f1"
+      ]
+    ],
+    "f7": [
+      [
+        1358,
+        "f1"
+      ]
+    ],
+    "f8": [
+      [
+        1359,
+        "f1"
+      ]
+    ],
+    "f9": [
+      [
+        1360,
+        "f1"
+      ]
+    ],
+    "f10": [
+      [
+        1361,
+        "f1"
+      ],
+      [
+        1386,
+        "f1"
+      ]
+    ],
+    "f11": [
+      [
+        1365,
+        "f1"
+      ]
+    ],
+    "f12": [
+      [
+        1367,
+        "f1"
+      ]
+    ],
+    "f13": [
+      [
+        1369,
+        "f1"
+      ]
+    ],
+    "f14": [
+      [
+        1376,
+        "f1"
+      ]
+    ],
+    "f15": [
+      [
+        1380,
+        "f1"
+      ]
+    ],
+    "f16": [
+      [
+        1388,
+        "f1"
+      ]
+    ],
+    "f17": [
+      [
+        1389,
+        "f1"
+      ]
+    ],
+    "f18": [
+      [
+        1390,
+        "f1"
+      ]
+    ],
+    "f19": [
+      [
+        1391,
+        "f1"
+      ]
+    ],
+    "v1": [
+      [
+        1315,
+        "v1"
+      ],
+      [
+        1316,
+        "v1"
+      ],
+      [
+        1317,
+        "v1"
+      ],
+      [
+        1371,
+        "v1"
+      ]
+    ],
+    "v2": [
+      [
+        1317,
+        "v2"
+      ],
+      [
+        1352,
+        "v2"
+      ]
+    ],
+    "v3": [
+      [
+        1319,
+        "v1"
+      ],
+      [
+        1331,
+        "v1"
+      ],
+      [
+        1354,
+        "v1"
+      ],
+      [
+        1370,
+        "v1"
+      ]
+    ],
+    "v4": [
+      [
+        1326,
+        "v1"
+      ]
+    ],
+    "v5": [
+      [
+        1327,
+        "v1"
+      ]
+    ],
+    "v6": [
+      [
+        1328,
+        "v1"
+      ]
+    ],
+    "v7": [
+      [
+        1333,
+        "v1"
+      ],
+      [
+        1356,
+        "v1"
+      ],
+      [
+        1377,
+        "v1"
+      ]
+    ],
+    "v8": [
+      [
+        1338,
+        "v1"
+      ]
+    ],
+    "v9": [
+      [
+        1338,
+        "v2"
+      ]
+    ],
+    "v10": [
+      [
+        1341,
+        "v1"
+      ]
+    ],
+    "v11": [
+      [
+        1342,
+        "v1"
+      ]
+    ],
+    "v12": [
+      [
+        1348,
+        "v1"
+      ]
+    ],
+    "v13": [
+      [
+        1349,
+        "v1"
+      ]
+    ],
+    "v14": [
+      [
+        1350,
+        "v1"
+      ]
+    ],
+    "v15": [
+      [
+        1350,
+        "v2"
+      ]
+    ],
+    "v16": [
+      [
+        1352,
+        "v1"
+      ]
+    ],
+    "v17": [
+      [
+        1357,
+        "v1"
+      ]
+    ],
+    "v18": [
+      [
+        1359,
+        "v1"
+      ]
+    ],
+    "v19": [
+      [
+        1362,
+        "v1"
+      ]
+    ],
+    "v20": [
+      [
+        1362,
+        "v2"
+      ]
+    ],
+    "v21": [
+      [
+        1366,
+        "v1"
+      ]
+    ],
+    "v22": [
+      [
+        1379,
+        "v1"
+      ]
+    ],
+    "v23": [
+      [
+        1382,
+        "v1"
+      ]
+    ],
+    "v24": [
+      [
+        1382,
+        "v2"
+      ]
+    ],
+    "v25": [
+      [
+        1383,
+        "v1"
+      ]
+    ],
+    "v26": [
+      [
+        1383,
+        "v2"
+      ]
+    ],
+    "v27": [
+      [
+        1386,
+        "v1"
+      ],
+      [
+        1387,
+        "v1"
+      ]
+    ],
+    "v28": [
+      [
+        1393,
+        "v1"
+      ]
+    ],
+    "v29": [
+      [
+        1394,
+        "v1"
+      ]
+    ],
+    "r1": [
+      [
+        1321,
+        "r1"
+      ],
+      [
+        1340,
+        "r1"
+      ]
+    ],
+    "r2": [
+      [
+        1322,
+        "r1"
+      ]
+    ],
+    "r3": [
+      [
+        1322,
+        "r2"
+      ]
+    ],
+    "r4": [
+      [
+        1323,
+        "r1"
+      ]
+    ],
+    "r5": [
+      [
+        1324,
+        "r1"
+      ]
+    ],
+    "r6": [
+      [
+        1332,
+        "r1"
+      ]
+    ],
+    "r7": [
+      [
+        1335,
+        "r1"
+      ]
+    ],
+    "r8": [
+      [
+        1337,
+        "r1"
+      ]
+    ],
+    "r9": [
+      [
+        1338,
+        "r1"
+      ]
+    ],
+    "r10": [
+      [
+        1339,
+        "r1"
+      ]
+    ],
+    "r11": [
+      [
+        1339,
+        "r2"
+      ]
+    ],
+    "r12": [
+      [
+        1340,
+        "r2"
+      ],
+      [
+        1379,
+        "r1"
+      ]
+    ],
+    "r13": [
+      [
+        1342,
+        "r1"
+      ]
+    ],
+    "r14": [
+      [
+        1343,
+        "r1"
+      ]
+    ],
+    "r15": [
+      [
+        1344,
+        "r1"
+      ]
+    ],
+    "r16": [
+      [
+        1348,
+        "r1"
+      ]
+    ],
+    "r17": [
+      [
+        1351,
+        "r1"
+      ]
+    ],
+    "r18": [
+      [
+        1359,
+        "r1"
+      ],
+      [
+        1390,
+        "r1"
+      ]
+    ],
+    "r19": [
+      [
+        1359,
+        "r2"
+      ]
+    ],
+    "r20": [
+      [
+        1360,
+        "r1"
+      ]
+    ],
+    "r21": [
+      [
+        1360,
+        "r2"
+      ]
+    ],
+    "r22": [
+      [
+        1376,
+        "r1"
+      ]
+    ],
+    "r23": [
+      [
+        1380,
+        "r1"
+      ]
+    ],
+    "r24": [
+      [
+        1381,
+        "r1"
+      ]
+    ],
+    "r25": [
+      [
+        1385,
+        "r1"
+      ]
+    ],
+    "r26": [
+      [
+        1392,
+        "r1"
+      ]
+    ],
+    "a1": [
+      [
+        1312,
+        "a1"
+      ],
+      [
+        1314,
+        "a1"
+      ],
+      [
+        1327,
+        "a1"
+      ],
+      [
+        1334,
+        "a1"
+      ],
+      [
+        1339,
+        "a1"
+      ],
+      [
+        1346,
+        "a1"
+      ],
+      [
+        1351,
+        "a1"
+      ],
+      [
+        1357,
+        "a1"
+      ],
+      [
+        1358,
+        "a1"
+      ],
+      [
+        1375,
+        "a1"
+      ],
+      [
+        1381,
+        "a1"
+      ],
+      [
+        1383,
+        "a1"
+      ],
+      [
+        1385,
+        "a1"
+      ],
+      [
+        1387,
+        "a1"
+      ],
+      [
+        1388,
+        "a1"
+      ],
+      [
+        1393,
+        "a1"
+      ]
+    ],
+    "a2": [
+      [
+        1312,
+        "a2"
+      ],
+      [
+        1351,
+        "a2"
+      ],
+      [
+        1368,
+        "a1"
+      ]
+    ],
+    "a3": [
+      [
+        1316,
+        "a1"
+      ]
+    ],
+    "a4": [
+      [
+        1323,
+        "a1"
+      ],
+      [
+        1369,
+        "a1"
+      ],
+      [
+        1389,
+        "a1"
+      ]
+    ],
+    "a5": [
+      [
+        1325,
+        "a1"
+      ],
+      [
+        1365,
+        "a1"
+      ],
+      [
+        1370,
+        "a1"
+      ]
+    ],
+    "a6": [
+      [
+        1331,
+        "a1"
+      ],
+      [
+        1384,
+        "a1"
+      ]
+    ],
+    "a7": [
+      [
+        1332,
+        "a1"
+      ],
+      [
+        1335,
+        "a1"
+      ],
+      [
+        1378,
+        "a1"
+      ]
+    ],
+    "a8": [
+      [
+        1340,
+        "a1"
+      ]
+    ],
+    "a9": [
+      [
+        1343,
+        "a1"
+      ]
+    ],
+    "a10": [
+      [
+        1347,
+        "a1"
+      ]
+    ],
+    "a11": [
+      [
+        1350,
+        "a1"
+      ]
+    ],
+    "a12": [
+      [
+        1355,
+        "a1"
+      ]
+    ],
+    "a13": [
+      [
+        1364,
+        "a1"
+      ]
+    ],
+    "a14": [
+      [
+        1372,
+        "a1"
+      ]
+    ],
+    "a15": [
+      [
+        1392,
+        "a1"
+      ]
+    ]
+  }
+}
