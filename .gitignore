@@ -7,6 +7,7 @@ venv/
 
 # Secrets
 .env
+.claude/
 .claude
 
 # BIRD dataset (large — download separately, do not commit)
@@ -18,3 +19,20 @@ data/
 # Evaluation outputs
 results/
 annotation/train_extracted.partial.json
+
+# Private / research / writing artifacts — keep local only
+Positioning_Note.md
+Report.md
+Research_Plan.md
+Research_Problem.md
+annotation/PILOT_FINDINGS.md
+docs/
+paper/
+ACM_Conference_Template/
+
+# AI assistant traces — keep local only
+AGENTS.md
+GEMINI.md
+CLAUDE.md
+.cursor/
+.aider*
